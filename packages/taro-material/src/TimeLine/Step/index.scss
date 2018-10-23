@@ -1,0 +1,51 @@
+@import "../../styles/theme.scss";
+
+.root{
+  display: flex;
+  justify-content: space-between;
+  .box{
+    display: flex;
+    .avatar{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      .tail{
+        height: 100%;
+        border-left: 4px solid #{$paletteGrey300};
+      }
+      // &::after {
+      //   content: '';
+      //   height: 100%;
+      //   border-left: 4px solid #{$paletteGrey300};
+      // }
+      .result{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        line-height: 100%;
+        color: $paletteTextPrimary2;
+        font-size: 64px;
+        line-height: 64px;
+
+        &.failure{
+          background: $paletteErrorMain;
+        }
+        &.success{
+          background: $paletteSuccessMain;
+        }
+      }
+    }
+    .content{
+      padding: #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit * 2}px #{$spacingUnit * 2}px;
+    }
+  }
+  .time{
+
+  }
+}

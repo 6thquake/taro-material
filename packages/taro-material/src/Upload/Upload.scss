@@ -1,0 +1,122 @@
+@import "../styles/theme.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  margin: #{$spacingUnit*2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+  
+  .cicle {
+    border-radius: 16px;
+  }
+  .title {
+    vertical-align: middle;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    
+    .required {
+      margin-left: #{$spacingUnit}px;
+      color: #{$paletteSecondaryMain};
+    }  
+  }
+  .array {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .media {
+      height: 128px;
+      width: 128px;
+      background-size: cover;
+      background-position: center;
+      @extend .cicle;
+    }
+
+    .chip, .clickToUpload{
+      position: relative;
+      width: 128px;
+      height: 128px;
+      margin: #{$spacingUnit * 6}px #{$spacingUnit * 3}px 0px #{$spacingUnit * 3}px;
+      padding: 0;
+      text-align: center;
+    }
+    .clickToUpload {
+      border: 1px dashed $paletteGrey500;
+      background-color: $paletteGrey300;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: column;
+
+      @extend .cicle;
+
+      .add {
+        // padding: #{$spacingUnit * 4}px 0 0 0;
+      }
+      .uploadText {
+        font-size: 24px;
+        color: $paletteTextPrimary;
+        // padding: #{$spacingUnit} 0 0 0;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: -24px;
+      right: -24px;
+      background: $paletteGrey300;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  .helper-text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    min-height: 34rpx;
+    margin-top: #{$spacingUnit}px;
+
+    &-icon {
+      margin-right: #{$spacingUnit}px;
+    }
+    &.primary {
+      color: $palettePrimaryMain;
+    }
+    &.secondary {
+      color: $paletteSecondaryMain;
+    }
+    &.progress {
+      color: $paletteProgressMain;
+    }
+    &.warning {
+      color: $paletteWarningMain;
+    }
+    &.success {
+      color: $paletteSuccessMain;
+    }
+    &.error {
+      color: $paletteErrorMain;
+    }
+  }
+}

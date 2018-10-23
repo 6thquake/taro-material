@@ -1,0 +1,20 @@
+@import '../styles/theme.scss';
+
+.root{
+  background: #{$paletteBackgroundPaper};
+  position: relative;
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: #{$spacingUnit * 3}px;
+    border-bottom: solid 1px $paletteGrey200;
+    .title{
+      display: flex;
+      align-items: center;
+      .label{
+        margin-right: #{$spacingUnit}px;
+      }
+    }
+  }
+}

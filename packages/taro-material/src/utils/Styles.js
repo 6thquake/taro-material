@@ -1,0 +1,50 @@
+const objectToString = style => {
+  if (style && typeof style === 'object') {
+    let styleStr = ''
+    Object.keys(style).forEach(key => {
+      const lowerCaseKey = key.replace(/([A-Z])/g, '-$1').toLowerCase()
+      styleStr += `${lowerCaseKey}:${style[key]};`
+    })
+    return styleStr
+  } else if (style && typeof style === 'string') {
+    return style
+  }
+  return ''
+}
+
+/**
+   * 合并 style
+   * @param {Object|String} style1
+   * @param {Object|String} style2
+   * @returns {String}
+   */
+const mergeStyle = (style1, style2) => {
+  return objectToString(style1) + objectToString(style2)
+}
+
+const getClassName = (arg, className) =>{
+  // const { className } = props
+
+  if (!className) {
+    return arg
+  }
+
+  let componentClass = arg
+  let propsClass = className
+
+  if (!Array.isArray(propsClass)) {
+    propsClass = [propsClass]
+  }
+
+  if (!Array.isArray(componentClass)) {
+    componentClass = [componentClass]
+  }
+
+  return componentClass.concat(propsClass)
+}
+
+export {
+  objectToString,
+  getClassName,
+  mergeStyle
+}

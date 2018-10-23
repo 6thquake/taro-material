@@ -1,0 +1,20 @@
+@import '../styles/theme.scss';
+
+.root{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: #{$spacingUnit * 8}px;
+  .end{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .divider{
+      margin: 0 #{$spacingUnit * 3}px;
+      height: 2px;
+      background: #{$paletteTextDivider};
+      flex: 1;
+    }
+  }
+}

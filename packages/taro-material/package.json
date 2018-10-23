@@ -1,0 +1,42 @@
+{
+  "name": "@6thquake/taro-material",
+  "private": false,
+  "author": "6thquake",
+  "version": "0.0.1",
+  "description": "Mini Program components that implement Google's Material Design.",
+  "keywords": [
+    "react",
+    "react-component",
+    "material design",
+    "taro",
+    "taro-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "peerDependencies": {
+    "taro": "*"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "humps": "^2.0.1",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

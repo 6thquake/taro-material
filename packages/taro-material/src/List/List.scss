@@ -1,0 +1,96 @@
+@import "../styles/theme.scss";
+
+@function tint(
+  $color,
+  $percent
+) {
+  @return mix($paletteCommonWhite, $color, $percent);
+}
+
+$hd: 2; // 基本单位
+
+/* 背景色 */
+$color-bg: $paletteBackgroundPaper;
+$color-bg-base: $paletteBackgroundDefault;
+$color-bg-light: $paletteBackgroundDefault;
+$color-bg-lighter: tint($color-bg-light, 50%);
+$color-bg-grey: $paletteBackgroundDefault;
+
+/* 边框颜色 */
+$color-border-base: $paletteGrey300;
+$color-border-split: $paletteTextDivider; // 分割线
+$color-border-light: tint($color-border-base, 30%);
+$color-border-lighter: tint($color-border-base, 50%);
+$color-border-lightest: tint($color-border-base, 80%);
+$color-border-grey: $paletteGrey300;
+
+
+/* 垂直间距 */
+$spacing-v-xs: 3px * $hd;
+$spacing-v-sm: 6px * $hd;
+$spacing-v-md: 9px * $hd;
+$spacing-v-lg: 12px * $hd;
+$spacing-v-xl: 15px * $hd;
+
+// 默认主题下 $color-border-lighter
+@mixin border-thin(
+  $color: $color-border-lighter,
+  $style: solid,
+  $directions: top bottom right left,
+  $width: 1px
+) {
+  @each $value in $directions {
+    border-#{$value}: $width $color $style;
+  }
+}
+
+@mixin border-thin-top(
+  $color: $color-border-lighter,
+  $style: solid,
+  $width: 1px
+) {
+  @include border-thin($color, $style, top, $width);
+}
+
+
+.at-list {
+  /* prettier-ignore */
+  @include border-thin-top($width: 1PX);
+
+  position: relative;
+  background-color: white;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: $color-border-lighter;
+
+    /* prettier-ignore */
+    height: 1PX;
+  }
+
+  &::before {
+    content: " ";
+    left: 0;
+    width: $spacing-v-lg;
+    z-index: 100;
+    position: absolute;
+    background-color: transparent;
+
+    /* prettier-ignore */
+    height: calc(100% - 1PX);
+    top: 0;
+  }
+
+  &--no-border {
+    border-top: none;
+
+    &::after,
+    &::before {
+      content: initial;
+    }
+  }
+}

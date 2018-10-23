@@ -1,0 +1,301 @@
+@import "../styles/theme.scss";
+
+@function tint(
+  $color,
+  $percent
+) {
+  @return mix($paletteCommonWhite, $color, $percent);
+}
+
+$hd: 2; // 基本单位
+
+/* The Color of O2Team Brand */
+$color-brand: $palettePrimaryMain;
+$color-brand-light: $palettePrimaryLight;
+$color-brand-dark: $palettePrimaryDark;
+
+/* Color */
+$color-success: $paletteSuccessMain;
+$color-error: $paletteErrorMain;
+$color-warning: $paletteWarningMain;
+$color-info: $palettePrimaryMain;
+
+/* Color Palette */
+$color-black-0: $paletteTextPrimary;
+$color-black-1: $paletteTextSecondary;
+$color-black-2: $paletteTextDisabled;
+$color-black-3: $paletteTextHint;
+
+$color-grey-0: $paletteGrey900;
+$color-grey-1: $paletteGrey700;
+$color-grey-2: $paletteGrey500;
+$color-grey-3: $paletteGrey300;
+$color-grey-4: $paletteGrey200;
+$color-grey-5: $paletteGrey100;
+$color-grey-6: $paletteGrey50;
+
+$color-white: $paletteCommonWhite;
+
+/* Text Color */
+$color-text-base: $paletteTextPrimary; // 文字的基本色
+$color-text-base-inverse: $paletteTextPrimary2; // 反色
+$color-text-secondary: $paletteTextSecondary; // 辅助色
+$color-text-placeholder: $paletteTextDisabled;
+$color-text-disabled: $paletteTextDisabled;
+$color-text-title: $paletteTextPrimary; // 文章标题
+$color-text-paragraph: $paletteTextPrimary; // 文章段落
+
+/* 背景色 */
+$color-bg: $paletteBackgroundPaper;
+$color-bg-base: $paletteBackgroundDefault;
+$color-bg-light: $paletteBackgroundDefault;
+$color-bg-lighter: tint($color-bg-light, 50%);
+$color-bg-grey: $paletteBackgroundDefault;
+
+/* 边框颜色 */
+$color-border-base: $paletteGrey300;
+$color-border-split: $paletteTextDivider; // 分割线
+$color-border-light: tint($color-border-base, 30%);
+$color-border-lighter: tint($color-border-base, 50%);
+$color-border-lightest: tint($color-border-base, 80%);
+$color-border-grey: $paletteGrey300;
+
+/* 透明度 */
+$opacity-active: 0.6; // Button 等组件点击态额透明度
+$opacity-disabled: 0.38; // Button 等组件禁用态的透明度
+
+/* Font */
+$font-size-xs: 10px * $hd; // 非常用字号，用于标签
+$font-size-sm: 12px * $hd; // 用于辅助信息
+$font-size-base: 14px * $hd; // 常用字号
+$font-size-lg: 16px * $hd; // 常规标题
+$font-size-xl: 18px * $hd; // 大标题
+$font-size-xxl: 20px * $hd; // 用于大号的数字
+
+/* Line Height */
+$line-height-base: 1; // 单行
+$line-height-en: 1.3; // 英文多行
+$line-height-zh: 1.5; // 中文多行
+
+/* 水平间距 */
+$spacing-h-sm: 5px * $hd;
+$spacing-h-md: 8px * $hd;
+$spacing-h-lg: 12px * $hd;
+$spacing-h-xl: 16px * $hd;
+
+/* 垂直间距 */
+$spacing-v-xs: 3px * $hd;
+$spacing-v-sm: 6px * $hd;
+$spacing-v-md: 9px * $hd;
+$spacing-v-lg: 12px * $hd;
+$spacing-v-xl: 15px * $hd;
+
+// 默认主题下 $color-border-lighter
+@mixin border-thin(
+  $color: $color-border-lighter,
+  $style: solid,
+  $directions: top bottom right left,
+  $width: 1px
+) {
+  @each $value in $directions {
+    border-#{$value}: $width $color $style;
+  }
+}
+
+$image-size: 56px;
+$item-horizontal-padding: 24px;
+
+@mixin squareImg($size: 56px) {
+  width: $size;
+  height: $size;
+
+  &-info {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin display-flex {
+  display: flex;
+}
+
+@mixin flex-wrap($value: nowrap) {
+  flex-wrap: $value;
+}
+
+@mixin align-items($value: stretch) {
+  align-items: $value;
+  @if $value == flex-start {
+    -webkit-box-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+  } @else {
+    -webkit-box-align: $value;
+  }
+}
+
+@mixin align-content($value: flex-start) {
+  align-content: $value;
+}
+
+@mixin justify-content($value: flex-start) {
+  justify-content: $value;
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+  } @else {
+    -webkit-box-pack: $value;
+  }
+}
+
+/* Flex Item */
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+  flex: $fg $fs $fb;
+  -webkit-box-flex: $fg;
+}
+
+@mixin flex-order($n) {
+  order: $n;
+  -webkit-box-ordinal-group: $n;
+}
+
+@mixin align-self($value: auto) {
+  align-self: $value;
+}
+
+/**
+ * 点击态
+ */
+@mixin active {
+  transition: background-color 0.3s;
+
+  &:active {
+    background-color: $color-grey-5;
+  }
+}
+
+@mixin line($num: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if ($num == 1) {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.at-list__item {
+  @include display-flex;
+  @include align-items(center);
+  @include active;
+
+  padding: $spacing-v-xs $spacing-h-lg;
+  position: relative;
+  box-sizing: border-box;
+  color: $color-text-base;
+  font-size: $font-size-lg;
+  line-height: $line-height-zh;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    width: calc(100% - #{$spacing-h-lg});
+
+    /* prettier-ignore */
+    height: 1PX;
+    background-color: $color-border-lightest;
+    bottom: 0;
+    left: $spacing-h-lg;
+  }
+
+  &--thumb {
+    .item-thumb {
+      margin-right: $item-horizontal-padding;
+      @include squareImg($image-size);
+      font-size: $image-size;
+      line-height: $image-size;
+    }
+  }
+
+  &--no-border::after {
+    content: initial;
+  }
+
+  &-content {
+    @include flex(1);
+
+    overflow: hidden;
+    margin-right: 40px;
+  }
+
+  &-extra {
+    @include flex(0, 0, 235px);
+
+    text-align: right;
+  }
+}
+
+.at-list__item .item-content {
+  &__info {
+    &-title {
+      @include line(1);
+
+      color: inherit;
+      font-size: inherit;
+      line-height: $line-height-zh;
+    }
+
+    &-note {
+      color: $color-grey-2;
+      font-size: $font-size-base;
+      line-height: $line-height-zh;
+    }
+  }
+}
+
+.at-list__item .item-extra {
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(flex-end);
+
+  &__info,
+  &__icon,
+  &__image,
+  &__switch {
+    display: inline-block;
+    margin-left: $spacing-h-sm;
+    margin-right: $spacing-h-sm;
+  }
+
+  &__info {
+    @include line(1);
+
+    color: $color-grey-2;
+    max-width: 160px;
+    font-size: $font-size-lg;
+    vertical-align: middle;
+  }
+
+  &__icon {
+    font-size: $image-size;
+    line-height: $image-size;
+  }
+
+  &__switch {
+    vertical-align: middle;
+  }
+
+  &__image {
+    @include squareImg($image-size);
+    font-size: $image-size;
+    line-height: $image-size;
+
+    vertical-align: middle;
+  }
+}

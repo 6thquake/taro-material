@@ -1,0 +1,17 @@
+@import "../styles/theme.scss";
+
+.box{
+  display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+  height: 100%;
+  
+  .text{
+    margin: 0px #{$spacingUnit * 2}px;
+
+    &.fab{
+    	margin: 0px;
+    }
+  }
+}

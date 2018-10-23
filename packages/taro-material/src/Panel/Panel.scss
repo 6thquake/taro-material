@@ -1,0 +1,47 @@
+@import "../styles/theme.scss";
+
+.root{
+  // display: flex;
+  background: #{$paletteBackgroundPaper};
+  padding: #{$spacingUnit * 2}px;
+  .header{
+    display: flex;
+
+    .left{
+      display: flex;
+      flex-direction: column;
+      max-width: 60%;
+    }
+    .right{
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: flex-start;
+      .right-box{
+        display: flex;
+        align-items: center;
+        .extra{
+          margin-right: #{$spacingUnit}px
+        }
+      }
+      
+    }
+  }
+  .body{
+    margin: #{$spacingUnit * 3}px 0;
+  }
+  .footer{
+    display: flex;
+    justify-content: flex-end;
+    .action{
+      margin: 0 #{$spacingUnit}px ;
+      .button{
+        font-size: #{0.875 * $typographyFontSize}px;
+        text-transform: uppercase;
+        font-weight: $typographyFontWeightMedium;
+        font-family: 'Roboto', 'NotoSansCJKsc', 'Helvetica', 'Arial', sans-serif;
+        // color: rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
+}

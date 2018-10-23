@@ -1,0 +1,27 @@
+@import "../styles/theme.scss";
+
+
+.root{
+  height: calc(100% - #{$spacingUnit * 8}px);
+  width: calc(100% - #{$spacingUnit * 8}px);
+  padding: #{$spacingUnit * 4}px;
+  background: $paletteBackgroundPaper;
+  color: $paletteTextSecondary;
+
+  .content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .img{
+      font-size: 128px;
+      margin-bottom: -#{$spacingUnit * 3}px;
+    }
+    .title{
+      margin-top: #{$spacingUnit * 4}px;
+    }
+  }
+}
