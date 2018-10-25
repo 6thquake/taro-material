@@ -1,3 +1,3 @@
-import RMInput from './Input';
+import Input from './Input';
 
-export default RMInput;
+export default Input;

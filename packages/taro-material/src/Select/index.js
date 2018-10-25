@@ -1,5 +1,5 @@
-import RMSelect from './Select';
-import RMAsyncSelect from './AsyncSelect';
+import Select from './Select';
+import AsyncSelect from './AsyncSelect';
 
-export default RMSelect;
-export { RMAsyncSelect };
+export default Select;
+export { AsyncSelect };

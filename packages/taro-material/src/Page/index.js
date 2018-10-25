@@ -1,3 +1,3 @@
-import RMPage from './Page';
+import Page from './Page';
 
-export default RMPage;
+export default Page;

@@ -1,3 +1,3 @@
-import RMButton from './Button';
+import Button from './Button';
 
-export default RMButton;
+export default Button;

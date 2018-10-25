@@ -1,3 +1,3 @@
-import RMTextField from './TextField';
+import TextField from './TextField';
 
-export default RMTextField;
+export default TextField;

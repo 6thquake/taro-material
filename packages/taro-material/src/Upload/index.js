@@ -1,3 +1,3 @@
-import RMUpload from './Upload';
+import Upload from './Upload';
 
-export default RMUpload;
+export default Upload;

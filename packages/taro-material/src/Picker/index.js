@@ -1,3 +1,3 @@
-import RMDatePicker from './DatePicker';
+import DatePicker from './DatePicker';
 
-export default RMDatePicker;
+export default DatePicker;

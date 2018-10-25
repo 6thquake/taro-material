@@ -1,5 +1,5 @@
-import RMTypography from './Typography';
+import Typography from './Typography';
 
-export default RMTypography;
+export default Typography;
 
 

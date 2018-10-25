@@ -1,3 +1,3 @@
-import RMWatermark from './Watermark';
+import Watermark from './Watermark';
 
-export default RMWatermark;
+export default Watermark;

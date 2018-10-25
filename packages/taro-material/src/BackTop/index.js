@@ -1,3 +1,3 @@
-import RMBackTop from './BackTop';
+import BackTop from './BackTop';
 
-export default RMBackTop;
+export default BackTop;

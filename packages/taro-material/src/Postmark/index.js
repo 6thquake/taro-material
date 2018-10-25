@@ -1,3 +1,3 @@
-import RMPostmark from './Postmark';
+import Postmark from './Postmark';
 
-export default RMPostmark;
+export default Postmark;

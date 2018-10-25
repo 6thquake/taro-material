@@ -1,3 +1,3 @@
-import RMList from './List';
+import List from './List';
 
-export default RMList;
+export default List;

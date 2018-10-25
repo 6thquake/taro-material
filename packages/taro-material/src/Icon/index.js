@@ -1,3 +1,3 @@
-import RMIcon from './Icon';
+import Icon from './Icon';
 
-export default RMIcon;
+export default Icon;

@@ -1,3 +1,3 @@
-import RMTag from './Tag';
+import Tag from './Tag';
 
-export default RMTag;
+export default Tag;

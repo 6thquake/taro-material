@@ -1,3 +1,3 @@
-import RMTabBar from './TabBar';
+import TabBar from './TabBar';
 
-export default RMTabBar;
+export default TabBar;

@@ -1,3 +1,3 @@
-import RMNoData from './NoData';
+import NoData from './NoData';
 
-export default RMNoData;
+export default NoData;

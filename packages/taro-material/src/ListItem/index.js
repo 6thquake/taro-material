@@ -1,3 +1,3 @@
-import RMListItem from './ListItem';
+import ListItem from './ListItem';
 
-export default RMListItem;
+export default ListItem;
