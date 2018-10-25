@@ -1,13 +1,17 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
-import RMTypography from '../material/Typography'
+import RMIcon from '../Icon';
+import RMTypography from '../Typography';
 
-import Step from './Step'
+import AtAvatar from '../components/avatar'
+
+import ago from '../utils/DateUtil'
 
 import theme from '../styles/theme';
 
-import './index.scss'
+import './Timeline.scss'
+
 
 class Index extends Component {
   componentWillReceiveProps(nextProps) { }
@@ -24,8 +28,48 @@ class Index extends Component {
       <View className='root'>
         {
           data.map((item, index)=>{
+            const tail = data.length - 1 !== index;
+            const { avatar, name, date, status, color = theme.palette.text.primary, remark } = item
             return (
-              <Step tail={data.length - 1 !== index} key={item.id} data={item} />
+              <View className='step' key={item.id}>
+                <View className='box'>
+                  <View className='avatar'>
+                    { avatar === 'success' && 
+                      <View className='result success'><RMIcon fontSize='inherit' color='inherit' block={true}>check</RMIcon></View>
+                    }
+                    { avatar === 'failure' && 
+                      <View className='result failure'><RMIcon fontSize='inherit' color='inherit' block={true}>close</RMIcon></View>
+                    }
+                    { avatar !== 'success' && avatar !== 'failure' &&
+                      <AtAvatar circle image={avatar} text={name} size='small'></AtAvatar>
+                    }
+                    {tail && <View className='tail'></View>}
+                  </View>
+                  <View className='content'>
+                    <View>
+                      <RMTypography className='body2'>{name}</RMTypography>
+                    </View>
+                    { status && 
+                      <View>
+                        <RMTypography color={color} className='body1'>{status}</RMTypography>
+                      </View>
+                    }
+                    { remark && 
+                      <View>
+                        <RMTypography className='body1'>{remark}</RMTypography>
+                      </View>
+                    }
+                    { date && 
+                      <View>
+                        <RMTypography className='caption'>{date}</RMTypography>
+                      </View>
+                    }
+                  </View>
+                </View>
+                <View className='time'>
+                  { date && <RMTypography className='caption'>{ago(date)}</RMTypography> }
+                </View>
+              </View>
             )
           })
         }

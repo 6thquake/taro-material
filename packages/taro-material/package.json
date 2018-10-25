@@ -2,7 +2,7 @@
   "name": "@6thquake/taro-material",
   "private": false,
   "author": "6thquake",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Mini Program components that implement Google's Material Design.",
   "keywords": [
     "react",
