@@ -9,7 +9,7 @@ class DatePicker extends Component {
   constructor(props){
     super(props)
     this.state = {
-      value: props.value || moment().format(`DATE_FORMAT`),
+      value: props.value || moment().format(props.format),
     }
   }
   
@@ -65,6 +65,7 @@ DatePicker.defaultProps = {
   onChange: ()=>{},
   required: false,
   value: '',
+  format:'YYYY-MM-DD',
 }
 
 export default DatePicker

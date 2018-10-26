@@ -1,11 +1,11 @@
 import moment from 'moment'
 
-const ago = (date) => {
+const ago = (date, format) => {
 	if(!date){
 		return '';
 	}
 
-	let ago = moment(date, `DATETIME_FORMAT`);
+	let ago = moment(date, format || `YYYY-MM-DD`);
 	let now = moment();
 
 	let range = now.diff(ago);

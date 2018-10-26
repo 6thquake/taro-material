@@ -30,48 +30,9 @@
 .root {
 	position: relative;
 	
-	.image {
-	  width: 100%;
-	  height: 100%;
-	}
-
-	.info {
-		position:absolute;
-		text-align: center;
-		width: 100%;
-		height: 100%;
-		top: 0px;
-		left: 0px;
-		font-weight: $typographyFontWeightMedium;
-
-		@include rotate(7);
-
-		.text, .date, .signature {
-			position: absolute;
-			width:100%;
-		}
-		.date {
-			.char {
-				position:absolute;
-			    
-			    &.anti-clockwise{
-			    	transform-origin: -100% -100%;
-
-			    	@include rotated-text-anti-clockwise(19, 120, 60)
-			    }
-			}
-		}
-		.signature {
-			.char {
-				position:absolute;
-
-				&.clockwise{
-					transform-origin: 100% 100%;
-
-			    	@include rotated-text-clockwise(4, 60, -30)
-			    }
-			}
-		}
+	&.primary, &.secondary, &.error, &.success, &.warning, &.progress, &.default, &.white, &.black {
+		background-position: center;
+		background-size: cover;
 	}
 
 	&.small {
@@ -142,5 +103,50 @@
 				}
 			}
 		}
+	}
+
+	
+	.info {
+		position:absolute;
+		text-align: center;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		font-weight: $typographyFontWeightMedium;
+
+		@include rotate(7);
+
+		.text, .date, .signature {
+			position: absolute;
+			width:100%;
+		}
+		.date {
+			.char {
+				position:absolute;
+			    
+			    &.anti-clockwise{
+			    	transform-origin: -100% -100%;
+
+			    	@include rotated-text-anti-clockwise(19, 120, 60)
+			    }
+			}
+		}
+		.signature {
+			.char {
+				position:absolute;
+
+				&.clockwise{
+					transform-origin: 100% 100%;
+
+			    	@include rotated-text-clockwise(4, 60, -30)
+			    }
+			}
+		}
+	}
+
+	.image {
+	  	width: 100%;
+	  	height: 100%;
 	}
 }

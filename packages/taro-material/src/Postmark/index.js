@@ -33,7 +33,7 @@ class Postmark extends Component {
   componentDidHide() { }
 
   render() {
-    const { color, text, date, size, signature } = this.props;
+    const { color, text, date, size, signature, format } = this.props;
 
     let _src = '', 
       _color = '',
@@ -42,7 +42,7 @@ class Postmark extends Component {
     if(isString(date)) {
       _date = date;
     } else if(isDate(date)) {
-      _date = moment(date).format(`DATETIME_FORMAT`);
+      _date = moment(date).format(format);
     }
 
     switch(color) {
@@ -145,6 +145,7 @@ Postmark.defaultProps = {
   date: '',
   size: 'medium', // small, medium, normal
   signature : '',
+  format: 'YYYY-MM-DD HH:mm:ss'
 }
 
 export default Postmark
