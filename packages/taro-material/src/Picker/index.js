@@ -19,6 +19,15 @@ class DatePicker extends Component {
     onChange(value)
   }
 
+  componentWillReceiveProps(nextProps){
+    const { value } = nextProps;
+    this.setState({
+      value,
+    }, ()=> {
+      onChange(value)
+    })
+  }
+  
   handelDateChange = e => {
     const { onChange } = this.props
     let value = e.detail.value
