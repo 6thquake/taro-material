@@ -8,40 +8,26 @@ import RMTextField from '../TextField'
 class DatePicker extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      value: props.value || moment().format(props.format),
+
+    if(!props.value && props.format){
+      this.props.value = moment().format(props.format);
     }
   }
   
   componentDidMount() {
-    const { value } = this.state
-    const { onChange } = this.props
+    const { value, onChange } = this.props
     onChange(value)
-  }
-
-  componentWillReceiveProps(nextProps){
-    const { value } = nextProps;
-    const { onChange } = this.props;
-    this.setState({
-      value,
-    }, ()=> {
-      onChange(value)
-    })
   }
   
   handelDateChange = e => {
     const { onChange } = this.props
     let value = e.detail.value
-    this.setState({
-      value,
-    }, ()=> {
-      onChange(value)
-    })
+    onChange(value);
   }
   
   render() {
-    const { value } = this.state
-    const { name, title, placeholder, disabled, start, end, fields, required} = this.props
+    const { name, title, placeholder, disabled, start, end, fields, required, format, value, } = this.props
+
     return (
       <View className='container'>
         <Picker mode='date' onChange={this.handelDateChange} value={value} start={start} end={end} disabled={disabled} fields={fields}>
