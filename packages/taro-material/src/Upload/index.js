@@ -194,7 +194,7 @@ class Upload extends Component {
   }
 
   componentDidMount() {
-    const { files, onComponentDidMount } = this.props;
+    const { files, onComponentDidMount, } = this.props;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.pathHandler(file);
@@ -208,6 +208,15 @@ class Upload extends Component {
     if (!disabled && prevState.files != this.state.files) {
       onChange(this.state.files);
     }
+  }
+
+  reset = () => {
+    const { files } = this.state;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      this.handleDelete(file);
+    }
+    Upload.queue = 0;
   }
 
   render() {
@@ -295,14 +304,14 @@ Upload.defaultProps = {
   onChange: files => {},
   onDelete: file => {},
   label: 'upload',
-  name:'',
+  name: '',
   maxLength: 9,
   required: false,
   placeholder: '',
   helperText: '',
   helperTextStyle: '',
   helperTextClass: '',
-  onComponentDidMount:()=>{},
+  onComponentDidMount: ()=>{},
 };
 
 export default Upload;
