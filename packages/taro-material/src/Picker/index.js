@@ -21,6 +21,7 @@ class DatePicker extends Component {
 
   componentWillReceiveProps(nextProps){
     const { value } = nextProps;
+    const { onChange } = this.props;
     this.setState({
       value,
     }, ()=> {
