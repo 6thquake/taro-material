@@ -7,6 +7,7 @@ import iconAction from '../assets/images/icon-list-action.png'
 import iconForm from '../assets/images/icon-list-form.png'
 import iconLayout from '../assets/images/icon-list-layout.png'
 import iconNavigation from '../assets/images/icon-list-navigation.png'
+import iconMaterial from '../assets/images/icon-list-material.png'
 
 import './index.scss'
 
@@ -43,6 +44,10 @@ export default class PanelBasic extends Component {
         navigation: {
           name: '导航',
           icon: iconNavigation
+        },
+        material: {
+          name: '导航',
+          icon: iconMaterial
         }
       },
       list: {
@@ -217,6 +222,56 @@ export default class PanelBasic extends Component {
             id: 'Drawer',
             name: '抽屉'
           }
+        ],
+        material: [
+          {
+            id: 'BackTop',
+            name: '返回顶部'
+          },
+          {
+            id: 'Button',
+            name: '按钮'
+          },
+          {
+            id: 'Date-Picker',
+            name: '时间选择器'
+          },
+          {
+            id: 'Icon',
+            name: '图标'
+          },
+          {
+            id: 'Loading',
+            name: '加载'
+          },
+          {
+            id: 'Panel',
+            name: '面板'
+          },
+          {
+            id: 'Postmark',
+            name: '徽章'
+          },
+          {
+            id: 'Tag',
+            name: '标签'
+          },
+          {
+            id: 'Text-Field',
+            name: '输入框'
+          },
+          {
+            id: 'Tool-Bar',
+            name: '工具栏'
+          },
+          {
+            id: 'Upload',
+            name: '上传'
+          },
+          {
+            id: 'Watermark',
+            name: '水印'
+          }
         ]
       }
     }
@@ -232,7 +287,7 @@ export default class PanelBasic extends Component {
   gotoComponent = e => {
     const { id, parent } = e.currentTarget.dataset
     Taro.navigateTo({
-      url: `/pages/${parent.toLowerCase()}/${id.toLowerCase()}/index`
+      url: `/${parent.toLowerCase()}/${id.toLowerCase()}/index`
     })
   }
 

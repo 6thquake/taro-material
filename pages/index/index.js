@@ -8,12 +8,13 @@ import iconAction from '../assets/images/icon-list-action.png'
 import iconForm from '../assets/images/icon-list-form.png'
 import iconLayout from '../assets/images/icon-list-layout.png'
 import iconNavigation from '../assets/images/icon-list-navigation.png'
+import iconMaterial from '../assets/images/icon-list-material.png'
 
 import './index.scss'
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI'
+    navigationBarTitleText: 'Taro Material'
   }
 
   constructor () {
@@ -56,6 +57,12 @@ export default class Index extends Taro.Component {
           title: '导航',
           content: '包含标签栏、导航栏、分段器等',
           icon: iconNavigation
+        },
+        {
+          id: 'Material',
+          title: 'material',
+          content: 'material design',
+          icon: iconMaterial
         }
       ]
     }
@@ -64,7 +71,7 @@ export default class Index extends Taro.Component {
   onShareAppMessage () {
     return {
       title: 'Taro UI',
-      path: '/pages/index/index',
+      path: '/index/index',
       imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg'
     }
   }
@@ -72,7 +79,7 @@ export default class Index extends Taro.Component {
   gotoPanel = e => {
     const { id } = e.currentTarget.dataset
     Taro.navigateTo({
-      url: `/pages/panel/index?id=${id.toLowerCase()}`
+      url: `/panel/index?id=${id.toLowerCase()}`
     })
   }
 

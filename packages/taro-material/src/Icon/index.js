@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import humps from 'humps'
 import classNames from 'classnames'
 
 import './Icon.scss'
@@ -24,12 +23,17 @@ class Icon extends Component {
       style.fontSize = fontSize;
     }
 
+    let _color =  '';
+    if(color && color.length >= 1){
+      _color = color.charAt(0).toUpperCase() + color.substring(1);
+    }
+
     let classes = classNames({
       'root': true,
       'material-icons': true,
       'inherit-size': fontSize == 'inherit',
       block: block,
-      [humps.camelize(' color-' + color)]: color !== 'inherit',
+      [`color-${_color}`]: color !== 'inherit',
     });
 
     return (<View className={classes} style={style}>{this.props.children}</View>);
