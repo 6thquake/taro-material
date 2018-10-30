@@ -41,7 +41,7 @@
     "build:doc": "npm run build:h5-static && node ./build/build-doc",
     "prebuild": "rimraf packages/taro-material/dist/*",
     "build": "npm run build:component",
-    "deploy": "npm run build && cp packages/taro-material/package.json packages/taro-material/dist/ && npm publish packages/taro-material/dist --tag latest",
+    "deploy": "npm run build && cp packages/taro-material/package.json dist/ && npm publish dist --tag latest",
     "lint": "eslint ./packages --fix",
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:style-fix": "stylelint \"packages/**/*.scss\" --syntax scss --fix",

@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = {
   projectName: 'taro-material',
   designWidth: 750,
-  sourceRoot: 'packages/taro-material/src',
-  outputRoot: 'packages/taro-material/dist',
+  sourceRoot: 'pages',
+  outputRoot: 'dist',
   plugins: {
     babel: {
       sourceMap: true,
@@ -32,7 +32,14 @@ const config = {
         }
       }
     }
-  }
+  },
+  copy: {
+    patterns: [
+      { from: 'packages/taro-material/src/', to: './pages/taro-material' }, 
+    ],
+    options: {
+    }
+  },
 }
 
 if (process.env.TARO_BUILD_TYPE === 'component') {
@@ -85,6 +92,7 @@ if (process.env.TARO_BUILD_TYPE === 'component') {
       }
     })
   }
+  config.sourceRoot = 'packages/taro-material/src';
 }
 
 module.exports = function (merge) {
