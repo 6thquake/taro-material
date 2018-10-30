@@ -3,7 +3,7 @@ import { View, Image, Switch } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import isFunction from 'lodash/isFunction'
+import isFunction from '../utils/typeof'
 
 import RMIcon from '../Icon'
 import RMTypography from '../Typography'

@@ -35,7 +35,7 @@ class Select extends Component {
     this.setOption(nextProps)
   }
 
-  show= ''
+  show = ''
 
   setOption = (props) => {
     let { data} = props

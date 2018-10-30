@@ -225,7 +225,7 @@ export default class PanelBasic extends Component {
         ],
         material: [
           {
-            id: 'BackTop',
+            id: 'Back-Top',
             name: '返回顶部'
           },
           {
@@ -286,6 +286,7 @@ export default class PanelBasic extends Component {
 
   gotoComponent = e => {
     const { id, parent } = e.currentTarget.dataset
+
     Taro.navigateTo({
       url: `/${parent.toLowerCase()}/${id.toLowerCase()}/index`
     })
