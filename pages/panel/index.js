@@ -237,6 +237,10 @@ export default class PanelBasic extends Component {
             name: '时间选择器'
           },
           {
+            id: 'Filters',
+            name: '筛选器'
+          },
+          {
             id: 'Icon',
             name: '图标'
           },
@@ -251,6 +255,10 @@ export default class PanelBasic extends Component {
           {
             id: 'Postmark',
             name: '徽章'
+          },
+          {
+            id: 'Select',
+            name: '选择框'
           },
           {
             id: 'Tag',

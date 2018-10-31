@@ -1,8 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import PropTypes from 'prop-types'
-import cloneDeep from 'lodash/cloneDeep'
-import isEqual from 'lodash/isEqual'
 
 import RMTag from '../Tag'
 import RMTypography from '../Typography'
@@ -12,86 +10,59 @@ import theme from '../styles/theme'
 
 import './Filters.scss'
 
+const cloneDeep = o => JSON.parse(JSON.stringify(o))
+
 class Filters extends Component {
-
-  constructor(props){
-    super(props)
-    this.state = {
-      options: cloneDeep(props.data),
-    }
-  }
-
-  componentWillReceiveProps(props){
-    if (!isEqual(this.options, props.data)){
-      this.options = cloneDeep(props.data)
-      this.setState({
-        options: cloneDeep(props.data)
-      })
-    }
-  }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
-  
-  handleClick(i, j){
-    const { options } = this.state
-    let option = options[i]
-    let tag = option.data[j]
+  handleClick (i, j) {
+    const { data, onChange } = this.props
+    const options = cloneDeep(data)
+    const option = options[i]
+    const tag = option.data[j]
     tag.active = !tag.active
-    this.setState({
-      options
-    }, ()=>{
-      // onOk(selections)
-    })
-    
+    onChange(options)
   }
 
   handleOkClick(){
-    const { options } = this.state
+    const { data: options } = this.props
     const { onOk } = this.props
+
     const selections = options.map((item) => {
       let { label, value, data } = item
       let activeTag = data.filter((d) => d.active)
       return {
         label,
         value,
-        data: activeTag
+        data: cloneDeep(activeTag)
       }
     }).filter((item) => item.data.length > 0)
     onOk(selections)
   }
 
   handleResetClick(){
-    const { data } = this.props
-    this.setState({
-      options: cloneDeep(data)
-    })
+    const { onReset } = this.props
+    onReset()
   }
 
-  render() {
-    const { options } = this.state
-
-    let tagCustomStyle = {
-      borderRadius: `0px`, //${theme.shape.borderRadius}
+  render () {
+    const { data: options } = this.props
+    const tagCustomStyle = {
+      borderRadius: `0px`, // ${theme.shape.borderRadius}
       padding: `0 ${theme.spacing.unit}px`,
       width: '88px',
-    };
+    }
 
-    let buttonCustomStyle = {
+    const buttonCustomStyle = {
       width: '100%',
       boxShadow: 'none',
       borderRadius: '0px'
-    };
+    }
 
     return (
       <View className='root'>
         <View className='filters'>
           {
             options.map((option, i) => {
-              const { label ,value, data} = option
+              const { label, value, data } = option
               return (
                 <View key={value} className='option'>
                   <View className='title'>
@@ -153,12 +124,15 @@ class Filters extends Component {
 Filters.propTypes = {
   onOk: PropTypes.func,
   data: PropTypes.array,
+  onChange: PropTypes.func,
+  onReset: PropTypes.func,
 }
 
 Filters.defaultProps = {
-  onOK: ()=>{},
+  onOK: () => {},
+  onChange: () => {},
+  onReset: () => {},
   data: [],
-  options: [],
 }
 
-export default Filters;
+export default Filters
