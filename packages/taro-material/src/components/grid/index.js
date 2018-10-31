@@ -1,11 +1,11 @@
 import Taro from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
 
-import _chunk from 'lodash/chunk'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isObject from 'lodash/isObject'
-import _isFunction from 'lodash/isFunction'
+
+import chunk from '../../utils/chunk'
+import { isFunction, isPlainObject } from '../../utils/typeof'
 
 import AtIcon from '../icon/index'
 import AtComponent from '../../common/component'
@@ -15,7 +15,7 @@ import './index.scss'
 export default class AtGrid extends AtComponent {
   handleClick = (item, index, row, ...arg) => {
     const { onClick, columnNum } = this.props
-    if (_isFunction(onClick)) {
+    if (isFunction(onClick)) {
       /* prettier-ignore */
       const clickIndex = (row * columnNum) + index
       onClick(item, clickIndex, ...arg)
@@ -29,7 +29,7 @@ export default class AtGrid extends AtComponent {
       return null
     }
 
-    const gridGroup = _chunk(data, columnNum)
+    const gridGroup = chunk(data, columnNum)
 
     const bodyClass = classNames(
       ['at-grid__flex-item', 'at-grid-item', `at-grid-item--${mode}`],
@@ -63,7 +63,7 @@ export default class AtGrid extends AtComponent {
                           mode='scaleToFill'
                         />
                       )}
-                      {_isObject(childItem.iconInfo) &&
+                      {isPlainObject(childItem.iconInfo) &&
                         !childItem.image && (
                         <AtIcon
                           size={childItem.iconInfo.size}

@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../utils/typeof'
 
 import AtActionSheetBody from './body/index'
 import AtActionSheetHeader from './header/index'
@@ -47,13 +47,13 @@ export default class AtActionSheet extends AtComponent {
   }
 
   handleClose = () => {
-    if (_isFunction(this.props.onClose)) {
+    if (isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }
 
   handleCancel = () => {
-    if (_isFunction(this.props.onCancel)) {
+    if (isFunction(this.props.onCancel)) {
       return this.props.onCancel()
     }
     this.close()

@@ -4,7 +4,7 @@ import { View, Text, ScrollView } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../utils/typeof'
 
 import AtIcon from '../icon/index'
 import AtComponent from '../../common/component'
@@ -32,7 +32,7 @@ export default class AtFloatLayout extends AtComponent {
   }
 
   handleClose = () => {
-    if (_isFunction(this.props.onClose)) {
+    if (isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }

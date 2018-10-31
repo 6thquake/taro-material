@@ -3,7 +3,7 @@ import { View, Text } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../utils/typeof'
 
 import AtComponent from '../../common/component'
 import AtSwipeActionOptions from './options/index'
@@ -45,13 +45,13 @@ export default class AtSwipeAction extends AtComponent {
   }
 
   handleOpened = () => {
-    if (_isFunction(this.props.onOpened) && !this.state.isOpened) {
+    if (isFunction(this.props.onOpened) && !this.state.isOpened) {
       this.props.onOpened()
     }
   }
 
   handleClosed = () => {
-    if (_isFunction(this.props.onClosed) && this.state.isOpened) {
+    if (isFunction(this.props.onClosed) && this.state.isOpened) {
       this.props.onClosed()
     }
   }
@@ -114,7 +114,7 @@ export default class AtSwipeAction extends AtComponent {
   handleClick = (item, index, ...arg) => {
     const { onClick, autoClose } = this.props
 
-    if (_isFunction(onClick)) {
+    if (isFunction(onClick)) {
       onClick(item, index, ...arg)
     }
     if (autoClose) {

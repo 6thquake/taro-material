@@ -3,7 +3,7 @@ import { View, Button, Text } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../utils/typeof'
 
 import AtModalHeader from './header/index'
 import AtModalAction from './action/index'
@@ -41,19 +41,19 @@ export default class AtModal extends AtComponent {
   }
 
   handleClose = () => {
-    if (_isFunction(this.props.onClose)) {
+    if (isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }
 
   handleCancel = () => {
-    if (_isFunction(this.props.onCancel)) {
+    if (isFunction(this.props.onCancel)) {
       this.props.onCancel()
     }
   }
 
   handleConfirm = () => {
-    if (_isFunction(this.props.onConfirm)) {
+    if (isFunction(this.props.onConfirm)) {
       this.props.onConfirm()
     }
   }

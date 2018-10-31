@@ -3,7 +3,7 @@ import { View, Image, Switch } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../../utils/typeof'
 
 import AtIcon from '../../icon/index'
 import AtComponent from '../../../common/component'
@@ -12,7 +12,7 @@ import './index.scss'
 
 export default class AtListItem extends AtComponent {
   handleClick = (...args) => {
-    if (_isFunction(this.props.onClick) && !this.props.disabled) {
+    if (isFunction(this.props.onClick) && !this.props.disabled) {
       this.props.onClick(...args)
     }
   }
@@ -22,7 +22,7 @@ export default class AtListItem extends AtComponent {
   }
 
   handleSwitchChange = (...args) => {
-    if (_isFunction(this.props.onSwitchChange) && !this.props.disabled) {
+    if (isFunction(this.props.onSwitchChange) && !this.props.disabled) {
       this.props.onSwitchChange(...args)
     }
   }

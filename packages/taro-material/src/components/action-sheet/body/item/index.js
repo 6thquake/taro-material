@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
-import _isFunction from 'lodash/isFunction'
+import { isFunction } from '../../../../utils/typeof'
 
 import AtComponent from '../../../../common/component'
 
@@ -11,7 +11,7 @@ import './index.scss'
 
 export default class AtActionSheetItem extends AtComponent {
   handleClick = (...args) => {
-    if (_isFunction(this.props.onClick)) {
+    if (isFunction(this.props.onClick)) {
       this.props.onClick(...args)
     }
   }
