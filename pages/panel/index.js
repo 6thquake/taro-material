@@ -269,6 +269,10 @@ export default class PanelBasic extends Component {
             name: '选择框'
           },
           {
+            id: 'Switch',
+            name: '开关'
+          },
+          {
             id: 'Tag',
             name: '标签'
           },

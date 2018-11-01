@@ -70,6 +70,7 @@ export { default as RMPanel } from './Panel';
 export { default as RMDatePicker } from './Picker';
 export { default as RMPostmark } from './Postmark';
 export { default as RMSelect } from './Select';
+export { default as RMSwitch } from './Switch';
 export { default as RMAsyncSelect } from './AsyncSelect';
 export { default as RMTabBar } from './TabBar';
 export { default as RMTag } from './Tag';
