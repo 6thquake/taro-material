@@ -225,6 +225,10 @@ export default class PanelBasic extends Component {
         ],
         material: [
           {
+            id: 'Affix',
+            name: '固钉'
+          },
+          {
             id: 'Back-Top',
             name: '返回顶部'
           },
