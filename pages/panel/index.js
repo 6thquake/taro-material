@@ -233,6 +233,10 @@ export default class PanelBasic extends Component {
             name: '按钮'
           },
           {
+            id: 'Carousel',
+            name: '滑块视图容器'
+          },
+          {
             id: 'Date-Picker',
             name: '时间选择器'
           },

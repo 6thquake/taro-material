@@ -51,6 +51,7 @@ class App extends Component {
       'form/search-bar/index',
       'material/back-top/index',
       'material/button/index',
+      'material/carousel/index',
       'material/date-picker/index',
       'material/icon/index',
       'material/loading/index',

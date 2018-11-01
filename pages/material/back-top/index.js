@@ -11,7 +11,6 @@ import theme from '../../taro-material/styles/theme'
 import './index.scss'
 
 
-let ctx = null;
 class Index extends RMPage {
   config = {
     navigationBarTitleText: 'Back Top',

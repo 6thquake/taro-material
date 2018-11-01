@@ -1,0 +1,52 @@
+@import "../../taro-material/styles/theme.scss";
+
+.root{
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+
+  .watermark, .panel, .input, .picker, .form, .upload, .svgs, .actions, .tags, .postmark, .spacer{
+    position: relative;
+  }
+  .body {
+    min-height: calc(100vh);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify: center;
+  }
+  .form{
+    padding: 40px
+  }
+  .spacer{
+    flex: 1
+  }
+  .actions{
+    margin: 20px;
+    .ok{
+      margin-bottom: 16px;
+    }
+    .inherit {
+      background: #000;
+      color: #fff;
+    }
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    background: #FFF;
+    border-left: 10px solid #03A9F4;
+    border-bottom: 1px solid #EEE;
+    padding: 16px;
+  }
+  .watermark{
+    .parent{
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .panel{
+    margin: #{$spacingUnit * 2}px 0;
+  }
+}

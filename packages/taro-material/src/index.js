@@ -55,6 +55,7 @@ export { default as AtComponent } from './common/component'
 export { default as RMAccordion } from './Accordion';
 export { default as RMBackTop } from './BackTop';
 export { default as RMButton } from './Button';
+export { default as RMCarousel } from './Carousel';
 export { default as RMDrawer } from './Drawer';
 export { default as RMDropdown } from './Dropdown';
 export { default as RMFilters } from './Filters';
