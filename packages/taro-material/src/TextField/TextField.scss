@@ -213,10 +213,11 @@ $zindex-toast: $zIndexSnackbar;
 
     &.multiline {
       @include border-thin($paletteTextDivider, solid, top bottom right left, 1Px)
+      margin-top: #{$spacingUnit}px;
     }
   }
   
-  &__input {
+  &__input, &__textarea {
     flex: 1;
     display: inline-block;
     // padding-right: $spacing-v-md;

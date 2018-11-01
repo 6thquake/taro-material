@@ -21,6 +21,7 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     background-color: rgba(0, 0, 0, 0.38);
     opacity: 0;
     transition: opacity 300ms $timing-func;
+    z-index: #{$zIndexDrawer + 1};
   }
 
   &__content {
@@ -32,6 +33,7 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     background-color: $paletteBackgroundPaper;
     opacity: 0;
     overflow: auto;
+    z-index: #{$zIndexDrawer + 2};
   }
 
   &.at-drawer--left {

@@ -213,32 +213,32 @@ class TextField extends Component {
               {
                 !multiline && 
                 <Input className='at-input__input'
-                id={name}
-                name={name}
-                type={type}
-                placeholderStyle={placeholderStyle}
-                placeholderClass={classNames('placeholder', placeholderClass)}
-                placeholder={placeholder}
-                cursorSpacing={cursorSpacing}
-                maxlength={maxlength}
-                autoFocus={autoFocus}
-                value={value}
-                confirmType={confirmType}
-                cursor={cursor}
-                selectionStart={selectionStart}
-                selectionEnd={selectionEnd}
-                adjustPosition={adjustPosition}
-                disabled={disabled}
-                onInput={this.onInput.bind(this)}
-                // onChange={this.onInput.bind(this)}
-                onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}
-                onConfirm={this.onConfirm.bind(this)}
+                  id={name}
+                  name={name}
+                  type={type}
+                  placeholderStyle={placeholderStyle}
+                  placeholderClass={classNames('placeholder', placeholderClass)}
+                  placeholder={placeholder}
+                  cursorSpacing={cursorSpacing}
+                  maxlength={maxlength}
+                  autoFocus={autoFocus}
+                  value={value}
+                  confirmType={confirmType}
+                  cursor={cursor}
+                  selectionStart={selectionStart}
+                  selectionEnd={selectionEnd}
+                  adjustPosition={adjustPosition}
+                  disabled={disabled}
+                  onInput={this.onInput.bind(this)}
+                  // onChange={this.onInput.bind(this)}
+                  onFocus={this.onFocus.bind(this)}
+                  onBlur={this.onBlur.bind(this)}
+                  onConfirm={this.onConfirm.bind(this)}
               />
               }
               {
                 multiline && 
-                <Textarea className='at-input__input'
+                <Textarea className='at-input__textarea'
                   id={name}
                   name={name}
                   placeholder={placeholder}
