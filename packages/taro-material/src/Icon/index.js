@@ -13,8 +13,8 @@ class Icon extends Component {
   componentDidHide() { }
   
   render() {
-    let { fontSize, color, block } = this.props;
-    let style = {};
+    let { fontSize, color, block, customStyle } = this.props;
+    let style = {...customStyle};
 
     if (fontSize && fontSize != 'default') {
       if(typeof fontSize === 'number'){
@@ -54,6 +54,7 @@ Icon.defaultProps = {
   fontSize: 'default',
 
   block: false,
+  customStyle:{},
 }
 
 export default Icon;

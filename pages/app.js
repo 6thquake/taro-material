@@ -59,7 +59,7 @@ class App extends Component {
       'material/panel/index',
       'material/postmark/index',
       'material/select/index',
-      'material/switch/index',
+      'material/selection-controls/index',
       'material/tag/index',
       'material/text-field/index',
       'material/tool-bar/index',

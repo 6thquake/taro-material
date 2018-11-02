@@ -139,8 +139,8 @@ export default class PanelBasic extends Component {
             name: '复选框'
           },
           {
-            id: 'Switch',
-            name: '开关'
+            id: 'Selection-Controls',
+            name: '选择控制'
           },
           {
             id: 'Rate',
