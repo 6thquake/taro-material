@@ -155,6 +155,7 @@ const theme = {
         dropdown: 1060,
         toolBar: 1080,
         appBar: 1100,
+        affix: 1120,
         drawer: 1200,
         modal: 1300,
         snackbar: 1400,

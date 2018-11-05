@@ -83,6 +83,9 @@ class Affix extends Component {
 
     if(fixed) {
       style = {
+        ... {
+          zIndex: theme.zIndex.affix,
+        },
         ...customStyle, 
         ...{
           position: 'fixed',
