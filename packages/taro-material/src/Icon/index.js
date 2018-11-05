@@ -33,7 +33,7 @@ class Icon extends Component {
       'material-icons': true,
       'inherit-size': fontSize == 'inherit',
       block: block,
-      [`color-${_color}`]: color !== 'inherit',
+      [`color${_color}`]: color !== 'inherit',
     });
 
     return (<View className={classes} style={style}>{this.props.children}</View>);
