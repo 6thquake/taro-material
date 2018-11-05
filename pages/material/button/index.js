@@ -85,28 +85,34 @@ class Index extends RMPage {
 
             <RMButton
               onClick={this.handle}
-              color='default'
+              color='primary'
+              delay={3000}
+              countdown={true}
             >
-              text status button - default color
+              text status button - delay
             </RMButton>
             <RMButton
               onClick={this.handle}
-              color='default'
+              color='primary'
               variant='contained'
+              delay={3000}
+              countdown={false}
             >
-              contained status button - default color
+              contained status button - delay
             </RMButton>
             <RMButton
               onClick={this.handle}
-              color='default'
+              color='primary'
               variant='outlined'
+              delay={0}
             >
-              outlined status button - default color
+              outlined status button - don't delay
             </RMButton>
             <RMButton
               onClick={this.handle}
-              color='default'
+              color='primary'
               variant='fab'
+              delay={0}
             >
               +
             </RMButton>
@@ -114,6 +120,47 @@ class Index extends RMPage {
               onClick={this.handle}
               color='default'
               variant='extendedFab'
+              delay={0}
+            >
+              extendedFab status button - don't delay
+            </RMButton>
+
+            <RMButton
+              onClick={this.handle}
+              color='default'
+              delay={0}
+            >
+              text status button - default color
+            </RMButton>
+            <RMButton
+              onClick={this.handle}
+              color='default'
+              variant='contained'
+              delay={0}
+            >
+              contained status button - default color
+            </RMButton>
+            <RMButton
+              onClick={this.handle}
+              color='default'
+              variant='outlined'
+              delay={0}
+            >
+              outlined status button - default color
+            </RMButton>
+            <RMButton
+              onClick={this.handle}
+              color='default'
+              variant='fab'
+              delay={0}
+            >
+              +
+            </RMButton>
+            <RMButton
+              onClick={this.handle}
+              color='default'
+              variant='extendedFab'
+              delay={0}
             >
               extendedFab status button - default color
             </RMButton>
@@ -123,21 +170,21 @@ class Index extends RMPage {
               onClick={this.handle}
               color='primary'
             >
-              text status button - default color
+              text status button - primary color
             </RMButton>
             <RMButton
               onClick={this.handle}
               color='primary'
               variant='contained'
             >
-              contained status button - default color
+              contained status button - primary color
             </RMButton>
             <RMButton
               onClick={this.handle}
               color='primary'
               variant='outlined'
             >
-              outlined status button - default color
+              outlined status button - primary color
             </RMButton>
             <RMButton
               onClick={this.handle}
@@ -151,7 +198,7 @@ class Index extends RMPage {
               color='primary'
               variant='extendedFab'
             >
-              extendedFab status button - default color
+              extendedFab status button - primary color
             </RMButton>
 
 
@@ -159,21 +206,21 @@ class Index extends RMPage {
               onClick={this.handle}
               color='secondary'
             >
-              text status button - default color
+              text status button - secondary color
             </RMButton>
             <RMButton
               onClick={this.handle}
               color='secondary'
               variant='contained'
             >
-              contained status button - default color
+              contained status button - secondary color
             </RMButton>
             <RMButton
               onClick={this.handle}
               color='secondary'
               variant='outlined'
             >
-              outlined status button - default color
+              outlined status button - secondary color
             </RMButton>
             <RMButton
               onClick={this.handle}
@@ -187,7 +234,7 @@ class Index extends RMPage {
               color='secondary'
               variant='extendedFab'
             >
-              extendedFab status button - default color
+              extendedFab status button - secondary color
             </RMButton>
 
 
@@ -196,7 +243,7 @@ class Index extends RMPage {
                 onClick={this.handle}
                 color='inherit'
               >
-                text status button - default color
+                text status button - inherit color
               </RMButton>
             </View>
             <View className='inherit'>
@@ -205,7 +252,7 @@ class Index extends RMPage {
                 color='inherit'
                 variant='contained'
               >
-                contained status button - default color
+                contained status button - inherit color
               </RMButton>
             </View>
             <View className='inherit'>
@@ -214,7 +261,7 @@ class Index extends RMPage {
                 color='inherit'
                 variant='outlined'
               >
-                outlined status button - default color
+                outlined status button - inherit color
               </RMButton>
             </View>
             <View className='inherit'>
@@ -232,7 +279,7 @@ class Index extends RMPage {
                 color='inherit'
                 variant='extendedFab'
               >
-                extendedFab status button - default color
+                extendedFab status button - inherit color
               </RMButton>
             </View>
           </View>

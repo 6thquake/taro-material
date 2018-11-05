@@ -115,6 +115,8 @@ class RMButton extends Component {
   }
 
   reset = () => {
+    const { delay } = this.props;
+
     return new Promise((resolve, reject) => {
       this.status.timer = setInterval(() => {
         if (this.state.second > 0) {
@@ -137,7 +139,7 @@ class RMButton extends Component {
             resolve();
           });
         }
-      }, 680);
+      }, delay / 3);
     });
   }
 
@@ -148,6 +150,7 @@ class RMButton extends Component {
       color,
       disabled,
       customStyle,
+      countdown,
 
       formType,
       openType,
@@ -300,7 +303,7 @@ class RMButton extends Component {
       fat: variant === 'fab',
     });
 
-    let countdown = (second>=0 && second<3);
+    let _countdown = (second>=0 && second<3);
     let _second = second + 1;
 
     return (
@@ -333,10 +336,10 @@ class RMButton extends Component {
               loading && <View><AtActivityIndicator size={iconSize} color={_reverse ? _color : _fontColor}/></View>
             } 
             {
-              countdown && <View>{_second}</View>
+              _countdown && countdown && <View>{_second}</View>
             }
             {
-              !countdown && !loading && icon && <RMIcon fontSize={'inherit'} color={'inherit'} block={true}>{icon}</RMIcon>
+              (!_countdown || (_countdown && !countdown)) && !loading && icon && <RMIcon fontSize={'inherit'} color={'inherit'} block={true}>{icon}</RMIcon>
             }
             {
               !(variant === 'fab' && (loading || icon)) && <View className={classes}>{this.props.children}</View>
@@ -369,6 +372,8 @@ RMButton.defaultProps = {
   onGetPhoneNumber: () => { },
   onError: () => { },
   onOpenSetting: () => { },
+  delay: 680 * 3,
+  countdown: false,
 }
 
 RMButton.propTypes = {
@@ -394,6 +399,8 @@ RMButton.propTypes = {
   onGetPhoneNumber: PropTypes.func,
   onError: PropTypes.func,
   onOpenSetting: PropTypes.func,
+  delay: PropTypes.number,
+  countdown: PropTypes.bool,
 }
 
 export default RMButton
