@@ -126,7 +126,7 @@ const sorts = [
     label: '评分最高5',
     value: 'score5',
     priority: 0,
-  },
+  }
 ]
 
 class Index extends RMPage {
@@ -136,6 +136,7 @@ class Index extends RMPage {
 
   state = {
     showDrawer: false,
+    filters: JSON.parse(JSON.stringify(filterConfig))
   }
 
   componentWillMount () {
@@ -145,7 +146,16 @@ class Index extends RMPage {
   }
 
   componentDidMount () { 
-    
+    let data = JSON.parse(JSON.stringify(filterConfig))
+    data[0].data.push({
+      label: 'hello',
+      value: 'd1222'
+    })
+    setTimeout(()=>{
+      this.setState({
+        filters: data
+      })
+    }, 3000)
   }
 
   componentDidShow() { }
@@ -157,9 +167,10 @@ class Index extends RMPage {
   }
   
   render () {
+    let {filters} = this.state
     return (
       <View className='root'>
-        <RMToolBar onChange={this.handleFilterChange} sorts={sorts} filters={filterConfig} />
+        <RMToolBar onChange={this.handleFilterChange} sorts={sorts} filters={filters} />
       </View> 
     )
   }

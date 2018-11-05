@@ -106,7 +106,7 @@ const defaultData = [
 
 class Index extends RMPage {
   config = {
-    navigationBarTitleText: 'Select',
+    navigationBarTitleText: 'Filters',
   }
   state = {
     data: JSON.parse(JSON.stringify(defaultData))
@@ -124,15 +124,18 @@ class Index extends RMPage {
       data: value
     })
   }
+
   handelReset = (e) => {
     console.log('reset')
     this.setState({
       data: defaultData
     })
   }
+
   handleOk = (e) => {
     console.log(e)
   }
+  
   render() {
     const { data } = this.state
     return (

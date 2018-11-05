@@ -1,7 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
 import RMIcon from '../Icon'
 import RMTypography from '../Typography'
@@ -13,22 +12,49 @@ import theme from '../styles/theme'
 
 import './ToolBar.scss'
 
+const cloneDeep = o => JSON.parse(JSON.stringify(o))
+const isEqual = (array1 = [], array2 = []) => {
+  if (array1.length !== array2.length) {
+    return false
+  }
+  for (let i = 0; i < array1.length; i++) {
+    if (!(array1[i].label === array2[i].label && array1[i].value === array2[i].value)) {
+      return false
+    } else if (Array.isArray(array1[i].data) && Array.isArray(array2[i].data)) {
+      let r = isEqual(array1[i].data, array2[i].data)
+      if (!r) {
+        return false
+      }
+    }
+  }
+  return true
+}
+
 class ToolBar extends Component {
   constructor(props){
     super(props)
     let option = props.sorts.filter((item)=> item.priority !== 0 && item.active)[0] || props.sorts[0]
     let value = option ? option.value : ''
     this.state={
+      filterData: cloneDeep(props.filters),
       expanded: false,
       value: value,
       show: false,
       sorts: props.sorts,
-      multi: []
+      selectedFilters: []
     }
   }
 
   refDrawer =(node)=> this.drawer = node
-  multi =[]
+
+  componentWillReceiveProps(nextProps){
+    if(!isEqual(this.props.filters, nextProps.filters)){
+      this.setState({
+        filterData: cloneDeep(nextProps.filters)
+      })
+    }
+  }
+
   componentWillUnmount() { }
 
   componentDidShow() { }
@@ -67,13 +93,25 @@ class ToolBar extends Component {
     })
   }
 
-  handleSiftingChange(e) {
-    // this.state.multi = e
+  handleFilterChange(e) {
+    this.setState({
+      filterData: e
+    })
+  }
+
+  handleFilterOk(e){
     this.drawer.animHide()
     this.setState({
-      multi: e
-    }, ()=>{
-      this.onChange()    
+      selectedFilters: e
+    }, () => {
+      this.onChange()
+    })
+  }
+
+  handleFilterReset(){
+    const { filters } = this.props
+    this.setState({
+      filterData: cloneDeep(filters)
     })
   }
 
@@ -105,17 +143,16 @@ class ToolBar extends Component {
     const { onChange, sorts } = this.props
     const data = {
       sort: sorts.filter(item => item.active)[0],
-      filters: this.state.multi,
+      filters: this.state.selectedFilters,
     }
     onChange(data) 
   }
 
   render() {
-    const { filters } = this.props
-    const { sorts, expanded, value, show, multi} = this.state
+    const { filterData, sorts, expanded, value, show, selectedFilters} = this.state
     const option = sorts.filter((item)=>item.value === value)[0]
     const normalItems = sorts.filter(item => item.priority !== 0)
-    const multiLength = multi.reduce((r, next)=>{
+    const multiLength = selectedFilters.reduce((r, next)=>{
       return r + next.data.length
     }, 0)
 
@@ -173,7 +210,12 @@ class ToolBar extends Component {
           width={320}
           right
         >
-          <RMFilters data={filters} onOk={this.handleSiftingChange}></RMFilters>
+          <RMFilters 
+            data={filterData} 
+            onOk={this.handleFilterOk}
+            onReset={this.handleFilterReset}
+            onChange={this.handleFilterChange}
+          ></RMFilters>
         </RMDrawer>
 
       </View>
@@ -183,7 +225,7 @@ class ToolBar extends Component {
 
 ToolBar.propTypes ={
   onChange: PropTypes.func,
-  data: PropTypes.array,
+  filters: PropTypes.array,
   sorts: PropTypes.array,
 }
 
