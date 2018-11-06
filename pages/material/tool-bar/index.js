@@ -135,6 +135,7 @@ class Index extends RMPage {
   }
 
   state = {
+    value: 'Hi',
     showDrawer: false,
     filters: JSON.parse(JSON.stringify(filterConfig))
   }
@@ -146,7 +147,7 @@ class Index extends RMPage {
   }
 
   componentDidMount () { 
-    let data = JSON.parse(JSON.stringify(filterConfig))
+    let data = filterConfig
     data[0].data.push({
       label: 'hello',
       value: 'd1222'
@@ -164,14 +165,19 @@ class Index extends RMPage {
 
   handleFilterChange(e){
     console.log('filters',e)
+    this.setState({
+      value: 'hello'
+    })
   }
   
   render () {
-    let {filters} = this.state
+    let {filters, value} = this.state
     return (
       <View className='root'>
         <RMToolBar onChange={this.handleFilterChange} sorts={sorts} filters={filters} />
+        <View>{value}</View>
       </View> 
+      
     )
   }
 }

@@ -48,7 +48,7 @@ class ToolBar extends Component {
   refDrawer =(node)=> this.drawer = node
 
   componentWillReceiveProps(nextProps){
-    if(!isEqual(this.props.filters, nextProps.filters)){
+    if (!isEqual(this.state.filterData, nextProps.filters)){
       this.setState({
         filterData: cloneDeep(nextProps.filters)
       })
@@ -148,14 +148,13 @@ class ToolBar extends Component {
     onChange(data) 
   }
 
-  render() {
-    const { filterData, sorts, expanded, value, show, selectedFilters} = this.state
+  render() {    
+    const { filterData, sorts, expanded, value, show, selectedFilters } = this.state
     const option = sorts.filter((item)=>item.value === value)[0]
     const normalItems = sorts.filter(item => item.priority !== 0)
     const multiLength = selectedFilters.reduce((r, next)=>{
       return r + next.data.length
     }, 0)
-
     return (
       <View className='root'>
         <View className='header'>
