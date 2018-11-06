@@ -146,7 +146,7 @@ class Index extends RMPage {
   }
 
   componentDidMount () { 
-    let data = JSON.parse(JSON.stringify(filterConfig))
+    let data = filterConfig
     data[0].data.push({
       label: 'hello',
       value: 'd1222'

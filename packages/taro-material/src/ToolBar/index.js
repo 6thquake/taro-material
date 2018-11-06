@@ -48,7 +48,7 @@ class ToolBar extends Component {
   refDrawer =(node)=> this.drawer = node
 
   componentWillReceiveProps(nextProps){
-    if(!isEqual(this.props.filters, nextProps.filters)){
+    if(!isEqual(this.state.filters, nextProps.filters)){
       this.setState({
         filterData: cloneDeep(nextProps.filters)
       })

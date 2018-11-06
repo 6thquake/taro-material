@@ -18,9 +18,12 @@ class Select extends Component {
   }
 
   handleInputClick = (e) => {
-    const { open } = this.state
-    const { onOpen } = this.props
-    
+    const { onOpen} = this.props
+    const { editable, disabled} = this.props
+
+    if (!editable || disabled){
+      return 
+    }
     this.setState({
       open: true,
     }, ()=>{
@@ -49,9 +52,10 @@ class Select extends Component {
 
   render () {
     const { open } = this.state
-    const { InputProps, data, value, title: selectTitle} = this.props
-    const { required, name, title, placeholder, editable, type, helperText, helperTextClass } = InputProps
+    const { disabled, InputProps, data, value, title: selectTitle} = this.props
+    const {required, name, title, placeholder, type, helperText, helperTextClass} = InputProps
     const option = data.filter((e) => e.value === value)[0]
+    
     return (
       <View className='root'>
         <View onClick={this.handleInputClick}>
@@ -63,7 +67,7 @@ class Select extends Component {
             placeholder={placeholder}
             value={option.label}
             editable={false}
-            disabled={false}
+            disabled={disabled}
             readOnlyStyle='normal'
             required={required}
             helperText={helperText}
@@ -90,9 +94,18 @@ Select.defaultProps = {
   value: '',
   onClose: () => { },
   onOpen: () => {},
+  editable: true,
+  disabled: false,
 }
 Select.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  InputProps: PropTypes.object,
+  onChange: PropTypes.func,
+  onClose: PropTypes.func,
+  onOpen: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  disabled: PropTypes.bool,
+  editable: PropTypes.bool,
 }
 
 export default Select
