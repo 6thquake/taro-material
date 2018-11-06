@@ -3,6 +3,7 @@ import { View, Button, Canvas } from '@tarojs/components'
 
 import {
   RMSelect,
+  RMButton
 } from '../../taro-material'
 
 import RMPage from '../../taro-material/Page'
@@ -17,6 +18,7 @@ class Index extends RMPage {
   }
   state = {
     value: 2,
+    editable: false,
     data: [
       {
         label: '第1个选择项',
@@ -38,12 +40,18 @@ class Index extends RMPage {
   }
   componentWillMount() { }
 
-  componentDidMount() { }
+  componentDidMount() { 
+    
+  }
 
   componentDidShow() { }
 
   componentDidHide() { }
-
+  handleButtonClick=()=>{
+    this.setState({
+      editable: !this.state.editable
+    })
+  }
   handleChange=(value)=>{
     this.setState({
       value
@@ -56,14 +64,19 @@ class Index extends RMPage {
     console.log('open')
   }
   render() {
-    const { data, value } = this.state
+    const { data, value, editable } = this.state
     return (
       <View className='root'>
+        <RMButton onClick={this.handleButtonClick}>toggle</RMButton>
         <RMSelect 
           title={'请选择一项'}
           onOpen={this.handleOpen}
           onClose={this.handelClose}
           onChange={this.handleChange}
+          editable={editable}
+          InputProps={{
+            helperText: !editable && '先选择门店啊'
+          }}
           data={data}
           value={value}
         />
