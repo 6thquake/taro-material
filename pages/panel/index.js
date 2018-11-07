@@ -166,10 +166,7 @@ export default class PanelBasic extends Component {
             id: 'Slider',
             name: '滑动条'
           },
-          {
-            id: 'Search-Bar',
-            name: '搜索栏'
-          }
+          
         ],
         layout: [
           {
@@ -263,6 +260,10 @@ export default class PanelBasic extends Component {
           {
             id: 'Postmark',
             name: '徽章'
+          },
+          {
+            id: 'Search',
+            name: '搜索框'
           },
           {
             id: 'Select',

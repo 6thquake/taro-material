@@ -48,7 +48,7 @@ class App extends Component {
       'form/picker/index',
       'form/picker-view/index',
       'form/slider/index',
-      'form/search-bar/index',
+      'material/search/index',
       'material/affix/index',
       'material/back-top/index',
       'material/button/index',

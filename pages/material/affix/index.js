@@ -25,6 +25,10 @@ class Index extends RMPage {
   componentDidHide () { }
   
   render () {
+    const style = {
+      position: 'sticky',
+      top: '100px'
+    }
     return (
       <View className='root'>
         <View className='body'>
@@ -39,6 +43,7 @@ class Index extends RMPage {
                 <View className='affix'>距离底部0px开始固定</View>
             </RMAffix>
           </View>
+          <View style={style} className='affix'>sticky测试</View>
           <View className='spacer'></View>
         </View>
       </View> 

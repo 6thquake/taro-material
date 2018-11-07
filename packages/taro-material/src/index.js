@@ -69,6 +69,8 @@ export { default as RMPage } from './Page';
 export { default as RMPanel } from './Panel';
 export { default as RMDatePicker } from './Picker';
 export { default as RMPostmark } from './Postmark';
+export { default as RMSearch } from './Search';
+
 export { default as RMSelect } from './Select';
 export { default as RMSwitch } from './Switch';
 export { default as RMRadio } from './Radio';
