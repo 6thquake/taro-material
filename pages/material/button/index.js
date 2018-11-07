@@ -281,6 +281,47 @@ class Index extends RMPage {
               >
                 extendedFab status button - inherit color
               </RMButton>
+
+              <RMButton
+                onClick={this.handle2.bind(this)}
+                color='default'
+                size='small'
+              >
+                text button - small
+              </RMButton>
+              <RMButton
+                onClick={this.handle2}
+                color='default'
+                variant='contained'
+                size='small'
+              >
+                contained button - small
+              </RMButton>
+              <RMButton
+                onClick={this.handle2}
+                color='default'
+                variant='outlined'
+                size='small'
+              >
+                outlined button - small
+              </RMButton>
+              <RMButton
+                onClick={this.handle2}
+                color='default'
+                variant='fab'
+                size='small'
+              >
+                +
+              </RMButton>
+              <RMButton
+                onClick={this.handle2}
+                color='default'
+                variant='extendedFab'
+                size='small'
+              >
+                extendedFab button - small
+              </RMButton>
+
             </View>
           </View>
         </View>
