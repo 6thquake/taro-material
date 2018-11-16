@@ -118,6 +118,21 @@ class RMButton extends Component {
     const { delay } = this.props;
 
     return new Promise((resolve, reject) => {
+      if(delay == 0) {
+        this.status = {
+          status: '',
+          text: '',
+          timer: null,
+        };
+        this.setState({
+          status: {
+            status: ''
+          },
+          second: 3,
+        },()=>{
+          resolve();
+        });
+      }
       this.status.timer = setInterval(() => {
         if (this.state.second > 0) {
           this.setState({
@@ -139,7 +154,7 @@ class RMButton extends Component {
             resolve();
           });
         }
-      }, delay / 3);
+      }, delay);
     });
   }
 
@@ -372,7 +387,7 @@ RMButton.defaultProps = {
   onGetPhoneNumber: () => { },
   onError: () => { },
   onOpenSetting: () => { },
-  delay: 680 * 3,
+  delay: 2040,
   countdown: false,
 }
 
