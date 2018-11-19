@@ -61,6 +61,7 @@ class App extends Component {
       'material/select/index',
       'material/selection-controls/index',
       'material/tag/index',
+      'material/tab-bar/index',
       'material/text-field/index',
       'material/tool-bar/index',
       'material/upload/index',

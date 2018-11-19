@@ -274,6 +274,10 @@ export default class PanelBasic extends Component {
             name: '开关'
           },
           {
+            id: 'Tab-Bar',
+            name: '导航栏'
+          },
+          {
             id: 'Tag',
             name: '标签'
           },
