@@ -46,7 +46,11 @@
     "lint:style": "stylelint \"packages/**/*.scss\" --syntax scss",
     "lint:style-fix": "stylelint \"packages/**/*.scss\" --syntax scss --fix",
     "test": "jest --coverage",
-    "test:ci": "npm run build:h5 && npm run test"
+    "test:ci": "npm run build:h5 && npm run test",
+    "prettier": "yarn --silent prettier:files | xargs prettier --write",
+    "prettier:files": "find . -name \"*.js\" -o -name \"*.d.ts\" -o -name \"*.tsx\" | grep -v -f .eslintignore",
+    "prettier:check": "yarn --silent prettier:files | xargs prettier --list-different",
+    "prettier:ci": "prettier --list-different"
   },
   "peerDependencies": {
     "taro": "*"
