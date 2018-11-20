@@ -13,8 +13,8 @@ import './index.scss'
 
 export default class PanelBasic extends Component {
   config = {
-    navigationBarTitleText: 'Taro UI'
-  }
+    navigationBarTitleText: 'Taro UI',
+  };
 
   constructor () {
     super(...arguments)
@@ -23,289 +23,292 @@ export default class PanelBasic extends Component {
       panelNames: {
         basic: {
           name: '基础',
-          icon: iconBasic
+          icon: iconBasic,
         },
         view: {
           name: '视图',
-          icon: iconView
+          icon: iconView,
         },
         action: {
           name: '操作反馈',
-          icon: iconAction
+          icon: iconAction,
         },
         form: {
           name: '表单',
-          icon: iconForm
+          icon: iconForm,
         },
         layout: {
           name: '布局',
-          icon: iconLayout
+          icon: iconLayout,
         },
         navigation: {
           name: '导航',
-          icon: iconNavigation
+          icon: iconNavigation,
         },
         material: {
           name: '导航',
-          icon: iconMaterial
-        }
+          icon: iconMaterial,
+        },
       },
       list: {
         basic: [
           {
             id: 'Color',
-            name: '颜色'
+            name: '颜色',
           },
           {
             id: 'Icon',
-            name: '图标'
+            name: '图标',
           },
           {
             id: 'Typo',
-            name: '字体'
+            name: '字体',
           },
           {
             id: 'Button',
-            name: '按钮'
+            name: '按钮',
           }
         ],
         view: [
           {
             id: 'Avatar',
-            name: '头像'
+            name: '头像',
           },
           {
             id: 'Article',
-            name: '文章'
+            name: '文章',
           },
           {
             id: 'Badge',
-            name: '徽标'
+            name: '徽标',
           },
           {
             id: 'NoticeBar',
-            name: '通告栏'
+            name: '通告栏',
           },
           {
             id: 'Tag',
-            name: '标签'
+            name: '标签',
           },
           {
             id: 'Timeline',
-            name: '时间轴'
+            name: '时间轴',
           },
           {
             id: 'Swiper',
-            name: '滑块视图容器'
+            name: '滑块视图容器',
           }
         ],
         action: [
           {
             id: 'Action-Sheet',
-            name: '动作面板'
+            name: '动作面板',
           },
           {
             id: 'Activity-Indicator',
-            name: '活动指示器'
+            name: '活动指示器',
           },
           {
             id: 'Modal',
-            name: '模态框'
+            name: '模态框',
           },
           {
             id: 'Progress',
-            name: '进度条'
+            name: '进度条',
           },
           {
             id: 'Toast',
-            name: '轻提示'
+            name: '轻提示',
           },
           {
             id: 'Swipe-Action',
-            name: '滑动操作'
+            name: '滑动操作',
           }
         ],
         form: [
           {
             id: 'Input',
-            name: '输入框'
+            name: '输入框',
           },
           {
             id: 'Radio',
-            name: '单选框'
+            name: '单选框',
           },
           {
             id: 'Checkbox',
-            name: '复选框'
+            name: '复选框',
           },
           {
             id: 'Selection-Controls',
-            name: '选择控制'
+            name: '选择控制',
           },
           {
             id: 'Rate',
-            name: '评分'
+            name: '评分',
           },
           {
             id: 'Input-Number',
-            name: '数字输入框'
+            name: '数字输入框',
           },
           {
             id: 'Textarea',
-            name: '多行文本框'
+            name: '多行文本框',
           },
           {
             id: 'Picker',
-            name: '选择器'
+            name: '选择器',
           },
           {
             id: 'Picker-View',
-            name: '滚动选择器'
+            name: '滚动选择器',
           },
           {
             id: 'Slider',
-            name: '滑动条'
-          },
-          
+            name: '滑动条',
+          }
         ],
         layout: [
           {
             id: 'Flex',
-            name: '弹性布局'
+            name: '弹性布局',
           },
           {
             id: 'Grid',
-            name: '栅格'
+            name: '栅格',
           },
           {
             id: 'List',
-            name: '列表'
+            name: '列表',
           },
           {
             id: 'Card',
-            name: '卡片'
+            name: '卡片',
           },
           {
             id: 'Float-Layout',
-            name: '浮动弹层'
+            name: '浮动弹层',
           },
           {
             id: 'Accordion',
-            name: '手风琴'
+            name: '手风琴',
           }
         ],
         navigation: [
           {
             id: 'NavBar',
-            name: '导航栏'
+            name: '导航栏',
           },
           {
             id: 'TabBar',
-            name: '标签栏'
+            name: '标签栏',
           },
           {
             id: 'Tabs',
-            name: '标签页'
+            name: '标签页',
           },
           {
             id: 'Segmented-Control',
-            name: '分段器'
+            name: '分段器',
           },
           {
             id: 'Pagination',
-            name: '分页器'
+            name: '分页器',
           },
           {
             id: 'Drawer',
-            name: '抽屉'
+            name: '抽屉',
           }
         ],
         material: [
           {
             id: 'Affix',
-            name: '固钉'
+            name: '固钉',
           },
           {
             id: 'Back-Top',
-            name: '返回顶部'
+            name: '返回顶部',
           },
           {
             id: 'Button',
-            name: '按钮'
+            name: '按钮',
           },
           {
             id: 'Carousel',
-            name: '滑块视图容器'
+            name: '滑块视图容器',
           },
           {
             id: 'Date-Picker',
-            name: '时间选择器'
+            name: '时间选择器',
           },
           {
             id: 'Filters',
-            name: '筛选器'
+            name: '筛选器',
           },
           {
             id: 'Icon',
-            name: '图标'
+            name: '图标',
+          },
+          {
+            id: 'Live-Player',
+            name: '实时播放器',
           },
           {
             id: 'Loading',
-            name: '加载'
+            name: '加载',
           },
           {
             id: 'Panel',
-            name: '面板'
+            name: '面板',
           },
           {
             id: 'Postmark',
-            name: '徽章'
+            name: '徽章',
           },
           {
             id: 'Search',
-            name: '搜索框'
+            name: '搜索框',
           },
           {
             id: 'Select',
-            name: '选择框'
+            name: '选择框',
           },
           {
             id: 'Switch',
-            name: '开关'
+            name: '开关',
           },
           {
             id: 'Tab-Bar',
-            name: '导航栏'
+            name: '导航栏',
           },
           {
             id: 'Tag',
-            name: '标签'
+            name: '标签',
           },
           {
             id: 'Text-Field',
-            name: '输入框'
+            name: '输入框',
           },
           {
             id: 'Tool-Bar',
-            name: '工具栏'
+            name: '工具栏',
           },
           {
             id: 'Upload',
-            name: '上传'
+            name: '上传',
           },
           {
             id: 'Watermark',
-            name: '水印'
+            name: '水印',
           }
-        ]
-      }
+        ],
+      },
     }
   }
 
   componentDidMount () {
     const { id } = this.$router.params
     this.setState({
-      currentId: id.toLowerCase() || ''
+      currentId: id.toLowerCase() || '',
     })
   }
 
@@ -313,9 +316,9 @@ export default class PanelBasic extends Component {
     const { id, parent } = e.currentTarget.dataset
 
     Taro.navigateTo({
-      url: `/${parent.toLowerCase()}/${id.toLowerCase()}/index`
+      url: `/${parent.toLowerCase()}/${id.toLowerCase()}/index`,
     })
-  }
+  };
 
   render () {
     const { list, currentId, panelNames } = this.state

@@ -55,6 +55,7 @@ class App extends Component {
       'material/carousel/index',
       'material/date-picker/index',
       'material/icon/index',
+      'material/live-player/index',
       'material/loading/index',
       'material/panel/index',
       'material/postmark/index',
@@ -65,15 +66,15 @@ class App extends Component {
       'material/text-field/index',
       'material/tool-bar/index',
       'material/upload/index',
-      'material/watermark/index',
+      'material/watermark/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
-  }
+      navigationBarTextStyle: 'black',
+    },
+  };
 
   componentDidMount () {}
 

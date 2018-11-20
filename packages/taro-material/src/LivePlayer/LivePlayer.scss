@@ -1,0 +1,29 @@
+@import '../styles/theme.scss';
+
+.root {
+  position: relative;
+  .player {
+    position: relative;
+    background: lightcoral;
+    width: 100%;
+  }
+  .controls {
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    display: flex;
+    justify-content: flex-end;
+
+    position: absolute;
+    bottom: 0px;
+    .actions {
+      // padding: #{$spacingUnit * 2}px;
+      padding-right: #{$spacingUnit * 3}px;
+      display: flex;
+      color: $palettePrimaryContrastText;
+      font-size: 48px;
+      justify-content: space-between;
+      width: 20%;
+    }
+  }
+}
