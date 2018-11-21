@@ -1,7 +1,7 @@
-import Taro, { Component } from '@tarojs/taro';
-import Index from './index/index';
+import Taro, { Component } from '@tarojs/taro'
+import Index from './index/index'
 
-import './app.scss';
+import './app.scss'
 
 class App extends Component {
   config = {
@@ -67,7 +67,7 @@ class App extends Component {
       'material/tool-bar/index',
       'material/upload/index',
       'material/watermark/index',
-      'material/notice-bar/index',
+      'material/notice-bar/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -77,17 +77,17 @@ class App extends Component {
     },
   };
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  componentDidShow() {}
+  componentDidShow () {}
 
-  componentDidHide() {}
+  componentDidHide () {}
 
-  componentCatchError() {}
+  componentCatchError () {}
 
-  render() {
-    return <Index />;
+  render () {
+    return <Index />
   }
 }
 
-Taro.render(<App />, document.getElementById('app'));
+Taro.render(<App />, document.getElementById('app'))

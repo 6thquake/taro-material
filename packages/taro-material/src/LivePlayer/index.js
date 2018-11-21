@@ -1,96 +1,198 @@
-import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro';
-import PropTypes from 'prop-types';
-import { View, Icon } from '@tarojs/components';
+import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro'
+import PropTypes from 'prop-types'
+import { View } from '@tarojs/components'
+import FullScreen from './images/fullscreen.png'
+import Refresh from './images/refresh.png'
+import FullScreenExit from './images/fullscreen_exit.png'
+import ArrowUp from './images/arrow_drop_up.png'
+import ArrowDown from './images/arrow_down.png'
+import RoundPlayCircle from './images/round_play_circle2.png'
+import RoundPauseCircle from './images/round_pause_circle.png'
 
-import RMTypography from '../Typography';
-import RMIcon from '../Icon';
-import fullscreen from './images/fullscreen.png';
-import refresh from './images/loop.png';
-import fullscreenExit from './images/fullscreen_exit.png';
-
-import './LivePlayer.scss';
-import theme from '../styles/theme';
+import './LivePlayer.scss'
+import theme from '../styles/theme'
 
 class RMLivePlayer extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      livePlayerId: props.id || `live-player-${Date.now()}`,
-    };
+      livePlayerId: props.livePlayerId || `live-player-${Date.now()}`,
+      isFullScreen: false,
+      show: true,
+      qshow: false,
+      src: props.src,
+      loading: false,
+      play: props.autoplay,
+    }
   }
   livePlayerContext = null;
-  componentDidMount() {
-    const { livePlayerId } = this.state;
-    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this);
-    console.log('this.livePlayerContext', this.livePlayerContext);
+  componentDidMount () {
+    const { livePlayerId } = this.state
+    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this.$scope)
   }
+  handleScreenChange = e => {
+    const { fullScreen } = e.detail
+    this.props.onFullScreenChange({ fullScreen })
+    this.setState({
+      isFullScreen: fullScreen,
+    })
+  };
+
+  toggleScreen = isFullScreen => {
+    this.props.onFullScreenChange({ fullScreen: isFullScreen })
+    if (isFullScreen) {
+      this.exitFullScreen()
+    } else {
+      this.requestFullScreen()
+    }
+  };
 
   requestFullScreen = () => {
-    console.log('requestFullScreen', this.livePlayerContext.requestFullScreen);
     this.livePlayerContext.requestFullScreen({
       direction: -90,
       success: res => {
-        console.log('requestFullScreen ok', res);
+        this.setState({
+          isFullScreen: true,
+        })
       },
       fail: err => {
-        console.log('requestFullScreen err', err);
+        console.log('requestFullScreen err', err)
       },
       complete: res => {
-        console.log('finish', res);
+        console.log('finish', res)
       },
-    });
+    })
   };
 
   exitFullScreen = () => {
     this.livePlayerContext.exitFullScreen({
       direction: 90,
       success: res => {
-        console.log('exitFullScreen ok', res);
+        console.log('exitFullScreen ok', res)
+        this.setState({
+          isFullScreen: false,
+        })
       },
       fail: err => {
-        console.log('exitFullScreen err', err);
+        console.log('exitFullScreen err', err)
       },
       complete: res => {
-        console.log('finish', res);
+        console.log('finish', res)
       },
-    });
+    })
   };
 
   handleRefresh = () => {
-    console.log('refresh');
-    this.livePlayerContext.resume({
-      success: res => {
-        console.log('resume res', res);
-      },
-      fail: err => {
-        console.log('resume fail', err);
-      },
-      complete: res => {
-        console.log('finish', res);
-      },
-    });
+    const { src } = this.state
+    this.setState({
+      src,
+    })
   };
 
   handlePlayerClick = () => {
-    console.log('live player');
+    this.setState({
+      show: !this.state.show,
+      qshow: false,
+    })
   };
 
   handleStateChange = e => {
-    console.log('state', e);
+    this.props.onStateChange(e)
+    const { code, message } = e.detail
+    const startCodes = [2002, 2007, 2008]
+    const endCodes = [2003, 2004]
+    if (startCodes.includes(code)) {
+      this.setState({
+        loading: true,
+      })
+    }
+    if (endCodes.includes(code)) {
+      this.setState({
+        loading: false,
+      })
+    }
   };
 
   handleNetStatus = e => {
-    // console.log('status', e)
+    this.props.onNetStatus(e)
   };
+
   handleError = e => {
-    console.log('live player error', e);
+    this.props.onError(e)
   };
-  render() {
-    const { livePlayerId } = this.state;
-    const { src, mode, autoplay, muted, orientation, objectFit, minCache, maxCache } = this.props;
+  handleQulityClick = e => {
+    this.setState(
+      {
+        qshow: !this.state.qshow,
+      },
+      () => {
+        // this.livePlayerContext.play()
+      }
+    )
+  };
+  handleControlsClick = e => {
+    e.stopPropagation()
+  };
+  handleListClick = (src, e) => {
+    e.stopPropagation()
+    this.setState({
+      qshow: false,
+      src,
+    })
+  };
+  handlePlay = () => {
+    this.setState(
+      {
+        play: true,
+      },
+      () => {
+        this.livePlayerContext.play()
+        this.props.onPlay()
+      }
+    )
+  };
+  handlePause = () => {
+    this.setState(
+      {
+        play: false,
+      },
+      () => {
+        this.livePlayerContext.pause()
+        this.props.onPause()
+      }
+    )
+  };
+  togglePlay = () => {
+    const { play } = this.state
+    if (play) {
+      this.handlePause()
+    } else {
+      this.handlePlay()
+    }
+  };
+  render () {
+    const { play, livePlayerId, isFullScreen, show, qshow, src, loading } = this.state
+
+    const {
+      mode,
+      autoplay,
+      muted,
+      orientation,
+      objectFit,
+      minCache,
+      maxCache,
+      title,
+      sources,
+      refreshable,
+      hasPlayBar,
+    } = this.props
+    const qualityItem = sources.filter(item => item.src === src)[0]
+    const qualityName = qualityItem && qualityItem.name
+
     return (
-      <View className="root">
+      <View className='root'>
         <LivePlayer
+          onFullScreenChange={this.handleScreenChange}
           onNetStatus={this.handleNetStatus}
           onStateChange={this.handleStateChange}
           autoplay={autoplay}
@@ -101,37 +203,86 @@ class RMLivePlayer extends Component {
           objectFit={objectFit}
           minCache={minCache}
           maxCache={maxCache}
-          onClick={this.handlePlayerClick}
           id={livePlayerId}
-          className="player"
+          className='player'
           onError={theme.handleError}
         >
-          <CoverView className="controls">
-            <CoverView className="actions">
-              <CoverView className="refresh">
-                <CoverImage onClick={this.handleRefresh} src={refresh} />
+          <CoverView onClick={this.handlePlayerClick} className='box'>
+            {!play && (
+              <CoverImage className='play-icon' onClick={this.handlePlay} src={RoundPlayCircle} />
+            )}
+            {loading && <CoverView className='loading'>加载中...</CoverView>}
+            {show && (
+              <CoverView onClick={this.handleControlsClick} className='controls'>
+                <CoverView className='left-box'>
+                  {hasPlayBar && (
+                    <CoverImage
+                      onClick={this.togglePlay}
+                      className='image play-action'
+                      src={play ? RoundPauseCircle : RoundPlayCircle}
+                    />
+                  )}
+                  <CoverView className='title'>{title}</CoverView>
+                </CoverView>
+
+                <CoverView className='actions'>
+                  {refreshable && (
+                    <CoverView className='refresh action'>
+                      <CoverImage className='image' onClick={this.handleRefresh} src={Refresh} />
+                    </CoverView>
+                  )}
+                  {isFullScreen &&
+                    qualityName && (
+                    <CoverView onClick={this.handleQulityClick} className='action quality'>
+                      <CoverView className='name'>{qualityName}</CoverView>
+                      <CoverImage className='arrow' src={qshow ? ArrowDown : ArrowUp} />
+                    </CoverView>
+                  )}
+                  <CoverView className='screen action'>
+                    <CoverImage
+                      className='image'
+                      onClick={this.toggleScreen.bind(this, isFullScreen)}
+                      src={isFullScreen ? FullScreenExit : FullScreen}
+                    />
+                  </CoverView>
+                </CoverView>
               </CoverView>
-              <CoverView className="screen">
-                <CoverImage onClick={this.requestFullScreen} src={fullscreen} />
+            )}
+
+            {qshow && (
+              <CoverView className='options'>
+                {sources.map(item => (
+                  <CoverView
+                    onClick={theme.handleListClick.bind(this, item.src)}
+                    className='option'
+                    key={item.name}
+                  >
+                    {item.name}
+                  </CoverView>
+                ))}
               </CoverView>
-              <CoverView className="screen">
-                <CoverImage onClick={this.exitFullScreen} src={fullscreenExit} />
-              </CoverView>
-            </CoverView>
+            )}
           </CoverView>
         </LivePlayer>
       </View>
-    );
+    )
   }
 }
 
 RMLivePlayer.defaultProps = {
-  id: '',
+  hasPlayBar: false,
+  refreshable: false,
+  /**
+   * 名称
+   */
+  title: '',
+  livePlayerId: '',
   /**
    * 音视频地址。目前仅支持 flv, rtmp 格式
    */
   src: '',
 
+  sources: [],
   /**
    * live（直播），RTC（实时通话，该模式时延更低）
    */
@@ -180,18 +331,33 @@ RMLivePlayer.defaultProps = {
    */
   onNetStatus: () => {},
   customStyle: PropTypes.object,
-};
+  onError: () => {},
+  onPlay: () => {},
+  onPause: () => {},
+}
 
 RMLivePlayer.propTypes = {
   /**
+   * 是否有暂停播放
+   */
+  hasPlayBar: PropTypes.bool,
+  /**
+   * 是否可刷新
+   */
+  refreshable: PropTypes.bool,
+  /**
+   * 名称
+   */
+  title: PropTypes.string,
+  /**
    * live-player的id
    */
-  id: PropTypes.string,
+  livePlayerId: PropTypes.string,
   /**
    * 音视频地址。目前仅支持 flv, rtmp 格式
    */
   src: PropTypes.string.isRequired,
-
+  sources: PropTypes.array,
   /**
    * live（直播），RTC（实时通话，该模式时延更低）
    */
@@ -240,6 +406,9 @@ RMLivePlayer.propTypes = {
    */
   onNetStatus: PropTypes.func,
   customStyle: PropTypes.object,
-};
+  onError: PropTypes.func,
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func,
+}
 
-export default RMLivePlayer;
+export default RMLivePlayer
