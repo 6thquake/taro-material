@@ -1,34 +1,34 @@
-const path = require('path')
-const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const FaviconWebpackPlugin = require('favicons-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const FaviconWebpackPlugin = require('favicons-webpack-plugin');
 
-const conf = require('./conf')
-const { getProjectRoot } = require('./util')
+const conf = require('./conf');
+const { getProjectRoot } = require('./util');
 
-const projectRoot = getProjectRoot()
+const projectRoot = getProjectRoot();
 
 module.exports = {
   output: {
     path: path.resolve(projectRoot, conf.output),
     filename: 'js/[name].js',
     chunkFilename: 'chunk/[name].chunk.js',
-    publicPath: './'
+    publicPath: './',
   },
   resolve: {
-    mainFields: ['main']
+    mainFields: ['main'],
   },
   plugins: [
     new CleanWebpackPlugin(path.join(projectRoot, 'site'), {
       verbose: false,
-      exclude: ['lib']
+      exclude: ['lib'],
     }),
     new webpack.DefinePlugin({
-      BASE_NAME: `'/taro-material'`
+      BASE_NAME: `'/taro-material'`,
     }),
     new FaviconWebpackPlugin({
       logo: path.resolve(projectRoot, 'docs/assets/favicon.png'),
-      prefix: 'favicons/'
-    })
-  ]
-}
+      prefix: 'favicons/',
+    }),
+  ],
+};

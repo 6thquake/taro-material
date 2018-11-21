@@ -5,18 +5,18 @@ module.exports = {
       '@babel/env',
       {
         spec: true,
-        useBuiltIns: false
-      }
-    ]
+        useBuiltIns: false,
+      },
+    ],
   ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
     [
       '@babel/plugin-transform-react-jsx',
       {
-        pragma: 'Nerv.createElement'
-      }
+        pragma: 'Nerv.createElement',
+      },
     ],
-    ['@babel/plugin-proposal-object-rest-spread']
-  ]
-}
+    ['@babel/plugin-proposal-object-rest-spread'],
+  ],
+};

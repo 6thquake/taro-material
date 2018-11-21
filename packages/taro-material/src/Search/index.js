@@ -1,20 +1,20 @@
-import Taro from '@tarojs/taro'
-import { View, Text, Input } from '@tarojs/components'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
+import Taro from '@tarojs/taro';
+import { View, Text, Input } from '@tarojs/components';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-import AtIcon from '../components/icon/index'
-import AtComponent from '../common/component'
-import './Search.scss'
+import AtIcon from '../components/icon/index';
+import AtComponent from '../common/component';
+import './Search.scss';
 
-const defaultFunc = () => { }
+const defaultFunc = () => {};
 
 export default class Search extends AtComponent {
   constructor(props) {
-    super(...arguments)
+    super(...arguments);
     this.state = {
-      isFocus: props.focus
-    }
+      isFocus: props.focus,
+    };
   }
 
   static defaultProps = {
@@ -32,7 +32,7 @@ export default class Search extends AtComponent {
     onConfirm: defaultFunc,
     onActionClick: defaultFunc,
     onClear: defaultFunc,
-  }
+  };
 
   static propTypes = {
     value: PropTypes.string,
@@ -49,37 +49,37 @@ export default class Search extends AtComponent {
     onConfirm: PropTypes.func,
     onActionClick: PropTypes.func,
     onClear: PropTypes.func,
-  }
+  };
 
   handleFocus(e) {
     this.setState({
-      isFocus: true
-    })
-    this.props.onFocus(e, ...arguments)
+      isFocus: true,
+    });
+    this.props.onFocus(e, ...arguments);
   }
 
   handleBlur(e) {
     this.setState({
-      isFocus: false
-    })
-    this.props.onBlur(e, ...arguments)
+      isFocus: false,
+    });
+    this.props.onBlur(e, ...arguments);
   }
 
   handleChange(e) {
-    this.props.onChange(e.target.value, e, ...arguments)
+    this.props.onChange(e.target.value, e, ...arguments);
   }
 
   handleClear(e) {
-    this.props.onChange('', e, ...arguments)
-    this.props.onClear()
+    this.props.onChange('', e, ...arguments);
+    this.props.onClear();
   }
 
   handleConfirm(e) {
-    this.props.onConfirm(e, ...arguments)
+    this.props.onConfirm(e, ...arguments);
   }
 
   handleActionClick(e) {
-    this.props.onActionClick(e)
+    this.props.onActionClick(e);
   }
 
   render() {
@@ -93,53 +93,49 @@ export default class Search extends AtComponent {
       showActionButton,
       actionName,
       className,
-      customStyle
-    } = this.props
-    const { isFocus } = this.state
+      customStyle,
+    } = this.props;
+    const { isFocus } = this.state;
 
-    const placeholderStyle = {}
-    const actionStyle = {}
+    const placeholderStyle = {};
+    const actionStyle = {};
     if (isFocus || (!isFocus && value)) {
-      placeholderStyle.width = `${(placeholder.length + 2.5) * 14}px`
-      actionStyle.opacity = 1
-      actionStyle.marginRight = `0`
+      placeholderStyle.width = `${(placeholder.length + 2.5) * 14}px`;
+      actionStyle.opacity = 1;
+      actionStyle.marginRight = `0`;
     } else if (!isFocus && !value) {
-      placeholderStyle.width = '100%'
-      actionStyle.opacity = 0
-      actionStyle.marginRight = `-${((actionName.length + 1) * 14) + 7}px`
+      placeholderStyle.width = '100%';
+      actionStyle.opacity = 0;
+      actionStyle.marginRight = `-${(actionName.length + 1) * 14 + 7}px`;
     }
     if (showActionButton) {
-      actionStyle.opacity = 1
-      actionStyle.marginRight = `0`
+      actionStyle.opacity = 1;
+      actionStyle.marginRight = `0`;
     }
     return (
       <View
-        className={
-          classNames({
+        className={classNames(
+          {
             'at-search-bar': true,
-            'at-search-bar--fixed': fixed
-          }, className)
-        }
+            'at-search-bar--fixed': fixed,
+          },
+          className,
+        )}
         style={customStyle}
       >
-        <View className='at-search-bar__container'>
-          <View
-            className='at-search-bar__placeholder_wrap'
-            style={placeholderStyle}
-          >
-            <AtIcon value='search' size='15' color='#999' />
+        <View className="at-search-bar__container">
+          <View className="at-search-bar__placeholder_wrap" style={placeholderStyle}>
+            <AtIcon value="search" size="15" color="#999" />
             <Text
-              className='at-search-bar__placeholder'
-              style={
-                value.length
-                  ? 'visibility: hidden;'
-                  : 'visibility: visible;'
-              }
-            >{placeholder}</Text>
+              className="at-search-bar__placeholder"
+              style={value.length ? 'visibility: hidden;' : 'visibility: visible;'}
+            >
+              {placeholder}
+            </Text>
           </View>
           <Input
-            className='at-search-bar__input'
-            type='search'
+            className="at-search-bar__input"
+            type="search"
             value={value}
             focus={focus}
             disabled={disabled}
@@ -150,25 +146,21 @@ export default class Search extends AtComponent {
             onConfirm={this.handleConfirm.bind(this)}
           />
           <View
-            className='at-search-bar__clear'
-            style={
-              value.length
-                ? 'display: flex;'
-                : 'display: none;'
-            }
+            className="at-search-bar__clear"
+            style={value.length ? 'display: flex;' : 'display: none;'}
             onTouchStart={this.handleClear.bind(this)}
           >
-            <AtIcon value='close-circle' size='15' color='#999' />
+            <AtIcon value="close-circle" size="15" color="#999" />
           </View>
         </View>
         <View
           onClick={this.handleActionClick.bind(this)}
-          className='at-search-bar__action'
+          className="at-search-bar__action"
           style={actionStyle}
         >
           {actionName}
         </View>
       </View>
-    )
+    );
   }
 }

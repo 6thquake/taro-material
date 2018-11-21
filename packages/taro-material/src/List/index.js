@@ -1,31 +1,31 @@
-import Taro, {Component} from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import './List.scss'
+import './List.scss';
 
 class List extends Component {
-  render () {
+  render() {
     const rootClass = classNames(
       'at-list',
       {
-        'at-list--no-border': !this.props.hasBorder
+        'at-list--no-border': !this.props.hasBorder,
       },
-      this.props.className
-    )
+      this.props.className,
+    );
 
-    return <View className={rootClass}>{this.props.children}</View>
+    return <View className={rootClass}>{this.props.children}</View>;
   }
 }
 
 List.defaultProps = {
-  hasBorder: true
-}
+  hasBorder: true,
+};
 
 List.propTypes = {
-  hasBorder: PropTypes.bool
-}
+  hasBorder: PropTypes.bool,
+};
 
-export default List
+export default List;

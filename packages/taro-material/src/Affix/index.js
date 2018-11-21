@@ -1,64 +1,64 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 
 import { isNumber } from '../utils/typeof';
 
 import theme from '../styles/theme';
 
-import './index.scss'
-
+import './index.scss';
 
 class Affix extends Component {
-
-  componentDidMount(){
+  componentDidMount() {
     const { onAddPageScroll } = this.props;
 
-    if(onAddPageScroll) {
+    if (onAddPageScroll) {
       onAddPageScroll(this.handlePageScroll.bind(this));
     }
-    
-    this.affix.boundingClientRect((rect) => {
-      const info = Taro.getSystemInfoSync();
-      let { windowWidth, windowHeight } = info;
-      let { left, top, bottom, right, width, height, } = rect;
-      
-      right = - left - width + windowWidth;
-      bottom = - top - height + windowHeight;
 
-      this.setState({
-        fixed: false,
-        top: top,
-        left: left,
-        right: right,
-        bottom: bottom,
-        width: width,
-        height: height,
-      });
-    }).exec()
+    this.affix
+      .boundingClientRect(rect => {
+        const info = Taro.getSystemInfoSync();
+        let { windowWidth, windowHeight } = info;
+        let { left, top, bottom, right, width, height } = rect;
+
+        right = -left - width + windowWidth;
+        bottom = -top - height + windowHeight;
+
+        this.setState({
+          fixed: false,
+          top: top,
+          left: left,
+          right: right,
+          bottom: bottom,
+          width: width,
+          height: height,
+        });
+      })
+      .exec();
   }
 
-  componentWillUnmount() { }
+  componentWillUnmount() {}
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide() { }
+  componentDidHide() {}
 
   handlePageScroll(params) {
-    const { offsetBottom, offsetTop, } = this.props;
-    let { fixed, left, top, bottom, right, width, height, } = this.state;
+    const { offsetBottom, offsetTop } = this.props;
+    let { fixed, left, top, bottom, right, width, height } = this.state;
 
-    let _fixed = false, 
+    let _fixed = false,
       _affix = {};
 
     if (isNumber(offsetTop)) {
       _fixed = top <= params.scrollTop + offsetTop;
       _affix.top = `${offsetTop}px`;
     } else if (isNumber(offsetBottom)) {
-      _fixed =  bottom <= - params.scrollTop + offsetBottom;
+      _fixed = bottom <= -params.scrollTop + offsetBottom;
       _affix.bottom = `${offsetBottom}px`;
     }
 
-    if(_fixed){
+    if (_fixed) {
       _affix.left = `${left}px`;
     }
 
@@ -68,41 +68,41 @@ class Affix extends Component {
     });
   }
 
-  handleChange (e) {
+  handleChange(e) {
     const { onChange } = this.props;
     onChange && onChange(e.target.value, e, ...arguments);
   }
 
-  ref =(node)=> this.affix = node
+  ref = node => (this.affix = node);
 
-  render () {
-    const { offsetBottom, offsetTop, target, onChange, customStyle, } = this.props;
-    const { fixed, left, top, bottom, right, width, height, affix={}, } = this.state;
+  render() {
+    const { offsetBottom, offsetTop, target, onChange, customStyle } = this.props;
+    const { fixed, left, top, bottom, right, width, height, affix = {} } = this.state;
 
     let style = null;
 
-    if(fixed) {
+    if (fixed) {
       style = {
-        ... {
+        ...{
           zIndex: theme.zIndex.affix,
         },
-        ...customStyle, 
+        ...customStyle,
         ...{
           position: 'fixed',
           ...affix,
-        }
+        },
       };
-    }else{
+    } else {
       style = {
         ...customStyle,
       };
     }
 
     return (
-      <View className='affix' ref={this.ref} style={style}>
-        { this.props.children }
+      <View className="affix" ref={this.ref} style={style}>
+        {this.props.children}
       </View>
-    )
+    );
   }
 }
 
@@ -127,7 +127,7 @@ Affix.propTypes = {
   onAddPageScroll: PropTypes.func,
 
   customStyle: PropTypes.object,
-}
+};
 
 Affix.defaultProps = {
   offsetBottom: null,
@@ -136,6 +136,6 @@ Affix.defaultProps = {
   customStyle: {},
   onChange: () => {},
   onAddPageScroll: () => {},
-}
+};
 
 export default Affix;

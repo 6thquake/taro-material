@@ -1,37 +1,45 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { Swiper, SwiperItem, Image } from '@tarojs/components'
+import { Swiper, SwiperItem, Image } from '@tarojs/components';
 
 import theme from '../styles/theme';
 
-import './index.scss'
-
+import './index.scss';
 
 class Carousel extends Component {
+  componentWillMount() {}
 
-  componentWillMount() { }
+  componentDidMount() {}
 
-  componentDidMount() { }
+  componentWillUnmount() {}
 
-  componentWillUnmount() { }
+  componentDidShow() {}
 
-  componentDidShow() { }
+  componentDidHide() {}
 
-  componentDidHide() { }
-
-  handleChange (e) {
+  handleChange(e) {
     const { onChange } = this.props;
     onChange && onChange(e.target.value, e, ...arguments);
   }
 
-  render () {
-    const { items, speed, delay, autoplay, dots, vertical, multipleItems, current, customStyle, } = this.props;
+  render() {
+    const {
+      items,
+      speed,
+      delay,
+      autoplay,
+      dots,
+      vertical,
+      multipleItems,
+      current,
+      customStyle,
+    } = this.props;
 
     return (
       <Swiper
-        className='carousel'
-        indicatorColor='#999'
-        indicatorActiveColor='#333'
+        className="carousel"
+        indicatorColor="#999"
+        indicatorActiveColor="#333"
         vertical={vertical}
         skipHiddenItemLayout={true}
         displayMultipleItems={multipleItems}
@@ -44,23 +52,20 @@ class Carousel extends Component {
         onChange={this.handleChange}
         style={customStyle}
       >
-        {
-          items.map((item, index) => {
-            return (
-              <SwiperItem className='item'>
-                <Image className='image' src={item.src} mode={'aspectFill'}></Image>
-              </SwiperItem>
-            );
-          })
-        }
+        {items.map((item, index) => {
+          return (
+            <SwiperItem className="item">
+              <Image className="image" src={item.src} mode={'aspectFill'} />
+            </SwiperItem>
+          );
+        })}
       </Swiper>
-    )
+    );
   }
 }
 
 Carousel.propTypes = {
- 
-   /**
+  /**
    * item list
    * eg.
    *  [{
@@ -111,7 +116,7 @@ Carousel.propTypes = {
   onChange: PropTypes.func,
 
   customStyle: PropTypes.object,
-}
+};
 
 Carousel.defaultProps = {
   items: [],
@@ -123,7 +128,7 @@ Carousel.defaultProps = {
   multipleItems: 1,
   current: 0,
   customStyle: {},
-  onChange: () => {}
-}
+  onChange: () => {},
+};
 
 export default Carousel;

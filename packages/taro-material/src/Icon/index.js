@@ -1,42 +1,45 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import classNames from 'classnames'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
+import classNames from 'classnames';
 
-import './Icon.scss'
+import './Icon.scss';
 
 class Icon extends Component {
-  
-  componentWillUnmount() { }
+  componentWillUnmount() {}
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide() { }
-  
+  componentDidHide() {}
+
   render() {
     let { fontSize, color, block, customStyle } = this.props;
-    let style = {...customStyle};
+    let style = { ...customStyle };
 
     if (fontSize && fontSize != 'default') {
-      if(typeof fontSize === 'number'){
+      if (typeof fontSize === 'number') {
         fontSize += 'px';
       }
       style.fontSize = fontSize;
     }
 
-    let _color =  '';
-    if(color && color.length >= 1){
+    let _color = '';
+    if (color && color.length >= 1) {
       _color = color.charAt(0).toUpperCase() + color.substring(1);
     }
 
     let classes = classNames({
-      'root': true,
+      root: true,
       'material-icons': true,
       'inherit-size': fontSize == 'inherit',
       block: block,
       [`color${_color}`]: color !== 'inherit',
     });
 
-    return (<View className={classes} style={style}>{this.props.children}</View>);
+    return (
+      <View className={classes} style={style}>
+        {this.props.children}
+      </View>
+    );
   }
 }
 
@@ -54,7 +57,7 @@ Icon.defaultProps = {
   fontSize: 'default',
 
   block: false,
-  customStyle:{},
-}
+  customStyle: {},
+};
 
 export default Icon;

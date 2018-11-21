@@ -1,91 +1,91 @@
 /* eslint-disable react/no-direct-mutation-state */
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import AtTextarea from '../../taro-material/components/textarea/index'
-import DocsHeader from '../../components/doc-header'
-import './index.scss'
+import Taro from '@tarojs/taro';
+import { View } from '@tarojs/components';
+import AtTextarea from '../../taro-material/components/textarea/index';
+import DocsHeader from '../../components/doc-header';
+import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI'
-  }
+    navigationBarTitleText: 'Taro UI',
+  };
 
-  constructor () {
-    super(...arguments)
+  constructor() {
+    super(...arguments);
     this.state = {
       value1: '',
       value2: '',
       value3: '',
-      value4: ''
-    }
+      value4: '',
+    };
   }
 
-  handleChange (stateName, e) {
+  handleChange(stateName, e) {
     this.setState({
-      [stateName]: e.target.value
-    })
+      [stateName]: e.target.value,
+    });
   }
 
-  render () {
+  render() {
     return (
-      <View className='page'>
+      <View className="page">
         {/* S Header */}
-        <DocsHeader title='Textarea 多行文本框'></DocsHeader>
+        <DocsHeader title="Textarea 多行文本框" />
         {/* E Header */}
 
         {/* S Body */}
-        <View className='doc-body'>
-          <View className='panel'>
-            <View className='panel__title'>基础</View>
-            <View className='panel__content'>
-              <View className='example-item'>
+        <View className="doc-body">
+          <View className="panel">
+            <View className="panel__title">基础</View>
+            <View className="panel__content">
+              <View className="example-item">
                 <AtTextarea
                   value={this.state.value1}
                   onChange={this.handleChange.bind(this, 'value1')}
-                  maxlength='200'
-                  placeholder='你的问题是...'
+                  maxlength="200"
+                  placeholder="你的问题是..."
                 />
               </View>
             </View>
           </View>
-          <View className='panel'>
-            <View className='panel__title'>不显示字数</View>
-            <View className='panel__content'>
-              <View className='example-item'>
+          <View className="panel">
+            <View className="panel__title">不显示字数</View>
+            <View className="panel__content">
+              <View className="example-item">
                 <AtTextarea
                   count={false}
                   value={this.state.value2}
                   onChange={this.handleChange.bind(this, 'value2')}
-                  maxlength='200'
-                  placeholder='你的问题是...'
+                  maxlength="200"
+                  placeholder="你的问题是..."
                 />
               </View>
             </View>
           </View>
-          <View className='panel'>
-            <View className='panel__title'>文字超出仍可输入</View>
-            <View className='panel__content'>
-              <View className='example-item'>
+          <View className="panel">
+            <View className="panel__title">文字超出仍可输入</View>
+            <View className="panel__content">
+              <View className="example-item">
                 <AtTextarea
                   textOverflowForbidden={false}
                   value={this.state.value3}
                   onChange={this.handleChange.bind(this, 'value3')}
-                  maxlength='200'
-                  placeholder='你的问题是...'
+                  maxlength="200"
+                  placeholder="你的问题是..."
                 />
               </View>
             </View>
           </View>
-          <View className='panel'>
-            <View className='panel__title'>自定义高度</View>
-            <View className='panel__content'>
-              <View className='example-item'>
+          <View className="panel">
+            <View className="panel__title">自定义高度</View>
+            <View className="panel__content">
+              <View className="example-item">
                 <AtTextarea
-                  height='300'
+                  height="300"
                   value={this.state.value4}
                   onChange={this.handleChange.bind(this, 'value4')}
-                  maxlength='200'
-                  placeholder='你的问题是...'
+                  maxlength="200"
+                  placeholder="你的问题是..."
                 />
               </View>
             </View>
@@ -93,6 +93,6 @@ export default class Index extends Taro.Component {
         </View>
         {/* E Body */}
       </View>
-    )
+    );
   }
 }

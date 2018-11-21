@@ -1,37 +1,55 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Picker } from '@tarojs/components'
-import moment from 'moment'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Picker } from '@tarojs/components';
+import moment from 'moment';
 
-import RMTextField from '../TextField'
-
+import RMTextField from '../TextField';
 
 class DatePicker extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
-    if(!props.value && props.format){
+    if (!props.value && props.format) {
       this.props.value = moment().format(props.format);
     }
   }
-  
+
   componentDidMount() {
-    const { value, onChange } = this.props
-    onChange(value)
-  }
-  
-  handelDateChange = e => {
-    const { onChange } = this.props
-    let value = e.detail.value
+    const { value, onChange } = this.props;
     onChange(value);
   }
-  
+
+  handelDateChange = e => {
+    const { onChange } = this.props;
+    let value = e.detail.value;
+    onChange(value);
+  };
+
   render() {
-    const { name, title, placeholder, disabled, start, end, fields, required, format, value, } = this.props
+    const {
+      name,
+      title,
+      placeholder,
+      disabled,
+      start,
+      end,
+      fields,
+      required,
+      format,
+      value,
+    } = this.props;
 
     return (
-      <View className='container'>
-        <Picker mode='date' onChange={this.handelDateChange} value={value} start={start} end={end} disabled={disabled} fields={fields}>
-          <View className='picker'>
+      <View className="container">
+        <Picker
+          mode="date"
+          onChange={this.handelDateChange}
+          value={value}
+          start={start}
+          end={end}
+          disabled={disabled}
+          fields={fields}
+        >
+          <View className="picker">
             <RMTextField
               name={name}
               title={title}
@@ -40,13 +58,13 @@ class DatePicker extends Component {
               value={value}
               editable={false}
               disabled={disabled}
-              readOnlyStyle='normal'
+              readOnlyStyle="normal"
               required={required}
             />
           </View>
         </Picker>
       </View>
-    )
+    );
   }
 }
 
@@ -58,10 +76,10 @@ DatePicker.defaultProps = {
   start: '',
   end: '',
   disabled: false,
-  onChange: ()=>{},
+  onChange: () => {},
   required: false,
   value: '',
-  format:'YYYY-MM-DD',
-}
+  format: 'YYYY-MM-DD',
+};
 
-export default DatePicker
+export default DatePicker;

@@ -1,15 +1,18 @@
-const ora = require('ora')
-const fs = require('fs-extra')
-const path = require('path')
+const ora = require('ora');
+const fs = require('fs-extra');
+const path = require('path');
 
-const spinner = ora('copy h5 website to docs...')
+const spinner = ora('copy h5 website to docs...');
 
-spinner.start()
+spinner.start();
 
-fs.emptyDirSync(path.resolve(__dirname, '../docs/h5'))
+fs.emptyDirSync(path.resolve(__dirname, '../docs/h5'));
 
-fs.copy(path.resolve(__dirname, '../packages/taro-material/dist'), path.resolve(__dirname, '../docs/h5'))
+fs.copy(
+  path.resolve(__dirname, '../packages/taro-material/dist'),
+  path.resolve(__dirname, '../docs/h5'),
+)
   .then(() => {
-    spinner.stop()
+    spinner.stop();
   })
-  .catch(err => console.error(err))
+  .catch(err => console.error(err));

@@ -1,45 +1,47 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Image } from '@tarojs/components';
 
-import RMTypography from '../Typography'
-import RMIcon from '../Icon'
+import RMTypography from '../Typography';
+import RMIcon from '../Icon';
 
-import './NoData.scss'
+import './NoData.scss';
 // import NoDataImg from '../../../images/NoData.png'
 
-
 class NoData extends Component {
+  componentWillUnmount() {}
 
-  componentWillUnmount() { }
+  componentDidShow() {}
 
-  componentDidShow() { }
-
-  componentDidHide() { }
+  componentDidHide() {}
 
   render() {
-    const { title, background, color } = this.props
+    const { title, background, color } = this.props;
 
-    let style = {}
+    let style = {};
 
-    if(background) {
+    if (background) {
       style.background = background;
     }
 
-    if(color) {
+    if (color) {
       style.color = color;
     }
 
     return (
-      <View className='root' style={style}>
-        <View className='content'>
-          <View className='img'>
+      <View className="root" style={style}>
+        <View className="content">
+          <View className="img">
             {/*<Image className='img' mode='aspectFit' src={NoDataImg}/>*/}
-            <RMIcon fontSize='inherit' color='inherit'>mood_bad</RMIcon>
+            <RMIcon fontSize="inherit" color="inherit">
+              mood_bad
+            </RMIcon>
           </View>
-          <RMTypography color={color} fontSize={12}>{title}</RMTypography>
+          <RMTypography color={color} fontSize={12}>
+            {title}
+          </RMTypography>
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -47,6 +49,6 @@ NoData.defaultProps = {
   title: '暂时没有数据',
   background: '',
   color: '',
-}
+};
 
-export default NoData
+export default NoData;

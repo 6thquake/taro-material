@@ -1,36 +1,33 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMSwitch,
-} from '../../taro-material'
+import { RMSwitch } from '../../taro-material';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
-
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 class Index extends Component {
   config = {
     navigationBarTitleText: 'Switch',
-  }
+  };
 
-  componentWillMount () { }
+  componentWillMount() {}
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
-  
+  componentDidHide() {}
+
   handleChange = (checked, value, e) => {
-    console.log(`${value}: ${checked}, ${e.detail.value}`)
-  }
+    console.log(`${value}: ${checked}, ${e.detail.value}`);
+  };
 
-  render () {
+  render() {
     const { items } = this.state;
     return (
-      <View className='root'>
-        <View className='body'>
+      <View className="root">
+        <View className="body">
           <RMSwitch
             checked={this.state.checkedA}
             onChange={this.handleChange.bind(this)}
@@ -45,13 +42,13 @@ class Index extends Component {
           <RMSwitch value="checkedC" />
           <RMSwitch disabled value="checkedD" />
           <RMSwitch disabled checked value="checkedE" />
-          <RMSwitch value="checkedF" color="secondary" title={'开关'} required={true}/>
-          <RMSwitch value="checkedF" color="warning" title={'开关'} helperText={'请选择'}/>
+          <RMSwitch value="checkedF" color="secondary" title={'开关'} required={true} />
+          <RMSwitch value="checkedF" color="warning" title={'开关'} helperText={'请选择'} />
         </View>
-        <View className='spacer'></View>
-      </View> 
-    )
+        <View className="spacer" />
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;

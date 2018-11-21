@@ -1,100 +1,90 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Input, Label, Textarea } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Input, Label, Textarea } from '@tarojs/components';
 
-import AtTextarea from '../components/textarea'
+import AtTextarea from '../components/textarea';
 
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import RMIcon from '../Icon'
-import RMTypography from '../Typography'
+import RMIcon from '../Icon';
+import RMTypography from '../Typography';
 
-import theme from '../styles/theme'
+import theme from '../styles/theme';
 
-import './TextField.scss'
+import './TextField.scss';
 
-
-const defaultFunc = () => { }
+const defaultFunc = () => {};
 
 class TextField extends Component {
-
-  onInput (e) {
+  onInput(e) {
     const { multiline, count, maxlength } = this.props;
-    if(multiline && count) {
+    if (multiline && count) {
       this.setState({
         _count: `${(e.target.value || '').length} / ${maxlength}`,
-      })
+      });
     }
-    this.props.onChange(e.target.value, ...arguments)
+    this.props.onChange(e.target.value, ...arguments);
   }
 
-  onLinechange (e) {
-    this.props.onLinechange(e.target.lineCount, ...arguments)
+  onLinechange(e) {
+    this.props.onLinechange(e.target.lineCount, ...arguments);
   }
 
-  onFocus (e) {
+  onFocus(e) {
     this.setState({
       focus: true,
-    })
-    this.props.onFocus(e.target.value, ...arguments)
+    });
+    this.props.onFocus(e.target.value, ...arguments);
   }
 
-  onBlur (e) {
+  onBlur(e) {
     this.setState({
       focus: false,
-    })
-    this.props.onBlur(e.target.value, ...arguments)
+    });
+    this.props.onBlur(e.target.value, ...arguments);
   }
 
-  onConfirm (e) {
-    this.props.onConfirm(e.target.value, ...arguments)
+  onConfirm(e) {
+    this.props.onConfirm(e.target.value, ...arguments);
   }
 
-  onClick (e) {
-    !this.props.editable && this.props.onClick(e, ...arguments)
+  onClick(e) {
+    !this.props.editable && this.props.onClick(e, ...arguments);
   }
 
-  clearValue () {
-    this.props.onChange('', ...arguments)
+  clearValue() {
+    this.props.onChange('', ...arguments);
   }
 
-  onErrorClick () {
-    this.props.onErrorClick(...arguments)
+  onErrorClick() {
+    this.props.onErrorClick(...arguments);
   }
 
-  componentWillMount(){ 
-    const {
-      disabled,
-      editable,
-      readOnlyStyle,
-      multiline, 
-      count,
-      value,
-      maxlength
-    } = this.props
+  componentWillMount() {
+    const { disabled, editable, readOnlyStyle, multiline, count, value, maxlength } = this.props;
 
-    if(multiline && count) {
+    if (multiline && count) {
       this.setState({
         _count: `${(value || '').length} / ${maxlength}`,
-      })
+      });
     }
 
     if (!disabled && !editable) {
       this.setState({
-        readOnly: (readOnlyStyle === 'normal')
-      })
+        readOnly: readOnlyStyle === 'normal',
+      });
     }
   }
 
-  componentWillReceiveProps (nextProps) { }
-  
-  componentDidUpdate(nextProps, nextState){ }
+  componentWillReceiveProps(nextProps) {}
 
-  componentDidMount() { }
-  
-  componentWillUnmount () { }
+  componentDidUpdate(nextProps, nextState) {}
 
-  render () {
+  componentDidMount() {}
+
+  componentWillUnmount() {}
+
+  render() {
     const {
       className,
       customStyle,
@@ -126,32 +116,24 @@ class TextField extends Component {
       count,
       autoHeight,
       fixed,
-    } = this.props
-    let {
-      maxlength,
-      type,
-      disabled,
-    } = this.props
-    const { 
-      readOnly,
-      focus,
-      _count
-    } = this.state
-    
+    } = this.props;
+    let { maxlength, type, disabled } = this.props;
+    const { readOnly, focus, _count } = this.state;
+
     if (type === 'phone') {
-      maxlength = 11
-      type = 'number'
+      maxlength = 11;
+      type = 'number';
     }
 
     if (!disabled && !editable) {
-      disabled = true
+      disabled = true;
     }
 
     let _title = title || name;
-    
+
     let textareaStyle = {
       borderRadius: '0',
-    }
+    };
     if (error) {
       textareaStyle.borderWidth = '2px';
       textareaStyle.borderColor = theme.palette.error.main;
@@ -165,18 +147,19 @@ class TextField extends Component {
       textareaStyle.borderColor = theme.palette.text.divider;
     } else if (focus) {
       textareaStyle.borderWidth = '2px';
-      textareaStyle.borderColor = theme.palette.primary.main
+      textareaStyle.borderColor = theme.palette.primary.main;
     }
 
     return (
-      <View className='at-input__root'>
+      <View className="at-input__root">
         <View
-          className={
-            classNames({
+          className={classNames(
+            {
               'at-input': true,
-              'at-input--without-border': !border
-            }, className)
-          }
+              'at-input--without-border': !border,
+            },
+            className,
+          )}
           style={customStyle}
         >
           <View
@@ -189,30 +172,35 @@ class TextField extends Component {
             })}
             onClick={this.onClick.bind(this)}
           >
-            {
-              _title && 
-              <Label className='at-input__title' for={name}>
-                <RMTypography className='subheading' color='inherit' block={true}>{_title}</RMTypography>
-                <View className='at-input__required'>
-                  <RMTypography className='subheading' color='inherit'>
+            {_title && (
+              <Label className="at-input__title" for={name}>
+                <RMTypography className="subheading" color="inherit" block={true}>
+                  {_title}
+                </RMTypography>
+                <View className="at-input__required">
+                  <RMTypography className="subheading" color="inherit">
                     {required ? '*' : ''}
                   </RMTypography>
                 </View>
               </Label>
-            }
-            <View className={classNames({
-              'at-input__box': true,
-              multiline: multiline,
-            })}>
-              {
-                !multiline && startAdornment &&
-                <View className='at-input__start-adornment'>
-                  <RMTypography className='body2' color='inherit'>{startAdornment}</RMTypography>
-                </View>
-              }
-              {
-                !multiline && 
-                <Input className='at-input__input'
+            )}
+            <View
+              className={classNames({
+                'at-input__box': true,
+                multiline: multiline,
+              })}
+            >
+              {!multiline &&
+                startAdornment && (
+                  <View className="at-input__start-adornment">
+                    <RMTypography className="body2" color="inherit">
+                      {startAdornment}
+                    </RMTypography>
+                  </View>
+                )}
+              {!multiline && (
+                <Input
+                  className="at-input__input"
                   id={name}
                   name={name}
                   type={type}
@@ -234,11 +222,11 @@ class TextField extends Component {
                   onFocus={this.onFocus.bind(this)}
                   onBlur={this.onBlur.bind(this)}
                   onConfirm={this.onConfirm.bind(this)}
-              />
-              }
-              {
-                multiline && 
-                <Textarea className='at-input__textarea'
+                />
+              )}
+              {multiline && (
+                <Textarea
+                  className="at-input__textarea"
                   id={name}
                   name={name}
                   placeholder={placeholder}
@@ -261,56 +249,67 @@ class TextField extends Component {
                   autoHeight={true}
                   fixed={fixed}
                 />
-              }
-              {
-                !multiline && clear && value &&
-                <View className='at-input__icon' onTouchStart={this.clearValue.bind(this)} >
-                  <RMIcon color='default' fontSize='default' >cancel</RMIcon>
-                </View>
-              }
-              {
-                !multiline && error &&
-                <View className='at-input__icon' onTouchStart={this.onErrorClick.bind(this)} >
-                  <RMIcon color='error' fontSize='default' >error</RMIcon>
-                </View>
-              }
-              { 
-                !multiline && endAdornment &&
-                <View className='at-input__end-adornment'>
-                  <RMTypography className='body2' color='inherit'>{endAdornment}</RMTypography>
-                </View>
-              }
-              { !multiline && <View className='at-input__children'>{this.props.children}</View> }
+              )}
+              {!multiline &&
+                clear &&
+                value && (
+                  <View className="at-input__icon" onTouchStart={this.clearValue.bind(this)}>
+                    <RMIcon color="default" fontSize="default">
+                      cancel
+                    </RMIcon>
+                  </View>
+                )}
+              {!multiline &&
+                error && (
+                  <View className="at-input__icon" onTouchStart={this.onErrorClick.bind(this)}>
+                    <RMIcon color="error" fontSize="default">
+                      error
+                    </RMIcon>
+                  </View>
+                )}
+              {!multiline &&
+                endAdornment && (
+                  <View className="at-input__end-adornment">
+                    <RMTypography className="body2" color="inherit">
+                      {endAdornment}
+                    </RMTypography>
+                  </View>
+                )}
+              {!multiline && <View className="at-input__children">{this.props.children}</View>}
             </View>
-            <View className={
-                classNames({
-                  'at-input__desc': true,
-                  [helperTextClass]: !!helperTextClass,
-                })
-              }
+            <View
+              className={classNames({
+                'at-input__desc': true,
+                [helperTextClass]: !!helperTextClass,
+              })}
               style={helperTextStyle}
             >
-              { 
-                helperText && 
-                <View className='at-input__desc_icon'>
-                  <RMIcon color='inherit' fontSize='default' block={true}>warning</RMIcon>
+              {helperText && (
+                <View className="at-input__desc_icon">
+                  <RMIcon color="inherit" fontSize="default" block={true}>
+                    warning
+                  </RMIcon>
                 </View>
-              }
-              <RMTypography color='inherit' className='caption' block={true}>{helperText || ''}</RMTypography>
+              )}
+              <RMTypography color="inherit" className="caption" block={true}>
+                {helperText || ''}
+              </RMTypography>
 
-              { multiline && count &&
-                <View className='auto'>
-                  <RMTypography color='inherit' className='caption' block={true}>{_count}</RMTypography> 
-                </View>
-              }
+              {multiline &&
+                count && (
+                  <View className="auto">
+                    <RMTypography color="inherit" className="caption" block={true}>
+                      {_count}
+                    </RMTypography>
+                  </View>
+                )}
             </View>
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
-
 
 TextField.defaultProps = {
   className: '',
@@ -353,21 +352,12 @@ TextField.defaultProps = {
   autoHeight: true,
   count: true,
   fixed: false,
-}
+};
 
 TextField.propTypes = {
-  className: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array
-  ]),
-  customStyle: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object
-  ]),
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  customStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   placeholder: PropTypes.string,
   placeholderStyle: PropTypes.string,
@@ -396,8 +386,8 @@ TextField.propTypes = {
   onClick: PropTypes.func,
   onLinechange: PropTypes.func,
   readOnlyStyle: PropTypes.string,
-  startAdornment:PropTypes.string,
-  endAdornment:PropTypes.string,
+  startAdornment: PropTypes.string,
+  endAdornment: PropTypes.string,
   required: PropTypes.bool,
   helperText: PropTypes.string,
   helperTextStyle: PropTypes.object,
@@ -406,6 +396,6 @@ TextField.propTypes = {
   autoHeight: PropTypes.bool,
   count: PropTypes.bool,
   fixed: PropTypes.bool,
-}
+};
 
 export default TextField;

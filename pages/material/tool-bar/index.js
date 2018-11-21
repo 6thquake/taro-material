@@ -1,14 +1,12 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMToolBar,
-} from '../../taro-material'
+import { RMToolBar } from '../../taro-material';
 
-import RMPage from '../../taro-material/Page'
+import RMPage from '../../taro-material/Page';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 const filterConfig = [
   {
@@ -17,29 +15,29 @@ const filterConfig = [
     data: [
       {
         label: 'ASD',
-        value: 'S12'
+        value: 'S12',
       },
       {
         label: 'ASD1',
-        value: 'S121'
+        value: 'S121',
       },
       {
         label: 'ASD',
-        value: 'S123'
+        value: 'S123',
       },
       {
         label: 'ASD1',
-        value: 'S1214'
+        value: 'S1214',
       },
       {
         label: 'ASD',
-        value: 'S125'
+        value: 'S125',
       },
       {
         label: 'ASD1',
-        value: 'S1216'
-      }
-    ]
+        value: 'S1216',
+      },
+    ],
   },
   {
     label: '特色2',
@@ -47,29 +45,29 @@ const filterConfig = [
     data: [
       {
         label: 'ASD',
-        value: 'S12'
+        value: 'S12',
       },
       {
         label: 'ASD1',
-        value: 'S121'
+        value: 'S121',
       },
       {
         label: 'ASD',
-        value: 'S123'
+        value: 'S123',
       },
       {
         label: 'ASD1',
-        value: 'S1214'
+        value: 'S1214',
       },
       {
         label: 'ASD',
-        value: 'S125'
+        value: 'S125',
       },
       {
         label: 'ASD1',
-        value: 'S1216'
-      }
-    ]
+        value: 'S1216',
+      },
+    ],
   },
   {
     label: '特色3',
@@ -77,31 +75,31 @@ const filterConfig = [
     data: [
       {
         label: 'ASD',
-        value: 'S12'
+        value: 'S12',
       },
       {
         label: 'ASD1',
-        value: 'S121'
+        value: 'S121',
       },
       {
         label: 'ASD',
-        value: 'S123'
+        value: 'S123',
       },
       {
         label: 'ASD1',
-        value: 'S1214'
+        value: 'S1214',
       },
       {
         label: 'ASD',
-        value: 'S125'
+        value: 'S125',
       },
       {
         label: 'ASD1',
-        value: 'S1216'
-      }
-    ]
-  }
-]
+        value: 'S1216',
+      },
+    ],
+  },
+];
 const sorts = [
   {
     label: '评分最高',
@@ -110,11 +108,11 @@ const sorts = [
   },
   {
     label: '评分最高2',
-    value: 'score2'
+    value: 'score2',
   },
   {
     label: '评分最高3',
-    value: 'score3'
+    value: 'score3',
   },
   {
     label: '评分最高4',
@@ -126,60 +124,59 @@ const sorts = [
     label: '评分最高5',
     value: 'score5',
     priority: 0,
-  }
-]
+  },
+];
 
 class Index extends RMPage {
   config = {
     navigationBarTitleText: '测试',
-  }
+  };
 
   state = {
     value: 'Hi',
     showDrawer: false,
-    filters: JSON.parse(JSON.stringify(filterConfig))
-  }
+    filters: JSON.parse(JSON.stringify(filterConfig)),
+  };
 
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
-      id: `watermark-${new Date().getTime()}-${Math.floor(Math.random()*100)}`,
-    })
+      id: `watermark-${new Date().getTime()}-${Math.floor(Math.random() * 100)}`,
+    });
   }
 
-  componentDidMount () { 
-    let data = filterConfig
+  componentDidMount() {
+    let data = filterConfig;
     data[0].data.push({
       label: 'hello',
-      value: 'd1222'
-    })
-    setTimeout(()=>{
+      value: 'd1222',
+    });
+    setTimeout(() => {
       this.setState({
-        filters: data
-      })
-    }, 3000)
+        filters: data,
+      });
+    }, 3000);
   }
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide () { }
+  componentDidHide() {}
 
-  handleFilterChange(e){
-    console.log('filters',e)
+  handleFilterChange(e) {
+    console.log('filters', e);
     this.setState({
-      value: 'hello'
-    })
+      value: 'hello',
+    });
   }
-  
-  render () {
-    let {filters, value} = this.state
+
+  render() {
+    let { filters, value } = this.state;
     return (
-      <View className='root'>
+      <View className="root">
         <RMToolBar onChange={this.handleFilterChange} sorts={sorts} filters={filters} />
         <View>{value}</View>
-      </View> 
-      
-    )
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;

@@ -1,31 +1,31 @@
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import AtComponent from '../common/component'
+import AtComponent from '../common/component';
 
-import './index.scss'
+import './index.scss';
 
 export default class AtFlex extends AtComponent {
-  render () {
-    const rootClass = ['at-row']
+  render() {
+    const rootClass = ['at-row'];
 
-    Object.keys(this.props).forEach((key)=>{
+    Object.keys(this.props).forEach(key => {
       let value = this.props[key];
       if (key === 'children') {
-        return
+        return;
       }
       if (key === 'alignContent') {
-        return rootClass.push(`at-row--${value}`)
+        return rootClass.push(`at-row--${value}`);
       }
       if (key === 'alignContent') {
-        return rootClass.push(`at-row__align-content--${value}`)
+        return rootClass.push(`at-row__align-content--${value}`);
       }
-      rootClass.push(`at-row__${key}--${value}`)
-    })
+      rootClass.push(`at-row__${key}--${value}`);
+    });
 
-    return <View className={rootClass}>{this.props.children}</View>
+    return <View className={rootClass}>{this.props.children}</View>;
   }
 }
 
@@ -34,12 +34,5 @@ AtFlex.propTypes = {
   align: PropTypes.oneOf(['start', 'end', 'center', 'stretch', 'baseline']),
   justify: PropTypes.oneOf(['start', 'end', 'center', 'between', 'around']),
   dirction: PropTypes.oneOf(['row', 'column', 'row-reverse', 'column-reverse']),
-  alignContent: PropTypes.oneOf([
-    'start',
-    'end',
-    'center',
-    'stretch',
-    'between',
-    'around'
-  ])
-}
+  alignContent: PropTypes.oneOf(['start', 'end', 'center', 'stretch', 'between', 'around']),
+};

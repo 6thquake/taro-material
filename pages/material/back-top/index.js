@@ -1,40 +1,35 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMBackTop,
-} from '../../taro-material'
+import { RMBackTop } from '../../taro-material';
 
-import RMPage from '../../taro-material/Page'
+import RMPage from '../../taro-material/Page';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
-
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 class Index extends RMPage {
   config = {
     navigationBarTitleText: 'Back Top',
-  }
+  };
 
-  componentWillMount () { }
+  componentWillMount() {}
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide () { }
-  
-  render () {
+  componentDidHide() {}
+
+  render() {
     return (
-      <View className='root'>
-        <View class='body'>
-          
-        </View>
-        <View className='spacer'></View>
-        <RMBackTop onAddPageScroll={this.addPageScrollListener.bind(this)}/>
-      </View> 
-    )
+      <View className="root">
+        <View class="body" />
+        <View className="spacer" />
+        <RMBackTop onAddPageScroll={this.addPageScrollListener.bind(this)} />
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;

@@ -1,12 +1,12 @@
-import Taro, { Component } from '@tarojs/taro'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { View } from '@tarojs/components';
 
-import RMButton from '../Button'
-import RMIcon from '../Icon'
-import theme from '../styles/theme'
-import './BackTop.scss'
+import RMButton from '../Button';
+import RMIcon from '../Icon';
+import theme from '../styles/theme';
+import './BackTop.scss';
 
 class BackTop extends Component {
   state = {
@@ -14,55 +14,55 @@ class BackTop extends Component {
     isIPhoneX: false,
   };
 
-  componentWillMount () {}
+  componentWillMount() {}
 
-  componentDidMount () {
-    const { onAddPageScroll } = this.props
+  componentDidMount() {
+    const { onAddPageScroll } = this.props;
 
     if (onAddPageScroll) {
-      onAddPageScroll(this.handlePageScroll.bind(this))
+      onAddPageScroll(this.handlePageScroll.bind(this));
     }
 
-    const curEnv = Taro.getEnv()
+    const curEnv = Taro.getEnv();
 
     if (curEnv === Taro.ENV_TYPE.WEAPP && Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0) {
-      this.setState({ isIPhoneX: true })
+      this.setState({ isIPhoneX: true });
     }
   }
 
-  componentWillUnmount () {}
+  componentWillUnmount() {}
 
-  componentDidShow () {}
+  componentDidShow() {}
 
-  componentDidHide () {}
+  componentDidHide() {}
 
-  handlePageScroll (params) {
-    const { visibilityHeight } = this.props
+  handlePageScroll(params) {
+    const { visibilityHeight } = this.props;
     this.setState({
       visibility: params.scrollTop >= visibilityHeight,
-    })
+    });
   }
 
-  handleScrollTop () {
-    const { onClick } = this.props
+  handleScrollTop() {
+    const { onClick } = this.props;
     Taro.pageScrollTo({
       scrollTop: 0,
       duration: 500,
-    })
+    });
     if (onClick) {
-      onClick()
+      onClick();
     }
   }
 
-  render () {
-    const { container, size, customStyle, bottom, right } = this.props
-    const { visibility, isIPhoneX } = this.state
-    const bottomPx = `${isIPhoneX ? bottom + 34 : bottom}px`
+  render() {
+    const { container, size, customStyle, bottom, right } = this.props;
+    const { visibility, isIPhoneX } = this.state;
+    const bottomPx = `${isIPhoneX ? bottom + 34 : bottom}px`;
     const style = {
       ...customStyle,
       bottom: bottomPx,
       right: `${right}px`,
-    }
+    };
     return (
       <View
         className={classNames({
@@ -73,16 +73,16 @@ class BackTop extends Component {
       >
         <RMButton
           onClick={this.handleScrollTop.bind(this)}
-          color='primary'
-          variant='fab'
+          color="primary"
+          variant="fab"
           size={size}
         >
-          <RMIcon fontSize='inherit' color='inherit'>
+          <RMIcon fontSize="inherit" color="inherit">
             arrow_upward
           </RMIcon>
         </RMButton>
       </View>
-    )
+    );
   }
 }
 
@@ -95,7 +95,7 @@ BackTop.defaultProps = {
   customStyle: {},
   bottom: theme.spacing.unit * 2,
   right: theme.spacing.unit * 2,
-}
+};
 
 BackTop.propTypes = {
   /**
@@ -122,6 +122,6 @@ BackTop.propTypes = {
   bottom: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
   right: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-}
+};
 
-export default BackTop
+export default BackTop;

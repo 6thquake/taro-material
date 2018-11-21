@@ -1,5 +1,5 @@
 export default {
-  'main': [
+  main: [
     'analytics',
     'bell',
     'blocked',
@@ -58,9 +58,9 @@ export default {
     'user',
     'loading',
     'loading-2',
-    'loading-3'
+    'loading-3',
   ],
-  'file': [
+  file: [
     'file-audio',
     'file-code',
     'file-generic',
@@ -68,9 +68,9 @@ export default {
     'file-new',
     'file-png',
     'file-svg',
-    'file-video'
+    'file-video',
   ],
-  'text': [
+  text: [
     'align-center',
     'align-left',
     'align-right',
@@ -78,9 +78,9 @@ export default {
     'font-color',
     'text-italic',
     'text-strikethrough',
-    'text-underline'
+    'text-underline',
   ],
-  'arrow': [
+  arrow: [
     'arrow-up',
     'arrow-down',
     'arrow-left',
@@ -88,9 +88,9 @@ export default {
     'chevron-up',
     'chevron-down',
     'chevron-left',
-    'chevron-right'
+    'chevron-right',
   ],
-  'media': [
+  media: [
     'play',
     'pause',
     'stop',
@@ -103,14 +103,8 @@ export default {
     'sound',
     'volume-off',
     'volume-minus',
-    'volume-plus'
+    'volume-plus',
   ],
-  'photo': [
-    'camera',
-    'image',
-    'video'
-  ],
-  'logo': [
-    'sketch'
-  ]
-}
+  photo: ['camera', 'image', 'video'],
+  logo: ['sketch'],
+};

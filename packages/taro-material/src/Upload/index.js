@@ -1,18 +1,18 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Label, } from '@tarojs/components'
-import classNames from 'classnames'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Image, Label } from '@tarojs/components';
+import classNames from 'classnames';
 
-import RMIcon from '../Icon'
-import RMTypography from '../Typography'
+import RMIcon from '../Icon';
+import RMTypography from '../Typography';
 
 import theme from '../styles/theme';
 
-import './Upload.scss'
+import './Upload.scss';
 
 function uploadFile(url, item, params, resolve, reject) {
-  if(Upload.queue > 10){
-    return setTimeout(()=>{
-      uploadFile(url, item, params, resolve, reject)
+  if (Upload.queue > 10) {
+    return setTimeout(() => {
+      uploadFile(url, item, params, resolve, reject);
     }, 100);
   }
 
@@ -30,7 +30,7 @@ function uploadFile(url, item, params, resolve, reject) {
       reject(res);
     },
     complete(res) {
-      if (res.statusCode >=200 && res.statusCode <300 || res.statusCode === 304) {
+      if ((res.statusCode >= 200 && res.statusCode < 300) || res.statusCode === 304) {
         //去掉微信返回的url多出的引号
         let data = res.data.slice(1, -1);
         resolve(data);
@@ -44,7 +44,6 @@ function uploadFile(url, item, params, resolve, reject) {
 }
 
 class Upload extends Component {
-
   static queue = 0;
 
   constructor(props) {
@@ -55,9 +54,9 @@ class Upload extends Component {
     this.files = [];
   }
 
-  handleDelete = (item,e) => {
-    const {disabled} = this.props;
-    if(disabled){
+  handleDelete = (item, e) => {
+    const { disabled } = this.props;
+    if (disabled) {
       return;
     }
 
@@ -82,20 +81,20 @@ class Upload extends Component {
     }
 
     e && e.stopPropagation();
-  }
+  };
 
   /*通过点击Input标签添加图片*/
   chooseImage = e => {
-    const {disabled} = this.props;
-    
-    if(disabled){
+    const { disabled } = this.props;
+
+    if (disabled) {
       return;
     }
 
-    let {maxLength, multiple} = this.props;
-    let {length} = this.files;
-    if(multiple) {
-      if(!maxLength){
+    let { maxLength, multiple } = this.props;
+    let { length } = this.files;
+    if (multiple) {
+      if (!maxLength) {
         maxLength = 2;
       }
     } else {
@@ -105,7 +104,7 @@ class Upload extends Component {
     let count = maxLength - length;
     Taro.chooseImage({
       count,
-      success: (res)=> {
+      success: res => {
         const tempFilePaths = res.tempFilePaths;
 
         for (let i = 0; i < tempFilePaths.length; i++) {
@@ -113,18 +112,18 @@ class Upload extends Component {
           this.pathHandler(file);
         }
       },
-      fail(){},
-    })
-  }
+      fail() {},
+    });
+  };
 
   preview = item => {
     Taro.previewImage({
       current: item, // 当前显示图片的http链接
       urls: [item], // 需要预览的图片http链接列表
-      success(){},
-      fail(){},
-    })
-  }
+      success() {},
+      fail() {},
+    });
+  };
 
   pathHandler(file) {
     if (!file) {
@@ -138,8 +137,8 @@ class Upload extends Component {
     }
 
     let { maxLength, multiple } = this.props;
-    if(multiple) {
-      if(!maxLength){
+    if (multiple) {
+      if (!maxLength) {
         maxLength = 2;
       }
     } else {
@@ -157,44 +156,45 @@ class Upload extends Component {
     }
 
     let { length } = _files;
-    
-    if(length >= maxLength) {
+
+    if (length >= maxLength) {
       Taro.showModal({
         title: '提示',
         content: `最多只允许传递${maxLength}个文件!`,
         showCancel: false,
         confirmText: 'OK',
         confirmColor: theme.palette.primary.main,
-        success: function (res) {
-        }
-      })
+        success: function(res) {},
+      });
       return;
     }
 
     this.setState(preState => ({
-        files: multiple ? [...preState.files, file] : [file],
-      }));
+      files: multiple ? [...preState.files, file] : [file],
+    }));
     this.files = multiple ? [...this.files, file] : [file];
   }
 
-  upload = (url,params) => {
-    const {disabled} = this.props;
+  upload = (url, params) => {
+    const { disabled } = this.props;
     const { files } = this.state;
 
-    if(disabled || !url || !files || files.length<=0){
+    if (disabled || !url || !files || files.length <= 0) {
       return Promise.resolve([]);
     }
 
-    return Promise.all(files.map((item,index)=>{
-      return new Promise((resolve, reject) => {
-        Upload.queue++;
-        uploadFile(url, item, params, resolve, reject)
-      })
-    }));
-  }
+    return Promise.all(
+      files.map((item, index) => {
+        return new Promise((resolve, reject) => {
+          Upload.queue++;
+          uploadFile(url, item, params, resolve, reject);
+        });
+      }),
+    );
+  };
 
   componentDidMount() {
-    const { files, onComponentDidMount, } = this.props;
+    const { files, onComponentDidMount } = this.props;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.pathHandler(file);
@@ -204,7 +204,7 @@ class Upload extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { onChange, disabled } = this.props;
-    
+
     if (!disabled && prevState.files != this.state.files) {
       onChange(this.state.files);
     }
@@ -217,16 +217,25 @@ class Upload extends Component {
       this.handleDelete(file);
     }
     Upload.queue = 0;
-  }
+  };
 
   render() {
-    const {  multiple, disabled, label, placeholder, required, helperText, helperTextStyle, helperTextClass, } = this.props;
+    const {
+      multiple,
+      disabled,
+      label,
+      placeholder,
+      required,
+      helperText,
+      helperTextStyle,
+      helperTextClass,
+    } = this.props;
     const { files } = this.state;
     const { length } = files;
     let { maxLength } = this.props;
 
-    if(multiple) {
-      if(!maxLength){
+    if (multiple) {
+      if (!maxLength) {
         maxLength = 2;
       }
     } else {
@@ -234,64 +243,65 @@ class Upload extends Component {
     }
 
     return (
-      <View className='container'>
-        {
-          label && 
-          <Label className='title'>
-            <RMTypography className='subheading' color='inherit' block={true}>{label}</RMTypography>
-            <View className='required'>
-              <RMTypography className='subheading' color='inherit'>
+      <View className="container">
+        {label && (
+          <Label className="title">
+            <RMTypography className="subheading" color="inherit" block={true}>
+              {label}
+            </RMTypography>
+            <View className="required">
+              <RMTypography className="subheading" color="inherit">
                 {required ? '*' : ''}
               </RMTypography>
             </View>
           </Label>
-        }
-        <View className='array' disabled={disabled}>
+        )}
+        <View className="array" disabled={disabled}>
           {files.map(item => {
             let url = `${item}`;
             return (
-                <View
-                  key={url}
-                  className='chip'
-                  onClick={this.preview.bind(this, url)}
-                >
-                  <View
-                    className='media'
-                    style={{backgroundImage:`url(${url})`}}
-                  > 
-                    <Image className='media' src={url} />
-                    <View className='close' onClick={this.handleDelete.bind(this, url)}>
-                      <RMIcon fontSize={16} color='default' block={true}>close</RMIcon>
-                    </View>
+              <View key={url} className="chip" onClick={this.preview.bind(this, url)}>
+                <View className="media" style={{ backgroundImage: `url(${url})` }}>
+                  <Image className="media" src={url} />
+                  <View className="close" onClick={this.handleDelete.bind(this, url)}>
+                    <RMIcon fontSize={16} color="default" block={true}>
+                      close
+                    </RMIcon>
                   </View>
                 </View>
+              </View>
             );
           })}
-          {(multiple || length <= 0) && (length < maxLength) && (
-            <View className='clickToUpload' onClick={this.chooseImage}>
-              <View className='add'>
-                <RMIcon fontSize={28} color='default' block={true}>add</RMIcon>
+          {(multiple || length <= 0) &&
+            length < maxLength && (
+              <View className="clickToUpload" onClick={this.chooseImage}>
+                <View className="add">
+                  <RMIcon fontSize={28} color="default" block={true}>
+                    add
+                  </RMIcon>
+                </View>
+                <View className="uploadText">{placeholder}</View>
               </View>
-              <View className='uploadText'>{placeholder}</View>
+            )}
+        </View>
+        <View
+          className={classNames({
+            'helper-text': true,
+            [helperTextClass]: !!helperTextClass,
+          })}
+        >
+          {helperText && (
+            <View className="helper-text-icon">
+              <RMIcon color="inherit" fontSize="default" block={true}>
+                warning
+              </RMIcon>
             </View>
           )}
+          <RMTypography color="inherit" className="caption" block={true}>
+            {helperText || ''}
+          </RMTypography>
         </View>
-        <View className={
-            classNames({
-              'helper-text': true,
-              [helperTextClass]: !!helperTextClass,
-            })
-          }
-        >
-          { 
-            helperText && 
-            <View className='helper-text-icon'>
-              <RMIcon color='inherit' fontSize='default' block={true}>warning</RMIcon>
-            </View>
-          }
-          <RMTypography color='inherit' className='caption' block={true}>{helperText || ''}</RMTypography>
-        </View>
-      </View> 
+      </View>
     );
   }
 }
@@ -311,7 +321,7 @@ Upload.defaultProps = {
   helperText: '',
   helperTextStyle: '',
   helperTextClass: '',
-  onComponentDidMount: ()=>{},
+  onComponentDidMount: () => {},
 };
 
 export default Upload;

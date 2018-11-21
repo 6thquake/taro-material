@@ -1,48 +1,52 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMCarousel,
-} from '../../taro-material'
+import { RMCarousel } from '../../taro-material';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
-
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 class Index extends Component {
   config = {
     navigationBarTitleText: 'Carousel',
-  }
+  };
 
-  componentWillMount () { 
+  componentWillMount() {
     this.setState({
-      items: [{
-        src: 'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/contemplative-reptile.jpg',
-      }, {
-        src: 'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/live-from-space.jpg',
-      }, {
-        src: 'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/paella.jpg',
-      }]
-    })
+      items: [
+        {
+          src:
+            'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/contemplative-reptile.jpg',
+        },
+        {
+          src:
+            'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/live-from-space.jpg',
+        },
+        {
+          src:
+            'https://raw.githubusercontent.com/6thquake/react-material/develop/static/images/cards/paella.jpg',
+        },
+      ],
+    });
   }
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentDidShow () { }
+  componentDidShow() {}
 
-  componentDidHide () { }
-  
-  render () {
+  componentDidHide() {}
+
+  render() {
     const { items } = this.state;
     return (
-      <View className='root'>
-        <View className='body'>
-          <RMCarousel customStyle={{height: '100vh'}} items={items}></RMCarousel>
+      <View className="root">
+        <View className="body">
+          <RMCarousel customStyle={{ height: '100vh' }} items={items} />
         </View>
-        <View className='spacer'></View>
-      </View> 
-    )
+        <View className="spacer" />
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;

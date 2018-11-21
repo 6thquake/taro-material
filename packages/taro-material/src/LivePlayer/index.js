@@ -1,95 +1,95 @@
-import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro'
-import PropTypes from 'prop-types'
-import { View, Icon } from '@tarojs/components'
+import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import { View, Icon } from '@tarojs/components';
 
-import RMTypography from '../Typography'
-import RMIcon from '../Icon'
-import fullscreen from './images/fullscreen.png'
-import refresh from './images/loop.png'
-import fullscreenExit from './images/fullscreen_exit.png'
+import RMTypography from '../Typography';
+import RMIcon from '../Icon';
+import fullscreen from './images/fullscreen.png';
+import refresh from './images/loop.png';
+import fullscreenExit from './images/fullscreen_exit.png';
 
-import './LivePlayer.scss'
-import theme from '../styles/theme'
+import './LivePlayer.scss';
+import theme from '../styles/theme';
 
 class RMLivePlayer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       livePlayerId: props.id || `live-player-${Date.now()}`,
-    }
+    };
   }
   livePlayerContext = null;
-  componentDidMount () {
-    const { livePlayerId } = this.state
-    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this)
-    console.log('this.livePlayerContext', this.livePlayerContext)
+  componentDidMount() {
+    const { livePlayerId } = this.state;
+    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this);
+    console.log('this.livePlayerContext', this.livePlayerContext);
   }
 
   requestFullScreen = () => {
-    console.log('requestFullScreen', this.livePlayerContext.requestFullScreen)
+    console.log('requestFullScreen', this.livePlayerContext.requestFullScreen);
     this.livePlayerContext.requestFullScreen({
       direction: -90,
       success: res => {
-        console.log('requestFullScreen ok', res)
+        console.log('requestFullScreen ok', res);
       },
       fail: err => {
-        console.log('requestFullScreen err', err)
+        console.log('requestFullScreen err', err);
       },
       complete: res => {
-        console.log('finish', res)
+        console.log('finish', res);
       },
-    })
+    });
   };
 
   exitFullScreen = () => {
     this.livePlayerContext.exitFullScreen({
       direction: 90,
       success: res => {
-        console.log('exitFullScreen ok', res)
+        console.log('exitFullScreen ok', res);
       },
       fail: err => {
-        console.log('exitFullScreen err', err)
+        console.log('exitFullScreen err', err);
       },
       complete: res => {
-        console.log('finish', res)
+        console.log('finish', res);
       },
-    })
+    });
   };
 
   handleRefresh = () => {
-    console.log('refresh')
+    console.log('refresh');
     this.livePlayerContext.resume({
       success: res => {
-        console.log('resume res', res)
+        console.log('resume res', res);
       },
       fail: err => {
-        console.log('resume fail', err)
+        console.log('resume fail', err);
       },
       complete: res => {
-        console.log('finish', res)
+        console.log('finish', res);
       },
-    })
+    });
   };
 
   handlePlayerClick = () => {
-    console.log('live player')
+    console.log('live player');
   };
 
   handleStateChange = e => {
-    console.log('state', e)
+    console.log('state', e);
   };
 
   handleNetStatus = e => {
     // console.log('status', e)
   };
   handleError = e => {
-    console.log('live player error', e)
+    console.log('live player error', e);
   };
-  render () {
-    const { livePlayerId } = this.state
-    const { src, mode, autoplay, muted, orientation, objectFit, minCache, maxCache } = this.props
+  render() {
+    const { livePlayerId } = this.state;
+    const { src, mode, autoplay, muted, orientation, objectFit, minCache, maxCache } = this.props;
     return (
-      <View className='root'>
+      <View className="root">
         <LivePlayer
           onNetStatus={this.handleNetStatus}
           onStateChange={this.handleStateChange}
@@ -103,25 +103,25 @@ class RMLivePlayer extends Component {
           maxCache={maxCache}
           onClick={this.handlePlayerClick}
           id={livePlayerId}
-          className='player'
+          className="player"
           onError={theme.handleError}
         >
-          <CoverView className='controls'>
-            <CoverView className='actions'>
-              <CoverView className='refresh'>
+          <CoverView className="controls">
+            <CoverView className="actions">
+              <CoverView className="refresh">
                 <CoverImage onClick={this.handleRefresh} src={refresh} />
               </CoverView>
-              <CoverView className='screen'>
+              <CoverView className="screen">
                 <CoverImage onClick={this.requestFullScreen} src={fullscreen} />
               </CoverView>
-              <CoverView className='screen'>
+              <CoverView className="screen">
                 <CoverImage onClick={this.exitFullScreen} src={fullscreenExit} />
               </CoverView>
             </CoverView>
           </CoverView>
         </LivePlayer>
       </View>
-    )
+    );
   }
 }
 
@@ -180,7 +180,7 @@ RMLivePlayer.defaultProps = {
    */
   onNetStatus: () => {},
   customStyle: PropTypes.object,
-}
+};
 
 RMLivePlayer.propTypes = {
   /**
@@ -240,6 +240,6 @@ RMLivePlayer.propTypes = {
    */
   onNetStatus: PropTypes.func,
   customStyle: PropTypes.object,
-}
+};
 
-export default RMLivePlayer
+export default RMLivePlayer;

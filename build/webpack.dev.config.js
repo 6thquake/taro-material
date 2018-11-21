@@ -1,10 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-const conf = require('./conf')
-const { getProjectRoot } = require('./util')
+const conf = require('./conf');
+const { getProjectRoot } = require('./util');
 
-const projectRoot = getProjectRoot()
+const projectRoot = getProjectRoot();
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -12,12 +12,12 @@ module.exports = {
     path: path.resolve(projectRoot, conf.output),
     filename: 'js/[name].js',
     chunkFilename: 'chunk/[name].chunk.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      BASE_NAME: '`/`'
-    })
-  ]
-}
+      BASE_NAME: '`/`',
+    }),
+  ],
+};

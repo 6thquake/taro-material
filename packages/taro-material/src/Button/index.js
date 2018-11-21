@@ -1,17 +1,16 @@
-import Taro, { Component } from '@tarojs/taro'
+import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
-import { View, Button } from '@tarojs/components'
+import classNames from 'classnames';
+import { View, Button } from '@tarojs/components';
 
-import AtButton from '../components/button/index'
-import AtActivityIndicator from '../components/activity-indicator'
+import AtButton from '../components/button/index';
+import AtActivityIndicator from '../components/activity-indicator';
 
 import RMIcon from '../Icon';
 
 import theme from '../styles/theme';
 
-import './Button.scss'
-
+import './Button.scss';
 
 class RMButton extends Component {
   state = {
@@ -19,7 +18,7 @@ class RMButton extends Component {
       status: '',
     },
     second: 3,
-  }
+  };
 
   status = {
     status: '',
@@ -27,54 +26,52 @@ class RMButton extends Component {
     timer: null,
   };
 
-  componentWillMount() { }
+  componentWillMount() {}
 
-  componentDidMount() { }
+  componentDidMount() {}
 
-  componentWillUnmount() { }
+  componentWillUnmount() {}
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide() { }
+  componentDidHide() {}
 
-  onHandler = (e) => {
+  onHandler = e => {
     const { onClick } = this.props;
-    
-    if(!onClick){
+
+    if (!onClick) {
       return void 0;
     }
 
     if (typeof onClick !== 'function') {
       return void 0;
     }
-    
-    if (
-        this.status.status === 'progress' ||
-        this.status.status === 'success'
-      ) {
+
+    if (this.status.status === 'progress' || this.status.status === 'success') {
       return void 0;
     }
 
     this.status.status = 'progress';
 
-    let resolve = null, reject = null;
+    let resolve = null,
+      reject = null;
     e.resultPromise = new Promise((_resolve, _reject) => {
-        resolve = _resolve;
-        reject = _reject;
+      resolve = _resolve;
+      reject = _reject;
     });
 
     try {
       onClick(e);
-    } catch(e) {
+    } catch (e) {
       this.status.status = 'failed';
       this.setState({
         status: {
-          status:'failed',
-        }
+          status: 'failed',
+        },
       });
       reject && reject(e);
       return void 0;
-    } 
+    }
 
     let promise = e.returnValue;
     if (promise instanceof Promise) {
@@ -82,18 +79,18 @@ class RMButton extends Component {
       this.setState({
         status: {
           status: 'progress',
-        }
+        },
       });
       promise
         .then(r => {
           this.status.status = 'success';
           this.setState({
             status: {
-              status:'success',
-            }
+              status: 'success',
+            },
           });
 
-          return this.reset().then(()=>{
+          return this.reset().then(() => {
             resolve && resolve();
           });
         })
@@ -101,8 +98,8 @@ class RMButton extends Component {
           this.status.status = 'failed';
           this.setState({
             status: {
-              status:'failed',
-            }
+              status: 'failed',
+            },
           });
 
           reject && reject(r);
@@ -112,32 +109,35 @@ class RMButton extends Component {
       this.status.status = '';
       resolve && resolve();
     }
-  }
+  };
 
   reset = () => {
     const { delay } = this.props;
 
     return new Promise((resolve, reject) => {
-      if(delay == 0) {
+      if (delay == 0) {
         this.status = {
           status: '',
           text: '',
           timer: null,
         };
-        this.setState({
-          status: {
-            status: ''
+        this.setState(
+          {
+            status: {
+              status: '',
+            },
+            second: 3,
           },
-          second: 3,
-        },()=>{
-          resolve();
-        });
+          () => {
+            resolve();
+          },
+        );
       }
       this.status.timer = setInterval(() => {
         if (this.state.second > 0) {
           this.setState({
             second: this.state.second - 1,
-          })
+          });
         } else {
           this.status.timer && clearInterval(this.status.timer);
           this.status = {
@@ -145,23 +145,26 @@ class RMButton extends Component {
             text: '',
             timer: null,
           };
-          this.setState({
-            status: {
-              status: ''
+          this.setState(
+            {
+              status: {
+                status: '',
+              },
+              second: 3,
             },
-            second: 3,
-          },()=>{
-            resolve();
-          });
+            () => {
+              resolve();
+            },
+          );
         }
       }, delay);
     });
-  }
+  };
 
   render() {
     const {
       size,
-      variant, 
+      variant,
       color,
       disabled,
       customStyle,
@@ -181,16 +184,16 @@ class RMButton extends Component {
       onOpenSetting,
       onError,
       onContact,
-    } = this.props
+    } = this.props;
 
     const common = theme.palette.common.white;
-    const progress = theme.palette.progress.main
-    const success = theme.palette.success.main
-    const error = theme.palette.error.main
-    const primary = theme.palette.primary.main
-    const grey = theme.palette.grey[300]
+    const progress = theme.palette.progress.main;
+    const success = theme.palette.success.main;
+    const error = theme.palette.error.main;
+    const primary = theme.palette.primary.main;
+    const grey = theme.palette.grey[300];
 
-    const { status, second } = this.state
+    const { status, second } = this.state;
 
     let loading = false,
       circle = false,
@@ -205,15 +208,15 @@ class RMButton extends Component {
       iconSize = 20,
       _reverse = variant === 'outlined' || variant === 'text';
 
-    switch(size){
-      case 'small': 
+    switch (size) {
+      case 'small':
         _size = 'small';
-        _diameter = variant == 'fab' ?  40 : 32;
+        _diameter = variant == 'fab' ? 40 : 32;
         iconSize = 16;
-        _customStyle.padding = `0 ${theme.spacing.unit/2}px`;
+        _customStyle.padding = `0 ${theme.spacing.unit / 2}px`;
         break;
-      case 'medium': 
-      case 'normal': 
+      case 'medium':
+      case 'normal':
       default:
         _size = 'normal';
         _diameter = variant == 'fab' ? 56 : 48;
@@ -225,47 +228,47 @@ class RMButton extends Component {
     _customStyle.lineHeight = `${_diameter - 2}px`;
     _customStyle.fontSize = `${iconSize}px`;
 
-    switch(color){
+    switch (color) {
       case 'default':
-        if(_reverse){
+        if (_reverse) {
           _color = theme.palette.text.primary;
           _fontColor = grey;
-        }else{
+        } else {
           _color = grey;
           _fontColor = theme.palette.text.primary;
         }
         break;
-      case 'inherit': 
+      case 'inherit':
         _color = 'inherit';
         _fontColor = 'inherit';
         break;
       default:
-        _color = theme.palette[color].main; 
+        _color = theme.palette[color].main;
         _fontColor = theme.palette[color].contrastText;
         break;
     }
 
-    switch(_status) {
+    switch (_status) {
       case 'progress':
         _color = progress;
         _fontColor = theme.palette.progress.contrastText;
         loading = true;
         break;
-      case 'success': 
+      case 'success':
         _color = success;
         _fontColor = theme.palette.success.contrastText;
         icon = 'check';
         break;
       case 'failed':
-        _color = error; 
+        _color = error;
         _fontColor = theme.palette.error.contrastText;
         icon = 'replay';
         break;
       default:
         break;
     }
-    
-    switch(variant){
+
+    switch (variant) {
       case 'extendedFab':
         circle = true;
         _customStyle.boxShadow = theme.shadows[6];
@@ -273,12 +276,12 @@ class RMButton extends Component {
         _customStyle.minWidth = `${_diameter}px`;
         _customStyle.height = `${_diameter}px`;
         _customStyle.padding = `0 ${theme.spacing.unit}px`;
-        _customStyle.borderRadius = `${_diameter/2}px`;
+        _customStyle.borderRadius = `${_diameter / 2}px`;
         _customStyle.color = _fontColor;
         _customStyle.border = `1px solid ${_color}`;
         _customStyle.background = _color;
         break;
-      case 'fab': 
+      case 'fab':
         circle = true;
         _customStyle.boxShadow = theme.shadows[6];
         _customStyle.width = `${_diameter}px`;
@@ -289,12 +292,12 @@ class RMButton extends Component {
         _customStyle.border = `1px solid ${_color}`;
         _customStyle.background = _color;
         break;
-      case 'outlined': 
+      case 'outlined':
         _customStyle.color = _color;
         _customStyle.border = `1px solid ${_color}`;
         _customStyle.background = 'transparent';
         break;
-      case 'contained': 
+      case 'contained':
         _customStyle.color = _fontColor;
         _customStyle.border = `1px solid ${_color}`;
         _customStyle.background = _color;
@@ -318,60 +321,64 @@ class RMButton extends Component {
       fat: variant === 'fab',
     });
 
-    let _countdown = (second>=0 && second<3);
+    let _countdown = second >= 0 && second < 3;
     let _second = second + 1;
 
     return (
-        <AtButton
-          size={_size}
-          className='status-button'
-          type={'primary'}
-          circle={circle}
-          loading={false}
-          disabled={disabled}
-          customStyle={_customStyle}
-          formType={formType}
-          openType={openType}
-          lang={lang}
-          sessionFrom={sessionFrom}
-          sendMessageTitle={sendMessageTitle}
-          sendMessagePath={sendMessagePath}
-          sendMessageImg={sendMessageImg}
-          showMessageCard={showMessageCard}
-          appParameter={appParameter}
-          onGetUserInfo={onGetUserInfo}
-          onGetPhoneNumber={onGetPhoneNumber}
-          onOpenSetting={onOpenSetting}
-          onError={onError}
-          onContact={onContact}
-          onClick={this.onHandler}
-        >
-          <View className='box'>
-            {
-              loading && <View><AtActivityIndicator size={iconSize} color={_reverse ? _color : _fontColor}/></View>
-            } 
-            {
-              _countdown && countdown && <View>{_second}</View>
-            }
-            {
-              (!_countdown || (_countdown && !countdown)) && !loading && icon && <RMIcon fontSize={'inherit'} color={'inherit'} block={true}>{icon}</RMIcon>
-            }
-            {
-              !(variant === 'fab' && (loading || icon)) && <View className={classes}>{this.props.children}</View>
-            }
-          </View>
-        </AtButton>
-    )
+      <AtButton
+        size={_size}
+        className="status-button"
+        type={'primary'}
+        circle={circle}
+        loading={false}
+        disabled={disabled}
+        customStyle={_customStyle}
+        formType={formType}
+        openType={openType}
+        lang={lang}
+        sessionFrom={sessionFrom}
+        sendMessageTitle={sendMessageTitle}
+        sendMessagePath={sendMessagePath}
+        sendMessageImg={sendMessageImg}
+        showMessageCard={showMessageCard}
+        appParameter={appParameter}
+        onGetUserInfo={onGetUserInfo}
+        onGetPhoneNumber={onGetPhoneNumber}
+        onOpenSetting={onOpenSetting}
+        onError={onError}
+        onContact={onContact}
+        onClick={this.onHandler}
+      >
+        <View className="box">
+          {loading && (
+            <View>
+              <AtActivityIndicator size={iconSize} color={_reverse ? _color : _fontColor} />
+            </View>
+          )}
+          {_countdown && countdown && <View>{_second}</View>}
+          {(!_countdown || (_countdown && !countdown)) &&
+            !loading &&
+            icon && (
+              <RMIcon fontSize={'inherit'} color={'inherit'} block={true}>
+                {icon}
+              </RMIcon>
+            )}
+          {!(variant === 'fab' && (loading || icon)) && (
+            <View className={classes}>{this.props.children}</View>
+          )}
+        </View>
+      </AtButton>
+    );
   }
 }
 
 RMButton.defaultProps = {
-  variant: 'text', 
-  size: 'medium', 
+  variant: 'text',
+  size: 'medium',
   color: 'default',
   disabled: false,
   customStyle: {},
-  onClick: () => { },
+  onClick: () => {},
   // Button props
   formType: '',
   openType: '',
@@ -382,26 +389,44 @@ RMButton.defaultProps = {
   sendMessageImg: '',
   showMessageCard: false,
   appParameter: '',
-  onGetUserInfo: () => { },
-  onContact: () => { },
-  onGetPhoneNumber: () => { },
-  onError: () => { },
-  onOpenSetting: () => { },
+  onGetUserInfo: () => {},
+  onContact: () => {},
+  onGetPhoneNumber: () => {},
+  onError: () => {},
+  onOpenSetting: () => {},
   delay: 2040,
   countdown: false,
-}
+};
 
 RMButton.propTypes = {
   size: PropTypes.oneOf(['medium', 'normal', 'small']),
   variant: PropTypes.oneOf(['text', 'outlined', 'contained', 'fab', 'extendedFab']),
-  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary', 'error', 'success', 'warning', 'progress']),
+  color: PropTypes.oneOf([
+    'default',
+    'inherit',
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+  ]),
 
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
   formType: PropTypes.oneOf(['submit', 'reset']),
-  openType: PropTypes.oneOf(['contact', 'share', 'getUserInfo', 'getPhoneNumber', 'launchApp', 'openSetting', 'feedback', 'getRealnameAuthInfo']),
+  openType: PropTypes.oneOf([
+    'contact',
+    'share',
+    'getUserInfo',
+    'getPhoneNumber',
+    'launchApp',
+    'openSetting',
+    'feedback',
+    'getRealnameAuthInfo',
+  ]),
   lang: PropTypes.string,
   sessionFrom: PropTypes.string,
   sendMessageTitle: PropTypes.string,
@@ -416,6 +441,6 @@ RMButton.propTypes = {
   onOpenSetting: PropTypes.func,
   delay: PropTypes.number,
   countdown: PropTypes.bool,
-}
+};
 
-export default RMButton
+export default RMButton;

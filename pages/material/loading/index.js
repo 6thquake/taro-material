@@ -1,53 +1,45 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMLoading,
-  AtLoading,
-  AtActivityIndicator,
-} from '../../taro-material'
+import { RMLoading, AtLoading, AtActivityIndicator } from '../../taro-material';
 
-import RMPage from '../../taro-material/Page'
+import RMPage from '../../taro-material/Page';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
-
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 class Index extends RMPage {
   config = {
     navigationBarTitleText: 'Loading',
-  }
+  };
 
-  componentWillMount () {
-  }
+  componentWillMount() {}
 
-  componentDidMount () { }
+  componentDidMount() {}
 
-  componentDidShow() { }
+  componentDidShow() {}
 
-  componentDidHide () { }
-  
-  render () {
+  componentDidHide() {}
+
+  render() {
     return (
-      <View className='root'>
-        
+      <View className="root">
         <RMLoading show={true} end={false} />
-        <View className='example-item'>
-          <AtActivityIndicator content='加载中...' />
+        <View className="example-item">
+          <AtActivityIndicator content="加载中..." />
         </View>
 
-        <View className='spacer'></View>
-        <View className='loading'>
-          <AtLoading></AtLoading>
+        <View className="spacer" />
+        <View className="loading">
+          <AtLoading />
           <RMLoading show={true} end={false} />
-          <View className='example-item'>
-            <AtActivityIndicator content='加载中...' />
+          <View className="example-item">
+            <AtActivityIndicator content="加载中..." />
           </View>
         </View>
-
-      </View> 
-    )
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;

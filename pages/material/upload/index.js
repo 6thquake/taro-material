@@ -1,41 +1,36 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 
-import {
-  RMUpload,
-} from '../../taro-material'
+import { RMUpload } from '../../taro-material';
 
-import RMPage from '../../taro-material/Page'
+import RMPage from '../../taro-material/Page';
 
-import theme from '../../taro-material/styles/theme'
-import './index.scss'
-
+import theme from '../../taro-material/styles/theme';
+import './index.scss';
 
 class Index extends RMPage {
   config = {
     navigationBarTitleText: 'Upload',
-  }
+  };
 
-  componentWillMount () {
-  }
+  componentWillMount() {}
 
-  componentDidMount () { 
-  }
-  
-  componentDidShow() { }
+  componentDidMount() {}
 
-  componentDidHide () { }
-  
-  render () {
+  componentDidShow() {}
+
+  componentDidHide() {}
+
+  render() {
     return (
-      <View className='root'>
-        <View className='spacer'></View>
-        <View className='upload'>
+      <View className="root">
+        <View className="spacer" />
+        <View className="upload">
           <RMUpload />
         </View>
-      </View> 
-    )
+      </View>
+    );
   }
 }
 
-export default Index
+export default Index;
