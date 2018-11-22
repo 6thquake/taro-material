@@ -1,13 +1,13 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Canvas } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Button, Canvas } from '@tarojs/components';
 
-import { RMLivePlayer } from '../../taro-material'
+import { RMLivePlayer } from '../../taro-material';
 
-import RMPage from '../../taro-material/Page'
+import RMPage from '../../taro-material/Page';
 
-import theme from '../../taro-material/styles/theme'
+import theme from '../../taro-material/styles/theme';
 
-import './index.scss'
+import './index.scss';
 
 const data = {
   data: [
@@ -25,11 +25,11 @@ const data = {
       exception: 0,
       ret: '200',
       desc: '获取成功!',
-    }
+    },
   ],
   code: '200',
   msg: '操作成功!',
-}
+};
 
 const sources = [
   {
@@ -39,8 +39,8 @@ const sources = [
   {
     name: '超清',
     src: 'rtmp://rtmp.open.ys7.com/openlive/61b2f64967684d28b73dea9c456fe1e5.hd',
-  }
-]
+  },
+];
 
 class Index extends RMPage {
   config = {
@@ -49,18 +49,18 @@ class Index extends RMPage {
   state = {
     value: '',
   };
-  componentWillMount () {}
+  componentWillMount() {}
 
-  componentDidMount () {}
+  componentDidMount() {}
 
-  componentDidShow () {}
+  componentDidShow() {}
 
-  componentDidHide () {}
+  componentDidHide() {}
 
-  render () {
-    const { value } = this.state
+  render() {
+    const { value } = this.state;
     return (
-      <View className='root'>
+      <View className="root">
         {/* <View className='player'>
           <RMLivePlayer
             // sources={sources}
@@ -78,26 +78,26 @@ class Index extends RMPage {
             objectFit='fillCrop'
           />
         </View> */}
-        <View className='player'>
+        <View className="player">
           <RMLivePlayer
-            title='新大陆店2'
+            title="新大陆店2"
             sources={sources}
-            src='rtmp://rtmp.open.ys7.com/openlive/61b2f64967684d28b73dea9c456fe1e5'
-            objectFit='fillCrop'
+            src="rtmp://rtmp.open.ys7.com/openlive/61b2f64967684d28b73dea9c456fe1e5"
+            objectFit="fillCrop"
           />
         </View>
-        <View className='player'>
+        <View className="player">
           <RMLivePlayer
             hasPlayBar
-            title='新大陆店3'
+            title="新大陆店3"
             sources={sources}
-            src='rtmp://rtmp.open.ys7.com/openlive/61b2f64967684d28b73dea9c456fe1e5'
-            objectFit='fillCrop'
+            src="rtmp://rtmp.open.ys7.com/openlive/61b2f64967684d28b73dea9c456fe1e5"
+            objectFit="fillCrop"
           />
         </View>
       </View>
-    )
+    );
   }
 }
 
-export default Index
+export default Index;

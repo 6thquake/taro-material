@@ -1,20 +1,20 @@
-import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro'
-import PropTypes from 'prop-types'
-import { View } from '@tarojs/components'
-import FullScreen from './images/fullscreen.png'
-import Refresh from './images/refresh.png'
-import FullScreenExit from './images/fullscreen_exit.png'
-import ArrowUp from './images/arrow_drop_up.png'
-import ArrowDown from './images/arrow_down.png'
-import RoundPlayCircle from './images/round_play_circle2.png'
-import RoundPauseCircle from './images/round_pause_circle.png'
+import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import { View } from '@tarojs/components';
+import FullScreen from './images/fullscreen.png';
+import Refresh from './images/refresh.png';
+import FullScreenExit from './images/fullscreen_exit.png';
+import ArrowUp from './images/arrow_drop_up.png';
+import ArrowDown from './images/arrow_down.png';
+import RoundPlayCircle from './images/round_play_circle2.png';
+import RoundPauseCircle from './images/round_pause_circle.png';
 
-import './LivePlayer.scss'
-import theme from '../styles/theme'
+import './LivePlayer.scss';
+import theme from '../styles/theme';
 
 class RMLivePlayer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       livePlayerId: props.livePlayerId || `live-player-${Date.now()}`,
       isFullScreen: false,
@@ -23,27 +23,27 @@ class RMLivePlayer extends Component {
       src: props.src,
       loading: false,
       play: props.autoplay,
-    }
+    };
   }
   livePlayerContext = null;
-  componentDidMount () {
-    const { livePlayerId } = this.state
-    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this.$scope)
+  componentDidMount() {
+    const { livePlayerId } = this.state;
+    this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this.$scope);
   }
   handleScreenChange = e => {
-    const { fullScreen } = e.detail
-    this.props.onFullScreenChange({ fullScreen })
+    const { fullScreen } = e.detail;
+    this.props.onFullScreenChange({ fullScreen });
     this.setState({
       isFullScreen: fullScreen,
-    })
+    });
   };
 
   toggleScreen = isFullScreen => {
-    this.props.onFullScreenChange({ fullScreen: isFullScreen })
+    this.props.onFullScreenChange({ fullScreen: isFullScreen });
     if (isFullScreen) {
-      this.exitFullScreen()
+      this.exitFullScreen();
     } else {
-      this.requestFullScreen()
+      this.requestFullScreen();
     }
   };
 
@@ -53,72 +53,72 @@ class RMLivePlayer extends Component {
       success: res => {
         this.setState({
           isFullScreen: true,
-        })
+        });
       },
       fail: err => {
-        console.log('requestFullScreen err', err)
+        console.log('requestFullScreen err', err);
       },
       complete: res => {
-        console.log('finish', res)
+        console.log('finish', res);
       },
-    })
+    });
   };
 
   exitFullScreen = () => {
     this.livePlayerContext.exitFullScreen({
       direction: 90,
       success: res => {
-        console.log('exitFullScreen ok', res)
+        console.log('exitFullScreen ok', res);
         this.setState({
           isFullScreen: false,
-        })
+        });
       },
       fail: err => {
-        console.log('exitFullScreen err', err)
+        console.log('exitFullScreen err', err);
       },
       complete: res => {
-        console.log('finish', res)
+        console.log('finish', res);
       },
-    })
+    });
   };
 
   handleRefresh = () => {
-    const { src } = this.state
+    const { src } = this.state;
     this.setState({
       src,
-    })
+    });
   };
 
   handlePlayerClick = () => {
     this.setState({
       show: !this.state.show,
       qshow: false,
-    })
+    });
   };
 
   handleStateChange = e => {
-    this.props.onStateChange(e)
-    const { code, message } = e.detail
-    const startCodes = [2002, 2007, 2008]
-    const endCodes = [2003, 2004]
+    this.props.onStateChange(e);
+    const { code, message } = e.detail;
+    const startCodes = [2002, 2007, 2008];
+    const endCodes = [2003, 2004];
     if (startCodes.includes(code)) {
       this.setState({
         loading: true,
-      })
+      });
     }
     if (endCodes.includes(code)) {
       this.setState({
         loading: false,
-      })
+      });
     }
   };
 
   handleNetStatus = e => {
-    this.props.onNetStatus(e)
+    this.props.onNetStatus(e);
   };
 
   handleError = e => {
-    this.props.onError(e)
+    this.props.onError(e);
   };
   handleQulityClick = e => {
     this.setState(
@@ -127,18 +127,18 @@ class RMLivePlayer extends Component {
       },
       () => {
         // this.livePlayerContext.play()
-      }
-    )
+      },
+    );
   };
   handleControlsClick = e => {
-    e.stopPropagation()
+    e.stopPropagation();
   };
   handleListClick = (src, e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     this.setState({
       qshow: false,
       src,
-    })
+    });
   };
   handlePlay = () => {
     this.setState(
@@ -146,10 +146,10 @@ class RMLivePlayer extends Component {
         play: true,
       },
       () => {
-        this.livePlayerContext.play()
-        this.props.onPlay()
-      }
-    )
+        this.livePlayerContext.play();
+        this.props.onPlay();
+      },
+    );
   };
   handlePause = () => {
     this.setState(
@@ -157,21 +157,21 @@ class RMLivePlayer extends Component {
         play: false,
       },
       () => {
-        this.livePlayerContext.pause()
-        this.props.onPause()
-      }
-    )
+        this.livePlayerContext.pause();
+        this.props.onPause();
+      },
+    );
   };
   togglePlay = () => {
-    const { play } = this.state
+    const { play } = this.state;
     if (play) {
-      this.handlePause()
+      this.handlePause();
     } else {
-      this.handlePlay()
+      this.handlePlay();
     }
   };
-  render () {
-    const { play, livePlayerId, isFullScreen, show, qshow, src, loading } = this.state
+  render() {
+    const { play, livePlayerId, isFullScreen, show, qshow, src, loading } = this.state;
 
     const {
       mode,
@@ -185,12 +185,12 @@ class RMLivePlayer extends Component {
       sources,
       refreshable,
       hasPlayBar,
-    } = this.props
-    const qualityItem = sources.filter(item => item.src === src)[0]
-    const qualityName = qualityItem && qualityItem.name
+    } = this.props;
+    const qualityItem = sources.filter(item => item.src === src)[0];
+    const qualityName = qualityItem && qualityItem.name;
 
     return (
-      <View className='root'>
+      <View className="root">
         <LivePlayer
           onFullScreenChange={this.handleScreenChange}
           onNetStatus={this.handleNetStatus}
@@ -204,43 +204,43 @@ class RMLivePlayer extends Component {
           minCache={minCache}
           maxCache={maxCache}
           id={livePlayerId}
-          className='player'
+          className="player"
           onError={theme.handleError}
         >
-          <CoverView onClick={this.handlePlayerClick} className='box'>
+          <CoverView onClick={this.handlePlayerClick} className="box">
             {!play && (
-              <CoverImage className='play-icon' onClick={this.handlePlay} src={RoundPlayCircle} />
+              <CoverImage className="play-icon" onClick={this.handlePlay} src={RoundPlayCircle} />
             )}
-            {loading && <CoverView className='loading'>加载中...</CoverView>}
+            {loading && <CoverView className="loading">加载中...</CoverView>}
             {show && (
-              <CoverView onClick={this.handleControlsClick} className='controls'>
-                <CoverView className='left-box'>
+              <CoverView onClick={this.handleControlsClick} className="controls">
+                <CoverView className="left-box">
                   {hasPlayBar && (
                     <CoverImage
                       onClick={this.togglePlay}
-                      className='image play-action'
+                      className="image play-action"
                       src={play ? RoundPauseCircle : RoundPlayCircle}
                     />
                   )}
-                  <CoverView className='title'>{title}</CoverView>
+                  <CoverView className="title">{title}</CoverView>
                 </CoverView>
 
-                <CoverView className='actions'>
+                <CoverView className="actions">
                   {refreshable && (
-                    <CoverView className='refresh action'>
-                      <CoverImage className='image' onClick={this.handleRefresh} src={Refresh} />
+                    <CoverView className="refresh action">
+                      <CoverImage className="image" onClick={this.handleRefresh} src={Refresh} />
                     </CoverView>
                   )}
                   {isFullScreen &&
                     qualityName && (
-                    <CoverView onClick={this.handleQulityClick} className='action quality'>
-                      <CoverView className='name'>{qualityName}</CoverView>
-                      <CoverImage className='arrow' src={qshow ? ArrowDown : ArrowUp} />
-                    </CoverView>
-                  )}
-                  <CoverView className='screen action'>
+                      <CoverView onClick={this.handleQulityClick} className="action quality">
+                        <CoverView className="name">{qualityName}</CoverView>
+                        <CoverImage className="arrow" src={qshow ? ArrowDown : ArrowUp} />
+                      </CoverView>
+                    )}
+                  <CoverView className="screen action">
                     <CoverImage
-                      className='image'
+                      className="image"
                       onClick={this.toggleScreen.bind(this, isFullScreen)}
                       src={isFullScreen ? FullScreenExit : FullScreen}
                     />
@@ -250,11 +250,11 @@ class RMLivePlayer extends Component {
             )}
 
             {qshow && (
-              <CoverView className='options'>
+              <CoverView className="options">
                 {sources.map(item => (
                   <CoverView
                     onClick={theme.handleListClick.bind(this, item.src)}
-                    className='option'
+                    className="option"
                     key={item.name}
                   >
                     {item.name}
@@ -265,7 +265,7 @@ class RMLivePlayer extends Component {
           </CoverView>
         </LivePlayer>
       </View>
-    )
+    );
   }
 }
 
@@ -334,7 +334,7 @@ RMLivePlayer.defaultProps = {
   onError: () => {},
   onPlay: () => {},
   onPause: () => {},
-}
+};
 
 RMLivePlayer.propTypes = {
   /**
@@ -409,6 +409,6 @@ RMLivePlayer.propTypes = {
   onError: PropTypes.func,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,
-}
+};
 
-export default RMLivePlayer
+export default RMLivePlayer;
