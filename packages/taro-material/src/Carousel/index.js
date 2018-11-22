@@ -1,28 +1,28 @@
-import Taro, { Component } from '@tarojs/taro'
-import PropTypes from 'prop-types'
-import { Swiper, SwiperItem, Image } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import { Swiper, SwiperItem, Image } from '@tarojs/components';
 
-import theme from '../styles/theme'
+import theme from '../styles/theme';
 
-import './index.scss'
+import './index.scss';
 
 class Carousel extends Component {
-  componentWillMount () {}
+  componentWillMount() {}
 
-  componentDidMount () {}
+  componentDidMount() {}
 
-  componentWillUnmount () {}
+  componentWillUnmount() {}
 
-  componentDidShow () {}
+  componentDidShow() {}
 
-  componentDidHide () {}
+  componentDidHide() {}
 
-  handleChange (e) {
-    const { onChange } = this.props
-    onChange && onChange(e.target.value, e, ...arguments)
+  handleChange(e) {
+    const { onChange } = this.props;
+    onChange && onChange(e.target.value, e, ...arguments);
   }
 
-  render () {
+  render() {
     const {
       items,
       speed,
@@ -33,18 +33,18 @@ class Carousel extends Component {
       multipleItems,
       current,
       customStyle,
-    } = this.props
+    } = this.props;
 
     const style = {
       height: '100%',
       ...customStyle,
-    }
+    };
 
     return (
       <Swiper
-        className='carousel'
-        indicatorColor='#999'
-        indicatorActiveColor='#333'
+        className="carousel"
+        indicatorColor="#999"
+        indicatorActiveColor="#333"
         vertical={vertical}
         skipHiddenItemLayout
         displayMultipleItems={multipleItems}
@@ -58,12 +58,12 @@ class Carousel extends Component {
         style={style}
       >
         {items.map((item, index) => (
-          <SwiperItem key={item.src} className='item'>
-            <Image className='image' src={item.src} mode='aspectFill' />
+          <SwiperItem key={item.src} className="item">
+            <Image className="image" src={item.src} mode="aspectFill" />
           </SwiperItem>
         ))}
       </Swiper>
-    )
+    );
   }
 }
 
@@ -119,7 +119,7 @@ Carousel.propTypes = {
   onChange: PropTypes.func,
 
   customStyle: PropTypes.object,
-}
+};
 
 Carousel.defaultProps = {
   items: [],
@@ -132,6 +132,6 @@ Carousel.defaultProps = {
   current: 0,
   customStyle: {},
   onChange: () => {},
-}
+};
 
-export default Carousel
+export default Carousel;
