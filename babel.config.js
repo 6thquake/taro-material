@@ -6,8 +6,8 @@ module.exports = {
       {
         spec: true,
         useBuiltIns: false,
-      },
-    ],
+      }
+    ]
   ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
@@ -15,8 +15,8 @@ module.exports = {
       '@babel/plugin-transform-react-jsx',
       {
         pragma: 'Nerv.createElement',
-      },
+      }
     ],
-    ['@babel/plugin-proposal-object-rest-spread'],
+    ['@babel/plugin-proposal-object-rest-spread']
   ],
-};
+}
