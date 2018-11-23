@@ -45,15 +45,117 @@ class Index extends RMPage {
     const { value } = this.state;
     return (
       <View className="root">
-        <RMSearch
-          value={value}
-          onChange={this.handleChange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onConfirm={this.handleOk}
-          onActionClick={this.handleOk}
-          onClear={this.handleClear}
-        />
+        <View className="title">default</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="default"
+          />
+        </View>
+
+        <View className="title">inherit</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="inherit"
+          />
+        </View>
+
+        <View className="title">primary</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="primary"
+          />
+        </View>
+
+        <View className="title">secondary</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="secondary"
+          />
+        </View>
+
+        <View className="title">error</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="error"
+          />
+        </View>
+
+        <View className="title">success</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="success"
+          />
+        </View>
+
+        <View className="title">warning</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="warning"
+          />
+        </View>
+
+        <View className="title">progress</View>
+        <View className="search">
+          <RMSearch
+            value={value}
+            onChange={this.handleChange}
+            onFocus={this.handleFocus}
+            onBlur={this.handleBlur}
+            onConfirm={this.handleOk}
+            onActionClick={this.handleOk}
+            onClear={this.handleClear}
+            color="progress"
+          />
+        </View>
       </View>
     );
   }

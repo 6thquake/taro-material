@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 
 import AtIcon from '../components/icon/index';
 import AtComponent from '../common/component';
-import Button from '../Button';
+// import RMButton from '../Button'
 import './Search.scss';
+import theme from '../styles/theme';
 
 const defaultFunc = () => {};
 
@@ -17,40 +18,6 @@ export default class Search extends AtComponent {
       isFocus: props.focus,
     };
   }
-
-  static defaultProps = {
-    value: '',
-    placeholder: '搜索',
-    maxlength: 140,
-    fixed: false,
-    focus: false,
-    disabled: false,
-    showActionButton: false,
-    actionName: '搜索',
-    onChange: defaultFunc,
-    onFocus: defaultFunc,
-    onBlur: defaultFunc,
-    onConfirm: defaultFunc,
-    onActionClick: defaultFunc,
-    onClear: defaultFunc,
-  };
-
-  static propTypes = {
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    maxlength: PropTypes.number,
-    fixed: PropTypes.bool,
-    focus: PropTypes.bool,
-    disabled: PropTypes.bool,
-    showActionButton: PropTypes.bool,
-    actionName: PropTypes.string,
-    onChange: PropTypes.func,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    onConfirm: PropTypes.func,
-    onActionClick: PropTypes.func,
-    onClear: PropTypes.func,
-  };
 
   handleFocus(e) {
     this.setState({
@@ -95,6 +62,7 @@ export default class Search extends AtComponent {
       actionName,
       className,
       customStyle,
+      color,
     } = this.props;
     const { isFocus } = this.state;
 
@@ -113,12 +81,25 @@ export default class Search extends AtComponent {
       actionStyle.opacity = 1;
       actionStyle.marginRight = `0`;
     }
+    let _color = '';
+    if (color && color.length >= 1) {
+      _color = color.charAt(0).toUpperCase() + color.substring(1);
+    }
+    let hint = null;
+    if (color === 'action' || color === 'disabled' || color === 'default') {
+      hint = theme.palette.text.hint;
+    } else if (color === 'inherit') {
+      hint = 'inherit';
+    } else {
+      hint = theme.palette.text.hint2;
+    }
     return (
       <View
         className={classNames(
           {
             'at-search-bar': true,
             'at-search-bar--fixed': fixed,
+            [`color${_color}`]: color !== 'inherit',
           },
           className,
         )}
@@ -126,7 +107,7 @@ export default class Search extends AtComponent {
       >
         <View className="at-search-bar__container">
           <View className="at-search-bar__placeholder_wrap" style={placeholderStyle}>
-            <AtIcon value="search" size="15" color="#999" />
+            <AtIcon value="search" size="15" color={hint} />
             <Text
               className="at-search-bar__placeholder"
               style={value.length ? 'visibility: hidden;' : 'visibility: visible;'}
@@ -151,17 +132,62 @@ export default class Search extends AtComponent {
             style={value.length ? 'display: flex;' : 'display: none;'}
             onTouchStart={this.handleClear.bind(this)}
           >
-            <AtIcon value="close-circle" size="15" color="#999" />
+            <AtIcon value="close-circle" size="15" color={hint} />
           </View>
         </View>
-        <Button
-          onClick={this.handleActionClick.bind(this)}
+        <View
           className="at-search-bar__action"
+          onClick={this.handleActionClick.bind(this)}
           style={actionStyle}
         >
           {actionName}
-        </Button>
+        </View>
       </View>
     );
   }
 }
+
+Search.defaultProps = {
+  value: '',
+  placeholder: '搜索',
+  maxlength: 140,
+  fixed: false,
+  focus: false,
+  disabled: false,
+  showActionButton: false,
+  actionName: '搜索',
+  onChange: defaultFunc,
+  onFocus: defaultFunc,
+  onBlur: defaultFunc,
+  onConfirm: defaultFunc,
+  onActionClick: defaultFunc,
+  onClear: defaultFunc,
+  color: 'default',
+};
+
+Search.propTypes = {
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  maxlength: PropTypes.number,
+  fixed: PropTypes.bool,
+  focus: PropTypes.bool,
+  disabled: PropTypes.bool,
+  showActionButton: PropTypes.bool,
+  actionName: PropTypes.string,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onConfirm: PropTypes.func,
+  onActionClick: PropTypes.func,
+  onClear: PropTypes.func,
+  color: PropTypes.oneOf([
+    'default',
+    'inherit',
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+  ]),
+};

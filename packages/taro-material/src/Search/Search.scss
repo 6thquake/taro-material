@@ -2,16 +2,16 @@
 @import '../style/theme/default.scss';
 @import '../styles/theme.scss';
 
-$height: 28PX;
-$inputPadding: 25PX;
-$fontSize: 14PX;
-$placeholderPadding: 5PX;
+$height: 28 * 2;
+$inputPadding: 25 * 2;
+$fontSize: 14 * 2;
+$placeholderPadding: 5 * 2;
 
 .at-search-bar {
   display: flex;
   align-items: center;
-  height: $height;
-  padding: $fontSize / 2;
+  height: #{$height}px;
+  padding: #{$fontSize / 2}px;
   box-sizing: content-box;
   overflow: hidden;
   background-color: $color-bg;
@@ -22,9 +22,9 @@ $placeholderPadding: 5PX;
     flex: 1;
     overflow: hidden;
     width: 100%;
-    height: $height;
+    height: #{$height}px;
     background-color: $color-bg-grey;
-    border-radius: 13PX;
+    border-radius: #{$height/2}px;
   }
 
   &__placeholder_wrap {
@@ -39,27 +39,27 @@ $placeholderPadding: 5PX;
     justify-content: center;
     vertical-align: middle;
     width: 100%;
-    height: $height;
+    height: #{$height}px;
     line-height: 0;
-    padding: 0 $placeholderPadding;
+    padding: 0 #{$placeholderPadding}px;
     transition: width 0.3s;
   }
 
   &__placeholder {
-    margin-left: $placeholderPadding;
+    margin-left: #{$placeholderPadding}px;
     color: $color-grey-2;
-    font-size: $fontSize;
+    font-size: #{$fontSize}px;
   }
 
   &__input {
     position: absolute;
     width: 100%;
-    height: $height !important;
+    height: #{$height}px !important;
     top: 0;
     left: 0;
     display: block;
-    font-size: $fontSize !important;
-    padding: 5PX $inputPadding + $placeholderPadding;
+    font-size: #{$fontSize}px !important;
+    padding: 5px #{$inputPadding + $placeholderPadding}px;
     z-index: $zindex-form;
     transition: width 0.3s;
     text-align: left;
@@ -74,10 +74,10 @@ $placeholderPadding: 5PX;
     align-items: center;
     justify-content: center;
     top: 0;
-    right: $placeholderPadding;
+    right: #{$placeholderPadding}px;
     z-index: $zindex-form;
-    height: $height;
-    width: $inputPadding;
+    height: #{$height}px;
+    width: #{$inputPadding}px;
     line-height: 0;
     vertical-align: middle;
   }
@@ -85,16 +85,16 @@ $placeholderPadding: 5PX;
   &__action {
     display: block;
     flex: none;
-    background-color: $palettePrimaryMain;
+    // background-color: $palettePrimaryMain;
     opacity: 0;
-    height: $height;
-    line-height: $height;
-    font-size: $fontSize;
-    padding: 0 $fontSize / 2;
-    margin-left: $fontSize / 2;
-    color: #fff;
+    height: #{$height}px;
+    line-height: #{$height}px;
+    font-size: #{$fontSize}px;
+    padding: 0 #{$fontSize / 2}px;
+    margin-left: #{$fontSize / 2}px;
+    // color: #fff;
     text-align: right;
-    border-radius: 5PX;
+    // border-radius: 5px;
     transition: margin-right 0.3s, opacity 0.3s;
   }
 
@@ -104,5 +104,144 @@ $placeholderPadding: 5PX;
     left: 0;
     right: 0;
     z-index: $zindex-nav;
+  }
+
+  &.colorPrimary {
+    background-color: $palettePrimaryMain;
+    .at-search-bar {
+      &__container {
+        background-color: $palettePrimaryDark;
+      }
+      &__input,
+      &__action {
+        color: $palettePrimaryContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorSecondary {
+    background-color: $paletteSecondaryMain;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteSecondaryDark;
+      }
+      &__input,
+      &__action {
+        color: $paletteSecondaryContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorAction {
+    background-color: $paletteActionSelected;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteActionDisabledBackground;
+      }
+      &__input,
+      &__action {
+        color: $paletteTextPrimary;
+      }
+      &__placeholder {
+        color: $paletteTextHint;
+      }
+    }
+  }
+  &.colorError {
+    background-color: $paletteErrorMain;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteErrorDark;
+      }
+      &__input,
+      &__action {
+        color: $paletteErrorContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorDisabled {
+    background-color: $paletteActionDisabled;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteActionDisabledBackground;
+      }
+      &__input,
+      &__action {
+        color: $paletteTextPrimary;
+      }
+      &__placeholder {
+        color: $paletteTextHint;
+      }
+    }
+  }
+  &.colorSuccess {
+    background-color: $paletteSuccessMain;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteSuccessDark;
+      }
+      &__input,
+      &__action {
+        color: $paletteSuccessContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorWarning {
+    background-color: $paletteWarningMain;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteWarningDark;
+      }
+      &__input,
+      &__action {
+        color: $paletteWarningContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorProgress {
+    background-color: $paletteProgressMain;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteProgressDark;
+      }
+      &__input,
+      &__action {
+        color: $paletteProgressContrastText;
+      }
+      &__placeholder {
+        color: $paletteTextHint2;
+      }
+    }
+  }
+  &.colorDefault {
+    background-color: $paletteBackgroundDefault;
+    .at-search-bar {
+      &__container {
+        background-color: $paletteBackgroundPaper;
+      }
+      &__input,
+      &__action {
+        color: $paletteTextPrimary;
+      }
+      &__action {
+        color: $paletteTextPrimary;
+      }
+      &__placeholder {
+        color: $paletteTextHint;
+      }
+    }
   }
 }
