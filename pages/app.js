@@ -68,6 +68,7 @@ class App extends Component {
       'material/upload/index',
       'material/watermark/index',
       'material/notice-bar/index',
+      'material/tabs/index',
     ],
     window: {
       backgroundTextStyle: 'light',

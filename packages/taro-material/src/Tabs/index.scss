@@ -1,0 +1,449 @@
+@import '../style/mixins/index.scss';
+@import '../style/theme/default.scss';
+
+@import '../styles/theme.scss';
+
+.at-tabs {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &__item {
+    position: relative;
+    flex: 1;
+    padding: $spacing-v-lg $spacing-h-lg;
+    font-size: $font-size-base;
+    // color: $color-text-base;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: #{$spacingUnit/2}px;
+      // background-color: $color-brand;
+      transform: scaleX(0);
+      transition: all 0.15s;
+      z-index: $zindex-tab;
+    }
+
+    &--active {
+      // color: $color-brand;
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+    // background-color: $color-bg;
+    overflow: -moz-scrollbars-none;
+
+    &--scroll {
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+
+      .at-tabs__item {
+        display: inline-block;
+        overflow: visible;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      height: 0 !important;
+      width: 0 !important;
+    }
+  }
+
+  &__body {
+    display: block;
+    white-space: nowrap;
+    transition: all 0.3s;
+    width: 100%;
+    overflow: visible;
+    will-change: transform, left, top;
+  }
+
+  &__underline {
+    content: '';
+    position: absolute;
+    background-color: $color-grey-5;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    right: auto;
+    width: 600%;
+    height: #{$spacingUnit/2}px;
+    z-index: $zindex-tab - 1;
+  }
+
+  &--vertical {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+
+    .at-tabs__body {
+      display: inline-block;
+      flex: 1;
+      height: 200px;
+      width: auto;
+    }
+
+    .at-tabs__underline {
+      top: 0;
+      left: 0;
+      bottom: auto;
+      width: #{$spacingUnit/2}px;
+      height: 100%;
+      z-index: $zindex-tab - 1;
+    }
+
+    .at-tabs__header {
+      display: inline-block;
+      width: auto;
+    }
+
+    .at-tabs__item {
+      display: flex;
+      justify-content: center;
+      width: auto;
+      align-items: center;
+
+      &::after {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: auto;
+        width: #{$spacingUnit}px;
+        height: 100%;
+        transform: scaleY(0);
+        z-index: $zindex-tab;
+      }
+    }
+
+    .at-tabs__item--active::after {
+      transform: scaleY(1);
+    }
+  }
+
+  &.colorPrimary {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteSecondaryMain;
+      }
+      &--active {
+        color: $palettePrimaryContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $palettePrimaryMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $palettePrimaryMain;
+          left: 0%;
+        }
+        &--active {
+          color: $palettePrimaryMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorSecondary {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteCommonWhite;
+      }
+      &--active {
+        color: $paletteSecondaryContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteSecondaryMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteSecondaryMain;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteSecondaryMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorAction {
+    background-color: $paletteActionDisabledBackground;
+    .at-tabs__item {
+      color: $paletteTextSecondary;
+      &::after {
+        background-color: $paletteActionActive;
+      }
+      &--active {
+        color: $paletteTextSecondary;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteActionDisabledBackground;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteActionActive;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteActionActive;
+          background-color: $paletteActionDisabledBackground;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorError {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteCommonWhite;
+      }
+      &--active {
+        color: $paletteErrorContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteErrorMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteErrorMain;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteErrorMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorDisabled {
+    background-color: $paletteActionDisabledBackground;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteActionDisabled;
+      }
+      &--active {
+        color: $paletteSuccessContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteActionDisabledBackground;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteActionDisabled;
+        &::after {
+          background-color: $paletteTextSecondary;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteTextSecondary;
+          background-color: $paletteActionDisabledBackground;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorSuccess {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteCommonWhite;
+      }
+      &--active {
+        color: $paletteSuccessContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteSuccessMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteSuccessMain;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteSuccessMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorWarning {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteCommonWhite;
+      }
+      &--active {
+        color: $paletteSuccessContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteWarningMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteWarningMain;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteWarningMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorProgress {
+    background-color: $paletteBackgroundPaper;
+    .at-tabs__item {
+      color: $paletteTextSecondary2;
+      &::after {
+        background-color: $paletteCommonWhite;
+      }
+      &--active {
+        color: $paletteProgressContrastText;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteProgressMain;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteProgressMain;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteProgressMain;
+          background-color: $paletteBackgroundPaper;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorDefault {
+    background-color: $paletteBackgroundDefault;
+    .at-tabs__item {
+      color: $paletteTextSecondary;
+      &::after {
+        background-color: $paletteTextPrimary;
+      }
+      &--active {
+        color: $paletteTextPrimary;
+      }
+    }
+    .at-tabs__header {
+      background-color: $paletteBackgroundPaper;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: $paletteTextSecondary;
+        &::after {
+          background-color: $paletteTextPrimary;
+          left: 0%;
+        }
+        &--active {
+          color: $paletteTextPrimary;
+          background-color: $paletteBackgroundDefault;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+  &.colorInherit {
+    background-color: transparent;
+    .at-tabs__item {
+      color: inherit;
+      &::after {
+        background-color: $palettePrimaryMain;
+      }
+      &--active {
+        color: inherit;
+      }
+    }
+    .at-tabs__header {
+      background-color: transparent;
+    }
+    &.at-tabs--vertical {
+      .at-tabs__item {
+        color: inherit;
+        &::after {
+          background-color: inherit;
+          left: 0%;
+        }
+        &--active {
+          color: inherit;
+          background-color: transparent;
+        }
+      }
+      .at-tabs__header {
+        background-color: $paletteGrey100;
+      }
+    }
+  }
+}
