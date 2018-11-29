@@ -1,11 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
-import { Canvas, Image } from '@tarojs/components';
+import { View, Canvas, Image } from '@tarojs/components';
+import PropTypes from 'prop-types';
 
 import theme from '../styles/theme';
 
 import './Watermark.scss';
 
-let unit = 80;
+const unit = 80;
 class Watermark extends Component {
   state = {
     id: null,
@@ -25,10 +26,10 @@ class Watermark extends Component {
         id,
       },
       () => {
-        //setTimeout(()=>{
+        // setTimeout(()=>{
         this.ctx = wx.createCanvasContext(id, this.$scope);
         this.draw();
-        //},2000)
+        // },2000)
       },
     );
   }
@@ -42,27 +43,27 @@ class Watermark extends Component {
   }
 
   draw() {
-    let ctx = this.ctx;
+    const ctx = this.ctx;
 
     if (!ctx) {
       return;
     }
 
-    let { text, type } = this.props;
-    let { width, height, id } = this.state;
+    const { text, type } = this.props;
+    const { width, height, id } = this.state;
 
-    let fontSize = theme.typography.fontSize;
-    let fontColor = theme.palette.text.divider;
+    const fontSize = theme.typography.fontSize;
+    const fontColor = theme.palette.text.divider;
 
     ctx.font = `${(fontSize * 1) / 1.81}px ${theme.typography.fontFamily}`;
     ctx.setFontSize((fontSize * 1) / 1.81);
     ctx.setFillStyle(fontColor);
 
     if (type === 'stretch') {
-      let deg = (45 * Math.PI) / 180;
+      const deg = (45 * Math.PI) / 180;
       ctx.rotate(deg);
 
-      let length = Math.ceil(Math.max(height, width) / Math.sin(deg) / Math.sin(deg) / unit);
+      const length = Math.ceil(Math.max(height, width) / Math.sin(deg) / Math.sin(deg) / unit);
 
       for (let j = 0; j <= length; j++) {
         for (let i = 0; i <= length; i++) {
@@ -83,7 +84,7 @@ class Watermark extends Component {
     }
 
     ctx.draw(false, () => {
-      let { id } = this.state;
+      const { id } = this.state;
       wx.canvasToTempFilePath(
         {
           canvasId: id,
@@ -101,20 +102,20 @@ class Watermark extends Component {
 
   render() {
     const { id, height, mark } = this.state;
-    const { customStyle, type, container } = this.props;
+    const { customStyle, type, container, onClick } = this.props;
 
     const position = container === 'window' ? 'fixed' : 'absolute';
 
-    let positionStyle = {
-      position: position,
+    const positionStyle = {
+      position,
     };
 
-    let style = {
+    const style = {
       ...customStyle,
       ...positionStyle,
     };
 
-    let canvasStyle = {
+    const canvasStyle = {
       ...positionStyle,
     };
 
@@ -123,7 +124,7 @@ class Watermark extends Component {
     }
 
     return (
-      <View className="root" style={style}>
+      <View className="root" style={style} onClick={onClick}>
         {/* mark && <View className={`mark ${type}`} style={{backgroundImage: `url(${mark})`}} /> */}
         {mark && (
           <Image className={`mark ${type}`} mode="scaleToFill" src={mark} style={positionStyle} />
@@ -137,8 +138,17 @@ class Watermark extends Component {
 Watermark.defaultProps = {
   text: '',
   type: 'stretch', // stretch, rightBottom,
-  customStyle: null,
+  customStyle: {},
   container: 'window', // parent, window
+  onClick: () => {},
+};
+
+Watermark.propTypes = {
+  text: PropTypes.string,
+  type: PropTypes.oneOf(['stretch', 'rightBottom']),
+  customStyle: PropTypes.object,
+  container: PropTypes.oneOf(['parent', 'window']),
+  onClick: PropTypes.func,
 };
 
 export default Watermark;
