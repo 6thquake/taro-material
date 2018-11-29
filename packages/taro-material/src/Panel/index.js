@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Button } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 
 import RMIcon from '../Icon';
@@ -40,12 +40,12 @@ class Panel extends Component {
         <View onClick={this.handleClick} className="header">
           <View className="left">
             <View className="name">
-              <RMTypography block={true} className="subheading">
+              <RMTypography block className="subheading">
                 {title}
               </RMTypography>
             </View>
             <View className="company">
-              <RMTypography block={true} className="caption">
+              <RMTypography block className="caption">
                 {subheading}
               </RMTypography>
             </View>
@@ -57,7 +57,7 @@ class Panel extends Component {
               </View>
               {expandable && (
                 <View>
-                  <RMIcon block={true} fontSize={'inherit'}>
+                  <RMIcon block fontSize="inherit">
                     {expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
                   </RMIcon>
                 </View>
@@ -69,7 +69,7 @@ class Panel extends Component {
         {(!expandable || expanded) && (
           <View className="footer">
             {actions.map(item => {
-              let { name, label, size = 'small', variant, color } = item;
+              const { name, label, size = 'small', variant, color } = item;
               return (
                 <View key={name} className="action">
                   <RMButton

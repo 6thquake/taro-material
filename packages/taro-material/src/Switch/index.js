@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { Switch } from '@tarojs/components';
+import { View, Switch } from '@tarojs/components';
 import classNames from 'classnames';
 
 import RMIcon from '../Icon';
@@ -66,7 +66,7 @@ class RMSwitch extends Component {
         >
           {title && (
             <Label className="at-switch__title">
-              <RMTypography className="subheading" color="inherit" block={true}>
+              <RMTypography className="subheading" color="inherit" block>
                 {title}
               </RMTypography>
               <View className="at-switch__required">
@@ -96,12 +96,12 @@ class RMSwitch extends Component {
         >
           {helperText && (
             <View className="at-input__desc_icon">
-              <RMIcon color="inherit" fontSize="default" block={true}>
+              <RMIcon color="inherit" fontSize="default" block>
                 warning
               </RMIcon>
             </View>
           )}
-          <RMTypography color="inherit" className="caption" block={true}>
+          <RMTypography color="inherit" className="caption" block>
             {helperText || ''}
           </RMTypography>
         </View>

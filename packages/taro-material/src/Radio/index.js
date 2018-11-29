@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { Radio, Label } from '@tarojs/components';
+import { View, Radio, Label } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -23,7 +23,7 @@ class RMRadio extends Component {
   handleChange(e) {
     const { value, checked, onChange } = this.props;
 
-    onChange && onChange(!checked /*e.target.value*/, value, e);
+    onChange && onChange(!checked /* e.target.value */, value, e);
   }
 
   render() {
@@ -52,14 +52,14 @@ class RMRadio extends Component {
           <View
             className={classNames({
               radio: true,
-              checked: checked,
+              checked,
             })}
           >
             {checked && <View className="point" />}
           </View>
         </View>
         {
-          <RMTypography className="subheading" color="inherit" block={true}>
+          <RMTypography className="subheading" color="inherit" block>
             {this.props.children}
           </RMTypography>
         }

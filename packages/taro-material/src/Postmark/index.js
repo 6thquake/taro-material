@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
 import moment from 'moment';
 import classNames from 'classnames';
 import { isString } from '../utils/typeof';
@@ -83,7 +82,7 @@ class Postmark extends Component {
         break;
     }
 
-    let rootCls = classNames({
+    const rootCls = classNames({
       root: true,
       [size]: true,
     });
@@ -99,7 +98,7 @@ class Postmark extends Component {
           </View>
           <View className="signature">
             {signature.split('').map((char, index) => {
-              let cls = classNames({
+              const cls = classNames({
                 char: true,
                 clockwise: true,
                 [`char${index}`]: true,
@@ -115,7 +114,7 @@ class Postmark extends Component {
           </View>
           <View className="date">
             {_date.split('').map((char, index) => {
-              let cls = classNames({
+              const cls = classNames({
                 char: true,
                 'anti-clockwise': true,
                 [`char${index}`]: true,

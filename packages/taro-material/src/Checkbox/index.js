@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { Checkbox, Label } from '@tarojs/components';
+import { View, Checkbox, Label } from '@tarojs/components';
 import classNames from 'classnames';
 
 import RMIcon from '../Icon';
@@ -41,23 +41,18 @@ class RMCheckbox extends Component {
           <View
             className={classNames({
               checkbox: true,
-              checked: checked,
+              checked,
             })}
           >
             {checked && (
-              <RMIcon
-                fontSize="inherit"
-                color="inherit"
-                block={true}
-                customStyle={{ marginLeft: '-1px' }}
-              >
+              <RMIcon fontSize="inherit" color="inherit" block customStyle={{ marginLeft: '-1px' }}>
                 {icon}
               </RMIcon>
             )}
           </View>
         </View>
         {
-          <RMTypography className="subheading" color="inherit" block={true}>
+          <RMTypography className="subheading" color="inherit" block>
             {this.props.children}
           </RMTypography>
         }
