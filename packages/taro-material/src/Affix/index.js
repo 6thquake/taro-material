@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
+import { View } from '@tarojs/components';
 
 import { isNumber } from '../utils/typeof';
 
@@ -8,6 +9,17 @@ import theme from '../styles/theme';
 import './index.scss';
 
 class Affix extends Component {
+  componentWillUpdate(nextProps, nextState) {
+    const { onChange } = this.props;
+
+    const { fixed } = this.state;
+    const _fixed = nextState.fixed;
+
+    if (fixed !== _fixed) {
+      onChange && onChange(fixed);
+    }
+  }
+
   componentDidMount() {
     const { onAddPageScroll } = this.props;
 
@@ -18,7 +30,7 @@ class Affix extends Component {
     this.affix
       .boundingClientRect(rect => {
         const info = Taro.getSystemInfoSync();
-        let { windowWidth, windowHeight } = info;
+        const { windowWidth, windowHeight } = info;
         let { left, top, bottom, right, width, height } = rect;
 
         right = -left - width + windowWidth;
@@ -26,12 +38,12 @@ class Affix extends Component {
 
         this.setState({
           fixed: false,
-          top: top,
-          left: left,
-          right: right,
-          bottom: bottom,
-          width: width,
-          height: height,
+          top,
+          left,
+          right,
+          bottom,
+          width,
+          height,
         });
       })
       .exec();
@@ -45,7 +57,7 @@ class Affix extends Component {
 
   handlePageScroll(params) {
     const { offsetBottom, offsetTop } = this.props;
-    let { fixed, left, top, bottom, right, width, height } = this.state;
+    const { fixed, left, top, bottom, right, width, height } = this.state;
 
     let _fixed = false,
       _affix = {};
@@ -68,11 +80,6 @@ class Affix extends Component {
     });
   }
 
-  handleChange(e) {
-    const { onChange } = this.props;
-    onChange && onChange(e.target.value, e, ...arguments);
-  }
-
   ref = node => (this.affix = node);
 
   render() {
@@ -83,9 +90,9 @@ class Affix extends Component {
 
     if (fixed) {
       style = {
-        ...{
-          zIndex: theme.zIndex.affix,
-        },
+        height: `${height}px`,
+        width: `${width}px`,
+        zIndex: theme.zIndex.affix,
         ...customStyle,
         ...{
           position: 'fixed',
@@ -99,8 +106,20 @@ class Affix extends Component {
     }
 
     return (
-      <View className="affix" ref={this.ref} style={style}>
-        {this.props.children}
+      <View className="affix">
+        {fixed && (
+          <View
+            style={{
+              height: `${height}px`,
+              width: `${width}px`,
+            }}
+          >
+            abcd
+          </View>
+        )}
+        <View ref={this.ref} style={style}>
+          {this.props.children}
+        </View>
       </View>
     );
   }
