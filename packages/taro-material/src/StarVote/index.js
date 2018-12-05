@@ -10,7 +10,18 @@ import './index.scss';
 
 class StarVote extends Component {
   render() {
-    let { count, value, defaultValue, allowHalf, color, size, disabled, className } = this.props;
+    let {
+      count,
+      value,
+      defaultValue,
+      allowHalf,
+      color,
+      size,
+      disabled,
+      className,
+      showValue,
+      customStyle,
+    } = this.props;
 
     if (!value && value != 0) {
       value = defaultValue;
@@ -58,6 +69,7 @@ class StarVote extends Component {
           },
           className,
         )}
+        style={customStyle}
       >
         {fulls.map(item => (
           <RMIcon fontSize="inherit" color={color}>
@@ -74,9 +86,11 @@ class StarVote extends Component {
             star_border
           </RMIcon>
         ))}
-        <RMTypography className="body2" fontSize="inherit" color={color}>
-          {value}
-        </RMTypography>
+        {showValue && (
+          <RMTypography className="caption" fontSize="inherit" color="inherit">
+            {value}
+          </RMTypography>
+        )}
       </View>
     );
   }
@@ -123,6 +137,8 @@ StarVote.propTypes = {
     'progress',
     'default',
   ]),
+  showValue: PropTypes.bool,
+  customStyle: PropTypes.object,
 };
 StarVote.defaultProps = {
   count: 5,
@@ -136,6 +152,8 @@ StarVote.defaultProps = {
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: 'inherit',
+  showValue: true,
+  customStyle: {},
 };
 
 export default StarVote;

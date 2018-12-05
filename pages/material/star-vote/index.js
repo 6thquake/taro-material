@@ -85,22 +85,22 @@ class Index extends RMPage {
         </View>
 
         <View className="title">large, inherit</View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={0} defaultValue={0} size="large" color="inherit" />
         </View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={4.2} defaultValue={0} size="large" color="inherit" />
         </View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={4.3} defaultValue={0} size="large" color="inherit" />
         </View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={4.7} defaultValue={0} size="large" color="inherit" />
         </View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={5} defaultValue={0} size="large" color="inherit" />
         </View>
-        <View className="starvote">
+        <View className="starvote inherit">
           <RMStarVote count={5} value={6} defaultValue={0} size="large" color="inherit" />
         </View>
 
