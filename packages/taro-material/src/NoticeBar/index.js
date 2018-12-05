@@ -206,7 +206,6 @@ NoticeBar.propTypes = {
     'default',
   ]),
   showMore: PropTypes.bool,
-
   onClose: PropTypes.func,
   onGotoMore: PropTypes.func,
 };

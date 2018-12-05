@@ -113,9 +113,7 @@ class Affix extends Component {
               height: `${height}px`,
               width: `${width}px`,
             }}
-          >
-            abcd
-          </View>
+          />
         )}
         <View ref={this.ref} style={style}>
           {this.props.children}

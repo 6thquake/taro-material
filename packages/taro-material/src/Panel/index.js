@@ -34,9 +34,9 @@ class Panel extends Component {
 
   render() {
     const { expanded } = this.state;
-    const { title, subheading, extra, actions, expandable } = this.props;
+    const { title, subheading, extra, actions, expandable, customStyle } = this.props;
     return (
-      <View className="root">
+      <View className="root" style={customStyle}>
         <View onClick={this.handleClick} className="header">
           <View className="left">
             <View className="name">
@@ -53,7 +53,7 @@ class Panel extends Component {
           <View className="right">
             <View className="right-box">
               <View className="extra">
-                <RMTypography className="caption">{extra || '2018-02-09'}</RMTypography>
+                <RMTypography className="caption">{extra || ''}</RMTypography>
               </View>
               {expandable && (
                 <View>
@@ -113,7 +113,8 @@ Panel.defaultProps = {
   //     color: 'primary',
   //     label: '确认'
   //   },
-  // ]
+  // ],
+  customStyle: {},
 };
 Panel.propTypes = {
   open: PropTypes.bool,
@@ -122,5 +123,6 @@ Panel.propTypes = {
   extra: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   expandable: PropTypes.bool,
   action: PropTypes.array,
+  customStyle: PropTypes.object,
 };
 export default Panel;
