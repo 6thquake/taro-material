@@ -1,4 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { View, Image, Label } from '@tarojs/components';
 import classNames from 'classnames';
 
@@ -17,7 +18,7 @@ function uploadFile(url, item, params, resolve, reject) {
   }
 
   Taro.uploadFile({
-    url: url,
+    url,
     filePath: item,
     name: 'file',
     formData: params,
@@ -31,8 +32,8 @@ function uploadFile(url, item, params, resolve, reject) {
     },
     complete(res) {
       if ((res.statusCode >= 200 && res.statusCode < 300) || res.statusCode === 304) {
-        //去掉微信返回的url多出的引号
-        let data = res.data.slice(1, -1);
+        // 去掉微信返回的url多出的引号
+        const data = res.data.slice(1, -1);
         resolve(data);
       } else {
         reject(res);
@@ -60,7 +61,7 @@ class Upload extends Component {
       return;
     }
 
-    let { files } = this.state;
+    const { files } = this.state;
 
     let indexToDelete = files.indexOf(item);
     if (indexToDelete !== -1) {
@@ -83,7 +84,7 @@ class Upload extends Component {
     e && e.stopPropagation();
   };
 
-  /*通过点击Input标签添加图片*/
+  /* 通过点击Input标签添加图片 */
   chooseImage = e => {
     const { disabled } = this.props;
 
@@ -92,7 +93,7 @@ class Upload extends Component {
     }
 
     let { maxLength, multiple } = this.props;
-    let { length } = this.files;
+    const { length } = this.files;
     if (multiple) {
       if (!maxLength) {
         maxLength = 2;
@@ -101,7 +102,7 @@ class Upload extends Component {
       maxLength = 1;
     }
 
-    let count = maxLength - length;
+    const count = maxLength - length;
     Taro.chooseImage({
       count,
       success: res => {
@@ -130,7 +131,7 @@ class Upload extends Component {
       return;
     }
 
-    let _files = this.files;
+    const _files = this.files;
 
     if (_files.indexOf(file) > -1) {
       return;
@@ -155,7 +156,7 @@ class Upload extends Component {
       }
     }
 
-    let { length } = _files;
+    const { length } = _files;
 
     if (length >= maxLength) {
       Taro.showModal({
@@ -164,7 +165,7 @@ class Upload extends Component {
         showCancel: false,
         confirmText: 'OK',
         confirmColor: theme.palette.primary.main,
-        success: function(res) {},
+        success(res) {},
       });
       return;
     }
@@ -184,12 +185,13 @@ class Upload extends Component {
     }
 
     return Promise.all(
-      files.map((item, index) => {
-        return new Promise((resolve, reject) => {
-          Upload.queue++;
-          uploadFile(url, item, params, resolve, reject);
-        });
-      }),
+      files.map(
+        (item, index) =>
+          new Promise((resolve, reject) => {
+            Upload.queue++;
+            uploadFile(url, item, params, resolve, reject);
+          }),
+      ),
     );
   };
 
@@ -246,7 +248,7 @@ class Upload extends Component {
       <View className="container">
         {label && (
           <Label className="title">
-            <RMTypography className="subheading" color="inherit" block={true}>
+            <RMTypography className="subheading" color="inherit" block>
               {label}
             </RMTypography>
             <View className="required">
@@ -258,13 +260,13 @@ class Upload extends Component {
         )}
         <View className="array" disabled={disabled}>
           {files.map(item => {
-            let url = `${item}`;
+            const url = `${item}`;
             return (
               <View key={url} className="chip" onClick={this.preview.bind(this, url)}>
                 <View className="media" style={{ backgroundImage: `url(${url})` }}>
                   <Image className="media" src={url} />
                   <View className="close" onClick={this.handleDelete.bind(this, url)}>
-                    <RMIcon fontSize={16} color="default" block={true}>
+                    <RMIcon fontSize={16} color="default" block>
                       close
                     </RMIcon>
                   </View>
@@ -276,7 +278,7 @@ class Upload extends Component {
             length < maxLength && (
               <View className="clickToUpload" onClick={this.chooseImage}>
                 <View className="add">
-                  <RMIcon fontSize={28} color="default" block={true}>
+                  <RMIcon fontSize={28} color="default" block>
                     add
                   </RMIcon>
                 </View>
@@ -292,12 +294,12 @@ class Upload extends Component {
         >
           {helperText && (
             <View className="helper-text-icon">
-              <RMIcon color="inherit" fontSize="default" block={true}>
+              <RMIcon color="inherit" fontSize="default" block>
                 warning
               </RMIcon>
             </View>
           )}
-          <RMTypography color="inherit" className="caption" block={true}>
+          <RMTypography color="inherit" className="caption" block>
             {helperText || ''}
           </RMTypography>
         </View>

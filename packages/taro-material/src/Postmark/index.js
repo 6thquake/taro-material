@@ -1,4 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { View, Image } from '@tarojs/components';
 import moment from 'moment';
 import classNames from 'classnames';

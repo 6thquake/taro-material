@@ -1,4 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
 
 import AtTextarea from '../components/textarea';
@@ -30,8 +31,8 @@ class TextArea extends Component {
   render() {
     const { show } = this.props;
     const { value, placeholder, maxlength } = this.props;
-    let length = value ? value.length : 0;
-    let countText = `${length}/${maxlength}`;
+    const length = value ? value.length : 0;
+    const countText = `${length}/${maxlength}`;
     return (
       <View className="root">
         {show ? (

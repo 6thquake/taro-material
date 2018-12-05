@@ -1,10 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { View, Input, Label, Textarea } from '@tarojs/components';
 
 import AtTextarea from '../components/textarea';
-
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
@@ -129,9 +128,9 @@ class TextField extends Component {
       disabled = true;
     }
 
-    let _title = title || name;
+    const _title = title || name;
 
-    let textareaStyle = {
+    const textareaStyle = {
       borderRadius: '0',
     };
     if (error) {
@@ -174,7 +173,7 @@ class TextField extends Component {
           >
             {_title && (
               <Label className="at-input__title" for={name}>
-                <RMTypography className="subheading" color="inherit" block={true}>
+                <RMTypography className="subheading" color="inherit" block>
                   {_title}
                 </RMTypography>
                 <View className="at-input__required">
@@ -187,7 +186,7 @@ class TextField extends Component {
             <View
               className={classNames({
                 'at-input__box': true,
-                multiline: multiline,
+                multiline,
               })}
             >
               {!multiline &&
@@ -245,8 +244,8 @@ class TextField extends Component {
                   onBlur={this.onBlur.bind(this)}
                   onConfirm={this.onConfirm.bind(this)}
                   onLinechange={this.onLinechange.bind(this)}
-                  count={true}
-                  autoHeight={true}
+                  count
+                  autoHeight
                   fixed={fixed}
                 />
               )}
@@ -286,19 +285,19 @@ class TextField extends Component {
             >
               {helperText && (
                 <View className="at-input__desc_icon">
-                  <RMIcon color="inherit" fontSize="default" block={true}>
+                  <RMIcon color="inherit" fontSize="default" block>
                     warning
                   </RMIcon>
                 </View>
               )}
-              <RMTypography color="inherit" className="caption" block={true}>
+              <RMTypography color="inherit" className="caption" block>
                 {helperText || ''}
               </RMTypography>
 
               {multiline &&
                 count && (
                   <View className="auto">
-                    <RMTypography color="inherit" className="caption" block={true}>
+                    <RMTypography color="inherit" className="caption" block>
                       {_count}
                     </RMTypography>
                   </View>

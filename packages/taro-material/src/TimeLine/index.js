@@ -1,4 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
 
 import RMIcon from '../Icon';
@@ -34,14 +35,14 @@ class Timeline extends Component {
                 <View className="avatar">
                   {avatar === 'success' && (
                     <View className="result success">
-                      <RMIcon fontSize="inherit" color="inherit" block={true}>
+                      <RMIcon fontSize="inherit" color="inherit" block>
                         check
                       </RMIcon>
                     </View>
                   )}
                   {avatar === 'failure' && (
                     <View className="result failure">
-                      <RMIcon fontSize="inherit" color="inherit" block={true}>
+                      <RMIcon fontSize="inherit" color="inherit" block>
                         close
                       </RMIcon>
                     </View>

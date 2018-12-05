@@ -1,13 +1,10 @@
-@import "../../taro-material/styles/theme.scss";
+@import '../../taro-material/styles/theme.scss';
 
-.root{
+.root {
   display: flex;
   flex-direction: column;
   background: $paletteBackgroundDefault;
 
-  .watermark, .panel, .input, .picker, .form, .upload, .svgs, .actions, .tags, .postmark, .spacer{
-    position: relative;
-  }
   .body {
     min-height: calc(100vh * 4);
 
@@ -16,7 +13,7 @@
     align-items: stretch;
     justify: center;
   }
-  
+
   .title {
     font-size: 30px;
     font-weight: 500;
@@ -25,18 +22,19 @@
     padding: #{$spacingUnit * 2}px;
     text-align: center;
   }
-  
-  .panel{
-    margin: #{$spacingUnit * 2}px 0;
+
+  .affix,
+  .spacer {
+    position: relative;
   }
 
-  .affix{
+  .affix {
     border: 1px solid $palettePrimaryDark;
     background: $palettePrimaryMain;
     color: $palettePrimaryContrastText;
   }
 
-  .spacer{
+  .spacer {
     min-height: calc(100vh);
   }
 }

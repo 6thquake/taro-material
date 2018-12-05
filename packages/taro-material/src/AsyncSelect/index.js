@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
+import PropTypes from 'prop-types';
 
 import AtModal from '../components/modal';
 import AtModalContent from '../components/modal/content';
@@ -12,7 +13,7 @@ import '../Select/Select.scss';
 class AsyncSelect extends Component {
   constructor(props) {
     super(props);
-    let option = this.initOption(props);
+    const option = this.initOption(props);
     this.state = {
       option,
       open: false,
@@ -20,7 +21,7 @@ class AsyncSelect extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let option = this.initOption(nextProps);
+    const option = this.initOption(nextProps);
     this.setState({
       option,
     });
@@ -34,9 +35,7 @@ class AsyncSelect extends Component {
 
   initOption = props => {
     const { value, options } = props;
-    let option = options.filter(item => {
-      return item.value === value;
-    })[0];
+    const option = options.filter(item => item.value === value)[0];
     return option || options[0];
   };
 
@@ -51,7 +50,7 @@ class AsyncSelect extends Component {
 
   handleChange = value => {
     const { onChange, options } = this.props;
-    let option = options.filter(item => item.value === value)[0];
+    const option = options.filter(item => item.value === value)[0];
     this.setState(
       {
         option,

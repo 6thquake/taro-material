@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
 import PropTypes from 'prop-types';
 
 import AtComponent from '../common/component';
@@ -12,7 +11,7 @@ export default class AtFlex extends AtComponent {
     const rootClass = ['at-row'];
 
     Object.keys(this.props).forEach(key => {
-      let value = this.props[key];
+      const value = this.props[key];
       if (key === 'children') {
         return;
       }

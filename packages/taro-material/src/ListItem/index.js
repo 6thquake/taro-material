@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image, Switch } from '@tarojs/components';
-
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { isFunction } from '../utils/typeof';
@@ -87,12 +86,7 @@ class ListItem extends Component {
         )}
         {iconThumb && (
           <View className="at-list__item-thumb item-thumb">
-            <RMIcon
-              className="item-thumb-info"
-              color={iconThumbColor}
-              fontSize="inherit"
-              block={true}
-            >
+            <RMIcon className="item-thumb-info" color={iconThumbColor} fontSize="inherit" block>
               {iconThumb}
             </RMIcon>
           </View>
@@ -124,7 +118,7 @@ class ListItem extends Component {
 
           {extraIconThumb && (
             <View className="item-extra__image">
-              <RMIcon className="item-extra__image-info" fontSize="inherit" block={true}>
+              <RMIcon className="item-extra__image-info" fontSize="inherit" block>
                 {extraIconThumb}
               </RMIcon>
             </View>

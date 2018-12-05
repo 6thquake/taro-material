@@ -308,6 +308,14 @@ export default class PanelBasic extends Component {
             id: 'Watermark',
             name: '水印',
           },
+          {
+            id: 'Star-Vote',
+            name: '评分',
+          },
+          {
+            id: 'Meter',
+            name: '表',
+          },
         ],
       },
     };

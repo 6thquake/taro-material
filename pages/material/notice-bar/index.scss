@@ -5,27 +5,11 @@
   flex-direction: column;
   background: $paletteBackgroundDefault;
 
-  .watermark,
-  .panel,
-  .input,
-  .picker,
-  .form,
-  .upload,
-  .svgs,
-  .actions,
-  .tags,
-  .postmark,
+  .notice,
   .spacer {
     position: relative;
   }
 
-  .form {
-    padding: 40px;
-  }
-  .spacer {
-    flex: 1;
-  }
-  .actions,
   .notices {
     .ok {
       margin-bottom: 16px;
@@ -46,14 +30,5 @@
     border-bottom: 1px solid #eee;
     padding: 16px;
     margin: 16px 0px;
-  }
-  .watermark {
-    .parent {
-      width: 200px;
-      height: 200px;
-    }
-  }
-  .panel {
-    margin: #{$spacingUnit * 2}px 0;
   }
 }

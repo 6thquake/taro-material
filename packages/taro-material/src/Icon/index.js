@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import './Icon.scss';
 
@@ -13,7 +14,7 @@ class Icon extends Component {
 
   render() {
     let { fontSize, color, block, customStyle } = this.props;
-    let style = { ...customStyle };
+    const style = { ...customStyle };
 
     if (fontSize && fontSize != 'default') {
       if (typeof fontSize === 'number') {
@@ -27,11 +28,11 @@ class Icon extends Component {
       _color = color.charAt(0).toUpperCase() + color.substring(1);
     }
 
-    let classes = classNames({
+    const classes = classNames({
       root: true,
       'material-icons': true,
       'inherit-size': fontSize == 'inherit',
-      block: block,
+      block,
       [`color${_color}`]: color !== 'inherit',
     });
 

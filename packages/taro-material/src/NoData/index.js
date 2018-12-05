@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
+import PropTypes from 'prop-types';
 
 import RMTypography from '../Typography';
 import RMIcon from '../Icon';
@@ -17,7 +18,7 @@ class NoData extends Component {
   render() {
     const { title, background, color } = this.props;
 
-    let style = {};
+    const style = {};
 
     if (background) {
       style.background = background;
@@ -31,7 +32,7 @@ class NoData extends Component {
       <View className="root" style={style}>
         <View className="content">
           <View className="img">
-            {/*<Image className='img' mode='aspectFit' src={NoDataImg}/>*/}
+            {/* <Image className='img' mode='aspectFit' src={NoDataImg}/> */}
             <RMIcon fontSize="inherit" color="inherit">
               mood_bad
             </RMIcon>

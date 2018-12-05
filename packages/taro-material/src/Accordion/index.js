@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
@@ -34,10 +35,10 @@ class Accordion extends Component {
   handleChange = value => {
     const { onChange } = this.props;
     const { options } = this.props;
-    let option = options.filter(item => item.value === value)[0] || {};
+    const option = options.filter(item => item.value === value)[0] || {};
     this.setState(
       {
-        value: value,
+        value,
         expanded: false,
       },
       () => {
@@ -73,7 +74,7 @@ class Accordion extends Component {
             <View className="label">
               <RMTypography className="body2">{option.label}</RMTypography>
             </View>
-            <RMIcon block={true} fontSize={'inherit'}>
+            <RMIcon block fontSize="inherit">
               {expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
             </RMIcon>
           </View>
@@ -81,9 +82,9 @@ class Accordion extends Component {
 
           <View onClick={this.handleSiftingClick} className="title">
             <View className="label">
-              <RMTypography className="body2">{'筛选'}</RMTypography>
+              <RMTypography className="body2">筛选</RMTypography>
             </View>
-            <RMIcon block={true} fontSize={'inherit'}>
+            <RMIcon block fontSize="inherit">
               {'sort'}
             </RMIcon>
           </View>
@@ -94,7 +95,7 @@ class Accordion extends Component {
           </View>
         ) : null}
 
-        <RMDrawer onClose={this.handleDrawerClose} show={show} width={'300px'} right>
+        <RMDrawer onClose={this.handleDrawerClose} show={show} width="300px" right>
           <RMFilters onChange={this.handleSiftingChange} />
         </RMDrawer>
       </View>

@@ -26,13 +26,16 @@ class Index extends RMPage {
       <View className="root">
         <View className="spacer" />
         <View className="icons">
+          <View className="title">inherit, primary</View>
           <RMIcon fontSize="inherit" color="primary">
             place
           </RMIcon>
+          <View className="title">48, default</View>
           <RMIcon fontSize={48} color="default">
             rotate_right
           </RMIcon>
-          <RMIcon color="inherit" fontSize="inherit" block={true}>
+          <View className="title">inherit, primary</View>
+          <RMIcon color="inherit" fontSize="inherit" block>
             insert_chart
           </RMIcon>
         </View>

@@ -41,9 +41,12 @@ class Index extends Component {
     return (
       <View className="root">
         <View className="body">
-          <RMCarousel customStyle={{ height: '100vh' }} items={items} />
+          <View className="title">carousel</View>
+          <View className="carousel">
+            <RMCarousel customStyle={{ height: '100vh' }} items={items} />
+          </View>
+          <View className="spacer" />
         </View>
-        <View className="spacer" />
       </View>
     );
   }

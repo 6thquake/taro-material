@@ -1,4 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
+import PropTypes from 'prop-types';
 import { View, Picker } from '@tarojs/components';
 import moment from 'moment';
 
@@ -20,7 +21,7 @@ class DatePicker extends Component {
 
   handelDateChange = e => {
     const { onChange } = this.props;
-    let value = e.detail.value;
+    const value = e.detail.value;
     onChange(value);
   };
 
@@ -53,7 +54,7 @@ class DatePicker extends Component {
             <RMTextField
               name={name}
               title={title}
-              type={'date'}
+              type="date"
               placeholder={placeholder}
               value={value}
               editable={false}
