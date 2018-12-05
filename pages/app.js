@@ -70,6 +70,7 @@ class App extends Component {
       'material/notice-bar/index',
       'material/tabs/index',
       'material/meter/index',
+      'material/star-vote/index',
     ],
     window: {
       backgroundTextStyle: 'light',
