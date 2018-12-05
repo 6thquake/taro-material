@@ -77,19 +77,19 @@ class Tag extends Component {
         break;
     }
 
-    let _customStyle = {
+    const _customStyle = {
       ...style,
       ...customStyle,
-      display: !!block ? 'block' : 'inline-block',
+      display: block ? 'block' : 'inline-block',
     };
 
-    let small = size === 'small';
-    let tagClasses = classNames({
+    const small = size === 'small';
+    const tagClasses = classNames({
       tag: true,
-      small: small,
+      small,
     });
 
-    let margin = {
+    const margin = {
       marginTop: `0px`,
       marginBottom: `0px`,
       marginLeft: prefix ? `${theme.spacing.unit / (small ? 2 : 1)}px` : `0px`,
@@ -108,15 +108,15 @@ class Tag extends Component {
         onClick={onClick}
       >
         <View className={tagClasses}>
-          <RMIcon fontSize="inherit" color="inherit" block={true}>
+          <RMIcon fontSize="inherit" color="inherit" block>
             {prefix}
           </RMIcon>
-          <View style={margin}>
-            <RMTypography block={true} className="body1" fontSize="inherit" color="inherit">
+          <View className="content" style={margin}>
+            <RMTypography block className="body1" fontSize="inherit" color="inherit">
               {this.props.children}
             </RMTypography>
           </View>
-          <RMIcon fontSize="inherit" color="inherit" block={true}>
+          <RMIcon fontSize="inherit" color="inherit" block>
             {suffix}
           </RMIcon>
         </View>
