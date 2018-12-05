@@ -72,17 +72,17 @@ class StarVote extends Component {
         style={customStyle}
       >
         {fulls.map(item => (
-          <RMIcon fontSize="inherit" color={color}>
+          <RMIcon fontSize="inherit" color={color} key={item}>
             star
           </RMIcon>
         ))}
         {halfs.map(item => (
-          <RMIcon fontSize="inherit" color={color}>
+          <RMIcon fontSize="inherit" color={color} key={item}>
             star_half
           </RMIcon>
         ))}
         {emptis.map(item => (
-          <RMIcon fontSize="inherit" color={color}>
+          <RMIcon fontSize="inherit" color={color} key={item}>
             star_border
           </RMIcon>
         ))}

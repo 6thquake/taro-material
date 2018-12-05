@@ -72,13 +72,13 @@ class Index extends Component {
       >
         <View className="meter__item">
           {_intr_.split('').map(item => (
-            <View className="meter__int-box">
+            <View className="meter__int-box" key={item}>
               <Text className="meter__value">{item}</Text>
             </View>
           ))}
           <Text className="meter__separator">.</Text>
           {_decl_.split('').map(item => (
-            <View className="meter__dec-box">
+            <View className="meter__dec-box" key={item}>
               <Text className="meter__value">{item}</Text>
             </View>
           ))}
