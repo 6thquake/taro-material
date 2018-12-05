@@ -69,6 +69,7 @@ class App extends Component {
       'material/watermark/index',
       'material/notice-bar/index',
       'material/tabs/index',
+      'material/meter/index',
     ],
     window: {
       backgroundTextStyle: 'light',

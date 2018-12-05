@@ -99,3 +99,4 @@ export { default as RMWatermark } from './Watermark';
 export { default as RMNoticeBar } from './NoticeBar';
 export { default as RMTabs } from './Tabs';
 export { default as RMTabsPane } from './TabsPane';
+export { default as RMMeter } from './Meter';
