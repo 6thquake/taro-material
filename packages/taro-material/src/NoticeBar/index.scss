@@ -95,11 +95,28 @@ $noticebar-icon-size: 26px;
   // }
 
   &--marquee {
+    &.at-noticebar--single {
+      .at-noticebar__content-text {
+        height: 36px;
+
+        .at-noticebar__content-inner {
+          &.vertical {
+            // padding-top: 36px;
+          }
+        }
+      }
+    }
     .at-noticebar__content-text {
-      height: 36px;
+      height: #{36 * 2}px;
       line-height: 36px;
       overflow: hidden;
       display: block;
+
+      .at-noticebar__content-inner {
+        &.vertical {
+          // padding-top: #{36 * 2}px;
+        }
+      }
     }
 
     // .at-noticebar__content-icon {
@@ -112,7 +129,7 @@ $noticebar-icon-size: 26px;
 
     .at-noticebar__content-inner {
       display: inline-block;
-      animation: marquee 1s linear infinite both;
+      // animation: marquee 1s linear infinite both;
       transform: translateZ(0);
       padding-left: 100%;
       white-space: nowrap;
@@ -121,7 +138,7 @@ $noticebar-icon-size: 26px;
       &.vertical {
         white-space: normal;
         padding-left: 0;
-        animation: marquee2 1s linear infinite both;
+        // animation: marquee2 1s linear infinite both;
       }
     }
   }

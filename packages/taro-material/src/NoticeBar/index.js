@@ -19,7 +19,7 @@ class NoticeBar extends AtComponent {
     this.state = {
       show: true,
       animElemId,
-      dura: 15,
+      dura: 0.015,
       isWEAPP: Taro.getEnv() === Taro.ENV_TYPE.WEAPP,
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB,
     };
@@ -50,10 +50,11 @@ class NoticeBar extends AtComponent {
 
   initAnimation() {
     const { vertical } = this.props;
+
     this.timeout = setTimeout(() => {
       this.timeout = null;
       if (this.state.isWEB) {
-        const elem = document.querySelector(`.${this.state.animElemId}`);
+        const elem = this.animElem; // document.querySelector(`.${this.state.animElemId}`)
         if (!elem) return;
         const width = vertical
           ? elem.getBoundingClientRect().height
@@ -61,19 +62,20 @@ class NoticeBar extends AtComponent {
         const dura = width / +this.props.speed;
         this.setState({ dura });
       } else if (this.state.isWEAPP) {
-        const query = Taro.createSelectorQuery().in(this.$scope);
-        query
-          .select(`.${this.state.animElemId}`)
+        // const query = Taro.createSelectorQuery().in(this.$scope)
+        // query.select(`.${this.state.animElemId}`)
+        this.animElem
           .boundingClientRect(res => {
             if (!res) return;
             const { width, height } = res;
             const dura = (vertical ? height : width) / +this.props.speed;
-            const animation = Taro.createAnimation({
-              duration: dura * 1000,
-              timingFunction: 'linear',
-            });
+
             const resetAnimation = Taro.createAnimation({
               duration: 0,
+              timingFunction: 'linear',
+            });
+            const animation = Taro.createAnimation({
+              duration: dura * 1000,
               timingFunction: 'linear',
             });
             const animBody = () => {
@@ -83,14 +85,15 @@ class NoticeBar extends AtComponent {
                 resetAnimation.translateX(0).step();
               }
 
-              this.setState({ animationData: resetAnimation.export() });
+              this.setState({ dura, animationData: resetAnimation.export() });
+
               setTimeout(() => {
                 if (vertical) {
                   animation.translateY(-height).step();
                 } else {
                   animation.translateX(-width).step();
                 }
-                this.setState({ animationData: animation.export() });
+                this.setState({ dura, animationData: animation.export() });
               }, 100);
             };
             animBody();
@@ -101,8 +104,10 @@ class NoticeBar extends AtComponent {
     }, 100);
   }
 
+  ref = node => (this.animElem = node);
+
   render() {
-    const { single, icon, customStyle, marquee, vertical, color } = this.props;
+    const { single, icon, customStyle, marquee, vertical, color, height } = this.props;
     let { showMore, close } = this.props;
     const { dura, animationData } = this.state;
     const rootClassName = ['at-noticebar'];
@@ -113,14 +118,18 @@ class NoticeBar extends AtComponent {
     if (!_moreText) _moreText = '查看详情';
 
     const style = {};
+    const contentStyle = {};
     const innerClassName = ['at-noticebar__content-inner'];
     if (marquee) {
       close = false;
-      style['animation-duration'] = `${dura}s`;
-      innerClassName.push(this.state.animElemId);
+      // style['animation-duration'] = `${dura * 1000}s`
+      // innerClassName.push(this.state.animElemId)
 
       if (vertical) {
         innerClassName.push('vertical');
+        if (height) {
+          contentStyle.height = `${height}px`;
+        }
       }
     }
 
@@ -133,7 +142,7 @@ class NoticeBar extends AtComponent {
       'at-noticebar--marquee': marquee,
       'at-noticebar--weapp': marquee && this.state.isWEAPP,
       'at-noticebar--more': !marquee && showMore,
-      'at-noticebar--single': !marquee && single,
+      'at-noticebar--single': single || (marquee && !vertical), // ! marquee &&
       [`color${_color}`]: color !== 'inherit',
     };
 
@@ -158,8 +167,13 @@ class NoticeBar extends AtComponent {
                 </RMIcon>
               </View>
             )}
-            <View className="at-noticebar__content-text">
-              <View animation={animationData} className={innerClassName} style={style}>
+            <View className="at-noticebar__content-text" style={contentStyle}>
+              <View
+                animation={animationData}
+                className={innerClassName}
+                style={style}
+                ref={this.ref}
+              >
                 <RMTypography className="body1" color="inherit" fontSize="inherit" block>
                   {this.props.children}
                 </RMTypography>
@@ -225,9 +239,9 @@ NoticeBar.defaultProps = {
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color: 'default',
-
   onClose: () => {},
   onGotoMore: () => {},
+  height: 0,
 };
 
 export default NoticeBar;

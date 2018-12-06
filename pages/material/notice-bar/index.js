@@ -54,13 +54,21 @@ class Index extends RMPage {
 
           <View className="title">纵向滚动</View>
           <View className="notice">
-            <RMNoticeBar marquee vertical>
+            <RMNoticeBar marquee single vertical>
               单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
             </RMNoticeBar>
           </View>
 
           <View className="notice">
             <RMNoticeBar marquee single={false} vertical>
+              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            </RMNoticeBar>
+          </View>
+
+          <View className="notice">
+            <RMNoticeBar marquee single={false} vertical height={72} speed={20}>
               多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
               NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
               通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
@@ -83,7 +91,7 @@ class Index extends RMPage {
 
           <View className="title">主题</View>
           <View className="notice">
-            <RMNoticeBar icon="access_alarm" color="default">
+            <RMNoticeBar icon="access_alarm" single color="default">
               单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
             </RMNoticeBar>
           </View>
@@ -95,7 +103,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee vertical color="secondary">
+            <RMNoticeBar marquee vertical single color="secondary">
               单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
             </RMNoticeBar>
           </View>
