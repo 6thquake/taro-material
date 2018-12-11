@@ -49,7 +49,7 @@ class NoticeBar extends AtComponent {
   }
 
   initAnimation() {
-    const { vertical, infinite } = this.props;
+    const { vertical, infinite, delay } = this.props;
     const { width, height, single } = this.props;
     let length = 0;
     if (vertical) {
@@ -82,6 +82,7 @@ class NoticeBar extends AtComponent {
             if (!res) return;
             const { width, height } = res;
             const dura = (vertical ? height : width) / +this.props.speed;
+            let index = 0;
 
             const resetAnimation = Taro.createAnimation({
               duration: 0,
@@ -93,7 +94,12 @@ class NoticeBar extends AtComponent {
             });
             const animBody = () => {
               if (vertical) {
-                resetAnimation.translateY(height).step();
+                const y = -length * index;
+                const _h = -height + (infinite ? 0 : length) - 6;
+                if (!delay || y <= _h) {
+                  resetAnimation.translateY(height).step();
+                  index = 0;
+                }
               } else {
                 resetAnimation.translateX(0).step();
               }
@@ -102,7 +108,17 @@ class NoticeBar extends AtComponent {
 
               setTimeout(() => {
                 if (vertical) {
-                  animation.translateY(-height + (infinite ? 0 : length)).step();
+                  let y = 0;
+                  if (delay) {
+                    y = -length * index++;
+                    const _h = -height + (infinite ? 0 : length) - 6;
+                    if (y <= _h) {
+                      y = _h;
+                    }
+                  } else {
+                    y = -height + (infinite ? 0 : length);
+                  }
+                  animation.translateY(4 + y).step();
                 } else {
                   animation.translateX(-width + (infinite ? 0 : length)).step();
                 }
@@ -112,7 +128,7 @@ class NoticeBar extends AtComponent {
             animBody();
 
             if (infinite) {
-              this.interval = setInterval(animBody, dura * 1000 + 100);
+              this.interval = setInterval(animBody, dura * 1000 + 100 + delay);
             }
           })
           .exec();
@@ -123,7 +139,17 @@ class NoticeBar extends AtComponent {
   ref = node => (this.animElem = node);
 
   render() {
-    const { single, icon, customStyle, marquee, vertical, color, height, infinite } = this.props;
+    const {
+      single,
+      icon,
+      customStyle,
+      marquee,
+      vertical,
+      color,
+      height,
+      infinite,
+      delay,
+    } = this.props;
     let { showMore, close } = this.props;
     const { dura, animationData } = this.state;
     const rootClassName = ['at-noticebar'];
@@ -238,6 +264,7 @@ NoticeBar.propTypes = {
   onClose: PropTypes.func,
   onGotoMore: PropTypes.func,
   infinite: PropTypes.bool,
+  delay: PropTypes.number,
 };
 
 NoticeBar.defaultProps = {
@@ -260,6 +287,7 @@ NoticeBar.defaultProps = {
   onGotoMore: () => {},
   height: 0,
   infinite: true,
+  delay: 0,
 };
 
 export default NoticeBar;

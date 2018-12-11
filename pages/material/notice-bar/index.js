@@ -215,6 +215,32 @@ class Index extends RMPage {
               通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
             </RMNoticeBar>
           </View>
+
+          <View className="title">delay</View>
+          <View className="notice">
+            <RMNoticeBar marquee single vertical infinite delay={1000}>
+              <View>1.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
+              <View>2.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
+              <View>3.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar marquee single={false} vertical infinite delay={1000}>
+              <View>
+                1.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </View>
+              <View>
+                2.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </View>
+              <View>
+                3.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </View>
+            </RMNoticeBar>
+          </View>
         </View>
       </View>
     );
