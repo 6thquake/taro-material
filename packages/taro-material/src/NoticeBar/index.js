@@ -49,7 +49,20 @@ class NoticeBar extends AtComponent {
   }
 
   initAnimation() {
-    const { vertical } = this.props;
+    const { vertical, infinite } = this.props;
+    const { width, height, single } = this.props;
+    let length = 0;
+    if (vertical) {
+      if (height) {
+        length = height;
+      } else if (single) {
+        length = 36 / 2;
+      } else {
+        length = 36;
+      }
+    } else {
+      length = width;
+    }
 
     this.timeout = setTimeout(() => {
       this.timeout = null;
@@ -89,15 +102,18 @@ class NoticeBar extends AtComponent {
 
               setTimeout(() => {
                 if (vertical) {
-                  animation.translateY(-height).step();
+                  animation.translateY(-height + (infinite ? 0 : length)).step();
                 } else {
-                  animation.translateX(-width).step();
+                  animation.translateX(-width + (infinite ? 0 : length)).step();
                 }
                 this.setState({ dura, animationData: animation.export() });
               }, 100);
             };
             animBody();
-            this.interval = setInterval(animBody, dura * 1000 + 100);
+
+            if (infinite) {
+              this.interval = setInterval(animBody, dura * 1000 + 100);
+            }
           })
           .exec();
       }
@@ -107,7 +123,7 @@ class NoticeBar extends AtComponent {
   ref = node => (this.animElem = node);
 
   render() {
-    const { single, icon, customStyle, marquee, vertical, color, height } = this.props;
+    const { single, icon, customStyle, marquee, vertical, color, height, infinite } = this.props;
     let { showMore, close } = this.props;
     const { dura, animationData } = this.state;
     const rootClassName = ['at-noticebar'];
@@ -221,6 +237,7 @@ NoticeBar.propTypes = {
   showMore: PropTypes.bool,
   onClose: PropTypes.func,
   onGotoMore: PropTypes.func,
+  infinite: PropTypes.bool,
 };
 
 NoticeBar.defaultProps = {
@@ -242,6 +259,7 @@ NoticeBar.defaultProps = {
   onClose: () => {},
   onGotoMore: () => {},
   height: 0,
+  infinite: true,
 };
 
 export default NoticeBar;
