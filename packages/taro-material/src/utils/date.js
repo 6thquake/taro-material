@@ -5,10 +5,15 @@ const ago = (date, format) => {
     return '';
   }
 
-  let ago = moment(date, format || `YYYY-MM-DD`);
-  let now = moment();
+  let _date = null;
+  if (moment.isDate(date)) {
+    _date = moment(date);
+  } else {
+    _date = moment(date, format || `YYYY-MM-DD`);
+  }
 
-  let range = now.diff(ago);
+  const now = moment();
+  const range = now.diff(_date);
 
   let key = '';
 
@@ -26,7 +31,7 @@ const ago = (date, format) => {
     key = 'seconds';
   }
 
-  return `${now.diff(ago, key)} ${key} ago`;
+  return `${now.diff(_date, key)} ${key} ago`;
 };
 
 export default ago;

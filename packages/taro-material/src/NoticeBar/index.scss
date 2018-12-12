@@ -21,7 +21,7 @@ $noticebar-icon-size: 26px;
     background: $paletteSecondaryMain;
   }
   &.colorAction {
-    color: $paletteActionSelected;
+    color: $paletteActionActive;
     background: $paletteActionDisabledBackground;
   }
   &.colorError {
@@ -55,19 +55,18 @@ $noticebar-icon-size: 26px;
 
   &__content {
     width: 100%;
-    line-height: $line-height-zh;
     word-break: break-all;
     word-wrap: break-word;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
     &-icon {
       display: inline-block;
       margin-right: #{$spacingUnit}px;
       vertical-align: top;
-      margin-top: 4px;
     }
 
     &-text {
@@ -98,6 +97,7 @@ $noticebar-icon-size: 26px;
     &.at-noticebar--single {
       .at-noticebar__content-text {
         height: 36px;
+        line-height: 36px;
 
         .at-noticebar__content-inner {
           &.vertical {

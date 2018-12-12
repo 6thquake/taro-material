@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { View, Text } from '@tarojs/components';
 
 import AtComponent from '../common/component';
-// import AtIcon from '../components/icon/index'
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
@@ -38,100 +37,96 @@ class NoticeBar extends AtComponent {
 
   componentWillReceiveProps() {
     if (!this.timeout) {
-      this.interval && clearInterval(this.interval);
-      this.initAnimation();
+      // this.interval && clearInterval(this.interval)
+      // this.initAnimation()
     }
   }
 
   componentDidMount() {
-    if (!this.props.marquee) return;
+    if (!this.props.marquee) {
+      return;
+    }
     this.initAnimation();
   }
 
+  componentWillUnmount() {
+    this.interval && clearInterval(this.interval);
+  }
+
   initAnimation() {
-    const { vertical, infinite, delay } = this.props;
-    const { width, height, single } = this.props;
+    const { vertical, infinite, pauseTime, duration } = this.props;
+    const { rows } = this.props;
     let length = 0;
     if (vertical) {
-      if (height) {
-        length = height;
-      } else if (single) {
-        length = 36 / 2;
-      } else {
-        length = 36;
-      }
-    } else {
-      length = width;
+      length = rows * 18;
     }
 
     this.timeout = setTimeout(() => {
       this.timeout = null;
       if (this.state.isWEB) {
-        const elem = this.animElem; // document.querySelector(`.${this.state.animElemId}`)
-        if (!elem) return;
-        const width = vertical
-          ? elem.getBoundingClientRect().height
-          : elem.getBoundingClientRect().width;
-        const dura = width / +this.props.speed;
-        this.setState({ dura });
+        // const elem = this.animElem // document.querySelector(`.${this.state.animElemId}`)
+        // if (elem) {
+        //   const width = vertical
+        //     ? elem.getBoundingClientRect().height
+        //     : elem.getBoundingClientRect().width
+        // }
       } else if (this.state.isWEAPP) {
         // const query = Taro.createSelectorQuery().in(this.$scope)
         // query.select(`.${this.state.animElemId}`)
-        this.animElem
-          .boundingClientRect(res => {
-            if (!res) return;
-            const { width, height } = res;
-            const dura = (vertical ? height : width) / +this.props.speed;
-            let index = 0;
+        let index = 0;
+        const resetAnimation = Taro.createAnimation({
+          duration: 0,
+          timingFunction: 'ease',
+        });
+        const animation = Taro.createAnimation({
+          duration,
+          timingFunction: 'ease',
+        });
 
-            const resetAnimation = Taro.createAnimation({
-              duration: 0,
-              timingFunction: 'linear',
-            });
-            const animation = Taro.createAnimation({
-              duration: dura * 1000,
-              timingFunction: 'linear',
-            });
-            const animBody = () => {
-              if (vertical) {
-                const y = -length * index;
+        const nodeRef = this.animElem.boundingClientRect(res => {
+          if (!res) return;
+          const { width, height } = res;
+          if (vertical) {
+            const y = -length * index;
+            const _h = -height + (infinite ? 0 : length) - 6;
+            if (!pauseTime || y <= _h) {
+              resetAnimation.translateY(height).step();
+              index = 0;
+            }
+          } else {
+            resetAnimation.translateX(0).step();
+          }
+
+          this.setState({ animationData: resetAnimation.export() });
+
+          setTimeout(() => {
+            if (vertical) {
+              let y = 0;
+              if (pauseTime) {
+                y = -length * index++;
                 const _h = -height + (infinite ? 0 : length) - 6;
-                if (!delay || y <= _h) {
-                  resetAnimation.translateY(height).step();
-                  index = 0;
+                if (y <= _h) {
+                  y = _h;
                 }
               } else {
-                resetAnimation.translateX(0).step();
+                y = -height + (infinite ? 0 : length);
               }
-
-              this.setState({ dura, animationData: resetAnimation.export() });
-
-              setTimeout(() => {
-                if (vertical) {
-                  let y = 0;
-                  if (delay) {
-                    y = -length * index++;
-                    const _h = -height + (infinite ? 0 : length) - 6;
-                    if (y <= _h) {
-                      y = _h;
-                    }
-                  } else {
-                    y = -height + (infinite ? 0 : length);
-                  }
-                  animation.translateY(4 + y).step();
-                } else {
-                  animation.translateX(-width + (infinite ? 0 : length)).step();
-                }
-                this.setState({ dura, animationData: animation.export() });
-              }, 100);
-            };
-            animBody();
-
-            if (infinite) {
-              this.interval = setInterval(animBody, dura * 1000 + 100 + delay);
+              animation.translateY(y).step();
+            } else {
+              animation.translateX(-width + (infinite ? 0 : 100)).step();
             }
-          })
-          .exec();
+            this.setState({ animationData: animation.export() });
+          }, 100);
+        });
+
+        const animBody = () => {
+          nodeRef.exec();
+        };
+        animBody();
+
+        if (infinite) {
+          this.interval = setInterval(animBody, duration + 100 + pauseTime);
+        }
       }
     }, 100);
   }
@@ -139,21 +134,13 @@ class NoticeBar extends AtComponent {
   ref = node => (this.animElem = node);
 
   render() {
-    const {
-      single,
-      icon,
-      customStyle,
-      marquee,
-      vertical,
-      color,
-      height,
-      infinite,
-      delay,
-    } = this.props;
+    const { icon, customStyle, marquee, vertical, color, rows } = this.props;
+    const height = rows * 18;
     let { showMore, close } = this.props;
-    const { dura, animationData } = this.state;
+    const { animationData } = this.state;
     const rootClassName = ['at-noticebar'];
     let _moreText = this.props.moreText;
+    const single = rows === 1;
 
     if (!single) showMore = false;
 
@@ -169,10 +156,11 @@ class NoticeBar extends AtComponent {
 
       if (vertical) {
         innerClassName.push('vertical');
-        if (height) {
-          contentStyle.height = `${height}px`;
-        }
       }
+    }
+
+    if (height) {
+      contentStyle.height = `${height}px`;
     }
 
     let _color = '';
@@ -240,9 +228,8 @@ class NoticeBar extends AtComponent {
 
 NoticeBar.propTypes = {
   close: PropTypes.bool, //  是否需要关闭按钮  Boolean - false
-  single: PropTypes.bool, //  内容是否单行  Boolean - false
   marquee: PropTypes.bool, // 内容是否滚动（内容只能单行）  Boolean - false
-  speed: PropTypes.number, // 内容滚动速度 （默认速度100px/秒）  Number  - 100
+  duration: PropTypes.number, // 内容滚动速度 （默认速度100px/秒）  Number  - 100
   moreText: PropTypes.string, //  “查看更多”链接文本  String  - 查看详情
   moreUrl: PropTypes.string, // “查看更多”链接地址  String  - -
   icon: PropTypes.string, // 内容前的icon图标  String  参考icon组件
@@ -264,14 +251,13 @@ NoticeBar.propTypes = {
   onClose: PropTypes.func,
   onGotoMore: PropTypes.func,
   infinite: PropTypes.bool,
-  delay: PropTypes.number,
+  pauseTime: PropTypes.number,
+  rows: PropTypes.number, //  内容是否单行  Boolean - false
 };
 
 NoticeBar.defaultProps = {
   close: false,
-  single: false,
   marquee: false,
-  speed: 100,
   moreText: '查看详情',
   moreUrl: '',
   showMore: false,
@@ -285,9 +271,10 @@ NoticeBar.defaultProps = {
   color: 'default',
   onClose: () => {},
   onGotoMore: () => {},
-  height: 0,
   infinite: true,
-  delay: 0,
+  pauseTime: 0,
+  duration: 15000,
+  rows: 0,
 };
 
 export default NoticeBar;

@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMNoticeBar } from '../../taro-material';
+import { RMNoticeBar, RMNotice } from '../../taro-material';
 
 import RMPage from '../../taro-material/Page';
 
@@ -13,232 +13,368 @@ class Index extends RMPage {
     navigationBarTitleText: 'NoticeBar',
   };
 
-  componentWillMount() {}
+  state = {
+    data: ['', ''],
+  };
+
+  componentWillMount() {
+    const { data } = this.state;
+    this.interval = setInterval(() => {
+      if (data.length > 10) {
+        return;
+      }
+      data.push('');
+      this.setState({ data });
+    }, 3000);
+  }
 
   componentDidMount() {}
+
+  componentWillUnMount() {
+    this.interval && clearInterval(this.interval);
+  }
 
   componentDidShow() {}
 
   componentDidHide() {}
 
   render() {
+    const { data } = this.state;
     return (
       <View className="root">
         <View className="notices">
           <View className="title">文字</View>
           <View className="notice">
-            <RMNoticeBar single>单行文本 - 这是 NoticeBar 通告栏，结束。</RMNoticeBar>
+            <RMNoticeBar rows={1}>
+              <RMNotice rows={1}>单行文本 - 这是 NoticeBar 通告栏，结束。</RMNotice>
+            </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar single={false}>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar rows={2}>
+              <RMNotice rows={2}>
+                两行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar>
+              <RMNotice>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">跑马灯</View>
           <View className="notice">
-            <RMNoticeBar marquee single>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={1}>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="notice">
-            <RMNoticeBar marquee single={false}>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={2}>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">纵向滚动</View>
           <View className="notice">
-            <RMNoticeBar marquee single vertical>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={1} vertical duration={2000}>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="notice">
-            <RMNoticeBar marquee single={false} vertical>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={2} vertical duration={2000}>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="notice">
-            <RMNoticeBar marquee single={false} vertical height={72} speed={20}>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={2} vertical duration={2000}>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">带图标</View>
           <View className="notice">
             <RMNoticeBar icon="access_alarm">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              <RMNotice>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
             <RMNoticeBar icon="access_alarm">
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              <RMNotice>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">主题</View>
           <View className="notice">
-            <RMNoticeBar icon="access_alarm" single color="default">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="access_alarm" rows={1} color="default">
+              <RMNotice rows={1} color="default">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
             <RMNoticeBar icon="access_alarm" color="primary">
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              <RMNotice color="primary">
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee vertical single color="secondary">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee vertical rows={1} color="secondary" duration={3000}>
+              <RMNotice rows={1} color="secondary">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee single={false} vertical color="error">
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee vertical color="error" duration={3000}>
+              <RMNotice color="error">
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar single moreText="查看详情" color="success">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar rows={1} moreText="查看详情" color="success">
+              <RMNotice rows={1} color="success">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single moreText="查看详情" color="warning">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="warning">
+              <RMNotice rows={1} color="warning">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single moreText="查看详情" color="action">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="action">
+              <RMNotice rows={1} color="action">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single moreText="查看详情" color="disabled">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="disabled">
+              <RMNotice rows={1} color="disabled">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single moreText="查看详情" color="progress">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="progress">
+              <RMNotice rows={1} color="progress">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">查看更多</View>
           <View className="notice">
-            <RMNoticeBar single moreText="查看详情" showMore>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar rows={1} moreText="查看详情" showMore>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single moreText="查看详情" showMore>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" showMore>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single={false} moreText="查看详情" showMore>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee moreText="查看详情" showMore>
+              <RMNotice>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">关闭按钮</View>
           <View className="notice">
-            <RMNoticeBar single close>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar rows={1} close>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" single close moreText="查看详情">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" rows={1} close moreText="查看详情">
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single close moreText="查看详情">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={1} close moreText="查看详情">
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single={false} close moreText="查看详情">
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar icon="volume_up" marquee rows={2} close moreText="查看详情">
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
           <View className="title">only once</View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee single close infinite={false} moreText="查看详情">
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar
+              icon="volume_up"
+              marquee
+              rows={1}
+              close
+              infinite={false}
+              moreText="查看详情"
+            >
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
             <RMNoticeBar
               icon="volume_up"
               marquee
-              single={false}
+              rows={2}
               close
               infinite={false}
               moreText="查看详情"
             >
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee single vertical infinite={false} speed={10}>
-              单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={1} vertical infinite={false} duration={1000}>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee single={false} vertical infinite={false} speed={10}>
-              多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-              NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-              通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+            <RMNoticeBar marquee rows={2} vertical infinite={false} duration={1000}>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
 
-          <View className="title">delay</View>
+          <View className="title">pauseTime</View>
           <View className="notice">
-            <RMNoticeBar marquee single vertical infinite delay={1000}>
-              <View>1.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
-              <View>2.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
-              <View>3.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。</View>
+            <RMNoticeBar marquee rows={1} vertical pauseTime={1000} duration={500}>
+              <RMNotice rows={1}>
+                1.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+              <RMNotice rows={1}>
+                2.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+              <RMNotice rows={1}>
+                3.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar marquee single={false} vertical infinite delay={1000}>
-              <View>
+            <RMNoticeBar marquee rows={2} vertical pauseTime={1000} duration={500}>
+              <RMNotice rows={2}>
                 1.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
-              </View>
-              <View>
+              </RMNotice>
+              <RMNotice rows={2}>
                 2.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
-              </View>
-              <View>
+              </RMNotice>
+              <RMNotice rows={2}>
                 3.单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
-              </View>
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+
+          <View className="title">dynamic</View>
+          <View className="notice">
+            <RMNoticeBar marquee rows={1} vertical infinite pauseTime={3000} duration={500}>
+              {data.map((item, index) => (
+                <RMNotice title={index} rows={1}>
+                  {index}. 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+                </RMNotice>
+              ))}
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar marquee rows={2} vertical infinite pauseTime={3000} duration={500}>
+              {data.map((item, index) => (
+                <RMNotice title={index} rows={2}>
+                  多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                  通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                  NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+                </RMNotice>
+              ))}
             </RMNoticeBar>
           </View>
         </View>

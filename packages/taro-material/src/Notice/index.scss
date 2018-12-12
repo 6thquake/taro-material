@@ -1,0 +1,51 @@
+@import '../styles/theme.scss';
+
+.rm-notice {
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  .subheading,
+  .body2,
+  .caption {
+    display: inline;
+    padding: 0px #{$spacingUnit}px;
+  }
+
+  .subheading {
+    font-weight: $typographyFontWeightMedium;
+    font-size: #{1 * $typographyFontSize}px;
+  }
+
+  &.colorPrimary,
+  &.colorSecondary,
+  &.colorError,
+  &.colorSuccess,
+  &.colorWarning,
+  &.colorProgress,
+  &.colorDefault {
+    .caption {
+      color: $paletteTextSecondary2;
+    }
+  }
+
+  &.colorAction {
+    .caption {
+      color: $paletteTextHint;
+    }
+  }
+
+  &.colorDisabled {
+    .caption {
+      color: $paletteActionSelected;
+    }
+  }
+
+  &.colorInherit {
+    .caption {
+      color: inherit;
+    }
+  }
+}

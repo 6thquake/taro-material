@@ -97,6 +97,7 @@ export { default as RMTypography } from './Typography';
 export { default as RMUpload } from './Upload';
 export { default as RMWatermark } from './Watermark';
 export { default as RMNoticeBar } from './NoticeBar';
+export { default as RMNotice } from './Notice';
 export { default as RMTabs } from './Tabs';
 export { default as RMTabsPane } from './TabsPane';
 export { default as RMMeter } from './Meter';
