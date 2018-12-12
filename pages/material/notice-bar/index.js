@@ -360,8 +360,8 @@ class Index extends RMPage {
           <View className="notice">
             <RMNoticeBar marquee rows={1} vertical infinite pauseTime={3000} duration={500}>
               {data.map((item, index) => (
-                <RMNotice title={index} rows={1}>
-                  {index}. 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+                <RMNotice title={`标题${index}`} rows={1}>
+                  单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
                 </RMNotice>
               ))}
             </RMNoticeBar>
@@ -369,7 +369,7 @@ class Index extends RMPage {
           <View className="notice">
             <RMNoticeBar marquee rows={2} vertical infinite pauseTime={3000} duration={500}>
               {data.map((item, index) => (
-                <RMNotice title={index} rows={2}>
+                <RMNotice title={`标题${index}`} rows={2}>
                   多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                   通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                   NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。

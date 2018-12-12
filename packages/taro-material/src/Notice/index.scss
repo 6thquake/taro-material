@@ -15,8 +15,13 @@
   }
 
   .subheading {
+    font-size: #{0.875 * $typographyFontSize}px;
     font-weight: $typographyFontWeightMedium;
-    font-size: #{1 * $typographyFontSize}px;
+  }
+
+  .caption {
+    font-size: #{0.75 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightLight;
   }
 
   &.colorPrimary,
