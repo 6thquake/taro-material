@@ -23,6 +23,9 @@ $noticebar-icon-size: 26px;
   &.colorAction {
     color: $paletteActionActive;
     background: $paletteActionDisabledBackground;
+    .at-noticebar__more {
+      color: $paletteTextSecondary;
+    }
   }
   &.colorError {
     color: $paletteErrorContrastText;
@@ -31,6 +34,9 @@ $noticebar-icon-size: 26px;
   &.colorDisabled {
     color: $paletteActionDisabled;
     background: $paletteActionDisabledBackground;
+    .at-noticebar__more {
+      color: $paletteTextSecondary;
+    }
   }
   &.colorSuccess {
     color: $paletteSuccessContrastText;
@@ -45,12 +51,20 @@ $noticebar-icon-size: 26px;
     background: $paletteProgressMain;
   }
   &.colorDefault {
-    color: $palettePrimaryContrastText;
-    background: $palettePrimaryMain;
+    color: $paletteTextPrimary;
+    background: $paletteBackgroundPaper;
+
+    .at-noticebar__more {
+      color: $paletteTextSecondary;
+    }
   }
   &.colorInherit {
     color: inherit;
     background: inherit;
+
+    .at-noticebar__more {
+      color: $paletteTextSecondary;
+    }
   }
 
   &__content {

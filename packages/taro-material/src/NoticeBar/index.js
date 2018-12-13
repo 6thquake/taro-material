@@ -136,6 +136,7 @@ class NoticeBar extends AtComponent {
   render() {
     const {
       icon,
+      iconColor,
       customStyle,
       marquee,
       vertical,
@@ -200,7 +201,7 @@ class NoticeBar extends AtComponent {
             )}
             {icon && (
               <View className="at-noticebar__content-icon">
-                <RMIcon color="inherit" fontSize={24}>
+                <RMIcon color={iconColor || 'inherit'} fontSize={24}>
                   {icon}
                 </RMIcon>
               </View>
@@ -272,6 +273,7 @@ NoticeBar.defaultProps = {
   moreUrl: '',
   showMore: false,
   icon: '',
+  iconColor: '',
   customStyle: {},
   vertical: false,
   /**

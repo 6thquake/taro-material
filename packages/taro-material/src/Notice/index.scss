@@ -29,10 +29,15 @@
   &.colorError,
   &.colorSuccess,
   &.colorWarning,
-  &.colorProgress,
-  &.colorDefault {
+  &.colorProgress {
     .caption {
       color: $paletteTextSecondary2;
+    }
+  }
+
+  &.colorDefault {
+    .caption {
+      color: $paletteTextSecondary;
     }
   }
 

@@ -136,82 +136,6 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
 
-          <View className="title">主题</View>
-          <View className="notice">
-            <RMNoticeBar icon="access_alarm" rows={1} color="default">
-              <RMNotice rows={1} color="default">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar icon="access_alarm" color="primary">
-              <RMNotice color="primary">
-                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar marquee vertical rows={1} color="secondary" duration={3000}>
-              <RMNotice rows={1} color="secondary">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar marquee vertical color="error" duration={3000}>
-              <RMNotice color="error">
-                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
-                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar rows={1} color="success">
-              <RMNotice rows={1} color="success">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="warning">
-              <RMNotice rows={1} color="warning">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="action">
-              <RMNotice rows={1} color="action">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="disabled">
-              <RMNotice rows={1} color="disabled">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="progress">
-              <RMNotice rows={1} color="progress">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-
           <View className="title">查看更多</View>
           <View className="notice">
             <RMNoticeBar rows={1} moreText="查看详情" showMore>
@@ -424,6 +348,97 @@ class Index extends RMPage {
                   NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
                 </RMNotice>
               ))}
+            </RMNoticeBar>
+          </View>
+
+          <View className="title">主题</View>
+          <View className="notice">
+            <RMNoticeBar
+              icon="access_alarm"
+              iconColor="secondary"
+              rows={1}
+              color="default"
+              showMore
+              unread
+            >
+              <RMNotice rows={1} color="default">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="access_alarm" color="primary" showMore unread>
+              <RMNotice color="primary">
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar
+              marquee
+              vertical
+              rows={1}
+              color="secondary"
+              duration={3000}
+              showMore
+              unread
+            >
+              <RMNotice rows={1} color="secondary">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar marquee vertical color="error" duration={3000} showMore unread>
+              <RMNotice color="error">
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar rows={1} color="success" showMore unread>
+              <RMNotice rows={1} color="success">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="warning" showMore unread>
+              <RMNotice rows={1} color="warning">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="action" showMore unread>
+              <RMNotice rows={1} color="action">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="disabled" showMore unread>
+              <RMNotice rows={1} color="disabled">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="progress" showMore unread>
+              <RMNotice rows={1} color="progress">
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
             </RMNoticeBar>
           </View>
         </View>
