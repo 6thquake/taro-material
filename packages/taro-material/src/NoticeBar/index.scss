@@ -24,7 +24,7 @@ $noticebar-icon-size: 26px;
     color: $paletteActionActive;
     background: $paletteActionDisabledBackground;
     .at-noticebar__more {
-      color: $paletteTextSecondary;
+      color: $paletteTextHint;
     }
   }
   &.colorError {
@@ -35,7 +35,7 @@ $noticebar-icon-size: 26px;
     color: $paletteActionDisabled;
     background: $paletteActionDisabledBackground;
     .at-noticebar__more {
-      color: $paletteTextSecondary;
+      color: $paletteActionDisabled;
     }
   }
   &.colorSuccess {
