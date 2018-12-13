@@ -27,7 +27,7 @@ const ago = (date, format) => {
     key = 'hours';
   } else if (range > 60 * 1000) {
     key = 'minutes';
-  } else if (range > 1000) {
+  } else {
     key = 'seconds';
   }
 

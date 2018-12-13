@@ -134,23 +134,31 @@ class NoticeBar extends AtComponent {
   ref = node => (this.animElem = node);
 
   render() {
-    const { icon, customStyle, marquee, vertical, color, rows } = this.props;
+    const {
+      icon,
+      customStyle,
+      marquee,
+      vertical,
+      color,
+      rows,
+      showMore,
+      close,
+      unread,
+    } = this.props;
     const height = rows * 18;
-    let { showMore, close } = this.props;
     const { animationData } = this.state;
     const rootClassName = ['at-noticebar'];
-    let _moreText = this.props.moreText;
+    const _moreText = this.props.moreText;
     const single = rows === 1;
 
-    if (!single) showMore = false;
-
-    if (!_moreText) _moreText = '查看详情';
+    // if (!single) showMore = false;
+    // if (!_moreText) _moreText = '查看详情'
 
     const style = {};
     const contentStyle = {};
     const innerClassName = ['at-noticebar__content-inner'];
     if (marquee) {
-      close = false;
+      // close = false
       // style['animation-duration'] = `${dura * 1000}s`
       // innerClassName.push(this.state.animElemId)
 
@@ -211,6 +219,7 @@ class NoticeBar extends AtComponent {
             </View>
             {showMore && (
               <View className="at-noticebar__more" onClick={this.onGotoMore.bind(this)}>
+                {unread && <View className="unread" />}
                 <Text className="text">{_moreText}</Text>
                 <View className="at-noticebar__more-icon">
                   <RMIcon color="inherit" fontSize={24}>
@@ -253,6 +262,7 @@ NoticeBar.propTypes = {
   infinite: PropTypes.bool,
   pauseTime: PropTypes.number,
   rows: PropTypes.number, //  内容是否单行  Boolean - false
+  unread: PropTypes.bool,
 };
 
 NoticeBar.defaultProps = {
@@ -275,6 +285,7 @@ NoticeBar.defaultProps = {
   pauseTime: 0,
   duration: 15000,
   rows: 0,
+  unread: false,
 };
 
 export default NoticeBar;

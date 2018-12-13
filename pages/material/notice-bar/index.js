@@ -172,7 +172,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar rows={1} moreText="查看详情" color="success">
+            <RMNoticeBar rows={1} color="success">
               <RMNotice rows={1} color="success">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -180,7 +180,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="warning">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="warning">
               <RMNotice rows={1} color="warning">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -188,7 +188,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="action">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="action">
               <RMNotice rows={1} color="action">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -196,7 +196,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="disabled">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="disabled">
               <RMNotice rows={1} color="disabled">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -204,7 +204,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" color="progress">
+            <RMNoticeBar icon="volume_up" marquee rows={1} color="progress">
               <RMNotice rows={1} color="progress">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -230,7 +230,70 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee moreText="查看详情" showMore>
+            <RMNoticeBar rows={2} moreText="查看" showMore>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={2} vertical moreText="" showMore>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee vertical moreText="查看详情" showMore>
+              <RMNotice>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+
+          <View className="title">unread</View>
+          <View className="notice">
+            <RMNoticeBar rows={1} moreText="查看详情" showMore unread>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={1} moreText="查看详情" showMore unread>
+              <RMNotice rows={1}>
+                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar rows={2} moreText="查看" showMore unread>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee rows={2} vertical moreText="" unread showMore>
+              <RMNotice rows={2}>
+                多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
+                NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
+                通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
+              </RMNotice>
+            </RMNoticeBar>
+          </View>
+          <View className="notice">
+            <RMNoticeBar icon="volume_up" marquee vertical moreText="查看详情" unread showMore>
               <RMNotice>
                 多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
@@ -249,7 +312,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" rows={1} close moreText="查看详情">
+            <RMNoticeBar icon="volume_up" rows={1} close>
               <RMNotice rows={1}>
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -257,7 +320,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} close moreText="查看详情">
+            <RMNoticeBar icon="volume_up" marquee rows={1} close>
               <RMNotice rows={1}>
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -265,7 +328,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={2} close moreText="查看详情">
+            <RMNoticeBar icon="volume_up" marquee rows={2} close>
               <RMNotice rows={2}>
                 多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
@@ -276,14 +339,7 @@ class Index extends RMPage {
 
           <View className="title">only once</View>
           <View className="notice">
-            <RMNoticeBar
-              icon="volume_up"
-              marquee
-              rows={1}
-              close
-              infinite={false}
-              moreText="查看详情"
-            >
+            <RMNoticeBar icon="volume_up" marquee rows={1} close infinite={false}>
               <RMNotice rows={1}>
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                 通告栏，结束。
@@ -291,14 +347,7 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar
-              icon="volume_up"
-              marquee
-              rows={2}
-              close
-              infinite={false}
-              moreText="查看详情"
-            >
+            <RMNoticeBar icon="volume_up" marquee rows={2} close infinite={false}>
               <RMNotice rows={2}>
                 多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar

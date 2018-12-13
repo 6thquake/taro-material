@@ -65,7 +65,7 @@ $noticebar-icon-size: 26px;
 
     &-icon {
       display: inline-block;
-      margin-right: #{$spacingUnit}px;
+      // margin-right: #{$spacingUnit}px;
       vertical-align: top;
     }
 
@@ -146,7 +146,7 @@ $noticebar-icon-size: 26px;
   &--single {
     &.at-noticebar--more {
       .at-noticebar__content-text {
-        display: inline-block;
+        // display: inline-block;
         // max-width: 525px;
         @include line(1);
       }
@@ -173,7 +173,7 @@ $noticebar-icon-size: 26px;
     // position: absolute;
     // right: $spacing-h-lg;
     // top: $spacing-v-sm;
-    margin-left: #{$spacingUnit * 2}px;
+    // margin-left: #{$spacingUnit * 2}px;
     color: $paletteTextSecondary2;
     font-size: 0;
     display: flex;
@@ -185,6 +185,14 @@ $noticebar-icon-size: 26px;
       font-size: $font-size-sm;
       line-height: $line-height-zh;
       vertical-align: middle;
+    }
+
+    .unread {
+      width: #{$spacingUnit * 2}px;
+      height: #{$spacingUnit * 2}px;
+      margin: #{$spacingUnit}px;
+      background: $paletteErrorMain;
+      border-radius: 50%;
     }
 
     &-icon {

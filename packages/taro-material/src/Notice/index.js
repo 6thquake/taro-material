@@ -5,8 +5,6 @@ import { View, Text } from '@tarojs/components';
 
 import AtComponent from '../common/component';
 
-import RMTypography from '../Typography';
-
 import theme from '../styles/theme';
 import ago from '../utils/date';
 

@@ -11,7 +11,7 @@
   .body2,
   .caption {
     display: inline;
-    padding: 0px #{$spacingUnit}px;
+    padding-right: #{$spacingUnit * 2}px;
   }
 
   .subheading {
