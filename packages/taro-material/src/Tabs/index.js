@@ -101,6 +101,7 @@ export default class AtTabs extends AtComponent {
       scroll,
       current,
       color,
+      centered,
     } = this.props;
     const { scrollLeft, scrollTop, scrollIntoView } = this.state;
 
@@ -167,6 +168,7 @@ export default class AtTabs extends AtComponent {
             className={classNames({
               'at-tabs__header': true,
               'at-tabs__header--scroll': scroll,
+              'at-tabs__header--centered': centered,
             })}
             style={heightStyle}
             scrollX={tabDirection === 'horizontal'}
@@ -216,6 +218,7 @@ AtTabs.defaultProps = {
   tabList: [],
   onClick: () => {},
   color: 'default',
+  centered: true,
 };
 
 AtTabs.propTypes = {
@@ -241,4 +244,5 @@ AtTabs.propTypes = {
     'progress',
     'default',
   ]),
+  centered: PropTypes.bool,
 };

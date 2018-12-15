@@ -43,7 +43,8 @@
     display: flex;
     width: 100%;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left;
+    justify-content: flex-start;
     white-space: nowrap;
     // background-color: $color-bg;
     overflow: -moz-scrollbars-none;
@@ -57,6 +58,11 @@
         display: inline-block;
         overflow: visible;
       }
+    }
+
+    &--centered {
+      text-align: center;
+      justify-content: center;
     }
 
     &::-webkit-scrollbar {
