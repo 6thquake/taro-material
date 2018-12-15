@@ -102,3 +102,29 @@ export { default as RMTabs } from './Tabs';
 export { default as RMTabsPane } from './TabsPane';
 export { default as RMMeter } from './Meter';
 export { default as RMStarVote } from './StarVote';
+
+export { default as ago, greet } from './utils/date';
+export { default as chunk } from './utils/chunk';
+export { default as slice } from './utils/slice';
+export { objectToString, getClassName, mergeStyle } from './utils/styles';
+export {
+  getType,
+  isPrimitive,
+  isObject,
+  isPlainObject,
+  isRegExp,
+  isPresent,
+  isBlank,
+  isNull,
+  isBoolean,
+  isNumber,
+  isString,
+  isFunction,
+  isType,
+  isPromise,
+  isArray,
+  isDate,
+} from './utils/typeof';
+export { default as stringify, parse } from './utils/qs';
+
+export { default as theme } from './styles/theme';

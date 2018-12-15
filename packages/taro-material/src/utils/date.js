@@ -1,21 +1,48 @@
 import moment from 'moment';
 
+const localeData = {
+  en: {
+    years: 'years',
+    months: 'months',
+    days: 'days',
+    hours: 'hours',
+    minutes: 'minutes',
+    seconds: 'seconds',
+    milliseconds: 'a moment',
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'evening',
+    night: 'evening',
+  },
+  zh: {
+    years: '年',
+    months: '月',
+    days: '天',
+    hours: '小时',
+    minutes: '分钟',
+    seconds: '秒',
+    milliseconds: '刚刚',
+    morning: '早上',
+    forenoon: '上午',
+    noon: '中午',
+    afternoon: '下午',
+    evening: '晚上',
+    night: '晚上',
+  },
+};
+
 const ago = (date, format) => {
   if (!date) {
     return '';
   }
 
-  let _date = null;
-  if (moment.isDate(date)) {
-    _date = moment(date);
-  } else {
-    _date = moment(date, format || `YYYY-MM-DD`);
-  }
-
+  const _ago = moment(date, format || `YYYY-MM-DD HH:mm:ss`);
   const now = moment();
-  const range = now.diff(_date);
+
+  const range = now.diff(_ago);
 
   let key = '';
+  const locale = moment.locale();
 
   if (range > 366 * 24 * 60 * 60 * 1000) {
     key = 'years';
@@ -27,11 +54,72 @@ const ago = (date, format) => {
     key = 'hours';
   } else if (range > 60 * 1000) {
     key = 'minutes';
-  } else {
+  } else if (range > 1000) {
     key = 'seconds';
+  } else {
+    key = null;
   }
 
-  return `${now.diff(_date, key)} ${key} ago`;
+  let resource = null;
+  switch (locale) {
+    case 'zh-cn':
+    case 'zh':
+      resource = localeData.zh;
+      resource.ago = '前';
+      break;
+    case 'en':
+    default:
+      resource = localeData.en;
+      resource.ago = 'ago';
+      break;
+  }
+
+  if (!key) {
+    return `${resource.milliseconds}`;
+  }
+  return `${now.diff(_ago, key)} ${resource[key]} ${resource.ago}`;
+};
+
+const greet = () => {
+  const now = moment();
+  const hour = now.hour();
+  const minute = now.minute();
+
+  let key = '';
+  const locale = moment.locale();
+
+  let resource = null;
+  switch (locale) {
+    case 'zh-cn':
+    case 'zh':
+      if (hour < 9) {
+        key = 'morning';
+      } else if (hour < 11 && minute < 30) {
+        key = 'forenoon';
+      } else if (hour < 13 && minute < 30) {
+        key = 'noon';
+      } else if (hour < 18) {
+        key = 'afternoon';
+      } else {
+        key = 'evening';
+      }
+      resource = localeData.zh;
+      return `${resource[key]}好`;
+    case 'en':
+    default:
+      if (hour < 12) {
+        key = 'morning';
+      } else if (hour < 18) {
+        key = 'afternoon';
+      } else if (hour < 22) {
+        key = 'evening';
+      } else {
+        key = 'night';
+      }
+      resource = localeData.en;
+      return `Good ${resource[key]}`;
+  }
 };
 
 export default ago;
+export { greet };
