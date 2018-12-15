@@ -68,7 +68,7 @@ $noticebar-icon-size: 26px;
   }
 
   &__content {
-    width: 100%;
+    flex: 1;
     word-break: break-all;
     word-wrap: break-word;
     display: flex;
@@ -202,8 +202,8 @@ $noticebar-icon-size: 26px;
     }
 
     .unread {
-      width: #{$spacingUnit * 2}px;
-      height: #{$spacingUnit * 2}px;
+      width: #{$spacingUnit * 3}px;
+      height: #{$spacingUnit * 3}px;
       margin: #{$spacingUnit}px;
       background: $paletteErrorMain;
       border-radius: 50%;

@@ -1,27 +1,39 @@
 @import '../styles/theme.scss';
 
 .rm-notice {
-  line-height: 36px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
-  .subheading,
-  .body2,
-  .caption {
-    display: inline;
-    padding-right: #{$spacingUnit * 2}px;
+  &-icon {
+    margin: 0px #{$spacingUnit}px;
   }
 
-  .subheading {
-    font-size: #{0.875 * $typographyFontSize}px;
-    font-weight: $typographyFontWeightMedium;
-  }
+  &-content {
+    line-height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    flex: 1;
 
-  .caption {
-    font-size: #{0.75 * $typographyFontSize}px;
-    font-weight: $typographyFontWeightLight;
+    .subheading,
+    .body2,
+    .caption {
+      display: inline;
+      padding-right: #{$spacingUnit * 2}px;
+    }
+
+    .subheading {
+      font-size: #{0.875 * $typographyFontSize}px;
+      font-weight: $typographyFontWeightMedium;
+    }
+
+    .caption {
+      font-size: #{0.75 * $typographyFontSize}px;
+      font-weight: $typographyFontWeightLight;
+    }
   }
 
   &.colorPrimary,
