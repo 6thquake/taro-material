@@ -8,6 +8,7 @@ import AtBadge from '../components/badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
+import theme from '../styles/theme';
 import './TabBar.scss';
 
 const objectToString = style => {
@@ -127,12 +128,12 @@ TabBar.defaultProps = {
   customStyle: '',
   className: '',
   fixed: false,
-  backgroundColor: '#ffffff',
+  backgroundColor: theme.palette.background.paper,
   current: 0,
-  iconSize: '28',
-  fontSize: '10',
-  color: '#616161',
-  selectedColor: '#2196f3',
+  iconSize: 28,
+  fontSize: 10,
+  color: theme.palette.text.secondary,
+  selectedColor: theme.palette.primary.main,
   scroll: false,
   tabList: [],
   onClick: () => {},

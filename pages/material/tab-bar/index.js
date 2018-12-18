@@ -11,9 +11,18 @@ import './index.scss';
 
 class Index extends RMPage {
   config = {
-    navigationBarTitleText: 'TaB-Bar',
+    navigationBarTitleText: 'Tab-Bar',
   };
-  state = {};
+
+  state = {
+    current: 0,
+    tabs: [
+      { title: '首页', iconType: 'home', size: 'inherit' },
+      { title: '日程', iconType: 'event_note', size: 'inherit' },
+      { title: '我的', iconType: 'person', size: 'inherit' },
+    ],
+  };
+
   componentWillMount() {}
 
   componentDidMount() {}
@@ -30,13 +39,7 @@ class Index extends RMPage {
   }
 
   render() {
-    const { current } = this.props;
-    // console.log('tabs', tabs)
-    const tabs = [
-      { title: '首页', iconType: 'home', size: 'inherit' },
-      { title: '日程', iconType: 'event_note', size: 'inherit' },
-      { title: '我的', iconType: 'person', size: 'inherit' },
-    ];
+    const { current, tabs } = this.state;
     return (
       <View className="root">
         <View class="body" />
@@ -57,13 +60,6 @@ class Index extends RMPage {
   }
 }
 
-Index.defaultProps = {
-  current: 0,
-  tabs: [
-    { title: '首页', iconType: 'home', size: 'inherit' },
-    { title: '日程', iconType: 'event_note', size: 'inherit' },
-    { title: '我的', iconType: 'person', size: 'inherit' },
-  ],
-};
+Index.defaultProps = {};
 
 export default Index;
