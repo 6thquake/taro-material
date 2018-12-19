@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMToolBar } from '../../taro-material';
+import { RMToolBar, RMButton } from '../../taro-material';
 
 import RMPage from '../../taro-material/Page';
 
@@ -16,6 +16,7 @@ const filterConfig = [
       {
         label: 'ASD',
         value: 'S12',
+        active: true,
       },
       {
         label: 'ASD1',
@@ -104,7 +105,6 @@ const sorts = [
   {
     label: '评分最高',
     value: 'score',
-    active: true,
   },
   {
     label: '评分最高2',
@@ -117,13 +117,13 @@ const sorts = [
   {
     label: '评分最高4',
     value: 'score4',
-    priority: 0,
-    // active: true,
+    priority: true,
+    active: true,
   },
   {
     label: '评分最高5',
     value: 'score5',
-    priority: 0,
+    priority: true,
   },
 ];
 
@@ -145,7 +145,7 @@ class Index extends RMPage {
   }
 
   componentDidMount() {
-    let data = filterConfig;
+    const data = filterConfig;
     data[0].data.push({
       label: 'hello',
       value: 'd1222',
@@ -169,10 +169,19 @@ class Index extends RMPage {
   }
 
   render() {
-    let { filters, value } = this.state;
+    const { filters, value } = this.state;
     return (
       <View className="root">
-        <RMToolBar onChange={this.handleFilterChange} sorts={sorts} filters={filters} />
+        <RMToolBar
+          onChange={this.handleFilterChange}
+          sorts={sorts}
+          filters={filters}
+          renderTools={
+            <RMButton variant="contained" size="small">
+              测试
+            </RMButton>
+          }
+        />
         <View>{value}</View>
       </View>
     );
