@@ -186,6 +186,7 @@ export default class AtTabs extends AtComponent {
             className={classNames({
               'at-tabs__header': true,
               'at-tabs__header--scroll': scroll,
+              'at-tabs__header--centered': centered,
             })}
           >
             {tabItems}
