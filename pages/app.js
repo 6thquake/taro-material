@@ -71,6 +71,7 @@ class App extends Component {
       'material/tabs/index',
       'material/meter/index',
       'material/star-vote/index',
+      'material/switch/index',
     ],
     window: {
       backgroundTextStyle: 'light',

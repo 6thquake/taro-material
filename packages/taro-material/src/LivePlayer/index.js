@@ -330,7 +330,7 @@ RMLivePlayer.defaultProps = {
    * 网络状态通知，detail = {info}
    */
   onNetStatus: () => {},
-  customStyle: PropTypes.object,
+  customStyle: {},
   onError: () => {},
   onPlay: () => {},
   onPause: () => {},
@@ -405,7 +405,7 @@ RMLivePlayer.propTypes = {
    * 网络状态通知，detail = {info}
    */
   onNetStatus: PropTypes.func,
-  customStyle: PropTypes.object,
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   onError: PropTypes.func,
   onPlay: PropTypes.func,
   onPause: PropTypes.func,

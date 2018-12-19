@@ -416,7 +416,7 @@ RMButton.propTypes = {
   onClick: PropTypes.func,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
-  formType: PropTypes.oneOf(['submit', 'reset']),
+  formType: PropTypes.oneOf(['submit', 'reset', '']),
   openType: PropTypes.oneOf([
     'contact',
     'share',
@@ -426,6 +426,7 @@ RMButton.propTypes = {
     'openSetting',
     'feedback',
     'getRealnameAuthInfo',
+    '',
   ]),
   lang: PropTypes.string,
   sessionFrom: PropTypes.string,

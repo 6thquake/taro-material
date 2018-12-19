@@ -105,7 +105,7 @@ Select.propTypes = {
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string]),
   disabled: PropTypes.bool,
   editable: PropTypes.bool,
 };

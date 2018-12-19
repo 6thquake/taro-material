@@ -92,7 +92,7 @@ class TabBar extends Component {
             onClick={this.handleClick.bind(this, i)}
           >
             {item.iconType ? (
-              <AtBadge dot={item.dot} value={item.text} max={item.max}>
+              <AtBadge dot={!!item.dot} value={item.text} max={item.max}>
                 <View className="at-tab-bar__icon" style={{ fontSize: `${iconSize}px` }}>
                   <RMIcon
                     prefixClass={item.iconPrefixClass}
@@ -106,7 +106,7 @@ class TabBar extends Component {
             ) : null}
             <View>
               <AtBadge
-                dot={item.iconType ? '' : item.dot}
+                dot={item.iconType ? false : !!item.dot}
                 value={item.iconType ? '' : item.text}
                 max={item.iconType ? '' : item.max}
               >

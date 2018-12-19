@@ -54,7 +54,7 @@ Typography.defaultProps = {
 Typography.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
-  fontSize: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   block: PropTypes.bool,
   onClick: PropTypes.func,
 };

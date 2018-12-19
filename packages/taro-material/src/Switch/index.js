@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { View, Switch } from '@tarojs/components';
+import { View, Switch, Label } from '@tarojs/components';
 import classNames from 'classnames';
 
 import RMIcon from '../Icon';
@@ -111,7 +111,7 @@ class RMSwitch extends Component {
 }
 
 RMSwitch.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.string,
   color: PropTypes.oneOf([
     'default',
     'primary',
@@ -125,9 +125,8 @@ RMSwitch.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   customStyle: PropTypes.object,
-  required: PropTypes.bool,
   title: PropTypes.string,
-  required: PropTypes.required,
+  required: PropTypes.bool.isRequired,
   helperText: PropTypes.string,
   helperTextClass: PropTypes.string,
   helperTextStyle: PropTypes.object,
@@ -135,7 +134,7 @@ RMSwitch.propTypes = {
 
 RMSwitch.defaultProps = {
   customStyle: {},
-  value: null,
+  value: '',
   color: 'primary',
   disabled: false,
   checked: false,
