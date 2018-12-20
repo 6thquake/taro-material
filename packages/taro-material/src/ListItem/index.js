@@ -48,8 +48,10 @@ class ListItem extends Component {
       hasBorder,
       extraThumb,
       extraIconThumb,
+      extraIconThumbColor,
       switchIsCheck,
       disabled,
+      customStyle,
     } = this.props;
 
     let arrowIcon = null;
@@ -78,7 +80,7 @@ class ListItem extends Component {
     );
 
     return (
-      <View className={rootClass} onClick={this.handleClick}>
+      <View className={rootClass} onClick={this.handleClick} style={customStyle}>
         {thumb && (
           <View className="at-list__item-thumb item-thumb">
             <Image className="item-thumb-info" mode="scaleToFill" src={thumb} />
@@ -95,12 +97,14 @@ class ListItem extends Component {
           <View className="item-content__info">
             <View className="item-content__info-title">
               <RMTypography className="subheading">{title}</RMTypography>
+              {this.props.renderTitle}
             </View>
             {note && (
               <View className="item-content__info-note">
                 <RMTypography className="caption">{note}</RMTypography>
               </View>
             )}
+            {<View className="item-content__info-note">{this.props.renderNote}</View>}
           </View>
         </View>
         <View className="at-list__item-extra item-extra">
@@ -118,7 +122,12 @@ class ListItem extends Component {
 
           {extraIconThumb && (
             <View className="item-extra__image">
-              <RMIcon className="item-extra__image-info" fontSize="inherit" block>
+              <RMIcon
+                className="item-extra__image-info"
+                color={extraIconThumbColor}
+                fontSize="inherit"
+                block
+              >
                 {extraIconThumb}
               </RMIcon>
             </View>
@@ -158,6 +167,7 @@ ListItem.defaultProps = {
   hasBorder: true,
   isSwitch: false,
   disabled: false,
+  customStyle: {},
 };
 
 ListItem.propTypes = {
@@ -173,9 +183,13 @@ ListItem.propTypes = {
   extraText: PropTypes.string,
   extraThumb: PropTypes.string,
   extraIconThumb: PropTypes.string,
+  extraIconThumbColor: PropTypes.string,
   onSwitchChange: PropTypes.func,
   arrow: PropTypes.oneOf(['up', 'down', 'right']),
   disabled: PropTypes.bool,
+  renderNote: PropTypes.element,
+  renderTitle: PropTypes.element,
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 export default ListItem;

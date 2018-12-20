@@ -7,24 +7,32 @@ import './List.scss';
 
 class List extends Component {
   render() {
+    const { hasBorder, className, customStyle } = this.props;
+
     const rootClass = classNames(
       'at-list',
       {
-        'at-list--no-border': !this.props.hasBorder,
+        'at-list--no-border': !hasBorder,
       },
-      this.props.className,
+      className,
     );
 
-    return <View className={rootClass}>{this.props.children}</View>;
+    return (
+      <View className={rootClass} style={customStyle}>
+        {this.props.children}
+      </View>
+    );
   }
 }
 
 List.defaultProps = {
   hasBorder: true,
+  customStyle: {},
 };
 
 List.propTypes = {
   hasBorder: PropTypes.bool,
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 export default List;
