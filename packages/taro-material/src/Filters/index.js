@@ -13,23 +13,47 @@ import './Filters.scss';
 const cloneDeep = o => JSON.parse(JSON.stringify(o));
 
 class Filters extends Component {
-  handleClick(i, j) {
-    const { data, onChange } = this.props;
+  constructor(props) {
+    super(props);
+
+    this.state.data = props.data;
+  }
+
+  handleClick(i, j, immediately, e) {
+    const { onChange } = this.props;
+    const { data } = this.state;
+
     const options = cloneDeep(data);
     const option = options[i];
+    if (option.single) {
+      option.data.forEach((item, index) => {
+        if (index !== j) {
+          item.active = false;
+        }
+      });
+    }
     const tag = option.data[j];
     tag.active = !tag.active;
-    onChange(options);
+
+    this.setState(
+      {
+        data: options,
+      },
+      () => {
+        onChange(cloneDeep(options));
+        immediately && this.handleOkClick();
+      },
+    );
   }
 
   handleOkClick() {
-    const { data: options } = this.props;
+    const { data: options } = this.state;
     const { onOk } = this.props;
 
     const selections = options
       .map(item => {
-        let { label, value, data } = item;
-        let activeTag = data.filter(d => d.active);
+        const { label, value, data } = item;
+        const activeTag = data.filter(d => d.active);
         return {
           label,
           value,
@@ -41,12 +65,34 @@ class Filters extends Component {
   }
 
   handleResetClick() {
-    const { onReset } = this.props;
-    onReset();
+    const { data, onReset, onChange } = this.props;
+    const _data = cloneDeep(data);
+
+    const selections = _data
+      .map(item => {
+        const { label, value } = item;
+        const activeTag = item.data.filter(d => d.active);
+        return {
+          label,
+          value,
+          data: cloneDeep(activeTag),
+        };
+      })
+      .filter(item => item.data.length > 0);
+
+    this.setState(
+      {
+        data: _data,
+      },
+      () => {
+        onChange(cloneDeep(_data));
+        onReset(selections);
+      },
+    );
   }
 
   render() {
-    const { data: options } = this.props;
+    const { data: options } = this.state;
     const tagCustomStyle = {
       borderRadius: `0px`, // ${theme.shape.borderRadius}
       padding: `0 ${theme.spacing.unit}px`,
@@ -70,26 +116,24 @@ class Filters extends Component {
                   <RMTypography className="body2">{label}</RMTypography>
                 </View>
                 <View className="tags">
-                  {data.map((item, j) => {
-                    return (
-                      <View
-                        onClick={this.handleClick.bind(this, i, j)}
-                        key={item.value}
-                        className="tag"
+                  {data.map((item, j) => (
+                    <View
+                      onClick={this.handleClick.bind(this, i, j, false)}
+                      key={item.value}
+                      className="tag"
+                    >
+                      <RMTag
+                        active={false}
+                        circle={false}
+                        block
+                        color={item.active ? 'primary' : 'default'}
+                        size="small"
+                        customStyle={tagCustomStyle}
                       >
-                        <RMTag
-                          active={false}
-                          circle={false}
-                          block={true}
-                          color={item.active ? 'primary' : 'default'}
-                          size={'small'}
-                          customStyle={tagCustomStyle}
-                        >
-                          {item.label}
-                        </RMTag>
-                      </View>
-                    );
-                  })}
+                        {item.label}
+                      </RMTag>
+                    </View>
+                  ))}
                 </View>
               </View>
             );
@@ -101,8 +145,8 @@ class Filters extends Component {
               color="default"
               variant="text"
               onClick={this.handleResetClick}
-              size={'normal'}
-              block={true}
+              size="normal"
+              block
               customStyle={buttonCustomStyle}
             >
               重置
@@ -113,8 +157,8 @@ class Filters extends Component {
               color="primary"
               variant="contained"
               onClick={this.handleOkClick}
-              size={'normal'}
-              block={true}
+              size="normal"
+              block
               customStyle={buttonCustomStyle}
             >
               确定

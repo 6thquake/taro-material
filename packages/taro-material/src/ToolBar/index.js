@@ -31,41 +31,79 @@ const isEqual = (array1 = [], array2 = []) => {
 };
 
 class ToolBar extends Component {
+  state = {
+    expanded: false,
+    show: false,
+    value: '',
+  };
+
   constructor(props) {
     super(props);
+    this.init(props.filter, props.sorts);
+  }
 
-    const option = props.sorts.filter(item => item.active)[0] || props.sorts[0];
-    const value = option ? option.value : '';
-    const filterData = cloneDeep(props.filters);
-    const selectedFilters = filterData
-      .map(item => {
-        const { label, val, data } = item;
-        const activeTag = data.filter(d => d.active);
-        return {
+  init() {
+    const { filters, sorts } = this.props;
+
+    const _filters = cloneDeep(filters);
+    const _sorts = cloneDeep(sorts);
+
+    const priorityFilters = [];
+    const selectedFilters = [];
+    _filters.forEach((filter, i) => {
+      const { label, value, data } = filter;
+      const datas = [];
+      data.forEach((item, j) => {
+        if (item.priority) {
+          item.i = i;
+          item.j = j;
+          priorityFilters.push(item);
+        }
+        if (item.active) {
+          datas.push(item);
+        }
+      });
+
+      if (datas.length > 0) {
+        selectedFilters.push({
           label,
-          value: val,
-          data: cloneDeep(activeTag),
-        };
-      })
-      .filter(item => item.data.length > 0);
+          value,
+          data: datas,
+        });
+      }
+    });
 
-    this.state = {
-      filterData,
-      expanded: false,
+    const prioritySorts = [];
+    const normalSorts = [];
+    let value = '';
+    _sorts.forEach(item => {
+      if (item.priority) {
+        prioritySorts.push(item);
+      } else {
+        normalSorts.push(item);
+      }
+      if (item.active) {
+        value = item.value;
+      }
+    });
+
+    this.setState({
       value,
-      show: false,
-      sorts: props.sorts,
+      prioritySorts,
+      normalSorts,
+      priorityFilters,
       selectedFilters,
-    };
+    });
   }
 
   refDrawer = node => (this.drawer = node);
 
+  refFilter = node => (this.filter = node);
+
   componentWillReceiveProps(nextProps) {
-    if (!isEqual(this.state.filterData, nextProps.filters)) {
-      this.setState({
-        filterData: cloneDeep(nextProps.filters),
-      });
+    const { filter, sorts } = this.props;
+    if (!isEqual(nextProps.filter, filter) || !isEqual(nextProps.sorts, sorts)) {
+      this.init(nextProps.filter, nextProps.sorts);
     }
   }
 
@@ -76,21 +114,24 @@ class ToolBar extends Component {
   componentDidHide() {}
 
   handleTitleClick() {
+    const { expanded } = this.state;
     this.setState({
-      expanded: !this.state.expanded,
+      expanded: !expanded,
     });
   }
 
   handleChange = value => {
-    const { sorts } = this.props;
-    sorts.forEach(item => {
+    const { normalSorts, prioritySorts } = this.state;
+    normalSorts.forEach(item => {
       if (item.value === value) {
         item.active = true;
       } else {
         item.active = false;
       }
     });
-
+    prioritySorts.forEach(item => {
+      item.active = false;
+    });
     this.setState(
       {
         value,
@@ -103,9 +144,9 @@ class ToolBar extends Component {
   };
 
   handlePriorities(index) {
-    const { sorts } = this.props;
+    const { normalSorts, prioritySorts } = this.state;
     let value = null;
-    sorts.forEach((item, i) => {
+    prioritySorts.forEach((item, i) => {
       if (i === index) {
         item.active = true;
         value = item.value;
@@ -113,6 +154,10 @@ class ToolBar extends Component {
         item.active = false;
       }
     });
+    normalSorts.forEach(item => {
+      item.active = false;
+    });
+
     this.setState(
       {
         value,
@@ -132,8 +177,18 @@ class ToolBar extends Component {
   }
 
   handleFilterChange(e) {
+    const priorityFilters = [];
+    e.forEach((filter, i) => {
+      filter.data.forEach((item, j) => {
+        if (item.priority) {
+          item.i = i;
+          item.j = j;
+          priorityFilters.push(item);
+        }
+      });
+    });
     this.setState({
-      filterData: e,
+      priorityFilters,
     });
   }
 
@@ -149,34 +204,50 @@ class ToolBar extends Component {
     );
   }
 
-  handleFilterReset() {
-    const { filters } = this.props;
-    this.setState({
-      filterData: cloneDeep(filters),
-    });
-  }
-
-  handleDrawerClose() {
-    this.setState({
-      show: false,
-    });
+  handleFilterReset(e) {
+    this.setState(
+      {
+        selectedFilters: e,
+      },
+      () => {
+        this.onChange();
+      },
+    );
   }
 
   onChange() {
     const { onChange, sorts } = this.props;
+    const { selectedFilters, value } = this.state;
     const data = {
-      sort: sorts.filter(item => item.active)[0],
-      filters: this.state.selectedFilters,
+      sort: sorts.filter(item => item.value === value)[0],
+      filters: selectedFilters,
     };
     onChange(data);
   }
 
-  render() {
-    const { filterData, sorts, expanded, value, show, selectedFilters } = this.state;
+  handleFilters(i, j) {
+    this.filter.handleClick(i, j, true);
+  }
 
-    const normalItems = sorts.filter(item => !item.priority);
-    const option = normalItems.filter(item => item.value === value)[0] || {};
+  render() {
+    const { filters } = this.props;
+
+    const {
+      expanded,
+      value,
+      show,
+      selectedFilters,
+      priorityFilters,
+      normalSorts,
+      prioritySorts,
+    } = this.state;
+
     const multiLength = selectedFilters.reduce((r, next) => r + next.data.length, 0);
+    const selectedSort = normalSorts.filter(item => item.value === value)[0] || {
+      label: '排序',
+      active: false,
+      value,
+    };
 
     return (
       <View className="root">
@@ -184,20 +255,20 @@ class ToolBar extends Component {
           <View onClick={this.handleTitleClick} className="title">
             <View className="label">
               <RMTypography
-                color={option.active ? theme.palette.primary.main : 'default'}
+                color={selectedSort.active ? theme.palette.primary.main : 'default'}
                 className="body2"
               >
-                {option.label || '排序'}
+                {selectedSort.label}
               </RMTypography>
             </View>
-            <RMIcon color={option.active ? 'primary' : 'inherit'} block fontSize="inherit">
+            <RMIcon color={selectedSort.active ? 'primary' : 'inherit'} block fontSize="inherit">
               {expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
             </RMIcon>
           </View>
 
-          {sorts.map((item, index) => {
+          {prioritySorts.map((item, index) => {
             const color = item.active ? theme.palette.primary.main : 'default';
-            return item.priority ? (
+            return (
               <View
                 key={item.value || index}
                 className="priorities"
@@ -207,10 +278,25 @@ class ToolBar extends Component {
                   {item.label}
                 </RMTypography>
               </View>
-            ) : null;
+            );
           })}
 
           <View className="title">{this.props.renderTools}</View>
+
+          {priorityFilters.map(item => {
+            const color = item.active ? theme.palette.primary.main : 'default';
+            return (
+              <View
+                key={item.value || `${item.i}-${item.j}`}
+                className="priorities"
+                onClick={this.handleFilters.bind(this, item.i, item.j)}
+              >
+                <RMTypography color={color} className="body2">
+                  {item.label}
+                </RMTypography>
+              </View>
+            );
+          })}
 
           <View onClick={this.handleSiftingClick} className="title">
             <View className="label">
@@ -225,23 +311,16 @@ class ToolBar extends Component {
             <RMIcon color={multiLength > 0 ? 'primary' : ''} block fontSize="inherit">
               {'filter_list'}
             </RMIcon>
-
-            {/* <RMTag active={true} circle={true} color='default' size='small'>5</RMTag> */}
           </View>
         </View>
-        {expanded && <RMDropdown options={normalItems} value={value} onClick={this.handleChange} />}
-        <RMDrawer
-          ref={this.refDrawer}
-          onClose={this.handleDrawerClose}
-          show={show}
-          width={320}
-          right
-        >
+        {expanded && <RMDropdown options={normalSorts} value={value} onClick={this.handleChange} />}
+        <RMDrawer ref={this.refDrawer} show={show} width={320} right>
           <RMFilters
-            data={filterData}
+            data={filters}
             onOk={this.handleFilterOk}
             onReset={this.handleFilterReset}
             onChange={this.handleFilterChange}
+            ref={this.refFilter}
           />
         </RMDrawer>
       </View>

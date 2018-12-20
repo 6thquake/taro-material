@@ -10,17 +10,20 @@ import './index.scss';
 
 const filterConfig = [
   {
-    label: '特色1',
+    label: '单选',
     value: 'D11',
+    single: true,
     data: [
       {
-        label: 'ASD',
+        label: '测试',
         value: 'S12',
         active: true,
+        priority: true,
       },
       {
         label: 'ASD1',
         value: 'S121',
+        priority: true,
       },
       {
         label: 'ASD',
@@ -41,7 +44,7 @@ const filterConfig = [
     ],
   },
   {
-    label: '特色2',
+    label: '多选',
     value: 'D212',
     data: [
       {
@@ -71,7 +74,7 @@ const filterConfig = [
     ],
   },
   {
-    label: '特色3',
+    label: '多选2',
     value: 'D2123',
     data: [
       {
@@ -123,7 +126,6 @@ const sorts = [
   {
     label: '评分最高5',
     value: 'score5',
-    priority: true,
   },
 ];
 

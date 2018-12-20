@@ -18,7 +18,12 @@ export default class Drawer extends Component {
   }
 
   onItemClick(index, e) {
-    this.props.onItemClick && this.props.onItemClick(index);
+    if (this.props.onItemClick) {
+      const result = this.props.onItemClick(index);
+      if (result === false) {
+        return;
+      }
+    }
     this.animHide(e, index);
   }
 
@@ -51,7 +56,6 @@ export default class Drawer extends Component {
 
   preventMaskMove() {
     console.log('stop user scroll it!');
-    return;
   }
 
   componentWillReceiveProps(props) {
