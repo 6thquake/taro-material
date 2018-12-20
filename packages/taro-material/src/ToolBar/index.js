@@ -229,17 +229,21 @@ class ToolBar extends Component {
     this.filter.handleClick(i, j, true);
   }
 
+  handleDrawerClose() {
+    this.setState({
+      show: false,
+    });
+  }
+
   render() {
     const { filters } = this.props;
 
+    const { expanded, value, show } = this.state;
     const {
-      expanded,
-      value,
-      show,
-      selectedFilters,
-      priorityFilters,
-      normalSorts,
-      prioritySorts,
+      selectedFilters = [],
+      priorityFilters = [],
+      normalSorts = [],
+      prioritySorts = [],
     } = this.state;
 
     const multiLength = selectedFilters.reduce((r, next) => r + next.data.length, 0);
@@ -314,7 +318,13 @@ class ToolBar extends Component {
           </View>
         </View>
         {expanded && <RMDropdown options={normalSorts} value={value} onClick={this.handleChange} />}
-        <RMDrawer ref={this.refDrawer} show={show} width={320} right>
+        <RMDrawer
+          ref={this.refDrawer}
+          show={show}
+          width={320}
+          right
+          onClose={this.handleDrawerClose}
+        >
           <RMFilters
             data={filters}
             onOk={this.handleFilterOk}
