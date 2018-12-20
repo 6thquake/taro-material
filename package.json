@@ -2,7 +2,7 @@
   "name": "taro-material",
   "private": true,
   "author": "lico",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "description": "Mini Program components that implement Google's Material Design.",
   "keywords": [
     "react",

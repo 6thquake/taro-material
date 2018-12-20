@@ -45,6 +45,7 @@ class ListItem extends Component {
       iconThumbColor,
       isSwitch,
       extraText,
+      extraTextColor,
       hasBorder,
       extraThumb,
       extraIconThumb,
@@ -79,6 +80,11 @@ class ListItem extends Component {
       this.props.className,
     );
 
+    const _extraTextColor =
+      extraTextColor === 'default' || extraTextColor === 'inherit'
+        ? extraTextColor
+        : theme.palette[extraTextColor].main;
+
     return (
       <View className={rootClass} onClick={this.handleClick} style={customStyle}>
         {thumb && (
@@ -110,7 +116,9 @@ class ListItem extends Component {
         <View className="at-list__item-extra item-extra">
           {extraText && (
             <View className="item-extra__info">
-              <RMTypography className="body1">{extraText}</RMTypography>
+              <RMTypography className="body1" color={_extraTextColor}>
+                {extraText}
+              </RMTypography>
             </View>
           )}
 
@@ -132,6 +140,8 @@ class ListItem extends Component {
               </RMIcon>
             </View>
           )}
+
+          {this.props.renderExtra}
 
           {isSwitch && (
             <View className="item-extra__switch" onClick={this.handleSwitchClick}>
@@ -175,20 +185,53 @@ ListItem.propTypes = {
   title: PropTypes.string,
   thumb: PropTypes.string,
   iconThumb: PropTypes.string,
-  iconThumbColor: PropTypes.string,
+  iconThumbColor: PropTypes.oneOf([
+    'inherit',
+    'primary',
+    'secondary',
+    'action',
+    'error',
+    'disabled',
+    'success',
+    'warning',
+    'progress',
+    'default',
+  ]),
   onClick: PropTypes.func,
   isSwitch: PropTypes.bool,
   hasBorder: PropTypes.bool,
   switchIsCheck: PropTypes.bool,
   extraText: PropTypes.string,
+  extraTextColor: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+    'default',
+    'inherit',
+  ]),
   extraThumb: PropTypes.string,
   extraIconThumb: PropTypes.string,
-  extraIconThumbColor: PropTypes.string,
+  extraIconThumbColor: PropTypes.oneOf([
+    'inherit',
+    'primary',
+    'secondary',
+    'action',
+    'error',
+    'disabled',
+    'success',
+    'warning',
+    'progress',
+    'default',
+  ]),
   onSwitchChange: PropTypes.func,
-  arrow: PropTypes.oneOf(['up', 'down', 'right']),
+  arrow: PropTypes.oneOf(['up', 'down', 'right', '']),
   disabled: PropTypes.bool,
   renderNote: PropTypes.element,
   renderTitle: PropTypes.element,
+  renderExtra: PropTypes.element,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
