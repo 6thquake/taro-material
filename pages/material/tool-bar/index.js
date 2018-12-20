@@ -10,7 +10,42 @@ import './index.scss';
 
 const filterConfig = [
   {
-    label: '单选',
+    label: '单选 - 只能一个',
+    value: 'D111',
+    single: true,
+    required: true,
+    data: [
+      {
+        label: '测试',
+        value: 'S121',
+        active: true,
+        priority: true,
+      },
+      {
+        label: 'ASD11',
+        value: 'S1211',
+        priority: true,
+      },
+      {
+        label: 'ASD1',
+        value: 'S1231',
+      },
+      {
+        label: 'ASD11',
+        value: 'S12141',
+      },
+      {
+        label: 'ASD1',
+        value: 'S1251',
+      },
+      {
+        label: 'ASD11',
+        value: 'S12161',
+      },
+    ],
+  },
+  {
+    label: '单选 - 最多一个',
     value: 'D11',
     single: true,
     data: [
@@ -18,12 +53,10 @@ const filterConfig = [
         label: '测试',
         value: 'S12',
         active: true,
-        priority: true,
       },
       {
         label: 'ASD1',
         value: 'S121',
-        priority: true,
       },
       {
         label: 'ASD',
@@ -44,12 +77,14 @@ const filterConfig = [
     ],
   },
   {
-    label: '多选',
+    label: '多选 - 最少一个',
+    required: true,
     value: 'D212',
     data: [
       {
         label: 'ASD',
         value: 'S12',
+        active: true,
       },
       {
         label: 'ASD1',
@@ -74,7 +109,7 @@ const filterConfig = [
     ],
   },
   {
-    label: '多选2',
+    label: '多选 - 最少零个',
     value: 'D2123',
     data: [
       {

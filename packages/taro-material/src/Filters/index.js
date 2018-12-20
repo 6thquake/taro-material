@@ -32,8 +32,16 @@ class Filters extends Component {
         }
       });
     }
+
     const tag = option.data[j];
     tag.active = !tag.active;
+
+    if (option.required) {
+      const ops = option.data.filter(item => item.active);
+      if (ops.length <= 0) {
+        tag.active = true;
+      }
+    }
 
     this.setState(
       {
