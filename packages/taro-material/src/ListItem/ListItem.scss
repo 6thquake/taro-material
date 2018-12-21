@@ -1,9 +1,6 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-@function tint(
-  $color,
-  $percent
-) {
+@function tint($color, $percent) {
   @return mix($paletteCommonWhite, $color, $percent);
 }
 
@@ -203,7 +200,7 @@ $item-horizontal-padding: 24px;
   line-height: $line-height-zh;
 
   &::after {
-    content: " ";
+    content: ' ';
     position: absolute;
     width: calc(100% - #{$spacing-h-lg});
 
@@ -231,11 +228,11 @@ $item-horizontal-padding: 24px;
     @include flex(1);
 
     overflow: hidden;
-    margin-right: 40px;
+    margin-right: 32px;
   }
 
   &-extra {
-    @include flex(0, 0, 235px);
+    @include flex(0, 0, 200px);
 
     text-align: right;
   }
