@@ -1,61 +1,61 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-.root{
+.root {
   display: flex;
   flex-direction: column;
-  justify: flex-start;
+  justify-content: flex-start;
   align-items: stretch;
   position: relative;
   height: 100vh;
   max-height: 100vh;
-  min-height: 100vh; 
+  min-height: 100vh;
 
-  .filters{
+  .filters {
     display: flex;
     flex-direction: column;
-    justify: flex-start;
+    justify-content: flex-start;
     align-items: stretch;
     overflow: auto;
     flex: 1;
     padding: 0px #{$spacingUnit * 2}px;
 
-    .option{
+    .option {
       padding-bottom: #{$spacingUnit * 4}px;
       padding-top: #{$spacingUnit * 4}px;
-      
+
       &:not(:first-child) {
         border-top: 1px solid $paletteGrey200;
       }
-      
-      .title{
+
+      .title {
         margin-bottom: #{$spacingUnit * 2}px;
       }
-      .tags{
+      .tags {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify: space-around;
+        justify-content: space-around;
         justify-content: space-around;
         align-items: center;
-        .tag{
+        .tag {
           margin: #{$spacingUnit}px;
         }
       }
     }
   }
-  .actions{
+  .actions {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    .button{
+    .button {
       width: 50%;
       display: flex;
       flex-direction: column;
       align-items: stretch;
-      justify: flex-end;
+      justify-content: flex-end;
 
-      &.primary{
-        background: $palettePrimaryMain,
+      &.primary {
+        background: $palettePrimaryMain;
       }
     }
   }

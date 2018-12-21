@@ -177,7 +177,7 @@
     text-align: center;
     display: flex;
     flex-direction: row;
-    justify: center;
+    justify-content: center;
     align-items: center;
     border: 2px solid $paletteTextPrimary;
     border-radius: 0;
@@ -193,6 +193,5 @@
     width: 14Px;
     height: 14Px;
     border-radius: 50%;
-    margin-left:4px;
   }
 }

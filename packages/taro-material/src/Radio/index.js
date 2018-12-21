@@ -71,7 +71,7 @@ class RMRadio extends Component {
 }
 
 RMRadio.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.number]),
   color: PropTypes.oneOf([
     'default',
     'primary',
@@ -95,7 +95,7 @@ RMRadio.defaultProps = {
   color: 'primary',
   disabled: false,
   checked: false,
-  name: Math.floor(Math.random() * Math.pow(10, 12)),
+  name: `${Math.floor(Math.random() * Math.pow(10, 12))}`,
   onChange: () => {},
 };
 

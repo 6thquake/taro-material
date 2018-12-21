@@ -139,10 +139,6 @@ export default class PanelBasic extends Component {
             name: '复选框',
           },
           {
-            id: 'Selection-Controls',
-            name: '选择控制',
-          },
-          {
             id: 'Rate',
             name: '评分',
           },
@@ -315,6 +311,10 @@ export default class PanelBasic extends Component {
           {
             id: 'Meter',
             name: '表',
+          },
+          {
+            id: 'Selection-Controls',
+            name: '选择控制',
           },
         ],
       },

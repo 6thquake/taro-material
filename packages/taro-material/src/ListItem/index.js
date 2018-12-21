@@ -80,11 +80,6 @@ class ListItem extends Component {
       this.props.className,
     );
 
-    const _extraTextColor =
-      extraTextColor === 'default' || extraTextColor === 'inherit'
-        ? extraTextColor
-        : theme.palette[extraTextColor].main;
-
     return (
       <View className={rootClass} onClick={this.handleClick} style={customStyle}>
         {thumb && (
@@ -116,7 +111,7 @@ class ListItem extends Component {
         <View className="at-list__item-extra item-extra">
           {extraText && (
             <View className="item-extra__info">
-              <RMTypography className="body1" color={_extraTextColor}>
+              <RMTypography className="body1" color={extraTextColor}>
                 {extraText}
               </RMTypography>
             </View>
@@ -202,16 +197,7 @@ ListItem.propTypes = {
   hasBorder: PropTypes.bool,
   switchIsCheck: PropTypes.bool,
   extraText: PropTypes.string,
-  extraTextColor: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'error',
-    'success',
-    'warning',
-    'progress',
-    'default',
-    'inherit',
-  ]),
+  extraTextColor: PropTypes.string,
   extraThumb: PropTypes.string,
   extraIconThumb: PropTypes.string,
   extraIconThumbColor: PropTypes.oneOf([
