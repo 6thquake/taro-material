@@ -12,31 +12,14 @@ const allNavList = [
   {
     title: '充值中心',
     icon: 'aspect_ratio',
-    background: '#ff5722',
-    path: '../../pages-topUp/pages/topUp/index',
-    shortcut: true,
   },
   {
     title: '账户余额',
     icon: 'aspect_ratio',
-    // background: '#ff5722',
-    path: '../../pages-topUp/pages/topUp/index',
-    children: [],
   },
   {
     title: '资源余量',
     icon: 'aspect_ratio',
-    // background: '#ff5722',
-    path: '../../pages-topUp/pages/topUp/index',
-    children: [
-      {
-        title: '水电查询',
-        icon: 'account_balance',
-        path: '../../pages-pay/pages/meter/index',
-        background: '#ff9800',
-        shortcut: true,
-      },
-    ],
   },
 ];
 

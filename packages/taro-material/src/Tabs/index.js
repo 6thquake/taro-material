@@ -8,6 +8,8 @@ import AtComponent from '../common/component';
 import './index.scss';
 
 import Typography from '../Typography';
+import RMIcon from '../Icon';
+import theme from '../styles/theme';
 
 export default class AtTabs extends AtComponent {
   constructor() {
@@ -139,12 +141,23 @@ export default class AtTabs extends AtComponent {
         key={item.title}
         onClick={this.handleClick.bind(this, i)}
       >
+        {item.icon && (
+          <RMIcon
+            block
+            color="inherit"
+            fontSize={16}
+            customStyle={{ marginRight: `${theme.spacing.unit / 2}px` }}
+          >
+            {item.icon}
+          </RMIcon>
+        )}
         <Typography
           className={classNames({
             body1: current !== i,
             body2: current === i,
           })}
           color="inherit"
+          block
         >
           {item.title}
         </Typography>
