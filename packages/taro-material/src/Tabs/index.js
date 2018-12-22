@@ -141,26 +141,29 @@ export default class AtTabs extends AtComponent {
         key={item.title}
         onClick={this.handleClick.bind(this, i)}
       >
-        {item.icon && (
-          <RMIcon
-            block
+        <View className="at-tabs__item__title">
+          {item.icon &&
+            item.showIcon && (
+              <RMIcon
+                block
+                color="inherit"
+                fontSize={16}
+                customStyle={{ marginRight: `${theme.spacing.unit / 2}px` }}
+              >
+                {item.icon}
+              </RMIcon>
+            )}
+          <Typography
+            className={classNames({
+              body1: current !== i,
+              body2: current === i,
+            })}
             color="inherit"
-            fontSize={16}
-            customStyle={{ marginRight: `${theme.spacing.unit / 2}px` }}
+            block
           >
-            {item.icon}
-          </RMIcon>
-        )}
-        <Typography
-          className={classNames({
-            body1: current !== i,
-            body2: current === i,
-          })}
-          color="inherit"
-          block
-        >
-          {item.title}
-        </Typography>
+            {item.title}
+          </Typography>
+        </View>
       </View>
     ));
 

@@ -17,6 +17,12 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
+    &__title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -120,9 +126,9 @@
     }
 
     .at-tabs__item {
+      width: auto;
       display: flex;
       justify-content: center;
-      width: auto;
       align-items: center;
 
       &::after {

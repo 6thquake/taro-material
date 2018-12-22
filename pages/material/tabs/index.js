@@ -11,6 +11,7 @@ import './index.scss';
 const allNavList = [
   {
     title: '充值中心',
+    showIcon: true,
     icon: 'aspect_ratio',
   },
   {
