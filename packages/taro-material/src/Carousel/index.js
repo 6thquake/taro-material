@@ -43,8 +43,8 @@ class Carousel extends Component {
     return (
       <Swiper
         className="carousel"
-        indicatorColor="#999"
-        indicatorActiveColor="#333"
+        indicatorColor={theme.palette.grey['300']}
+        indicatorActiveColor={theme.palette.primary.main}
         vertical={vertical}
         skipHiddenItemLayout
         displayMultipleItems={multipleItems}
