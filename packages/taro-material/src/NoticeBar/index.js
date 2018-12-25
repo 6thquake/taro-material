@@ -105,6 +105,11 @@ class NoticeBar extends AtComponent {
               if (pauseTime) {
                 y = -length * index++;
                 const _h = -height + (infinite ? 0 : length) - 6;
+                if (y <= _h + length) {
+                  setTimeout(() => {
+                    animBody();
+                  }, duration);
+                }
                 if (y <= _h) {
                   y = _h;
                 }
