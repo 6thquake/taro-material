@@ -59,15 +59,16 @@ class Affix extends Component {
     const { offsetBottom, offsetTop } = this.props;
     const { fixed, left, top, bottom, right, width, height } = this.state;
 
-    let _fixed = false,
-      _affix = {};
+    let _fixed = false;
+    const _affix = {};
+    const offset = Math.floor(height) !== height ? 1 : 0;
 
     if (isNumber(offsetTop)) {
       _fixed = top <= params.scrollTop + offsetTop;
-      _affix.top = `${offsetTop}px`;
+      _affix.top = `${offsetTop - offset}px`;
     } else if (isNumber(offsetBottom)) {
       _fixed = bottom <= -params.scrollTop + offsetBottom;
-      _affix.bottom = `${offsetBottom}px`;
+      _affix.bottom = `${offsetBottom - offset}px`;
     }
 
     if (_fixed) {

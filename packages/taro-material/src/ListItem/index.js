@@ -30,6 +30,12 @@ class ListItem extends Component {
   }
 
   handleSwitchChange = (...args) => {
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     if (isFunction(this.props.onSwitchChange)) {
       this.props.onSwitchChange(...args);
     }
@@ -144,6 +150,7 @@ class ListItem extends Component {
                 color={theme.palette.primary.main}
                 checked={switchIsCheck}
                 onChange={this.handleSwitchChange}
+                disabled={disabled}
               />
             </View>
           )}
