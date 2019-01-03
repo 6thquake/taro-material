@@ -63,6 +63,7 @@ export default class Search extends AtComponent {
       className,
       customStyle,
       color,
+      square,
     } = this.props;
     const { isFocus } = this.state;
 
@@ -105,7 +106,12 @@ export default class Search extends AtComponent {
         )}
         style={customStyle}
       >
-        <View className="at-search-bar__container">
+        <View
+          className={classNames({
+            'at-search-bar__container': true,
+            rounded: !square,
+          })}
+        >
           <View className="at-search-bar__placeholder_wrap" style={placeholderStyle}>
             <AtIcon value="search" size="15" color={hint} />
             <Text
@@ -163,6 +169,7 @@ Search.defaultProps = {
   onActionClick: defaultFunc,
   onClear: defaultFunc,
   color: 'default',
+  square: false,
 };
 
 Search.propTypes = {
@@ -190,4 +197,5 @@ Search.propTypes = {
     'warning',
     'progress',
   ]),
+  square: PropTypes.bool,
 };

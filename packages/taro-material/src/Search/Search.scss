@@ -24,7 +24,10 @@ $placeholderPadding: 5 * 2;
     width: 100%;
     height: #{$height}px;
     background-color: $color-bg-grey;
-    border-radius: #{$height/2}px;
+    border-radius: #{shapeBorderRadius}px;
+    &.rounded {
+      border-radius: #{$height/2}px;
+    }
   }
 
   &__placeholder_wrap {

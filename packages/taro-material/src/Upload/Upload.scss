@@ -1,4 +1,4 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
 .container {
   display: flex;
@@ -6,10 +6,10 @@
   justify-content: flex-start;
   align-items: stretch;
   flex-direction: column;
-  margin: #{$spacingUnit*2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
-  
+  margin: #{$spacingUnit * 2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+
   .cicle {
-    border-radius: 16px;
+    border-radius: #{shapeBorderRadius}px;
   }
   .title {
     vertical-align: middle;
@@ -19,11 +19,11 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    
+
     .required {
       margin-left: #{$spacingUnit}px;
       color: #{$paletteSecondaryMain};
-    }  
+    }
   }
   .array {
     display: flex;
@@ -40,7 +40,8 @@
       @extend .cicle;
     }
 
-    .chip, .clickToUpload{
+    .chip,
+    .clickToUpload {
       position: relative;
       width: 128px;
       height: 128px;

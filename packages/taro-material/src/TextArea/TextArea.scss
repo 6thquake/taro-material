@@ -1,8 +1,8 @@
-.root{
-  .textareaBox{
+.root {
+  .textareaBox {
     // display: none;
   }
-  .fakeTextarea{
+  .fakeTextarea {
     position: relative;
     width: 100%;
     min-height: 200px;
@@ -12,23 +12,25 @@
     // overflowY: auto;
     font-size: 32px;
     line-height: 1.5;
-    border-radius: 0.17067rem;
-    background-color: #FFF;
+    background-color: #fff;
     box-sizing: border-box;
-    border-top: 1PX #e2ecf4 solid;
-    border-bottom: 1PX #e2ecf4 solid;
-    border-right: 1PX #e2ecf4 solid;
-    border-left: 1PX #e2ecf4 solid;
+    border-top: 1px #e2ecf4 solid;
+    border-bottom: 1px #e2ecf4 solid;
+    border-right: 1px #e2ecf4 solid;
+    border-left: 1px #e2ecf4 solid;
     padding-bottom: 60px;
     word-break: break-all;
-    .placeholder{
-      color: #C9C9C9;
+    .placeholder {
+      color: #c9c9c9;
     }
-    .count{
-      position: absolute; 
+    .count {
+      position: absolute;
       right: 0.384rem;
       bottom: 0.384rem;
-      color: #C9C9C9;
+      color: #c9c9c9;
+    }
+    .rounded {
+      border-radius: 0.17067rem;
     }
   }
 }

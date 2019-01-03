@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
+import classNames from 'classnames';
 
 import AtTextarea from '../components/textarea';
 
@@ -29,8 +30,7 @@ class TextArea extends Component {
     });
   }
   render() {
-    const { show } = this.props;
-    const { value, placeholder, maxlength } = this.props;
+    const { show, square, value, placeholder, maxlength } = this.props;
     const length = value ? value.length : 0;
     const countText = `${length}/${maxlength}`;
     return (
@@ -47,7 +47,10 @@ class TextArea extends Component {
             />
           </View>
         ) : (
-          <View onClick={this.handleClick.bind(this)} className="fakeTextarea">
+          <View
+            onClick={this.handleClick.bind(this)}
+            className={classNames({ fakeTextarea: true, rounded: !square })}
+          >
             <View className="text">
               {value || <View className="placeholder">{placeholder}</View>}
             </View>
@@ -64,6 +67,7 @@ TextArea.defaultProps = {
   onChange: () => {},
   maxlength: 200,
   placeholder: '请输入...',
+  square: false,
 };
 
 export default TextArea;

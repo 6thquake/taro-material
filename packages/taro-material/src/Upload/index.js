@@ -231,6 +231,7 @@ class Upload extends Component {
       helperText,
       helperTextStyle,
       helperTextClass,
+      square,
     } = this.props;
     const { files } = this.state;
     const { length } = files;
@@ -245,7 +246,12 @@ class Upload extends Component {
     }
 
     return (
-      <View className="container">
+      <View
+        className={classNames({
+          container: true,
+          rounded: !square,
+        })}
+      >
         {label && (
           <Label className="title">
             <RMTypography className="subheading" color="inherit" block>
@@ -324,6 +330,7 @@ Upload.defaultProps = {
   helperTextStyle: '',
   helperTextClass: '',
   onComponentDidMount: () => {},
+  square: false,
 };
 
 export default Upload;
