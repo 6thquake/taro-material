@@ -152,7 +152,7 @@ class Filters extends Component {
                       </RMTag>
                     </View>
                   ))}
-                  <View className="tag" />
+                  <View className="spacing" />
                 </View>
               </View>
             );

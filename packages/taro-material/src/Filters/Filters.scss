@@ -20,27 +20,30 @@
     padding: 0px #{$spacingUnit * 2}px;
 
     .option {
-      padding-bottom: #{$spacingUnit * 4}px;
-      padding-top: #{$spacingUnit * 4}px;
+      padding-bottom: #{$spacingUnit * 1.5}px;
+      padding-top: #{$spacingUnit * 1.5}px;
 
       &:not(:first-child) {
         border-top: 1px solid $paletteGrey200;
       }
 
-      .title {
-        margin-bottom: #{$spacingUnit * 2}px;
-      }
       .tags {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        .tag {
-          margin: #{$spacingUnit * 2}px 0px;
+        padding-bottom: #{$spacingUnit * 1.5}px;
+        padding-top: #{$spacingUnit * 1.5}px;
+
+        .tag,
+        .spacing {
           flex: 1;
-          min-width: 30%;
-          max-width: 30%;
+          min-width: 31%;
+          max-width: 31%;
+        }
+        .tag {
+          margin: #{$spacingUnit * 1.5}px 0px;
         }
       }
     }
