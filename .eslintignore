@@ -10,3 +10,4 @@ jest.config.js
 __mock__/
 packages/taro-material/src/common
 packages/taro-material/src/components
+.temp/

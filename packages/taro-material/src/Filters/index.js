@@ -19,6 +19,15 @@ class Filters extends Component {
     this.state.data = props.data;
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { data } = this.props;
+    if (nextProps.data !== data) {
+      this.setState({
+        data: nextProps.data,
+      });
+    }
+  }
+
   handleClick(i, j, immediately, e) {
     const { onChange } = this.props;
     const { data } = this.state;
