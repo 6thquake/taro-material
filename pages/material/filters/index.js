@@ -7,6 +7,7 @@ import RMPage from '../../taro-material/Page';
 
 import theme from '../../taro-material/styles/theme';
 import './index.scss';
+
 const defaultData = [
   {
     label: '特色1',
@@ -64,10 +65,6 @@ const defaultData = [
         label: 'ASD',
         value: 'S125',
       },
-      {
-        label: 'ASD1',
-        value: 'S1216',
-      },
     ],
   },
   {
@@ -89,14 +86,6 @@ const defaultData = [
       {
         label: 'ASD1',
         value: 'S1214',
-      },
-      {
-        label: 'ASD',
-        value: 'S125',
-      },
-      {
-        label: 'ASD1',
-        value: 'S1216',
       },
     ],
   },

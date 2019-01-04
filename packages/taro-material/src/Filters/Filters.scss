@@ -34,11 +34,13 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: space-around;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         .tag {
-          margin: #{$spacingUnit}px;
+          margin: #{$spacingUnit * 2}px 0px;
+          flex: 1;
+          min-width: 30%;
+          max-width: 30%;
         }
       }
     }

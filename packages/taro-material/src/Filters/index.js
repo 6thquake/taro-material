@@ -102,9 +102,8 @@ class Filters extends Component {
   render() {
     const { data: options } = this.state;
     const tagCustomStyle = {
-      borderRadius: `0px`, // ${theme.shape.borderRadius}
+      borderRadius: `${theme.shape.borderRadius / 2}px`,
       padding: `0 ${theme.spacing.unit}px`,
-      width: '88px',
     };
 
     const buttonCustomStyle = {
@@ -135,13 +134,16 @@ class Filters extends Component {
                         circle={false}
                         block
                         color={item.active ? 'primary' : 'default'}
-                        size="small"
+                        size="normal"
                         customStyle={tagCustomStyle}
                       >
-                        {item.label}
+                        <RMTypography color="inherit" fontSize={12} block>
+                          {item.label}
+                        </RMTypography>
                       </RMTag>
                     </View>
                   ))}
+                  <View className="tag" />
                 </View>
               </View>
             );
