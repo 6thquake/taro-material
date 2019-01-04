@@ -150,6 +150,7 @@ const theme = {
   },
   zIndex: {
     watermark: 0,
+    divider: 100,
     mobileStepper: 1000,
     backTop: 1050,
     dropdown: 1060,

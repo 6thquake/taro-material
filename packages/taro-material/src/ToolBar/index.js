@@ -274,13 +274,14 @@ class ToolBar extends Component {
 
           {prioritySorts.map((item, index) => {
             const color = item.active ? theme.palette.primary.main : 'default';
+            const className = item.active ? 'body2' : 'body1';
             return (
               <View
                 key={item.value || index}
                 className="priorities"
                 onClick={this.handlePriorities.bind(this, index)}
               >
-                <RMTypography color={color} className="body2">
+                <RMTypography color={color} className={className}>
                   {item.label}
                 </RMTypography>
               </View>
@@ -291,13 +292,14 @@ class ToolBar extends Component {
 
           {priorityFilters.map(item => {
             const color = item.active ? theme.palette.primary.main : 'default';
+            const className = item.active ? 'body2' : 'body1';
             return (
               <View
                 key={item.value || `${item.i}-${item.j}`}
                 className="priorities"
                 onClick={this.handleFilters.bind(this, item.i, item.j)}
               >
-                <RMTypography color={color} className="body2">
+                <RMTypography color={color} className={className}>
                   {item.label}
                 </RMTypography>
               </View>
