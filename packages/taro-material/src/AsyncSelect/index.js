@@ -30,7 +30,7 @@ class AsyncSelect extends Component {
   componentDidMount() {
     const { option } = this.state;
     const { onChange } = this.props;
-    onChange(option.value);
+    option && onChange && onChange(option.value);
   }
 
   initOption = props => {
@@ -63,7 +63,7 @@ class AsyncSelect extends Component {
   };
 
   render() {
-    const { option, open } = this.state;
+    const { option = {}, open } = this.state;
     const { required, name, title, placeholder, helperText, type, options } = this.props;
     return (
       <View className="root">
