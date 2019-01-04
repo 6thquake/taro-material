@@ -20,6 +20,8 @@ const isEqual = (array1 = [], array2 = []) => {
   for (let i = 0; i < array1.length; i++) {
     if (!(array1[i].label === array2[i].label && array1[i].value === array2[i].value)) {
       return false;
+    } else if ((!array1[i].data && array2[i].data) || (array1[i].data && !array2[i].data)) {
+      return false;
     } else if (Array.isArray(array1[i].data) && Array.isArray(array2[i].data)) {
       const r = isEqual(array1[i].data, array2[i].data);
       if (!r) {
