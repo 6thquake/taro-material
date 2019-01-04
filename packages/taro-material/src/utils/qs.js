@@ -1,10 +1,11 @@
-import { isString, isObject } from './typeof';
+import { isString, isObject, isBlank } from './typeof';
 
 const stringify = qs => {
   if (isObject(qs)) {
     const qsStr = [];
     Object.keys(qs).forEach(key => {
-      qsStr.push(`${key}=${qs[key]}`);
+      const value = isBlank(qs[key]) ? '' : qs[key];
+      qsStr.push(`${key}=${value}`);
     });
     return qsStr.join('&');
   }
