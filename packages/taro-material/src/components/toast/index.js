@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isFunction } from '../../utils/typeof'
+import {isFunction as _isFunction}  from '../../utils/typeof'
 
 import AtIcon from '../icon/index'
 import AtComponent from '../../common/component'
@@ -58,7 +58,7 @@ export default class AtToast extends AtComponent {
   }
 
   handleClose () {
-    if (isFunction(this.props.onClose)) {
+    if (_isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }
@@ -120,7 +120,7 @@ export default class AtToast extends AtComponent {
             )}
             {isRenderIcon && (
               <View className='toast-body-content__icon'>
-                <AtIcon value={icon} color='white' size='50' />
+                <AtIcon customStyle={{ fontSize: '50px' }} value={icon} color='white' />
               </View>
             )}
             {text && (

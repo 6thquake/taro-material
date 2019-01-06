@@ -8,7 +8,6 @@ import './index.scss'
 
 export default class AtSegmentedControl extends AtComponent {
   static defaultProps = {
-    isTest: false,
     customStyle: '',
     className: '',
     current: 0,
@@ -31,20 +30,27 @@ export default class AtSegmentedControl extends AtComponent {
     ]),
     current: PropTypes.number,
     color: PropTypes.string,
+    selectedColor: PropTypes.string,
     fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     values: PropTypes.array,
     onClick: PropTypes.func
   }
 
-  handleClick (i, disable) {
-    if (disable) return
-    this.props.onClick(i, ...arguments)
+  constructor () {
+    super(...arguments)
+    if (process.env.NODE_ENV === 'test') {
+      Taro.initPxTransform({ designWidth: 750 })
+    }
+  }
+
+  handleClick () {
+    if (this.props.disable) return
+    this.props.onClick(...arguments)
   }
 
   render () {
     const {
-      isTest,
       customStyle,
       className,
       disabled,
@@ -55,9 +61,6 @@ export default class AtSegmentedControl extends AtComponent {
       fontSize
     } = this.props
 
-    if (isTest) {
-      Taro.initPxTransform({ designWidth: 750 })
-    }
     const rootStyle = `border-color: ${selectedColor};`
     const itemStyle = `
       color: ${selectedColor};
@@ -88,7 +91,7 @@ export default class AtSegmentedControl extends AtComponent {
               className='at-segmented-control__item'
               style={current === i ? selectedItemStyle : itemStyle}
               key={value}
-              onClick={this.handleClick.bind(this, i, disabled)}
+              onClick={this.handleClick.bind(this, i)}
             >
               {value}
             </View>)

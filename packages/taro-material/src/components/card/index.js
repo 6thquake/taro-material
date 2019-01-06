@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isFunction } from '../../utils/typeof'
+import {isFunction as _isFunction}  from '../../utils/typeof'
 
 import AtComponent from '../../common/component'
 
@@ -11,7 +11,7 @@ import './index.scss'
 
 export default class AtCard extends AtComponent {
   handleClick = (...args) => {
-    if (isFunction(this.props.onClick)) {
+    if (_isFunction(this.props.onClick)) {
       this.props.onClick(...args)
     }
   }
@@ -58,4 +58,13 @@ AtCard.propTypes = {
   title: PropTypes.string,
   extra: PropTypes.string,
   onClick: PropTypes.func
+}
+
+AtCard.defaultProps = {
+  note: '',
+  isFull: false,
+  thumb: '',
+  title: '',
+  extra: '',
+  onClick: () => {},
 }

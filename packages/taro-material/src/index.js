@@ -46,15 +46,16 @@ export { default as AtAccordion } from './components/accordion';
 export { default as AtSlider } from './components/slider';
 export { default as AtSwipeAction } from './components/swipe-action';
 export { default as AtSearchBar } from './components/search-bar';
-
 export { default as AtLoadMore } from './components/load-more';
 export { default as AtDivider } from './components/divider';
 export { default as AtCountDown } from './components/count-down';
 export { default as AtSteps } from './components/steps';
 export { default as AtCurtain } from './components/curtain';
-export { AtMessage, message } from './components/message';
+export { default as AtMessage } from './components/message';
 export { default as AtImagePicker } from './components/image-picker';
+export { default as AtRange } from './components/range';
 export { default as AtIndexes } from './components/indexes';
+export { default as AtCalendar } from './components/calendar';
 
 /* 私有的组件  */
 export { default as AtLoading } from './components/loading';
@@ -80,7 +81,6 @@ export { default as RMPanel } from './Panel';
 export { default as RMDatePicker } from './Picker';
 export { default as RMPostmark } from './Postmark';
 export { default as RMSearch } from './Search';
-
 export { default as RMSelect } from './Select';
 export { default as RMSwitch } from './Switch';
 export { default as RMRadio } from './Radio';

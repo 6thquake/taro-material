@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isFunction } from '../../utils/typeof'
+import {isFunction as _isFunction}  from '../../utils/typeof'
 
 import AtActionSheetBody from './body/index'
 import AtActionSheetHeader from './header/index'
@@ -19,7 +19,6 @@ export default class AtActionSheet extends AtComponent {
     const { isOpened } = props
 
     this.state = {
-      isIPhoneX: false,
       _isOpened: isOpened
     }
   }
@@ -35,25 +34,14 @@ export default class AtActionSheet extends AtComponent {
     }
   }
 
-  componentDidMount () {
-    const curEnv = Taro.getEnv()
-
-    if (
-      curEnv === Taro.ENV_TYPE.WEAPP &&
-      Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0
-    ) {
-      this.setState({ isIPhoneX: true })
-    }
-  }
-
   handleClose = () => {
-    if (isFunction(this.props.onClose)) {
+    if (_isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }
 
   handleCancel = () => {
-    if (isFunction(this.props.onCancel)) {
+    if (_isFunction(this.props.onCancel)) {
       return this.props.onCancel()
     }
     this.close()
@@ -70,17 +58,17 @@ export default class AtActionSheet extends AtComponent {
 
   handleTouchMove = e => {
     e.stopPropagation()
+    e.preventDefault()
   }
 
   render () {
     const { title, cancelText, className } = this.props
-    const { _isOpened, isIPhoneX } = this.state
+    const { _isOpened } = this.state
 
     const rootClass = classNames(
       'at-action-sheet',
       {
         'at-action-sheet--active': _isOpened,
-        'at-action-sheet--ipx': isIPhoneX
       },
       className
     )
@@ -103,7 +91,9 @@ export default class AtActionSheet extends AtComponent {
 }
 
 AtActionSheet.defaultProps = {
-  isOpened: false
+  title: '',
+  cancelText: '',
+  isOpened: false,
 }
 
 AtActionSheet.propTypes = {
@@ -111,5 +101,5 @@ AtActionSheet.propTypes = {
   onClose: PropTypes.func,
   onCancel: PropTypes.func,
   isOpened: PropTypes.bool,
-  cancelText: PropTypes.string
+  cancelText: PropTypes.string,
 }

@@ -3,7 +3,7 @@ import { View, Button, Text } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { isFunction } from '../../utils/typeof'
+import {isFunction as _isFunction}  from '../../utils/typeof'
 
 import AtModalHeader from './header/index'
 import AtModalAction from './action/index'
@@ -43,25 +43,26 @@ export default class AtModal extends AtComponent {
   }
 
   handleClose = () => {
-    if (isFunction(this.props.onClose)) {
+    if (_isFunction(this.props.onClose)) {
       this.props.onClose()
     }
   }
 
   handleCancel = () => {
-    if (isFunction(this.props.onCancel)) {
+    if (_isFunction(this.props.onCancel)) {
       this.props.onCancel()
     }
   }
 
   handleConfirm = () => {
-    if (isFunction(this.props.onConfirm)) {
+    if (_isFunction(this.props.onConfirm)) {
       this.props.onConfirm()
     }
   }
 
   handleTouchMove = e => {
     e.stopPropagation()
+    e.preventDefault()
   }
 
   render () {
@@ -130,6 +131,7 @@ AtModal.propTypes = {
   isOpened: PropTypes.bool,
   onCancel: PropTypes.func,
   onConfirm: PropTypes.func,
+  onClose: PropTypes.func,
   content: PropTypes.string,
   closeOnClickOverlay: PropTypes.bool,
   cancelText: PropTypes.string,
