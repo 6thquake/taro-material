@@ -17,3 +17,10 @@ docs/h5/
 pages/taro-material
 
 coverage
+
+/pages/*
+!/pages/assets/
+!/pages/app.js
+!/pages/app.scss
+!/pages/index.html
+

@@ -1,5 +1,4 @@
 @import '../../style/theme/default.scss';
-@import '../../styles/theme.scss';
 
 .at-article {
   word-break: break-all;
@@ -48,6 +47,6 @@
     width: 690px;
     display: block;
     margin: 20px auto 0;
-    border-radius: #{shapeBorderRadius}px;
+    border-radius: 4px;
   }
 }

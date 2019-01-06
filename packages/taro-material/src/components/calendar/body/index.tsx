@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import classnames from 'classnames'
-import {default as _chunk} from '../../../utils/chunk'
+import _chunk from 'lodash/chunk'
 import _throttle from 'lodash/throttle'
 
 import Taro from '@tarojs/taro'

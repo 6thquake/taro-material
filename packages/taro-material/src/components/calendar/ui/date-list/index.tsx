@@ -1,6 +1,6 @@
 import bind from 'bind-decorator'
 import classnames from 'classnames'
-import {isFunction as _isFunction}  from '../../../../utils/typeof'
+import _isFunction from 'lodash/isFunction'
 
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
@@ -13,15 +13,15 @@ import './index.scss'
 const MAP: { [key: number]: string } = {
   [constant.TYPE_PRE_MONTH]: 'pre',
   [constant.TYPE_NOW_MONTH]: 'now',
-  [constant.TYPE_NEXT_MONTH]: 'next',
+  [constant.TYPE_NEXT_MONTH]: 'next'
 }
 
 export interface Props {
-  list: Calendar.List<Calendar.Item>;
+  list: Calendar.List<Calendar.Item>
 
-  onClick?: (item: Calendar.Item) => void;
+  onClick?: (item: Calendar.Item) => void
 
-  onLongClick?: (item: Calendar.Item) => void;
+  onLongClick?: (item: Calendar.Item) => void
 }
 
 export default class AtCalendarList extends Taro.Component<Props> {
@@ -51,17 +51,21 @@ export default class AtCalendarList extends Taro.Component<Props> {
             key={index}
             onClick={this.handleClick.bind(this, item)}
             onLongPress={this.handleLongClick.bind(this, item)}
-            className={classnames('flex__item', `flex__item--${MAP[item.type]}`, {
-              'flex__item--today': item.isToday,
-              'flex__item--active': item.isActive,
-              'flex__item--selected': item.isSelected,
-              'flex__item--selected-head': item.isSelectedHead,
-              'flex__item--selected-tail': item.isSelectedTail,
-              'flex__item--blur':
-                item.isDisabled ||
-                item.type === constant.TYPE_PRE_MONTH ||
-                item.type === constant.TYPE_NEXT_MONTH,
-            })}
+            className={classnames(
+              'flex__item',
+              `flex__item--${MAP[item.type]}`,
+              {
+                'flex__item--today': item.isToday,
+                'flex__item--active': item.isActive,
+                'flex__item--selected': item.isSelected,
+                'flex__item--selected-head': item.isSelectedHead,
+                'flex__item--selected-tail': item.isSelectedTail,
+                'flex__item--blur':
+                  item.isDisabled ||
+                  item.type === constant.TYPE_PRE_MONTH ||
+                  item.type === constant.TYPE_NEXT_MONTH
+              }
+            )}
           >
             <View className='flex__item-container'>
               <View className='container-text'>{item.text}</View>

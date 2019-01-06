@@ -4,7 +4,7 @@ import { View, Text, ScrollView } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import {isFunction as _isFunction}  from '../../utils/typeof'
+import _isFunction from 'lodash/isFunction'
 
 import AtIcon from '../icon/index'
 import AtComponent from '../../common/component'

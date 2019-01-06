@@ -2,6 +2,7 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
+import _forEach from 'lodash/forEach'
 
 import AtComponent from '../../../common/component'
 
@@ -11,8 +12,7 @@ export default class AtFlexItem extends AtComponent {
   render () {
     const rootClass = ['at-col']
 
-    Object.keys(this.props).forEach((key)=>{
-      let value = this.props[key];
+    _forEach(this.props, (value, key) => {
       if (key === 'isAuto' && value) {
         return rootClass.push('at-col--auto')
       }

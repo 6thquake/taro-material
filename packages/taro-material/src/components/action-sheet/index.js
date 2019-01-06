@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import {isFunction as _isFunction}  from '../../utils/typeof'
+import _isFunction from 'lodash/isFunction'
 
 import AtActionSheetBody from './body/index'
 import AtActionSheetHeader from './header/index'

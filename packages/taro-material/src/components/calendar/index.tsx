@@ -3,7 +3,8 @@ import classnames from 'classnames'
 import dayjs, { Dayjs } from 'dayjs'
 
 import _pick from 'lodash/pick'
-import { isFunction as _isFunction, isPlainObject as _isObject } from '../../utils/typeof'
+import _isObject from 'lodash/isObject'
+import _isFunction from 'lodash/isFunction'
 
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
@@ -26,11 +27,11 @@ const defaultProps: DefaultProps = {
   isMultiSelect: false,
   format: 'YYYY-MM-DD',
   currentDate: Date.now(),
-  monthFormat: 'YYYY年MM月',
+  monthFormat: 'YYYY年MM月'
 }
 
 export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
-  static defaultProps: DefaultProps = defaultProps;
+  static defaultProps: DefaultProps = defaultProps
 
   constructor (props: Props) {
     super(...arguments)
@@ -46,14 +47,18 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
 
     if (isMultiSelect && this.props.isMultiSelect) {
       const { start, end } = currentDate as Calendar.SelectedDate
-      const { start: preStart, end: preEnd } = this.props.currentDate as Calendar.SelectedDate
+      const { start: preStart, end: preEnd } = this.props
+        .currentDate as Calendar.SelectedDate
 
       if (start === preStart && preEnd === end) {
         return
       }
     }
 
-    const stateValue: State = this.getInitializeState(currentDate, isMultiSelect)
+    const stateValue: State = this.getInitializeState(
+      currentDate,
+      isMultiSelect
+    )
 
     this.setState(stateValue)
   }
@@ -63,7 +68,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
     const { generateDate } = this.state
 
     const stateValue: Partial<State> = {
-      selectedDate: this.getSelectedDate(value.valueOf()),
+      selectedDate: this.getSelectedDate(value.valueOf())
     }
 
     const dayjsGenerateDate: Dayjs = value.startOf('month')
@@ -98,7 +103,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
   private getSelectedDate (start: number, end?: number): Calendar.SelectedDate {
     const stateValue: Calendar.SelectedDate = {
       start,
-      end: start,
+      end: start
     }
 
     if (typeof end !== 'undefined') {
@@ -140,7 +145,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
 
     return {
       generateDate: generateDateValue,
-      selectedDate: this.getSelectedDate(start, end),
+      selectedDate: this.getSelectedDate(start, end)
     }
   }
 
@@ -161,7 +166,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
       .add(vectorCount, 'month')
       .valueOf()
     this.setState({
-      generateDate: _generateDate,
+      generateDate: _generateDate
     })
   }
 
@@ -202,7 +207,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
 
     this.triggerChangeDate(_generateDate)
     this.setState({
-      generateDate: _generateDateValue,
+      generateDate: _generateDateValue
     })
   }
 
@@ -249,7 +254,7 @@ export default class AtCalendar extends Taro.Component<Props, Readonly<State>> {
       hideArrow,
       isVertical,
       monthFormat,
-      selectedDates,
+      selectedDates
     } = this.props as PropsWithDefaults
 
     return (

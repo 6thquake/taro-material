@@ -1,4 +1,4 @@
-import { default as _chunk } from '../../../../utils/chunk'
+import _chunk from 'lodash/chunk'
 
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
