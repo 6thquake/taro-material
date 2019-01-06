@@ -1,12 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
-import PropTypes from 'prop-types';
 import { View, Image } from '@tarojs/components';
 import moment from 'moment';
 import classNames from 'classnames';
-import { isString } from '../utils/typeof';
-import { isDate } from '../utils/typeof';
+import { isString, isDate } from '../utils/typeof';
 
-import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
 import theme from '../styles/theme';
@@ -33,9 +30,9 @@ class Postmark extends Component {
   render() {
     const { color, text, date, size, signature, format } = this.props;
 
-    let _src = '',
-      _color = '',
-      _date = '';
+    let _src = '';
+    let _color = '';
+    let _date = '';
 
     if (isString(date)) {
       _date = date;
