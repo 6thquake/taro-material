@@ -4,7 +4,7 @@
 
 ## 安装 Taro
 
-安装 `Taro` 开发工具 `@tarojs/cli`，`Taro` 版本需要在 `1.0.0-beta.18` 以上
+安装 `Taro` 开发工具 `@tarojs/cli`，`Taro` 版本需要在 `1.1.0` 以上
 
 使用 `npm` 或者 `yarn` 全局安装，或者直接使用 [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
 
@@ -30,7 +30,7 @@ $ taro init myApp
 :::demo
 ```bash
 $ cd myApp
-$ npm install taro-material
+$ npm install taro-ui
 ```
 :::
 
@@ -40,7 +40,7 @@ $ npm install taro-material
 
 :::demo
 ```js
-import { AtButton } from '@6thquake/taro-material'
+import { AtButton } from 'taro-ui'
 ```
 :::
 
@@ -52,7 +52,7 @@ import { AtButton } from '@6thquake/taro-material'
 ```jsx
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtButton } from '@6thquake/taro-material'
+import { AtButton } from 'taro-ui'
 import './index.scss'
 
 export default class Index extends Component {

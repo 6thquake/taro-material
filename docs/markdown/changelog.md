@@ -11,6 +11,96 @@
       <div class="at-timeline__tail"></div>
       <div class="at-timeline__dot"></div>
       <div class="at-timeline__content">
+        <p class="head">v1.5.4</p>
+        <p class="time">
+          <span>2018-12.30</span>
+        </p>
+        <ul class="content">
+          <li>组件兼容<span>taro v1.2.3</span>版本</li>
+          <li>修复<span>Countdown</span>组件 onTimeUp 事件多次触发的问题</li>
+          <li>修复<span>ActionSheet</span>组件修改 state 无法变更 Title 的问题（<a href="https://github.com/NervJS/taro-ui/issues/269">#269</a>）</li>
+          <li>修复组件中带有浮层的滑动穿透问题（<a href="https://github.com/NervJS/taro-ui/issues/286">#286</a>）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="at-timeline__item at-timeline__item--default">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot"></div>
+      <div class="at-timeline__content">
+        <p class="head">v1.5.3</p>
+        <p class="time">
+          <span>2018-12.25</span>
+        </p>
+        <ul class="content">
+          <li><span>FloatLayout</span>组件新增 ScrollView 的属性配置（<a href="https://github.com/NervJS/taro-ui/issues/258">#258</a>）</li>
+          <li><span>InputNumber</span>组件新增 onBlur 事件</li>
+          <li>修复<span>ICON</span>组件的 rpx 转换问题（<a href="https://github.com/NervJS/taro-ui/issues/112">#112</a>）</li>
+          <li>修复<span>ImagePicker</span>组件不能选择同一文件的问题</li>
+        </ul>
+      </div>
+    </div>
+    <div class="at-timeline__item at-timeline__item--default">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot"></div>
+      <div class="at-timeline__content">
+        <p class="head">v1.5.2</p>
+        <p class="time">
+          <span>2018-12.13</span>
+        </p>
+        <ul class="content">
+          <li>修复<span>Calendar</span>组件在禁止滑动状态下无法点击日期的问题</li>
+          <li>修复<span>Textarea</span>组件配置 maxLength 无效的问题</li>
+          <li>修复<span>CountDown</span>组件在页面隐藏时倒计时未停止的问题</li>
+          <li>修复<span>Indexes</span>组件在 H5 下锚点定位错乱的问题</li>
+        </ul>
+      </div>
+    </div>
+    <div class="at-timeline__item at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="icon icon-award"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.5.0</p>
+        <p class="time">
+          <span>2018-11-27</span>
+        </p>
+        <ul class="content">
+          <li>新增<span>AtImagePicker</span>图片选择器组件</li>
+          <li>新增<span>AtRange</span>范围选择器组件</li>
+          <li>新增<span>AtIndexes</span>索引选择器组件</li>
+          <li>新增<span>AtCalendar</span>日历组件</li>
+          <li>修复<span>AtInputNumber</span> max 值失效的问题（<a href="https://github.com/NervJS/taro-ui/issues/141">#141</a>）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="at-timeline__item at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="icon icon-award"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.4.0</p>
+        <p class="time">
+          <span>2018-11-11</span>
+        </p>
+        <ul class="content">
+          <li>新增<span>AtCountDown</span>组件</li>
+          <li>新增<span>AtDivider</span>组件</li>
+          <li>新增<span>AtLoadMore</span>组件</li>
+          <li>新增<span>AtSteps</span>组件</li>
+          <li>新增<span>AtCurtain</span>组件</li>
+          <li>新增<span>AtMessage</span>组件</li>
+          <li>修复<span>AtDrawer</span> onClose 事件重复触发的问题（<a href="https://github.com/NervJS/taro-ui/issues/167">#167</a>）</li>
+          <li>修复<span>AtDrawer</span> 溢出滚动（<a href="https://github.com/NervJS/taro-ui/issues/132">#132</a>）</li>
+          <li>修复<span>AtTabs</span> 在 iOS8 下展示异常（<a href="https://github.com/NervJS/taro-ui/issues/163">#163</a>）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="at-timeline__item at-timeline__item--default">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot"></div>
+      <div class="at-timeline__content">
         <p class="head">v1.3.2</p>
         <p class="time">
           <span>2018-10-20</span>

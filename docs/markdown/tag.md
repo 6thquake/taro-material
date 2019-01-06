@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtTag } from '@6thquake/taro-material'
+import { AtTag } from 'taro-ui'
 ```
 :::
 

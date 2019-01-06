@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtDrawer } from '@6thquake/taro-material'
+import { AtDrawer } from 'taro-ui'
 ```
 :::
 

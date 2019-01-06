@@ -11,7 +11,7 @@
 :::demo
 
 ```js
-import { AtActivityIndicator } from '@6thquake/taro-material'
+import { AtActivityIndicator } from 'taro-ui'
 ```
 
 :::
@@ -41,7 +41,7 @@ import { AtActivityIndicator } from '@6thquake/taro-material'
 :::demo
 
 ```html
-<AtActivityIndicator color=‘#13CE66’></AtActivityIndicator>
+<AtActivityIndicator color='#13CE66'></AtActivityIndicator>
 ```
 
 :::
@@ -51,7 +51,7 @@ import { AtActivityIndicator } from '@6thquake/taro-material'
 :::demo
 
 ```html
-<AtActivityIndicator content=‘加载中...’></AtActivityIndicator>
+<AtActivityIndicator content='加载中...'></AtActivityIndicator>
 ```
 
 :::
@@ -61,7 +61,7 @@ import { AtActivityIndicator } from '@6thquake/taro-material'
 :::demo
 
 ```html
-<AtActivityIndicator mode=‘center’></AtActivityIndicator>
+<AtActivityIndicator mode='center'></AtActivityIndicator>
 ```
 
 :::

@@ -1,48 +1,48 @@
-import Taro from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 
-import AtIcon from '../../taro-material/components/icon/index';
-import ICONS from './icons';
-import DocsHeader from '../../components/doc-header';
+import AtIcon from '../../../components/icon/index'
+import ICONS from './icons'
+import DocsHeader from '../../components/doc-header'
 
-import './index.scss';
+import './index.scss'
 
 export default class IconPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
-  };
-
-  constructor() {
-    super(...arguments);
-    this.state = {
-      icons: ICONS,
-    };
+    navigationBarTitleText: 'Taro UI'
   }
 
-  render() {
-    const { icons } = this.state;
-    const iconColor = '#999';
-    const iconSize = 30;
+  constructor () {
+    super(...arguments)
+    this.state = {
+      icons: ICONS
+    }
+  }
+
+  render () {
+    const { icons } = this.state
+    const iconColor = '#999'
+    const iconSize = 30
 
     return (
-      <View className="page">
+      <View className='page'>
         {/* S Header */}
-        <DocsHeader title="ICON 图标" />
+        <DocsHeader title='ICON 图标'></DocsHeader>
         {/* E Header */}
 
         {/* S Body */}
-        <View className="doc-body">
+        <View className='doc-body'>
           {/* 主要 */}
-          <View className="panel">
-            <View className="panel__title">主要</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>主要</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.main.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -50,16 +50,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* 文件 */}
-          <View className="panel">
-            <View className="panel__title">文件</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>文件</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.file.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -67,16 +67,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* 文本 */}
-          <View className="panel">
-            <View className="panel__title">文本</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>文本</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.text.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -84,16 +84,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* 箭头 */}
-          <View className="panel">
-            <View className="panel__title">箭头</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>箭头</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.arrow.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -101,16 +101,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* 媒体控制 */}
-          <View className="panel">
-            <View className="panel__title">媒体控制</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>媒体控制</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.media.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -118,16 +118,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* 多媒体 */}
-          <View className="panel">
-            <View className="panel__title">多媒体</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>多媒体</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.photo.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -135,16 +135,16 @@ export default class IconPage extends Taro.Component {
           </View>
 
           {/* Logo */}
-          <View className="panel">
-            <View className="panel__title">Logo</View>
-            <View className="panel__content">
-              <View className="icon-list">
+          <View className='panel'>
+            <View className='panel__title'>Logo</View>
+            <View className='panel__content'>
+              <View className='icon-list'>
                 {icons.logo.map((icon, index) => (
-                  <View className="icon-list__item" key={index}>
-                    <View className="icon-list__icon">
-                      <AtIcon value={icon} color={iconColor} size={iconSize} />
+                  <View className='icon-list__item' key={index}>
+                    <View className='icon-list__icon'>
+                      <AtIcon value={icon} color={iconColor} size={iconSize}></AtIcon>
                     </View>
-                    <View className="icon-list__name">{icon}</View>
+                    <View className='icon-list__name'>{icon}</View>
                   </View>
                 ))}
               </View>
@@ -153,6 +153,6 @@ export default class IconPage extends Taro.Component {
         </View>
         {/* E Body */}
       </View>
-    );
+    )
   }
 }

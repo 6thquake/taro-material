@@ -1,7 +1,7 @@
 /* eslint-disable import/no-commonjs */
 module.exports = {
   env: {
-    NODE_ENV: '"development"',
+    NODE_ENV: '"development"'
   },
   defineConstants: {},
   weapp: {
@@ -10,10 +10,15 @@ module.exports = {
         // 小程序端样式引用本地资源内联
         url: {
           enable: true,
-          limit: 102400000000,
-        },
-      },
-    },
+          limit: 102400000000
+        }
+      }
+    }
   },
-  h5: {},
-};
+  h5: {
+    devServer: {
+      host: '0.0.0.0',
+      port: 8080
+    }
+  }
+}

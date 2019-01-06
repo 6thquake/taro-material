@@ -11,7 +11,7 @@
 :::demo
 
 ```js
-import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from '@6thquake/taro-material'
+import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 ```
 
 :::
@@ -26,14 +26,11 @@ import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from '@6thquake
 <AtModal isOpened>
   <AtModalHeader>标题</AtModalHeader>
   <AtModalContent>
-      这里是正文内容，欢迎加入京东凹凸实验室
-      这里是正文内容，欢迎加入京东凹凸实验室
-      这里是正文内容，欢迎加入京东凹凸实验室
+    这里是正文内容，欢迎加入京东凹凸实验室
+    这里是正文内容，欢迎加入京东凹凸实验室
+    这里是正文内容，欢迎加入京东凹凸实验室
   </AtModalContent>
-  <AtModalAction>
-    <Button>取消</Button>
-    <Button>确定</Button>
-  </AtModalAction>
+  <AtModalAction> <Button>取消</Button> <Button>确定</Button> </AtModalAction>
 </AtModal>
 ```
 
@@ -60,12 +57,14 @@ import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from '@6thquake
 
 ## AtModal 参数
 
-| 参数        | 说明           | 类型   | 可选值 | 默认值 |
-| ----------- | -------------- | ------ | ------ | ------ |
-| title       | 元素的标题     | String | -      | -      |
-| content     | 元素的内容     | String | -      | -      |
-| cancelText  | 取消按钮的文本 | String | -      | -      |
-| confirmText | 确认按钮的文本 | String | -      | -      |
+| 参数                | 说明                       | 类型    | 可选值 | 默认值  |
+| ------------------- | -------------------------- | ------- | ------ | ------- |
+| title               | 元素的标题                 | String  | -      | -       |
+| content             | 元素的内容                 | String  | -      | -       |
+| cancelText          | 取消按钮的文本             | String  | -      | -       |
+| closeOnClickOverlay | 点击浮层的时候时候自动关闭 | Boolean | -      | `true` |
+| confirmText         | 确认按钮的文本             | String  | -      | -       |
+| isOpened            | 是否显示模态框             | String  | -      | `false`       |
 
 ## AtModal 事件
 

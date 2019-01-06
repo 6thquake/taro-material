@@ -11,7 +11,7 @@
 :::demo
 
 ```js
-import { AtCard } from '@6thquake/taro-material'
+import { AtCard } from "taro-ui"
 ```
 
 :::

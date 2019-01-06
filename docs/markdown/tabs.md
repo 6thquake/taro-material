@@ -11,7 +11,7 @@
 :::demo
 
 ```js
-import { AtTabs, AtTabsPane } from '@6thquake/taro-material'
+import { AtTabs, AtTabsPane } from 'taro-ui'
 ```
 
 :::
@@ -21,6 +21,8 @@ import { AtTabs, AtTabsPane } from '@6thquake/taro-material'
 说明：
 
 * 该用法适合等宽标签，标签数不建议超过4个，超过4个建议使用**滚动标签栏**，增加 `scroll` 参数(见下)。
+
+* 请勿在 AtTab 组件内嵌套 `position:fixed` 布局的组件，比如：curtain,message,toast,action-sheet,modal,float-layout,drawer,picker。
 
 * 开发者需要通过 `onClick` 事件来改变 `current` 的值切换 tab
 
@@ -34,7 +36,7 @@ import { AtTabs, AtTabsPane } from '@6thquake/taro-material'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTabs, AtTabsPane } from '@6thquake/taro-material'
+import { AtTabs, AtTabsPane } from 'taro-ui'
 
 export default class Index extends Taro.Component {
   constructor () {
@@ -182,10 +184,10 @@ export default class Index extends Taro.Component {
 
 ## AtTabs 参数
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
-| tabDirection | Tab 方向  | String  | 'horizontal' | 'vertical' | 'horizontal' |
-| height | Tab 高度，当 tabDirection='vertical'时，需要设置；当 tabDirection='horizontal'时，会自动根据内容撑开，请勿设置 | String  | 'horizontal' | - | - |
+| 参数   | 说明   | 类型    | 可选值 | 默认值   |
+| ---   | ---- | ------- | ------- | ------ |
+| tabDirection | Tab 方向  | String  | 'horizontal'，'vertical' | 'horizontal' |
+| height | Tab 高度，当 tabDirection='vertical'时，需要设置；当 tabDirection='horizontal'时，会自动根据内容撑开，请勿设置 | String  | - | - | - |
 | current | 当前选中的标签索引值，从0计数，开发者需要通过 onClick 事件来改变 current，从而切换 tab  | Number  | - | 0 |
 | scroll     | 是否滚动，当标签太多时，建议使用。否则会出现部分标签被隐藏  | Boolean | - | false |
 | swipeable  | 是否支持手势滑动切换内容页，当 tabDirection='vertical'时，无论是否设置，都不支持手势滑动切换内容页  | Boolean | - | true |
@@ -208,6 +210,6 @@ export default class Index extends Taro.Component {
 
 | 参数       | 说明 | 类型    | 可选值  | 默认值   |
 | -------- | ---- | ------- | -------| -------- |
-| tabDirection | Tab 方向，请跟 AtTabs 保持一致   | String  | 'horizontal' | 'vertical' | 'horizontal' |
+| tabDirection | Tab 方向，请跟 AtTabs 保持一致   | String  | 'horizontal'，'vertical' | 'horizontal' |
 | current | 当前选中的标签索引值，从0计数，请跟 AtTabs 保持一致| Number  | - | 0 |
 | index | tabPane 排序，从0计数 | Number  | - | 0 |

@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtButton } from '@6thquake/taro-material'
+import { AtButton } from 'taro-ui'
 ```
 :::
 
@@ -18,9 +18,9 @@ import { AtButton } from '@6thquake/taro-material'
 
 :::demo
 ```html
+<AtButton>按钮文案</AtButton>
 <AtButton type='primary'>按钮文案</AtButton>
 <AtButton type='secondary'>按钮文案</AtButton>
-<AtButton>按钮文案</AtButton>
 ```
 :::
 

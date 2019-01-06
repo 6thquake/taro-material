@@ -10,7 +10,7 @@
 :::demo
 
 ```js
-import { AtSlider } from '@6thquake/taro-material'
+import { AtSlider } from 'taro-ui'
 ```
 
 :::

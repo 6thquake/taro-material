@@ -10,25 +10,59 @@
 :::demo
 
 ```js
-import { AtSegmentedControl } from '@6thquake/taro-material'
+import { AtSegmentedControl } from 'taro-ui'
 ```
 
 :::
 
 ## 一般用法
+说明：
+
+* 该组件为受控组件，开发者需要通过 onClick 事件来更新 current 值变化，current 与 onClick 函数必填
+
 
 :::demo
 
-```html
-<AtSegmentedControl
-  values={['标签页1', '标签页2', '标签页3']}
-  onClick={this.handleClick}
-  current={this.state.current}
-/>
-{this.state.current === 0 ? <View className='tab-content'>标签1的内容</View> : null}
-{this.state.current === 1 ? <View className='tab-content'>标签2的内容</View> : null}
-{this.state.current === 2 ? <View className='tab-content'>标签3的内容</View> : null}
-
+```js
+import Taro from '@tarojs/taro'
+import { AtSegmentedControl }  from 'taro-ui'
+export default class Index extends Taro.Component {
+  constructor () {
+    super(...arguments)
+    this.state = {
+      current: 0
+    }
+  }
+  handleClick (value) {
+    this.setState({
+      current: value
+    })
+  }
+  render () {
+    return (
+      <AtSegmentedControl
+        values={['标签页1', '标签页2', '标签页3']}
+        onClick={this.handleClick.bind(this)}
+        current={this.state.current}
+      />
+      {
+        this.state.current === 0
+        ? <View className='tab-content'>标签1的内容</View>
+        : null
+      }
+      {
+        this.state.current === 1
+        ? <View className='tab-content'>标签2的内容</View>
+        : null
+      }
+      {
+        this.state.current === 2
+        ? <View className='tab-content'>标签3的内容</View>
+        : null
+      }
+    )
+  }
+}
 ```
 
 :::
@@ -39,10 +73,10 @@ import { AtSegmentedControl } from '@6thquake/taro-material'
 
 ```html
 <AtSegmentedControl
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   selectedColor='#FF4949'
   fontSize='30'
-  current={current}
+  current={this.state.current}
   values={['标签页1', '标签页2', '标签页3']}
 />
 
@@ -59,7 +93,7 @@ import { AtSegmentedControl } from '@6thquake/taro-material'
 <AtSegmentedControl
   disabled
   values={['标签页1', '标签页2', '标签页3']}
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   current={this.state.current}
 />
 ```
@@ -75,10 +109,10 @@ import { AtSegmentedControl } from '@6thquake/taro-material'
 | selectedColor  | 选中的标签背景色与边框颜色  | String | - | `#6190E8` |
 | values | 选项数组，值是字符串，eg: ['标签页1', '标签页2' ] | Array  | - | false |
 | disabled | 是否禁止点击 | Boolean  | - | false |
-| fontSize | 字体大小，单位 h5 为 `rem`，小程序为 `rem` | Number  | - | 28 |
+| fontSize | 字体大小，单位 h5 为 `rem`，小程序为 `rem` | Number / String  | - | 28 |
 
 ## 事件
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| onClick | 点击触发事件 | 选中 tab 列表索引值  |
+| onClick | 点击触发事件，开发者需要通过 onClick 事件来更新 current 值变化，onClick 函数必填  | 选中 tab 列表索引值  |

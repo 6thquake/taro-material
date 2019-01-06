@@ -10,26 +10,48 @@
 :::demo
 
 ```js
-import { AtTabBar } from '@6thquake/taro-material'
+import { AtTabBar } from 'taro-ui'
 ```
 
 :::
 
 ## 一般用法
 
+说明：
+
+* 该组件为受控组件，开发者需要通过 onClick 事件来更新 current 值变化，current 与 onClick 函数必填
+
 :::demo
 
-```html
-<AtTabBar
-  tabList={[
-    { title: '待办事项', text: 8 },
-    { title: '拍照' },
-    { title: '通讯录', dot: true }
-  ]}
-  onClick={this.handleClick}
-  current={this.state.current}
-/>
-
+```js
+import Taro from '@tarojs/taro'
+import { AtTabBar }  from 'taro-ui'
+export default class Index extends Taro.Component {
+  constructor () {
+    super(...arguments)
+    this.state = {
+      current: 0
+    }
+  }
+  handleClick (value) {
+    this.setState({
+      current: value
+    })
+  }
+  render () {
+    return (
+      <AtTabBar
+        tabList={[
+          { title: '待办事项', text: 8 },
+          { title: '拍照' },
+          { title: '通讯录', dot: true }
+        ]}
+        onClick={this.handleClick.bind(this)}
+        current={this.state.current}
+      />
+    )
+  }
+}
 ```
 
 :::
@@ -45,7 +67,7 @@ import { AtTabBar } from '@6thquake/taro-material'
     { title: '拍照', iconType: 'camera' },
     { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
   ]}
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   current={this.state.current}
 />
 ```
@@ -65,7 +87,7 @@ import { AtTabBar } from '@6thquake/taro-material'
     { title: '拍照', iconType: 'camera' },
     { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
   ]}
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   current={this.state.current}
 />
 ```
@@ -84,7 +106,7 @@ import { AtTabBar } from '@6thquake/taro-material'
     { title: '拍照', iconType: 'camera' },
     { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
   ]}
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   current={this.state.current}
 />
 ```
@@ -105,7 +127,7 @@ import { AtTabBar } from '@6thquake/taro-material'
     { title: '拍照', iconType: 'camera' },
     { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
   ]}
-  onClick={this.handleClick}
+  onClick={this.handleClick.bind(this)}
   current={this.state.current}
 />
 ```
@@ -125,7 +147,7 @@ import { AtTabBar } from '@6thquake/taro-material'
 | fontSize | 字体大小 | Number  | - | 14 |
 | tabList | tab 列表, object 字段说明请看下表 | Array  | - | false |
 
-## tabList object字段详解
+## tabList object 字段详解
 
 | 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   | 可选或必填
 | ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |-------- |
@@ -142,4 +164,4 @@ import { AtTabBar } from '@6thquake/taro-material'
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| onClick | 点击触发事件 | 选中 tab 列表索引值  |
+| onClick | 点击触发事件，开发者需要通过 onClick 事件来更新 current 值变化，onClick 函数必填  | 选中 tab 列表索引值  |

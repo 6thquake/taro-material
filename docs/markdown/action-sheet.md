@@ -11,7 +11,7 @@
 :::demo
 
 ```js
-import { AtActionSheet, AtActionSheetItem } from '@6thquake/taro-material'
+import { AtActionSheet, AtActionSheetItem } from "taro-ui"
 ```
 
 :::
