@@ -23,4 +23,5 @@ coverage
 !/pages/app.js
 !/pages/app.scss
 !/pages/index.html
+!/pages/pages/
 

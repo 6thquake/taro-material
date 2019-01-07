@@ -1,0 +1,44 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+
+  .input,
+  .spacer {
+    position: relative;
+  }
+
+  .body {
+    min-height: calc(100vh);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify: center;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    background: #fff;
+    border-left: 10px solid #03a9f4;
+    border-bottom: 1px solid #eee;
+    padding: 16px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .page-section {
+  }
+
+  .checkbox-list__checkbox {
+    background: red;
+  }
+}

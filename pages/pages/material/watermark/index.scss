@@ -1,0 +1,30 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+
+  .watermark,
+  .spacer {
+    position: relative;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    background: #fff;
+    border-left: 10px solid #03a9f4;
+    border-bottom: 1px solid #eee;
+    padding: 16px;
+  }
+  .watermark {
+    .parent {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .panel {
+    margin: #{$spacingUnit * 2}px 0;
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+
+  .loading,
+  .spacer {
+    position: relative;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    background: #fff;
+    border-left: 10px solid #03a9f4;
+    border-bottom: 1px solid #eee;
+    padding: 16px;
+  }
+}
