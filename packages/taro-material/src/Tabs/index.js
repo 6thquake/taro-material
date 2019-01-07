@@ -107,7 +107,7 @@ export default class AtTabs extends AtComponent {
     } = this.props;
     const { scrollLeft, scrollTop, scrollIntoView } = this.state;
 
-    const heightStyle = { height };
+    const heightStyle = height ? { height } : {};
     // const underlineStyle = {
     //   height: tabDirection === 'vertical' ? `${tabList.length * 100}%` : '1PX',
     //   width: tabDirection === 'horizontal' ? `${tabList.length * 100}%` : '1PX',
@@ -173,7 +173,7 @@ export default class AtTabs extends AtComponent {
           {
             'at-tabs': true,
             'at-tabs--vertical': tabDirection === 'vertical',
-            [`color${_color}`]: color !== 'inherit',
+            [`color${_color}`]: true, // color !== 'inherit',
           },
           className,
         )}
@@ -181,12 +181,7 @@ export default class AtTabs extends AtComponent {
       >
         {scroll ? (
           <ScrollView
-            className={classNames({
-              'at-tabs__header': true,
-              'at-tabs__header--scroll': scroll,
-              'at-tabs__header--centered': centered,
-            })}
-            style={heightStyle}
+            style={{ width: 'auto', ...heightStyle }}
             scrollX={tabDirection === 'horizontal'}
             scrollY={tabDirection === 'vertical'}
             scrollWithAnimation
@@ -194,8 +189,17 @@ export default class AtTabs extends AtComponent {
             scrollTop={scrollTop}
             scrollIntoView={scrollIntoView}
             ref="refTabHeader"
+            className="at-tabs__header__wrapper"
           >
-            {tabItems}
+            <View
+              className={classNames({
+                'at-tabs__header': true,
+                'at-tabs__header--scroll': scroll,
+                'at-tabs__header--centered': centered,
+              })}
+            >
+              {tabItems}
+            </View>
           </ScrollView>
         ) : (
           <View

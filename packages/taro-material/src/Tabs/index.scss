@@ -10,7 +10,6 @@
 
   &__item {
     position: relative;
-    flex: 1;
     padding: $spacing-v-lg $spacing-h-lg;
     font-size: $font-size-base;
     // color: $color-text-base;
@@ -27,13 +26,14 @@
       content: '';
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 0px;
       width: 100%;
       height: #{$spacingUnit/2}px;
-      // background-color: $color-brand;
       transform: scaleX(0);
       transition: all 0.15s;
       z-index: $zindex-tab;
+      box-shadow: $shadows1;
+      // background-color: $color-brand;
     }
 
     &--active {
@@ -47,6 +47,9 @@
   &__header {
     position: relative;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: none;
     width: 100%;
     box-sizing: border-box;
     text-align: left;
@@ -54,6 +57,15 @@
     white-space: nowrap;
     // background-color: $color-bg;
     overflow: -moz-scrollbars-none;
+
+    &__wrapper {
+      width: 100%;
+      overflow: -moz-scrollbars-none;
+      &::-webkit-scrollbar {
+        height: 0 !important;
+        width: 0 !important;
+      }
+    }
 
     &--scroll {
       overflow-x: scroll;
@@ -68,7 +80,11 @@
 
     &--centered {
       text-align: center;
-      justify-content: center;
+      // justify-content: center;
+
+      .at-tabs__item {
+        flex: 1;
+      }
     }
 
     &::-webkit-scrollbar {
@@ -123,6 +139,9 @@
     .at-tabs__header {
       display: inline-block;
       width: auto;
+
+      &--centered {
+      }
     }
 
     .at-tabs__item {
@@ -159,7 +178,8 @@
         color: $palettePrimaryContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $palettePrimaryMain;
     }
     &.at-tabs--vertical {
@@ -174,7 +194,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -190,7 +211,8 @@
         color: $paletteSecondaryContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteSecondaryMain;
     }
     &.at-tabs--vertical {
@@ -205,7 +227,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -221,7 +244,8 @@
         color: $paletteTextSecondary;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteActionDisabledBackground;
     }
     &.at-tabs--vertical {
@@ -236,7 +260,8 @@
           background-color: $paletteActionDisabledBackground;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -252,7 +277,8 @@
         color: $paletteErrorContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteErrorMain;
     }
     &.at-tabs--vertical {
@@ -267,7 +293,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -283,7 +310,8 @@
         color: $paletteSuccessContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteActionDisabledBackground;
     }
     &.at-tabs--vertical {
@@ -298,7 +326,8 @@
           background-color: $paletteActionDisabledBackground;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -314,7 +343,8 @@
         color: $paletteSuccessContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteSuccessMain;
     }
     &.at-tabs--vertical {
@@ -329,7 +359,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -345,7 +376,8 @@
         color: $paletteSuccessContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteWarningMain;
     }
     &.at-tabs--vertical {
@@ -360,7 +392,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -376,7 +409,8 @@
         color: $paletteProgressContrastText;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteProgressMain;
     }
     &.at-tabs--vertical {
@@ -391,7 +425,8 @@
           background-color: $paletteBackgroundPaper;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -407,7 +442,8 @@
         color: $paletteTextPrimary;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: $paletteBackgroundPaper;
     }
     &.at-tabs--vertical {
@@ -422,7 +458,8 @@
           background-color: $paletteBackgroundDefault;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
@@ -438,7 +475,8 @@
         color: inherit;
       }
     }
-    .at-tabs__header {
+    .at-tabs__header,
+    .tabs__header__wrapper {
       background-color: transparent;
     }
     &.at-tabs--vertical {
@@ -453,7 +491,8 @@
           background-color: transparent;
         }
       }
-      .at-tabs__header {
+      .at-tabs__header,
+      .tabs__header__wrapper {
         background-color: $paletteGrey100;
       }
     }
