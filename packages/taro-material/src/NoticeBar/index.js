@@ -1,4 +1,4 @@
-import Taro, { Component } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { View, Text } from '@tarojs/components';
@@ -7,11 +7,11 @@ import AtComponent from '../common/component';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
-import theme from '../styles/theme';
-
 import './index.scss';
 
 class NoticeBar extends AtComponent {
+  initial = false;
+
   constructor() {
     super(...arguments);
     const animElemId = `J_${Math.ceil(Math.random() * 10e5).toString(36)}`;
@@ -42,7 +42,27 @@ class NoticeBar extends AtComponent {
     }
   }
 
+  componentDidShow() {
+    if (!this.initial) {
+      return;
+    }
+
+    if (!this.props.marquee) {
+      return;
+    }
+    this.initAnimation();
+  }
+
+  componentDidHide() {
+    if (!this.initial) {
+      return;
+    }
+
+    this.interval && clearInterval(this.interval);
+  }
+
   componentDidMount() {
+    this.initial = true;
     if (!this.props.marquee) {
       return;
     }
@@ -86,6 +106,11 @@ class NoticeBar extends AtComponent {
         const nodeRef = this.animElem.boundingClientRect(res => {
           if (!res) return;
           const { width, height } = res;
+
+          if (!width || !height) {
+            return;
+          }
+
           if (vertical) {
             const y = -length * index;
             const _h = -height + (infinite ? 0 : length) - 6;
