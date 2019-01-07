@@ -9,6 +9,11 @@ import theme from '../styles/theme';
 import './index.scss';
 
 class Affix extends Component {
+  state = {
+    fixed: false,
+  };
+  mount = false;
+
   componentWillUpdate(nextProps, nextState) {
     const { onChange } = this.props;
 
@@ -27,29 +32,48 @@ class Affix extends Component {
       onAddPageScroll(this.handlePageScroll.bind(this));
     }
 
-    this.affix
-      .boundingClientRect(rect => {
-        const info = Taro.getSystemInfoSync();
-        const { windowWidth, windowHeight } = info;
-        let { left, top, bottom, right, width, height } = rect;
+    const task = this.affix.boundingClientRect(rect => {
+      const info = Taro.getSystemInfoSync();
+      const { windowWidth, windowHeight } = info;
+      let { left, top, bottom, right, width, height } = rect;
 
+      if (this.mount) {
+        this.setState({
+          width,
+          height,
+        });
+      } else {
         right = -left - width + windowWidth;
         bottom = -top - height + windowHeight;
 
         this.setState({
-          fixed: false,
-          top,
           left,
-          right,
+          top,
           bottom,
+          right,
           width,
           height,
         });
-      })
-      .exec();
+      }
+
+      this.mount = true;
+    });
+
+    task.exec();
+
+    this.interval = setInterval(() => {
+      const { fixed } = this.state;
+      if (fixed) {
+        task.exec();
+      }
+    }, 1000);
   }
 
-  componentWillUnmount() {}
+  componentWillMount() {}
+
+  componentWillUnmount() {
+    this.interval && clearInterval(this.interval);
+  }
 
   componentDidShow() {}
 
@@ -57,7 +81,7 @@ class Affix extends Component {
 
   handlePageScroll(params) {
     const { offsetBottom, offsetTop } = this.props;
-    const { fixed, left, top, bottom, right, width, height } = this.state;
+    const { left, top, bottom, right, width, height } = this.state;
 
     let _fixed = false;
     const _affix = {};
@@ -81,7 +105,9 @@ class Affix extends Component {
     });
   }
 
-  ref = node => (this.affix = node);
+  ref = node => {
+    this.affix = node;
+  };
 
   render() {
     const { offsetBottom, offsetTop, target, onChange, customStyle } = this.props;
