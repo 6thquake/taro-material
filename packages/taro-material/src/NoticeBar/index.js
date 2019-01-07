@@ -1,88 +1,88 @@
-import Taro from '@tarojs/taro';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { View, Text } from '@tarojs/components';
+import Taro from '@tarojs/taro'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import { View, Text } from '@tarojs/components'
 
-import AtComponent from '../common/component';
-import RMIcon from '../Icon';
-import RMTypography from '../Typography';
+import AtComponent from '../common/component'
+import RMIcon from '../Icon'
+import RMTypography from '../Typography'
 
-import './index.scss';
+import './index.scss'
 
 class NoticeBar extends AtComponent {
   initial = false;
 
-  constructor() {
-    super(...arguments);
-    const animElemId = `J_${Math.ceil(Math.random() * 10e5).toString(36)}`;
+  constructor () {
+    super(...arguments)
+    const animElemId = `J_${Math.ceil(Math.random() * 10e5).toString(36)}`
     this.state = {
       show: true,
       animElemId,
       dura: 0.015,
       isWEAPP: Taro.getEnv() === Taro.ENV_TYPE.WEAPP,
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB,
-    };
+    }
   }
 
-  onClose() {
+  onClose () {
     this.setState({
       show: false,
-    });
-    this.props.onClose && this.props.onClose(...arguments);
+    })
+    this.props.onClose && this.props.onClose(...arguments)
   }
 
-  onGotoMore() {
-    this.props.onGotoMore && this.props.onGotoMore(...arguments);
+  onGotoMore () {
+    this.props.onGotoMore && this.props.onGotoMore(...arguments)
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps () {
     if (!this.timeout) {
       // this.interval && clearInterval(this.interval)
       // this.initAnimation()
     }
   }
 
-  componentDidShow() {
+  componentDidShow () {
     if (!this.initial) {
-      return;
+      return
     }
 
     if (!this.props.marquee) {
-      return;
+      return
     }
-    this.initAnimation();
+    this.initAnimation()
   }
 
-  componentDidHide() {
+  componentDidHide () {
     if (!this.initial) {
-      return;
+      return
     }
 
-    this.interval && clearInterval(this.interval);
+    this.interval && clearInterval(this.interval)
   }
 
-  componentDidMount() {
-    this.initial = true;
+  componentDidMount () {
+    this.initial = true
     if (!this.props.marquee) {
-      return;
+      return
     }
-    this.initAnimation();
+    this.initAnimation()
   }
 
-  componentWillUnmount() {
-    this.interval && clearInterval(this.interval);
+  componentWillUnmount () {
+    this.interval && clearInterval(this.interval)
   }
 
-  initAnimation() {
-    const { vertical, infinite, pauseTime, duration } = this.props;
-    const { rows } = this.props;
-    let length = 0;
+  initAnimation () {
+    const { vertical, infinite, pauseTime, duration } = this.props
+    const { rows } = this.props
+    let length = 0
     if (vertical) {
-      length = rows * 18;
+      length = rows * 18
     }
 
     this.timeout = setTimeout(() => {
-      this.timeout = null;
+      this.timeout = null
       if (this.state.isWEB) {
         // const elem = this.animElem // document.querySelector(`.${this.state.animElemId}`)
         // if (elem) {
@@ -93,77 +93,78 @@ class NoticeBar extends AtComponent {
       } else if (this.state.isWEAPP) {
         // const query = Taro.createSelectorQuery().in(this.$scope)
         // query.select(`.${this.state.animElemId}`)
-        let index = 0;
+        let index = 0
         const resetAnimation = Taro.createAnimation({
           duration: 0,
           timingFunction: 'ease',
-        });
+        })
         const animation = Taro.createAnimation({
           duration,
           timingFunction: 'ease',
-        });
+        })
 
         const nodeRef = this.animElem.boundingClientRect(res => {
-          if (!res) return;
-          const { width, height } = res;
+          if (!res) return
+          const { width, height } = res
 
+          console.log(`notice bar: width: ${width}, height: ${height}`)
           if (!width || !height) {
-            return;
+            return
           }
 
           if (vertical) {
-            const y = -length * index;
-            const _h = -height + (infinite ? 0 : length) - 6;
+            const y = -length * index
+            const _h = -height + (infinite ? 0 : length) - 6
             if (!pauseTime || y <= _h) {
-              resetAnimation.translateY(height).step();
-              index = 0;
+              resetAnimation.translateY(height).step()
+              index = 0
             }
           } else {
-            resetAnimation.translateX(0).step();
+            resetAnimation.translateX(0).step()
           }
 
-          this.setState({ animationData: resetAnimation.export() });
+          this.setState({ animationData: resetAnimation.export() })
 
           setTimeout(() => {
             if (vertical) {
-              let y = 0;
+              let y = 0
               if (pauseTime) {
-                y = -length * index++;
-                const _h = -height + (infinite ? 0 : length) - 6;
+                y = -length * index++
+                const _h = -height + (infinite ? 0 : length) - 6
                 if (y <= _h + length) {
                   setTimeout(() => {
-                    animBody();
-                  }, duration);
+                    animBody()
+                  }, duration)
                 }
                 if (y <= _h) {
-                  y = _h;
+                  y = _h
                 }
               } else {
-                y = -height + (infinite ? 0 : length);
+                y = -height + (infinite ? 0 : length)
               }
-              animation.translateY(y).step();
+              animation.translateY(y).step()
             } else {
-              animation.translateX(-width + (infinite ? 0 : 100)).step();
+              animation.translateX(-width + (infinite ? 0 : 100)).step()
             }
-            this.setState({ animationData: animation.export() });
-          }, 100);
-        });
+            this.setState({ animationData: animation.export() })
+          }, 100)
+        })
 
         const animBody = () => {
-          nodeRef.exec();
-        };
-        animBody();
+          nodeRef.exec()
+        }
+        animBody()
 
         if (infinite) {
-          this.interval = setInterval(animBody, duration + 100 + pauseTime);
+          this.interval = setInterval(animBody, duration + 100 + pauseTime)
         }
       }
-    }, 100);
+    }, 100)
   }
 
   ref = node => (this.animElem = node);
 
-  render() {
+  render () {
     const {
       icon,
       iconColor,
@@ -175,36 +176,36 @@ class NoticeBar extends AtComponent {
       showMore,
       close,
       unread,
-    } = this.props;
-    const height = rows * 18;
-    const { animationData } = this.state;
-    const rootClassName = ['at-noticebar'];
-    const _moreText = this.props.moreText;
-    const single = rows === 1;
+    } = this.props
+    const height = rows * 18
+    const { animationData } = this.state
+    const rootClassName = ['at-noticebar']
+    const _moreText = this.props.moreText
+    const single = rows === 1
 
     // if (!single) showMore = false;
     // if (!_moreText) _moreText = '查看详情'
 
-    const style = {};
-    const contentStyle = {};
-    const innerClassName = ['at-noticebar__content-inner'];
+    const style = {}
+    const contentStyle = {}
+    const innerClassName = ['at-noticebar__content-inner']
     if (marquee) {
       // close = false
       // style['animation-duration'] = `${dura * 1000}s`
       // innerClassName.push(this.state.animElemId)
 
       if (vertical) {
-        innerClassName.push('vertical');
+        innerClassName.push('vertical')
       }
     }
 
     if (height) {
-      contentStyle.height = `${height}px`;
+      contentStyle.height = `${height}px`
     }
 
-    let _color = '';
+    let _color = ''
     if (color && color.length >= 1) {
-      _color = color.charAt(0).toUpperCase() + color.substring(1);
+      _color = color.charAt(0).toUpperCase() + color.substring(1)
     }
 
     const classObject = {
@@ -213,7 +214,7 @@ class NoticeBar extends AtComponent {
       'at-noticebar--more': !marquee && showMore,
       'at-noticebar--single': single || (marquee && !vertical), // ! marquee &&
       [`color${_color}`]: color !== 'inherit',
-    };
+    }
 
     return (
       this.state.show && (
@@ -221,39 +222,39 @@ class NoticeBar extends AtComponent {
           className={classNames(rootClassName, classObject, this.props.className)}
           style={customStyle}
         >
-          <View className="at-noticebar__content">
+          <View className='at-noticebar__content'>
             {close && (
-              <View className="at-noticebar__close" onClick={this.onClose.bind(this)}>
-                <RMIcon color="action" fontSize={24}>
+              <View className='at-noticebar__close' onClick={this.onClose.bind(this)}>
+                <RMIcon color='action' fontSize={24}>
                   close
                 </RMIcon>
               </View>
             )}
             {icon && (
-              <View className="at-noticebar__content-icon">
+              <View className='at-noticebar__content-icon'>
                 <RMIcon color={iconColor || 'inherit'} fontSize={24}>
                   {icon}
                 </RMIcon>
               </View>
             )}
-            <View className="at-noticebar__content-text" style={contentStyle}>
+            <View className='at-noticebar__content-text' style={contentStyle}>
               <View
                 animation={animationData}
                 className={innerClassName}
                 style={style}
                 ref={this.ref}
               >
-                <RMTypography className="body1" color="inherit" fontSize="inherit" block>
+                <RMTypography className='body1' color='inherit' fontSize='inherit' block>
                   {this.props.children}
                 </RMTypography>
               </View>
             </View>
             {showMore && (
-              <View className="at-noticebar__more" onClick={this.onGotoMore.bind(this)}>
-                {unread && <View className="unread" />}
-                <Text className="text">{_moreText}</Text>
-                <View className="at-noticebar__more-icon">
-                  <RMIcon color="inherit" fontSize={24}>
+              <View className='at-noticebar__more' onClick={this.onGotoMore.bind(this)}>
+                {unread && <View className='unread' />}
+                <Text className='text'>{_moreText}</Text>
+                <View className='at-noticebar__more-icon'>
+                  <RMIcon color='inherit' fontSize={24}>
                     chevron_right
                   </RMIcon>
                 </View>
@@ -262,7 +263,7 @@ class NoticeBar extends AtComponent {
           </View>
         </View>
       )
-    );
+    )
   }
 }
 
@@ -285,7 +286,7 @@ NoticeBar.propTypes = {
     'success',
     'warning',
     'progress',
-    'default',
+    'default'
   ]),
   showMore: PropTypes.bool,
   onClose: PropTypes.func,
@@ -294,7 +295,7 @@ NoticeBar.propTypes = {
   pauseTime: PropTypes.number,
   rows: PropTypes.number, //  内容是否单行  Boolean - false
   unread: PropTypes.bool,
-};
+}
 
 NoticeBar.defaultProps = {
   close: false,
@@ -318,6 +319,6 @@ NoticeBar.defaultProps = {
   duration: 15000,
   rows: 0,
   unread: false,
-};
+}
 
-export default NoticeBar;
+export default NoticeBar
