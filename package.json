@@ -61,7 +61,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.7.7",
     "lodash": "^4.17.10",
-    "moment": "^2.22.2",
+    "moment": "^2.23.0",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {
