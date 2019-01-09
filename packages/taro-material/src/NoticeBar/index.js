@@ -10,7 +10,7 @@ import RMTypography from '../Typography';
 import './index.scss';
 
 class NoticeBar extends AtComponent {
-  initial = false;
+  // initial = false;
 
   constructor() {
     super(...arguments);
@@ -24,45 +24,34 @@ class NoticeBar extends AtComponent {
     };
   }
 
-  onClose() {
-    this.setState({
-      show: false,
-    });
-    this.props.onClose && this.props.onClose(...arguments);
-  }
-
-  onGotoMore() {
-    this.props.onGotoMore && this.props.onGotoMore(...arguments);
-  }
+  ref = node => (this.animElem = node);
 
   componentWillReceiveProps() {
-    if (!this.timeout) {
-      // this.interval && clearInterval(this.interval)
-      // this.initAnimation()
-    }
+    // if (!this.timeout) {
+    //   this.interval && clearInterval(this.interval)
+    //   this.initAnimation()
+    // }
   }
 
   componentDidShow() {
-    if (!this.initial) {
-      return;
-    }
-
-    if (!this.props.marquee) {
-      return;
-    }
-    this.initAnimation();
+    // if (!this.initial) {
+    //   return;
+    // }
+    // if (!this.props.marquee) {
+    //   return;
+    // }
+    // this.initAnimation();
   }
 
   componentDidHide() {
-    if (!this.initial) {
-      return;
-    }
-
-    this.interval && clearInterval(this.interval);
+    // if (!this.initial) {
+    //   return;
+    // }
+    // this.interval && clearInterval(this.interval);
   }
 
   componentDidMount() {
-    this.initial = true;
+    // this.initial = true;
     if (!this.props.marquee) {
       return;
     }
@@ -162,7 +151,16 @@ class NoticeBar extends AtComponent {
     }, 100);
   }
 
-  ref = node => (this.animElem = node);
+  onClose() {
+    this.setState({
+      show: false,
+    });
+    this.props.onClose && this.props.onClose(...arguments);
+  }
+
+  onGotoMore() {
+    this.props.onGotoMore && this.props.onGotoMore(...arguments);
+  }
 
   render() {
     const {
