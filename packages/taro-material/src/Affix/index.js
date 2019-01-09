@@ -143,8 +143,8 @@ class Affix extends Component {
             }}
           />
         )}
-        <View ref={this.ref} style={style}>
-          {this.props.children}
+        <View style={style}>
+          <View ref={this.ref}>{this.props.children}</View>
         </View>
       </View>
     );
