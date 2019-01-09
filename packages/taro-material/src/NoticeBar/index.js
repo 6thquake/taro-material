@@ -60,6 +60,7 @@ class NoticeBar extends AtComponent {
 
   componentWillUnmount() {
     this.interval && clearInterval(this.interval);
+    this.timeout && clearTimeout(this.timeout);
   }
 
   initAnimation() {
@@ -71,7 +72,7 @@ class NoticeBar extends AtComponent {
     }
 
     this.timeout = setTimeout(() => {
-      this.timeout = null;
+      this.timeout && clearTimeout(this.timeout);
       if (this.state.isWEB) {
         // const elem = this.animElem // document.querySelector(`.${this.state.animElemId}`)
         // if (elem) {
@@ -145,6 +146,7 @@ class NoticeBar extends AtComponent {
         animBody();
 
         if (infinite) {
+          this.interval && clearInterval(this.interval);
           this.interval = setInterval(animBody, duration + 500 + pauseTime);
         }
       }
