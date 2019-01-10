@@ -136,14 +136,14 @@ class TextField extends Component {
     if (error) {
       textareaStyle.borderWidth = '2px';
       textareaStyle.borderColor = theme.palette.error.main;
+    } else if (readOnly) {
+      textareaStyle.borderWidth = '1px';
+      textareaStyle.borderColor = theme.palette.text.divider;
     } else if (disabled) {
       textareaStyle.borderWidth = '1px';
       textareaStyle.borderStyle = 'dashed';
       textareaStyle.borderColor = theme.palette.text.divider;
       textareaStyle.opacity = 0.38;
-    } else if (readOnly) {
-      textareaStyle.borderWidth = '1px';
-      textareaStyle.borderColor = theme.palette.text.divider;
     } else if (focus) {
       textareaStyle.borderWidth = '2px';
       textareaStyle.borderColor = theme.palette.primary.main;
@@ -165,7 +165,7 @@ class TextField extends Component {
             className={classNames({
               'at-input__container': true,
               'at-input--error': error,
-              'at-input--disabled': disabled,
+              'at-input--disabled': !readOnly && disabled,
               'at-input--readonly': readOnly,
               'at-input--focus': !error && !disabled && !readOnly && focus,
             })}

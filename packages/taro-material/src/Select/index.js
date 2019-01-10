@@ -8,8 +8,6 @@ import RMTextField from '../TextField';
 import AtFloatLayout from '../components/float-layout';
 import AtRadio from '../components/radio';
 
-import './Select.scss';
-
 class Select extends Component {
   state = {
     open: false,
@@ -33,13 +31,14 @@ class Select extends Component {
   };
 
   handleChange = value => {
-    const { onChange } = this.props;
+    const { onChange, onClose } = this.props;
     this.setState(
       {
         open: false,
       },
       () => {
         onChange(value);
+        onClose();
       },
     );
   };
@@ -58,9 +57,9 @@ class Select extends Component {
 
   render() {
     const { open } = this.state;
-    const { disabled, InputProps, data, value, title: selectTitle } = this.props;
+    const { disabled, InputProps, options, value, title: selectTitle } = this.props;
     const { required, name, title, placeholder, type, helperText, helperTextClass } = InputProps;
-    const option = data.filter(e => e.value === value)[0];
+    const option = options.filter(e => e.value === value)[0];
 
     return (
       <View className="root">
@@ -81,8 +80,8 @@ class Select extends Component {
           />
         </View>
         <AtFloatLayout onClose={this.handleClose} isOpened={open} title={selectTitle}>
-          <AtRadio options={data} value={value} onClick={this.handleChange} />
-          {!(data && data.length > 0) && <NoData />}
+          <AtRadio options={options} value={`${value}`} onClick={this.handleChange} />
+          {!(options && options.length > 0) && <NoData />}
         </AtFloatLayout>
       </View>
     );
@@ -92,7 +91,7 @@ class Select extends Component {
 Select.defaultProps = {
   InputProps: {},
   onChange: () => {},
-  data: [],
+  options: [],
   value: '',
   onClose: () => {},
   onOpen: () => {},
@@ -100,12 +99,12 @@ Select.defaultProps = {
   disabled: false,
 };
 Select.propTypes = {
-  data: PropTypes.array,
+  options: PropTypes.array,
   InputProps: PropTypes.object,
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
   editable: PropTypes.bool,
 };

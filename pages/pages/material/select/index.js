@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Button, Canvas } from '@tarojs/components';
+import { View } from '@tarojs/components';
 
-import { RMSelect, RMButton } from '../../../';
+import { RMSelect, RMAsyncSelect } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -58,22 +58,136 @@ class Index extends RMPage {
     console.log('open');
   };
   render() {
-    const { data, value, editable } = this.state;
+    const { data, value } = this.state;
     return (
       <View className="root">
-        <RMButton onClick={this.handleButtonClick}>toggle</RMButton>
-        <RMSelect
-          title={'请选择一项'}
-          onOpen={this.handleOpen}
-          onClose={this.handelClose}
-          onChange={this.handleChange}
-          editable={editable}
-          InputProps={{
-            helperText: !editable && '先选择门店啊',
-          }}
-          data={data}
-          value={value}
-        />
+        <View className="notices">
+          <View className="title">select - editable</View>
+          <View className="select">
+            <RMSelect
+              title="editable"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              editable
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+
+          <View className="title">select - not editable</View>
+          <View className="select">
+            <RMSelect
+              title="not editable"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              editable={false}
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+
+          <View className="title">select - disabled</View>
+          <View className="select">
+            <RMSelect
+              title="disabled"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              disabled
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+
+          <View className="title">select - disabled + no editable</View>
+          <View className="select">
+            <RMSelect
+              title="disabled + no editable"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              disabled
+              editable={false}
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+
+          <View className="title">async select - editable</View>
+          <RMAsyncSelect
+            title="editable"
+            onOpen={this.handleOpen}
+            onClose={this.handelClose}
+            onChange={this.handleChange}
+            editable
+            InputProps={{
+              helperText: '先选择门店啊',
+            }}
+            options={data.slice(0)}
+            value={value}
+          />
+
+          <View className="title">async select - not editable</View>
+          <RMAsyncSelect
+            title="disabled + no editable"
+            onOpen={this.handleOpen}
+            onClose={this.handelClose}
+            onChange={this.handleChange}
+            editable={false}
+            InputProps={{
+              helperText: '先选择门店啊',
+            }}
+            options={data.slice(0)}
+            value={value}
+          />
+
+          <View className="title">async select - disabled</View>
+          <View className="select">
+            <RMAsyncSelect
+              title="disabled"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              disabled
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+
+          <View className="title"> async select - disabled + no editable</View>
+          <View className="select">
+            <RMAsyncSelect
+              title="disabled + no editable"
+              onOpen={this.handleOpen}
+              onClose={this.handelClose}
+              onChange={this.handleChange}
+              disabled
+              editable={false}
+              InputProps={{
+                helperText: '先选择门店啊',
+              }}
+              options={data.slice(0)}
+              value={value}
+            />
+          </View>
+        </View>
       </View>
     );
   }

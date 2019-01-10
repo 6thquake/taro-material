@@ -8,28 +8,26 @@ import AtRadio from '../components/radio';
 
 import RMTextField from '../TextField';
 
-import '../Select/Select.scss';
-
 class AsyncSelect extends Component {
-  constructor(props) {
-    super(props);
-    const option = this.initOption(props);
-    this.state = {
-      option,
-      open: false,
-    };
-  }
+  state = {
+    open: false,
+  };
 
   componentWillReceiveProps(nextProps) {
-    const option = this.initOption(nextProps);
-    this.setState({
-      option,
-    });
+    // const { onChange } = this.props
+    // const option = this.initOption(nextProps)
+    // this.setState({
+    //   option,
+    // })
+    // option && onChange && onChange(option.value)
   }
 
   componentDidMount() {
-    const { option } = this.state;
     const { onChange } = this.props;
+    const option = this.initOption(this.props);
+    this.setState({
+      option,
+    });
     option && onChange && onChange(option.value);
   }
 
@@ -40,6 +38,12 @@ class AsyncSelect extends Component {
   };
 
   handleClick = e => {
+    const { editable, disabled } = this.props;
+
+    if (!editable || disabled) {
+      return;
+    }
+
     this.setState(
       {
         open: true,
@@ -57,14 +61,14 @@ class AsyncSelect extends Component {
         open: false,
       },
       () => {
-        onChange(value);
+        onChange && onChange(value);
       },
     );
   };
 
   render() {
     const { option = {}, open } = this.state;
-    const { required, name, title, placeholder, helperText, type, options } = this.props;
+    const { disabled, required, name, title, placeholder, helperText, type, options } = this.props;
     return (
       <View className="root">
         <View onClick={this.handleClick}>
@@ -75,7 +79,7 @@ class AsyncSelect extends Component {
             placeholder={placeholder}
             value={option.label}
             editable={false}
-            disabled={false}
+            disabled={disabled}
             readOnlyStyle="normal"
             required={required}
             helperText={helperText}
@@ -83,7 +87,7 @@ class AsyncSelect extends Component {
         </View>
         <AtModal isOpened={open}>
           <AtModalContent>
-            <AtRadio options={options} value={option.value} onClick={this.handleChange} />
+            <AtRadio options={options} value={`${option.value}`} onClick={this.handleChange} />
           </AtModalContent>
         </AtModal>
       </View>
@@ -96,6 +100,7 @@ AsyncSelect.defaultProps = {
   name: 'select',
   placeholder: '请选择一项',
   editable: false,
+  disabled: false,
   type: 'text',
   onChange: () => {},
   options: [],
