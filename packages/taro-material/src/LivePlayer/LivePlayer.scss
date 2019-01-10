@@ -24,7 +24,6 @@
     width: 100px;
     height: 100px;
   }
-
   .options {
     border-radius: #{$spacingUnit}px;
     position: absolute;
@@ -49,29 +48,28 @@
     display: flex;
     justify-content: space-between;
     position: absolute;
-    bottom: 0px;
+    bottom: #{$spacingUnit * 2}px;
     align-items: center;
-    padding: #{$spacingUnit}px 0;
+    padding: 0 #{$spacingUnit * 2}px;
     .left-box {
-      padding-left: #{$spacingUnit * 4}px;
       display: flex;
       align-items: center;
+      .image,
+      .title {
+        margin: 0 #{$spacingUnit * 2}px;
+      }
       .title {
         color: $palettePrimaryContrastText;
         font-size: 30px;
-        padding-left: #{$spacingUnit * 4}px;
       }
     }
-
     .actions {
-      padding-right: #{$spacingUnit * 4}px;
       display: flex;
       color: $palettePrimaryContrastText;
       justify-content: flex-end;
       font-size: 30px;
-
       .action {
-        margin: 0 #{$spacingUnit * 3}px;
+        margin: 0 #{$spacingUnit * 2}px;
       }
       .quality {
         display: flex;
@@ -88,8 +86,8 @@
       }
     }
   }
-}
-.image {
-  width: 56px;
-  height: 56px;
+  .image {
+    width: 56px;
+    height: 56px;
+  }
 }

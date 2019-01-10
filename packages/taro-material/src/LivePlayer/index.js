@@ -16,7 +16,9 @@ class RMLivePlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      livePlayerId: props.livePlayerId || `live-player-${Date.now()}`,
+      livePlayerId:
+        props.livePlayerId ||
+        `live-player-${new Date().getTime()}-${Math.floor(Math.random() * 100)}`,
       isFullScreen: false,
       show: true,
       qshow: false,
