@@ -83,6 +83,7 @@ class App extends Component {
       'pages/material/meter/index',
       'pages/material/star-vote/index',
       'pages/material/switch/index',
+      'pages/material/coupon/index',
     ],
     window: {
       backgroundTextStyle: 'light',

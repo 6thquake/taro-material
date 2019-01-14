@@ -371,6 +371,10 @@ export default class PanelBasic extends Component {
             id: 'Selection-Controls',
             name: '选择控制',
           },
+          {
+            id: 'Coupon',
+            name: '优惠券',
+          },
         ],
       },
     };

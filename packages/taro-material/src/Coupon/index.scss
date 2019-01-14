@@ -1,0 +1,588 @@
+@import '../styles/theme.scss';
+@import '../Typography/Typography.scss';
+
+$coupon-jd-base-color: #e5004f;
+$coupon-vip-base-color: #ed008c;
+$coupon-vip-secondary-color: #fff100;
+$coupon-yhd-base-color: #e5004f;
+$coupon-suning-base-color: #f3b502;
+$coupon-default-base-color: $palettePrimaryMain;
+
+$coupon-divider-base-color: $paletteGrey100;
+$coupon-disabled-base-color: $paletteGrey500;
+
+.coupon {
+  &.coupon-item {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .nick {
+      padding: #{$spacingUnit}px 0px;
+      @extend .typography.subheading;
+    }
+    .coupon-money {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      @extend .typography.body1;
+
+      .lay:last-child {
+        flex: 1;
+        padding: 0 #{$spacingUnit * 2}px;
+        @extend .typography.subheading;
+      }
+      .em {
+        @extend .typography.display2;
+        display: inline;
+        color: inherit;
+      }
+    }
+  }
+
+  .style-jd,
+  .style-vip,
+  .style-yhd,
+  .style-suning,
+  .style-default {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: $paletteBackgroundPaper;
+
+    .info-box {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: #{$spacingUnit}px 0px;
+
+      .infos {
+        flex: 1;
+        padding: 0 #{$spacingUnit * 4}px;
+      }
+    }
+
+    .get-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: $paletteTextPrimary2;
+      width: 192px;
+      height: auto;
+      margin: 0 auto;
+      word-break: break-all;
+      @extend .typography.subheading;
+    }
+  }
+
+  .style-jd {
+    border: 2px solid $coupon-jd-base-color;
+
+    &::after {
+      content: '';
+      width: 32px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 192px;
+      display: block;
+      z-index: 9;
+      background-color: $paletteBackgroundPaper;
+      background-position: 100% 35%;
+      background-size: 56px 24px;
+      background-image: linear-gradient(
+          -45deg,
+          $coupon-jd-base-color 25%,
+          transparent 25%,
+          transparent
+        ),
+        linear-gradient(-135deg, $coupon-jd-base-color 25%, transparent 25%, transparent),
+        linear-gradient(-45deg, transparent 75%, $coupon-jd-base-color 75%),
+        linear-gradient(-135deg, transparent 75%, $coupon-jd-base-color 75%);
+    }
+
+    .style-1-1 {
+      content: '';
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      z-index: 9;
+      border-width: 2px;
+      border-style: solid;
+      border-color: transparent $coupon-jd-base-color transparent transparent;
+      border-radius: 50%;
+      background-color: $paletteBackgroundDefault;
+    }
+    .info-box {
+      .infos {
+        padding: 0 #{$spacingUnit * 6}px 0 #{$spacingUnit * 4}px;
+      }
+      &::before {
+        @extend .style-1-1;
+        top: -19px;
+        left: -22px;
+        transform: rotate(43deg);
+      }
+      &::after {
+        @extend .style-1-1;
+        bottom: -19px;
+        left: -22px;
+        transform: rotate(-43deg);
+      }
+    }
+    .get-btn {
+      display: inherit;
+      margin: 0 auto;
+      word-break: break-all;
+      background-color: $coupon-jd-base-color;
+
+      &::before {
+        @extend .style-1-1;
+        top: -19px;
+        right: -22px;
+        transform: rotate(143deg);
+        border-color: transparent;
+      }
+      &::after {
+        @extend .style-1-1;
+        bottom: -19px;
+        right: -22px;
+        transform: rotate(-143deg);
+        border-color: transparent;
+      }
+    }
+
+    .nick {
+      color: $paletteTextPrimary;
+    }
+
+    .of {
+      color: $coupon-jd-base-color;
+    }
+    .lay {
+      .tit {
+        color: $coupon-jd-base-color;
+      }
+      .demand {
+        color: $paletteTextSecondary;
+      }
+    }
+
+    &.have {
+      border: 2px solid $coupon-disabled-base-color;
+      color: $paletteTextDisabled;
+
+      &::after {
+        background-image: linear-gradient(
+            -45deg,
+            $coupon-disabled-base-color 25%,
+            transparent 25%,
+            transparent
+          ),
+          linear-gradient(-135deg, $coupon-disabled-base-color 25%, transparent 25%, transparent),
+          linear-gradient(-45deg, transparent 75%, $coupon-disabled-base-color 75%),
+          linear-gradient(-135deg, transparent 75%, $coupon-disabled-base-color 75%);
+      }
+
+      .info-box {
+        &::before,
+        &::after {
+          border-right: 2px solid $coupon-disabled-base-color;
+        }
+      }
+      .get-btn {
+        background-color: $coupon-disabled-base-color;
+        color: $paletteTextDisabled2;
+
+        &::before,
+        &::after {
+          border-color: transparent;
+        }
+      }
+      .nick,
+      .of,
+      .tit,
+      .demand {
+        color: $paletteTextDisabled;
+      }
+    }
+  }
+
+  .style-vip {
+    background-color: $coupon-vip-base-color;
+    border: 1px solid $coupon-vip-base-color;
+    margin: 16px 0px;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 8px;
+      position: absolute;
+      display: block;
+      z-index: 9;
+      background-image: linear-gradient(
+          -45deg,
+          $coupon-vip-base-color 25%,
+          transparent 25%,
+          transparent
+        ),
+        linear-gradient(-135deg, $coupon-vip-base-color 25%, transparent 25%, transparent),
+        linear-gradient(-45deg, transparent 75%, $coupon-vip-base-color 75%),
+        linear-gradient(-135deg, transparent 75%, $coupon-vip-base-color 75%);
+      background-size: 16px 16px;
+      background-repeat: repeat-x, repeat-x;
+    }
+
+    &::before {
+      top: -8px;
+      left: 24px;
+      right: 24px;
+      transform: rotate(180deg);
+    }
+    &::after {
+      bottom: -8px;
+      left: 24px;
+      right: 24px;
+    }
+
+    .style-2-1 {
+      content: '';
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      z-index: 9;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent $coupon-jd-base-color transparent transparent;
+      border-radius: 50%;
+      background-color: $paletteBackgroundDefault;
+    }
+    .info-box {
+      &::before {
+        @extend .style-2-1;
+        border-color: transparent;
+        top: -16px;
+        left: -18px;
+        transform: rotate(43deg);
+      }
+      &::after {
+        @extend .style-2-1;
+        border-color: transparent;
+        bottom: -16px;
+        left: -18px;
+        transform: rotate(-43deg);
+      }
+    }
+
+    .get-btn {
+      background-color: $coupon-vip-base-color;
+      word-break: break-all;
+      border-left: 2px dashed $coupon-divider-base-color;
+
+      &::before {
+        @extend .style-2-1;
+        top: -16px;
+        right: -18px;
+        transform: rotate(143deg);
+        border-color: transparent;
+      }
+      &::after {
+        @extend .style-2-1;
+        bottom: -16px;
+        right: -18px;
+        transform: rotate(-143deg);
+        border-color: transparent;
+      }
+    }
+
+    .nick {
+      color: $paletteTextPrimary2;
+    }
+
+    .of {
+      color: $coupon-vip-secondary-color;
+    }
+    .lay {
+      .tit {
+        color: $paletteTextPrimary2;
+      }
+      .demand {
+        color: $paletteTextSecondary2;
+      }
+    }
+
+    &.have {
+      background-color: $coupon-disabled-base-color;
+      border: none;
+
+      &::before,
+      &::after {
+        border-color: transparent;
+        background-image: linear-gradient(
+            -45deg,
+            $coupon-disabled-base-color 25%,
+            transparent 25%,
+            transparent
+          ),
+          linear-gradient(-135deg, $coupon-disabled-base-color 25%, transparent 25%, transparent),
+          linear-gradient(-45deg, transparent 75%, $coupon-disabled-base-color 75%),
+          linear-gradient(-135deg, transparent 75%, $coupon-disabled-base-color 75%);
+      }
+
+      .info-box {
+        &::before,
+        &::after {
+          border-right: 1px solid $coupon-disabled-base-color;
+        }
+      }
+      .get-btn {
+        background-color: $coupon-disabled-base-color;
+        color: $paletteTextDisabled2;
+      }
+
+      .nick,
+      .of,
+      .tit,
+      .demand {
+        color: $paletteTextDisabled2;
+      }
+    }
+  }
+
+  .style-yhd {
+    background-color: $coupon-yhd-base-color;
+    border: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 48px;
+      height: 30%;
+      top: 50%;
+      transform: translate(-30%, -50%);
+      border-radius: 80%;
+      background-color: $paletteBackgroundDefault;
+    }
+    &::before {
+      left: -10px;
+      box-shadow: 3px 0 0 $paletteGrey500;
+    }
+    &::after {
+      right: -40px;
+      box-shadow: -3px 0 0 $paletteGrey500;
+    }
+
+    .get-btn {
+      background-color: $paletteBackgroundPaper;
+      color: $coupon-yhd-base-color;
+      word-break: break-all;
+
+      &::after {
+        content: '';
+        width: 32px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 192px;
+        display: block;
+        z-index: 9;
+        background-color: $paletteBackgroundPaper;
+        background-position: 100% 35%;
+        background-size: 40px 16px;
+        background-image: linear-gradient(
+            -45deg,
+            $paletteBackgroundPaper 25%,
+            $coupon-yhd-base-color 25%,
+            $coupon-yhd-base-color
+          ),
+          linear-gradient(
+            -135deg,
+            $paletteBackgroundPaper 25%,
+            $coupon-yhd-base-color 25%,
+            $coupon-yhd-base-color
+          ),
+          linear-gradient(-45deg, $coupon-yhd-base-color 75%, $paletteBackgroundPaper 75%),
+          linear-gradient(-135deg, $coupon-yhd-base-color 75%, $paletteBackgroundPaper 75%);
+      }
+    }
+
+    .nick {
+      color: $paletteTextPrimary2;
+    }
+
+    .of {
+      color: $paletteTextPrimary2;
+    }
+    .lay {
+      .tit {
+        color: $paletteTextPrimary2;
+      }
+      .demand {
+        color: $paletteTextSecondary2;
+      }
+    }
+
+    &.have {
+      background-color: $coupon-disabled-base-color;
+      border: none;
+      .get-btn {
+        color: $paletteTextDisabled;
+
+        &::after {
+          content: '';
+          background-image: linear-gradient(
+            -45deg,
+            $paletteBackgroundPaper 25%,
+            $coupon-disabled-base-color 25%,
+            $coupon-disabled-base-color
+          );
+        }
+      }
+
+      .nick,
+      .of,
+      .tit,
+      .demand {
+        color: $paletteTextDisabled2;
+      }
+    }
+  }
+
+  .style-suning {
+    background-color: $coupon-suning-base-color;
+    border: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 75%;
+      border-radius: 50%;
+      background-color: $paletteBackgroundDefault;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    &::before {
+      left: -16px;
+      box-shadow: 2px 0 0 $paletteGrey500;
+    }
+    &::after {
+      right: -16px;
+      box-shadow: -2px 0 0 $paletteGrey500;
+    }
+    .get-btn {
+      background-color: $paletteCommonBlack;
+      word-break: break-all;
+    }
+
+    .nick {
+      color: $paletteTextPrimary2;
+    }
+
+    .of {
+      color: $paletteTextPrimary2;
+    }
+    .lay {
+      .tit {
+        color: $paletteTextPrimary2;
+      }
+      .demand {
+        color: $paletteTextSecondary2;
+      }
+    }
+
+    &.have {
+      background-color: $paletteTextDisabled;
+      .get-btn {
+        color: $paletteTextDisabled2;
+      }
+
+      .nick,
+      .of,
+      .tit,
+      .demand {
+        color: $paletteTextDisabled2;
+      }
+    }
+  }
+
+  .style-default {
+    border: none;
+    .info-box {
+      background-color: $coupon-default-base-color;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+
+    .get-btn {
+      background-color: $paletteBackgroundPaper;
+      word-break: break-all;
+      border-left: 2px dashed $coupon-divider-base-color;
+      color: $coupon-yhd-base-color;
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+
+      &::before,
+      &::after {
+        content: '';
+        width: 32px;
+        height: 32px;
+        background-color: $paletteBackgroundDefault;
+        z-index: 9;
+        border-radius: 50%;
+        position: absolute;
+        border-bottom: none;
+      }
+      &::before {
+        top: -16px;
+        left: -16px;
+      }
+      &::after {
+        bottom: -16px;
+        left: -16px;
+      }
+    }
+
+    .nick {
+      color: $paletteTextPrimary2;
+    }
+
+    .of {
+      color: $paletteTextPrimary2;
+    }
+    .lay {
+      .tit {
+        color: $paletteTextPrimary2;
+      }
+      .demand {
+        color: $paletteTextSecondary2;
+      }
+    }
+
+    &.have {
+      .info-box {
+        background-color: $paletteTextDisabled;
+      }
+
+      .get-btn {
+        color: $paletteTextDisabled;
+      }
+
+      .nick,
+      .of,
+      .tit,
+      .demand {
+        color: $paletteTextDisabled;
+      }
+    }
+  }
+}

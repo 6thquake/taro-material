@@ -102,6 +102,7 @@ export { default as RMTabs } from './Tabs';
 export { default as RMTabsPane } from './TabsPane';
 export { default as RMMeter } from './Meter';
 export { default as RMStarVote } from './StarVote';
+export { default as RMCoupon } from './Coupon';
 
 export { default as ago, greet } from './utils/date';
 export { default as chunk } from './utils/chunk';
