@@ -1,24 +1,24 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
+import Taro, { Component } from '@tarojs/taro';
+import { View, Text, Image } from '@tarojs/components';
 
-import iconBasic from '../../assets/images/icon-list-basic.png'
-import iconView from '../../assets/images/icon-list-view.png'
-import iconAction from '../../assets/images/icon-list-action.png'
-import iconForm from '../../assets/images/icon-list-form.png'
-import iconLayout from '../../assets/images/icon-list-layout.png'
-import iconNavigation from '../../assets/images/icon-list-navigation.png'
-import iconHOC from '../../assets/images/icon-list-hoc.png'
-import iconMaterial from '../../assets/images/icon-list-material.png'
+import iconBasic from '../../assets/images/icon-list-basic.png';
+import iconView from '../../assets/images/icon-list-view.png';
+import iconAction from '../../assets/images/icon-list-action.png';
+import iconForm from '../../assets/images/icon-list-form.png';
+import iconLayout from '../../assets/images/icon-list-layout.png';
+import iconNavigation from '../../assets/images/icon-list-navigation.png';
+import iconHOC from '../../assets/images/icon-list-hoc.png';
+import iconMaterial from '../../assets/images/icon-list-material.png';
 
-import './index.scss'
+import './index.scss';
 
 export default class PanelBasic extends Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
 
-  constructor () {
-    super(...arguments)
+  constructor() {
+    super(...arguments);
 
     this.state = {
       panelNames: {
@@ -72,7 +72,7 @@ export default class PanelBasic extends Component {
           {
             id: 'Button',
             name: '按钮',
-          }
+          },
         ],
         view: [
           {
@@ -122,7 +122,7 @@ export default class PanelBasic extends Component {
           {
             id: 'Steps',
             name: '步骤条',
-          }
+          },
         ],
         action: [
           {
@@ -152,7 +152,7 @@ export default class PanelBasic extends Component {
           {
             id: 'Message',
             name: '消息通知',
-          }
+          },
         ],
         form: [
           {
@@ -206,7 +206,7 @@ export default class PanelBasic extends Component {
           {
             id: 'Range',
             name: '范围选择器',
-          }
+          },
         ],
         layout: [
           {
@@ -232,7 +232,7 @@ export default class PanelBasic extends Component {
           {
             id: 'Accordion',
             name: '手风琴',
-          }
+          },
         ],
         navigation: [
           {
@@ -262,13 +262,13 @@ export default class PanelBasic extends Component {
           {
             id: 'Indexes',
             name: '索引选择器',
-          }
+          },
         ],
         advanced: [
           {
             id: 'Calendar',
             name: '日历',
-          }
+          },
         ],
         material: [
           {
@@ -378,66 +378,70 @@ export default class PanelBasic extends Component {
           {
             id: 'Coupon',
             name: '优惠券',
-          }
+          },
+          {
+            id: 'Badge',
+            name: '徽章',
+          },
         ],
       },
-    }
+    };
   }
 
-  componentDidMount () {
-    const { id } = this.$router.params
+  componentDidMount() {
+    const { id } = this.$router.params;
     this.setState({
       currentId: id.toLowerCase() || '',
-    })
+    });
   }
 
   gotoComponent = e => {
-    const { id, parent } = e.currentTarget.dataset
+    const { id, parent } = e.currentTarget.dataset;
     Taro.navigateTo({
       url: `../${parent.toLowerCase()}/${id.toLowerCase()}/index`,
-    })
+    });
   };
 
-  render () {
-    const { list, currentId, panelNames } = this.state
-    const itemList = list[currentId] || []
-    const title = (panelNames[currentId] && panelNames[currentId].name) || ''
-    const icon = (panelNames[currentId] && panelNames[currentId].icon) || ''
+  render() {
+    const { list, currentId, panelNames } = this.state;
+    const itemList = list[currentId] || [];
+    const title = (panelNames[currentId] && panelNames[currentId].name) || '';
+    const icon = (panelNames[currentId] && panelNames[currentId].icon) || '';
 
     return (
-      <View className='page'>
+      <View className="page">
         {/* S Header */}
-        <View className='panel-header'>
-          <View className='panel-header__icon'>
+        <View className="panel-header">
+          <View className="panel-header__icon">
             {icon ? (
-              <Image src={icon} className='img' mode='widthFix' />
+              <Image src={icon} className="img" mode="widthFix" />
             ) : (
-              <Text className='at-icon at-icon-list' />
+              <Text className="at-icon at-icon-list" />
             )}
           </View>
-          <View className='panel-header__title'>{title}</View>
+          <View className="panel-header__title">{title}</View>
         </View>
         {/* E Header */}
 
         {/* S Body */}
-        <View className='panel-body'>
-          <View className='component-list'>
+        <View className="panel-body">
+          <View className="component-list">
             {itemList.map(item => (
               <View
-                className='component-list__item'
+                className="component-list__item"
                 key={item.id}
                 data-id={item.id}
                 data-parent={currentId}
                 onClick={this.gotoComponent}
               >
-                <Text className='name'>{`${item.id} ${item.name}`}</Text>
-                <Text className='at-icon at-icon-chevron-right' />
+                <Text className="name">{`${item.id} ${item.name}`}</Text>
+                <Text className="at-icon at-icon-chevron-right" />
               </View>
             ))}
           </View>
         </View>
         {/* E Body */}
       </View>
-    )
+    );
   }
 }

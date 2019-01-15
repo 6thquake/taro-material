@@ -1,0 +1,68 @@
+.rm-badge {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  vertical-align: middle;
+
+  &-mark {
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    overflow: hidden;
+
+    width: 30px;
+    background: rgb(246, 90, 16);
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 12px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid white;
+    }
+  }
+  &-ribbon {
+    width: 170px;
+    height: 170px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 9999;
+
+    &-content {
+      width: auto;
+      height: auto;
+      top: 40px;
+      right: -55px;
+      padding: 2px 0;
+      box-shadow: 0 0 10px 0 #888;
+      background-color: #a00000;
+      background-image: none !important;
+      background-repeat: no-repeat;
+      background-position: center center;
+      overflow: hidden;
+      white-space: nowrap;
+      transform: rotate(45deg);
+
+      &-text {
+        display: block;
+        height: 100%;
+        white-space: nowrap;
+        text-align: center;
+        padding: 10px 50px;
+        color: #fff;
+        border: 1px solid #fff;
+        text-shadow: 0 0 5px #444;
+      }
+    }
+  }
+}
