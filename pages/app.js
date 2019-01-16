@@ -1,7 +1,7 @@
-import Taro, { Component } from '@tarojs/taro';
-import Index from './index/index';
+import Taro, { Component } from '@tarojs/taro'
+import Index from './index/index'
 
-import './app.scss';
+import './app.scss'
 
 class App extends Component {
   config = {
@@ -84,6 +84,7 @@ class App extends Component {
       'pages/material/star-vote/index',
       'pages/material/switch/index',
       'pages/material/coupon/index',
+      'pages/material/autocomplete/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -93,17 +94,17 @@ class App extends Component {
     },
   };
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  componentDidShow() {}
+  componentDidShow () {}
 
-  componentDidHide() {}
+  componentDidHide () {}
 
-  componentCatchError() {}
+  componentCatchError () {}
 
-  render() {
-    return <Index />;
+  render () {
+    return <Index />
   }
 }
 
-Taro.render(<App />, document.getElementById('app'));
+Taro.render(<App />, document.getElementById('app'))

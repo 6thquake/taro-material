@@ -1,0 +1,14 @@
+@import '../styles/theme.scss';
+
+.root {
+  .content {
+  }
+  .dropdown {
+    background: $paletteBackgroundPaper;
+    position: absolute;
+    height: 400px;
+    width: 100%;
+    box-shadow: $shadows1;
+    z-index: $zIndexDropdown;
+  }
+}
