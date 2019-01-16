@@ -31,23 +31,9 @@ class Index extends Component {
       return;
     }
 
-    new Promise((resolve, reject) => {
-      if (onClick) {
-        const promise = onClick(data);
-        if (promise instanceof Promise) {
-          return promise
-            .then(() => {
-              resolve();
-            })
-            .catch(() => {
-              reject();
-            });
-        } else if (promise === false) {
-          reject();
-        }
-        resolve();
-      }
-    }).then(() => {
+    if (onClick) {
+      onClick(data);
+    } else {
       const urls = path.split('?');
       const url = urls[0];
       let querystring = {};
@@ -60,7 +46,7 @@ class Index extends Component {
       Taro.navigateTo({
         url: `${url}?${stringify({ title, ...querystring })}`,
       });
-    });
+    }
   }
 
   render() {
