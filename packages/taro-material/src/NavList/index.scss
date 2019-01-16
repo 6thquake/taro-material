@@ -1,0 +1,77 @@
+@import '../styles/theme';
+
+.root {
+  // background: $paletteBackgroundPaper;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  .box {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: #{$spacingUnit * 2}px 0px;
+    font-size: #{0.75 * $typographyFontSize}px;
+
+    .image {
+      width: 64px;
+      height: 64px;
+      font-size: 56px;
+      line-height: 64px;
+      border-radius: 50%;
+      text-align: center;
+      color: $paletteCommonWhite;
+      // margin: #{$spacingUnit/2}px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .title {
+      margin: #{$spacingUnit}px;
+    }
+    .subtitle {
+      font-size: #{0.75 * $typographyFontSize}px;
+    }
+  }
+
+  &.large {
+    .box {
+      font-size: #{0.875 * $typographyFontSize}px;
+      .image {
+        width: 88px;
+        height: 88px;
+        font-size: 72px;
+        line-height: 88px;
+      }
+      .title {
+        margin: 0px;
+      }
+      .subtitle {
+        font-size: #{0.75 * $typographyFontSize}px;
+      }
+    }
+  }
+  &.small {
+    font-size: #{0.75 * $typographyFontSize}px;
+    .box {
+      padding: #{$spacingUnit}px 0px;
+      .image {
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+        line-height: 40px;
+      }
+      .title {
+        margin: #{$spacingUnit/ 2}px;
+      }
+      .subtitle {
+        font-size: #{0.75 * $typographyFontSize}px;
+      }
+    }
+  }
+}

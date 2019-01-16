@@ -383,6 +383,10 @@ export default class PanelBasic extends Component {
             id: 'Badge',
             name: '徽章',
           },
+          {
+            id: 'Nav-List',
+            name: '导航列表',
+          },
         ],
       },
     };
