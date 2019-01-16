@@ -26,7 +26,7 @@ class Index extends RMPage {
   }
 
   render() {
-    let actions = [
+    const actions = [
       {
         name: 'cancel',
         size: 'small',
@@ -47,68 +47,64 @@ class Index extends RMPage {
       <View className="root">
         <View className="spacer" />
         <View className="panel">
-          {[1, 2, 3, 4, 5].map((item, index) => {
-            return (
-              <View key={item} className="panel">
-                <RMPanel
-                  title="生如夏花之绚烂"
-                  subheading="死如秋叶之寂静"
-                  onAction={this.handleActions}
-                  open={index === 1}
-                  actions={actions}
-                  expandable={index !== 0}
-                >
-                  <View>actions</View>
-                  <View>navigationBarTitleText</View>
-                  <View>className</View>
-                  <View>default</View>
-                  <View>e</View>
-                  <View>function() {}</View>
-                  <View>getElementsByTagName('')</View>
-                  <View>handleActions</View>
-                  <View>if (true) {}</View>
-                  <View>j</View>
-                  <View>k</View>
-                  <View>label</View>
-                  <View>map</View>
-                  <View>name</View>
-                </RMPanel>
-              </View>
-            );
-          })}
+          {[1, 2, 3, 4, 5].map((item, index) => (
+            <View key={item} className="panel">
+              <RMPanel
+                title="生如夏花之绚烂"
+                note="死如秋叶之寂静"
+                onAction={this.handleActions}
+                open={index === 1}
+                actions={actions}
+                expandable={index !== 0}
+              >
+                <View>actions</View>
+                <View>navigationBarTitleText</View>
+                <View>className</View>
+                <View>default</View>
+                <View>e</View>
+                <View>function() {}</View>
+                <View>getElementsByTagName('')</View>
+                <View>handleActions</View>
+                <View>if (true) {}</View>
+                <View>j</View>
+                <View>k</View>
+                <View>label</View>
+                <View>map</View>
+                <View>name</View>
+              </RMPanel>
+            </View>
+          ))}
         </View>
 
         <View className="spacer" />
         <View className="panel">
-          {[1, 2, 3, 4, 5].map((item, index) => {
-            return (
-              <View key={item} className="panel">
-                <RMPanel
-                  title="生如夏花之绚烂"
-                  subheading="死如秋叶之寂静"
-                  onAction={this.handleActions}
-                  open={index === 1}
-                  actions={actions}
-                  expandable={index !== 0}
-                >
-                  <View>actions</View>
-                  <View>navigationBarTitleText</View>
-                  <View>className</View>
-                  <View>default</View>
-                  <View>e</View>
-                  <View>function() {}</View>
-                  <View>getElementsByTagName('')</View>
-                  <View>handleActions</View>
-                  <View>if (true) {}</View>
-                  <View>j</View>
-                  <View>k</View>
-                  <View>label</View>
-                  <View>map</View>
-                  <View>name</View>
-                </RMPanel>
-              </View>
-            );
-          })}
+          {[1, 2, 3, 4, 5].map((item, index) => (
+            <View key={item} className="panel">
+              <RMPanel
+                title="生如夏花之绚烂"
+                note="死如秋叶之寂静"
+                onAction={this.handleActions}
+                open={index === 1}
+                actions={actions}
+                expandable={index !== 0}
+              >
+                <View>actions</View>
+                <View>navigationBarTitleText</View>
+                <View>className</View>
+                <View>default</View>
+                <View>e</View>
+                <View>function() {}</View>
+                <View>getElementsByTagName('')</View>
+                <View>handleActions</View>
+                <View>if (true) {}</View>
+                <View>j</View>
+                <View>k</View>
+                <View>label</View>
+                <View>map</View>
+                <View>name</View>
+              </RMPanel>
+            </View>
+          ))}
         </View>
       </View>
     );

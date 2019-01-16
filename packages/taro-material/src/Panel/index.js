@@ -34,26 +34,33 @@ class Panel extends Component {
 
   render() {
     const { expanded } = this.state;
-    const { title, subheading, extra, actions, expandable, customStyle } = this.props;
+    const { title, note, extra = ' ', actions, expandable, customStyle } = this.props;
     return (
       <View className="root" style={customStyle}>
         <View onClick={this.handleClick} className="header">
           <View className="left">
             <View className="name">
-              <RMTypography block className="subheading">
-                {title}
-              </RMTypography>
+              {title && (
+                <RMTypography block className="subheading">
+                  {title}
+                </RMTypography>
+              )}
+              {this.props.renderTitle}
             </View>
             <View className="company">
-              <RMTypography block className="caption">
-                {subheading}
-              </RMTypography>
+              {note && (
+                <RMTypography block className="caption">
+                  {note}
+                </RMTypography>
+              )}
+              {this.props.renderNote}
             </View>
           </View>
           <View className="right">
             <View className="right-box">
               <View className="extra">
-                <RMTypography className="caption">{extra || ''}</RMTypography>
+                {extra && <RMTypography className="caption">{extra}</RMTypography>}
+                {this.props.renderExtra}
               </View>
               {expandable && (
                 <View>
@@ -93,9 +100,9 @@ class Panel extends Component {
 Panel.defaultProps = {
   open: false,
   title: '',
-  subheading: '',
+  note: '',
   expandable: false,
-  extra: '',
+  extra: ' ',
   onAction: () => {},
   actions: [],
   // actions: [
@@ -119,8 +126,11 @@ Panel.defaultProps = {
 Panel.propTypes = {
   open: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  subheading: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  note: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   extra: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  renderTitle: PropTypes.element,
+  renderNote: PropTypes.element,
+  renderExtra: PropTypes.element,
   expandable: PropTypes.bool,
   action: PropTypes.array,
   customStyle: PropTypes.object,
