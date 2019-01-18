@@ -8,8 +8,68 @@ import AtBadge from '../components/badge';
 import './index.scss';
 
 export default class Badge extends Component {
+  ref = node => (this.refElem = node);
+
+  componentDidMount() {
+    const { variant } = this.props;
+    if (variant === 'ribbon') {
+      this.refElem
+        .boundingClientRect(res => {
+          const { width, height } = res;
+          const w = width;
+          const h = height;
+
+          this.setState({
+            width: `${w}px`,
+            height: `${h}px`,
+            top: `-${(Math.sqrt(2) / 2) * h}px`,
+            right: `-${(1 - 1 / Math.sqrt(2)) * w + h / Math.sqrt(2)}px`,
+            transform: 'rotate(45deg)',
+            transformOrigin: 'left top',
+            sutureStyle: height < 32 ? 'solid' : 'dashed',
+            sutureWidth: height < 32 ? '0px' : '2px',
+            suturePadding: height < 32 ? '2px 0px' : '4px 0px',
+          });
+        })
+        .exec();
+    }
+  }
+
   render() {
-    const { value, maxValue, variant, color, customStyle } = this.props;
+    const { value, maxValue, variant, /* color, */ customStyle } = this.props;
+    const {
+      width,
+      height,
+      top,
+      right,
+      transform,
+      transformOrigin,
+      sutureStyle,
+      sutureWidth,
+      suturePadding,
+    } = this.state;
+
+    let style = {
+      ...customStyle,
+    };
+    let contentStyle = null;
+    let textStyle = null;
+
+    if (variant === 'ribbon') {
+      style = {
+        ...style,
+        ...{
+          width,
+          height,
+          top,
+          right,
+          transform,
+          transformOrigin,
+        },
+      };
+      contentStyle = { padding: suturePadding };
+      textStyle = { borderStyle: sutureStyle, borderWidth: sutureWidth };
+    }
 
     return (
       <View className={classNames('rm-badge', this.props.className)}>
@@ -28,16 +88,24 @@ export default class Badge extends Component {
         {variant === 'mark' && (
           <View>
             {this.props.children}
-            <View className="rm-badge-mark">{value}</View>
+            <View className="rm-badge-mark" style={style}>
+              {value}
+              {this.props.renderValue}
+            </View>
           </View>
         )}
 
         {variant === 'ribbon' && (
           <View>
             {this.props.children}
-            <View className="rm-badge-ribbon">
-              <View className="rm-badge-ribbon-content">
-                <View className="rm-badge-ribbon-content-text">{value}</View>
+            <View className="rm-badge-wrapper">
+              <View className="rm-badge-ribbon" style={style} ref={this.ref}>
+                <View className="rm-badge-ribbon-content" style={contentStyle}>
+                  <View className="rm-badge-ribbon-content-text" style={textStyle}>
+                    {value}
+                    {this.props.renderValue}
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -51,25 +119,27 @@ Badge.defaultProps = {
   value: '',
   maxValue: 99,
   variant: 'text',
-  color: 'error',
+  // color: 'error',
   customStyle: {},
   className: '',
+  renderValue: null,
 };
 
 Badge.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   maxValue: PropTypes.number,
   variant: PropTypes.oneOf(['text', 'ribbon', 'mark', 'dot']),
-  color: PropTypes.oneOf([
-    'default',
-    'inherit',
-    'primary',
-    'secondary',
-    'error',
-    'success',
-    'warning',
-    'progress',
-  ]),
+  // color: PropTypes.oneOf([
+  //   'default',
+  //   'inherit',
+  //   'primary',
+  //   'secondary',
+  //   'error',
+  //   'success',
+  //   'warning',
+  //   'progress'
+  // ]),
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  renderValue: PropTypes.element,
 };

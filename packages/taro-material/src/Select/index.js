@@ -65,7 +65,6 @@ class Select extends Component {
       <View className="root">
         <View onClick={this.handleInputClick}>
           <RMTextField
-            className="custome-input"
             name={name}
             title={title}
             type={type}
