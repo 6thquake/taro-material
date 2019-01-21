@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { View, Input, Label, Textarea } from '@tarojs/components';
 
-import AtTextarea from '../components/textarea';
-
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
@@ -75,7 +73,12 @@ class TextField extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {}
+  componentWillReceiveProps(nextProps) {
+    const { focus } = this.props;
+    if (nextProps.focus !== focus) {
+      this.setState({ focus: nextProps.focus });
+    }
+  }
 
   componentDidUpdate(nextProps, nextState) {}
 
@@ -221,6 +224,7 @@ class TextField extends Component {
                   onFocus={this.onFocus.bind(this)}
                   onBlur={this.onBlur.bind(this)}
                   onConfirm={this.onConfirm.bind(this)}
+                  focus={focus}
                 />
               )}
               {multiline && (
@@ -228,7 +232,6 @@ class TextField extends Component {
                   className="at-input__textarea"
                   id={name}
                   name={name}
-                  placeholder={placeholder}
                   placeholderClass={classNames('placeholder', placeholderClass)}
                   placeholder={placeholder}
                   cursorSpacing={cursorSpacing}

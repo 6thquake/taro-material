@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMTextField } from '../../../';
+import { RMTextField, RMButton } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -41,8 +41,12 @@ class Index extends RMPage {
 
   componentDidHide() {}
 
+  handleClick(focus) {
+    this.setState({ focus: !focus });
+  }
+
   render() {
-    let { value, helperText } = this.state;
+    const { value, helperText, focus } = this.state;
 
     return (
       <View className="root">
@@ -98,7 +102,7 @@ class Index extends RMPage {
             name="input2"
             placeholder="enter"
             title="required"
-            required={true}
+            required
           />
           <RMTextField
             type="text"
@@ -106,7 +110,7 @@ class Index extends RMPage {
             name="input3"
             placeholder="enter"
             title="error"
-            error={true}
+            error
             helperText="Some errors occur"
           />
           <RMTextField
@@ -128,25 +132,24 @@ class Index extends RMPage {
           />
           <RMTextField
             type="text"
-            value={'clear'}
+            value="clear"
             name="input5"
             placeholder="enter"
             title="clear"
-            clear={true}
+            clear
           />
           <RMTextField
             type="text"
-            value=""
             name="input6-1"
             placeholder="enter"
             title="editable+normal"
-            value={'editable+normal'}
+            value="editable+normal"
             editable={false}
             readOnlyStyle="normal"
           />
           <RMTextField
             type="text"
-            value={'editable'}
+            value="editable"
             name="input6-2"
             placeholder="enter"
             title="editable"
@@ -155,11 +158,11 @@ class Index extends RMPage {
           />
           <RMTextField
             type="text"
-            value={'disabled'}
+            value="disabled"
             name="input7"
             placeholder="enter"
             title="disabled"
-            disabled={true}
+            disabled
           />
           <RMTextField
             type="number"
@@ -193,7 +196,7 @@ class Index extends RMPage {
             name="input11"
             placeholder="enter"
             title="normal"
-            multiline={true}
+            multiline
           />
           <RMTextField
             type="text"
@@ -201,8 +204,8 @@ class Index extends RMPage {
             name="input12"
             placeholder="enter"
             title="required"
-            required={true}
-            multiline={true}
+            required
+            multiline
           />
           <RMTextField
             type="text"
@@ -210,8 +213,8 @@ class Index extends RMPage {
             name="input13"
             placeholder="enter"
             title="error"
-            error={true}
-            multiline={true}
+            error
+            multiline
           />
           <RMTextField
             type="text"
@@ -220,7 +223,7 @@ class Index extends RMPage {
             placeholder="enter"
             title="helperText"
             helperText="Some important text"
-            multiline={true}
+            multiline
           />
           <RMTextField
             type="text"
@@ -230,7 +233,7 @@ class Index extends RMPage {
             title="editable+normal"
             editable={false}
             readOnlyStyle="normal"
-            multiline={true}
+            multiline
           />
           <RMTextField
             type="text"
@@ -240,7 +243,7 @@ class Index extends RMPage {
             title="editable"
             editable={false}
             readOnlyStyle="disabled"
-            multiline={true}
+            multiline
           />
           <RMTextField
             type="text"
@@ -248,9 +251,22 @@ class Index extends RMPage {
             name="input16"
             placeholder="enter"
             title="disabled"
-            disabled={true}
-            multiline={true}
+            disabled
+            multiline
           />
+
+          <RMTextField
+            type="text"
+            value=""
+            name="input17"
+            placeholder="focus"
+            title="focus"
+            focus={focus}
+          />
+
+          <RMButton variant="contained" onClick={this.handleClick.bind(this, focus)}>
+            {focus ? 'focus' : 'not focus'}
+          </RMButton>
         </View>
       </View>
     );

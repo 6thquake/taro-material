@@ -59,6 +59,13 @@ class RMInput extends Component {
 
   componentWillUnmount() {}
 
+  componentWillReceiveProps(nextProps) {
+    const { focus } = this.props;
+    if (nextProps.focus !== focus) {
+      this.setState({ focus });
+    }
+  }
+
   render() {
     const {
       className,
@@ -125,7 +132,7 @@ class RMInput extends Component {
           >
             {title && (
               <Label className="at-input__title" for={name}>
-                <RMTypography className="body1" color="inherit" block={true}>
+                <RMTypography className="body1" color="inherit" block>
                   {title}
                 </RMTypography>
                 <View className="at-input__required">
@@ -166,6 +173,7 @@ class RMInput extends Component {
                 onFocus={this.onFocus.bind(this)}
                 onBlur={this.onBlur.bind(this)}
                 onConfirm={this.onConfirm.bind(this)}
+                focus={focus}
               />
               {clear &&
                 value && (
@@ -199,12 +207,12 @@ class RMInput extends Component {
             >
               {helperText && (
                 <View className="at-input__desc_icon">
-                  <RMIcon color="inherit" fontSize="default" block={true}>
+                  <RMIcon color="inherit" fontSize="default" block>
                     warning
                   </RMIcon>
                 </View>
               )}
-              <RMTypography color="inherit" className="caption" block={true}>
+              <RMTypography color="inherit" className="caption" block>
                 {helperText || ''}
               </RMTypography>
             </View>
