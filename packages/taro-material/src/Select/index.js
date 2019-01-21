@@ -59,7 +59,7 @@ class Select extends Component {
     const { open } = this.state;
     const { disabled, InputProps, options, value, title: selectTitle } = this.props;
     const { required, name, title, placeholder, type, helperText, helperTextClass } = InputProps;
-    const option = options.filter(e => e.value === value)[0];
+    const option = options.filter(e => e.value === value)[0] || {};
 
     return (
       <View className="root">
@@ -69,7 +69,7 @@ class Select extends Component {
             title={title}
             type={type}
             placeholder={placeholder}
-            value={option.label}
+            value={option.label || ''}
             editable={false}
             disabled={disabled}
             readOnlyStyle="normal"
