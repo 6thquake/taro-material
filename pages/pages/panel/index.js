@@ -387,6 +387,10 @@ export default class PanelBasic extends Component {
             id: 'Nav-List',
             name: '导航列表',
           },
+          {
+            id: 'Typography',
+            name: '排版',
+          },
         ],
       },
     };

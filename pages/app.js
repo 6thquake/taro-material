@@ -87,6 +87,7 @@ class App extends Component {
       'pages/material/autocomplete/index',
       'pages/material/badge/index',
       'pages/material/nav-list/index',
+      'pages/material/typography/index',
     ],
     window: {
       backgroundTextStyle: 'light',

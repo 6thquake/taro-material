@@ -13,7 +13,7 @@ class Typography extends Component {
   };
 
   render() {
-    let { className, color, fontSize, block, onClick } = this.props;
+    const { className, color, block, onClick, customStyle, fontSize } = this.props;
 
     const classes = classNames(
       {
@@ -23,17 +23,16 @@ class Typography extends Component {
       className,
     );
 
-    const style = {};
+    const style = {
+      ...customStyle,
+    };
 
-    if (color && color != 'default') {
+    if (color && color !== 'default') {
       style.color = color;
     }
 
-    if (fontSize && fontSize != 'default') {
-      if (typeof fontSize === 'number') {
-        fontSize += 'px';
-      }
-      style.fontSize = fontSize;
+    if (fontSize && fontSize !== 'default') {
+      style.fontSize = typeof fontSize === 'number' ? `${fontSize}px` : fontSize;
     }
 
     return (
@@ -49,6 +48,7 @@ Typography.defaultProps = {
   fontSize: 'default',
   block: false,
   onClick: () => {},
+  customStyle: {},
 };
 
 Typography.propTypes = {
@@ -57,6 +57,7 @@ Typography.propTypes = {
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   block: PropTypes.bool,
   onClick: PropTypes.func,
+  customStyle: PropTypes.object,
 };
 
 export default Typography;

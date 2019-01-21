@@ -100,7 +100,11 @@ class Index extends Component {
                     />
                   )}
                   {item.icon && (
-                    <RMIcon block fontSize={item.fontSize || 'inherit'}>
+                    <RMIcon
+                      block
+                      fontSize={item.fontSize || 'inherit'}
+                      customStyle={item.customStyle}
+                    >
                       {item.icon}
                     </RMIcon>
                   )}

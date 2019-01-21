@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMIcon } from '../../../';
+import { RMTypography } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -27,20 +27,20 @@ class Index extends RMPage {
         <View className="spacer" />
         <View className="icons">
           <View className="title">inherit, primary</View>
-          <RMIcon fontSize="inherit" color="primary">
-            place
-          </RMIcon>
+          <RMTypography fontSize="inherit" color={theme.palette.primary.main}>
+            hello world!
+          </RMTypography>
           <View className="title">48, default</View>
-          <RMIcon fontSize={48} color="default">
-            rotate_right
-          </RMIcon>
+          <RMTypography fontSize={48} color="default">
+            hello world!
+          </RMTypography>
           <View className="title">inherit</View>
-          <RMIcon color="inherit" fontSize="inherit" block>
-            insert_chart
-          </RMIcon>
+          <RMTypography color="inherit" fontSize="inherit" block>
+            hello world!
+          </RMTypography>
 
           <View className="title">custom style</View>
-          <RMIcon
+          <RMTypography
             fontSize={48}
             customStyle={{
               'background-image': '-webkit-linear-gradient(bottom,red,#fd8403,yellow)',
@@ -48,8 +48,8 @@ class Index extends RMPage {
               '-webkit-text-fill-color': 'transparent',
             }}
           >
-            insert_chart
-          </RMIcon>
+            hello world!
+          </RMTypography>
         </View>
       </View>
     );
