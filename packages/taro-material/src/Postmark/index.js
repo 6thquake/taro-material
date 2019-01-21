@@ -76,7 +76,7 @@ class Postmark extends Component {
       case 'default':
       default:
         _src = postmarkDefault;
-        _color = theme.palette.grey[200];
+        _color = theme.palette.grey['200'];
         break;
     }
 

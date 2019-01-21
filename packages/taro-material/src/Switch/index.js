@@ -43,7 +43,7 @@ class RMSwitch extends Component {
 
     let _color = null;
     if (color === 'default') {
-      _color = theme.palette.grey[500];
+      _color = theme.palette.grey['600'];
     } else {
       _color = theme.palette[color].main;
     }

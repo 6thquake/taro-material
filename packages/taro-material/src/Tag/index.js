@@ -65,13 +65,13 @@ class Tag extends Component {
       default:
         style = active
           ? {
-              background: theme.palette.grey[200],
-              borderColor: theme.palette.grey[200],
+              background: theme.palette.grey['200'],
+              borderColor: theme.palette.grey['200'],
               color: theme.palette.text.secondary,
             }
           : {
               background: theme.palette.background.paper,
-              borderColor: theme.palette.grey[300],
+              borderColor: theme.palette.grey['300'],
               color: theme.palette.text.primary,
             };
         break;

@@ -191,7 +191,7 @@ class RMButton extends Component {
     const success = theme.palette.success.main;
     const error = theme.palette.error.main;
     const primary = theme.palette.primary.main;
-    const grey = theme.palette.grey[300];
+    const grey = theme.palette.grey['300'];
 
     const { status, second } = this.state;
 
