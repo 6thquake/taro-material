@@ -88,6 +88,7 @@ class App extends Component {
       'pages/material/badge/index',
       'pages/material/nav-list/index',
       'pages/material/typography/index',
+      'pages/material/count-down/index',
     ],
     window: {
       backgroundTextStyle: 'light',

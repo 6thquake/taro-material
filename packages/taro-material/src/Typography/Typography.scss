@@ -1,93 +1,94 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
+@import '../styles/fonts.scss';
 
 .typography {
-	font-family: $typographyFontFamily;
-	font-size: #{0.875 * $typographyFontSize}px;
-	display: inline-block;
+  font-family: $typographyFontFamily;
+  font-size: #{0.875 * $typographyFontSize}px;
+  display: inline-block;
 
-	&.display4{
-		font-size: #{7 * $typographyFontSize}px;;
-		font-weight: $typographyFontWeightLight;
-		font-family: $typographyFontFamily;
-		letterSpacing: -.04em;
-		line-height: 1.14286em;
-		margin-left: -.04em;
-		color: rgba(0, 0, 0, 0.54);
-	}
-	&.display3{
-		font-size: #{3.5 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		letterSpacing: -.02em;
-		line-height: 1.30357em;
-		margin-left: -.02em;
-		color: rgba(0, 0, 0, 0.54);
-	}
-	&.display2{
-		font-size: #{2.8125 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.13333em;
-		margin-left: -.02em;
-		color: rgba(0, 0, 0, 0.54);
-	}
-	&.display1{
-		font-size: #{2.125 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.20588em;
-		color: rgba(0, 0, 0, 0.54);
-	}
-	&.headline{
-		font-size: #{1.5 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.35417em;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.title{
-		font-size: #{1.3125 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightMedium;
-		font-family: $typographyFontFamily;
-		line-height: 1.16667em;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.subheading{
-		font-size: #{1 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.5em;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.body2{
-		font-size: #{0.875 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightMedium;
-		font-family: $typographyFontFamily;
-		line-height: 1.71429em;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.body1{
-		font-size: #{0.875 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.46429em;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.caption{
-		font-size: #{0.75 * $typographyFontSize}px;
-		font-weight: $typographyFontWeightRegular;
-		font-family: $typographyFontFamily;
-		line-height: 1.375em;
-		color: rgba(0, 0, 0, 0.54);
-	}
-	&.button{
-		font-size: #{0.875 * $typographyFontSize}px;
-		text-transform: uppercase;
-		font-weight: $typographyFontWeightMedium;
-		font-family: $typographyFontFamily;
-		color: rgba(0, 0, 0, 0.87);
-	}
-	&.block {
-		display: block;
-	}
+  &.display4 {
+    font-size: #{7 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightLight;
+    font-family: $typographyFontFamily;
+    letter-spacing: -0.04em;
+    line-height: 1.14286em;
+    margin-left: -0.04em;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  &.display3 {
+    font-size: #{3.5 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    letter-spacing: -0.02em;
+    line-height: 1.30357em;
+    margin-left: -0.02em;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  &.display2 {
+    font-size: #{2.8125 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.13333em;
+    margin-left: -0.02em;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  &.display1 {
+    font-size: #{2.125 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.20588em;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  &.headline {
+    font-size: #{1.5 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.35417em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.title {
+    font-size: #{1.3125 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightMedium;
+    font-family: $typographyFontFamily;
+    line-height: 1.16667em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.subheading {
+    font-size: #{1 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.5em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.body2 {
+    font-size: #{0.875 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightMedium;
+    font-family: $typographyFontFamily;
+    line-height: 1.71429em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.body1 {
+    font-size: #{0.875 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.46429em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.caption {
+    font-size: #{0.75 * $typographyFontSize}px;
+    font-weight: $typographyFontWeightRegular;
+    font-family: $typographyFontFamily;
+    line-height: 1.375em;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  &.button {
+    font-size: #{0.875 * $typographyFontSize}px;
+    text-transform: uppercase;
+    font-weight: $typographyFontWeightMedium;
+    font-family: $typographyFontFamily;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  &.block {
+    display: block;
+  }
 }

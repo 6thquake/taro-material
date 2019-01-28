@@ -391,6 +391,10 @@ export default class PanelBasic extends Component {
             id: 'Typography',
             name: '排版',
           },
+          {
+            id: 'Count-Down',
+            name: '倒计时',
+          },
         ],
       },
     };

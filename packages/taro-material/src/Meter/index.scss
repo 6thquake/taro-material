@@ -13,7 +13,7 @@
     display: inline-block;
     text-align: center;
     font: {
-      family: countDownFont;
+      family: CountDown;
       style: normal;
       variant: normal;
     }
@@ -24,7 +24,6 @@
 
     text-transform: none;
     text-rendering: auto;
-    line-height: 1;
     -webkit-font-smoothing: antialiased;
     vertical-align: middle;
     position: relative;
@@ -42,6 +41,7 @@
       height: 1px;
       top: 50%;
       left: 0;
+      margin-top: -0.5px;
       z-index: $zIndexDivider;
     }
   }
@@ -83,6 +83,7 @@
         min-width: 32px;
         padding: #{$spacingUnit}px;
         margin: #{$spacingUnit/2}px;
+        line-height: 1;
         font: {
           size: 32px;
         }
@@ -108,6 +109,7 @@
         min-width: 24px;
         padding: #{$spacingUnit/2}px;
         margin: #{$spacingUnit/4}px;
+        line-height: 1;
         font: {
           size: 24px;
         }
@@ -132,6 +134,7 @@
         min-width: 16px;
         padding: #{$spacingUnit/2}px;
         margin: #{$spacingUnit/4}px;
+        line-height: 1;
         font: {
           size: 16px;
         }
@@ -156,6 +159,7 @@
         min-width: 12px;
         padding: #{$spacingUnit/4}px;
         margin: #{$spacingUnit/8}px;
+        line-height: 1;
         font: {
           size: 12px;
         }
