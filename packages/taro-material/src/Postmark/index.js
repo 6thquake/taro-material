@@ -10,15 +10,36 @@ import theme from '../styles/theme';
 
 import './Postmark.scss';
 
-import postmarkBlack from './images/postmark-black.png';
-import postmarkWhite from './images/postmark-white.png';
-import postmarkDefault from './images/postmark-default.png';
-import postmarkPrimary from './images/postmark-primary.png';
-import postmarkSecondary from './images/postmark-secondary.png';
-import postmarkProgress from './images/postmark-progress.png';
-import postmarkWarning from './images/postmark-warning.png';
-import postmarkSuccess from './images/postmark-success.png';
-import postmarkError from './images/postmark-error.png';
+// import postmarkBlack from './images/postmark-black.png';
+// import postmarkWhite from './images/postmark-white.png';
+// import postmarkDefault from './images/postmark-default.png';
+// import postmarkPrimary from './images/postmark-primary.png';
+// import postmarkSecondary from './images/postmark-secondary.png';
+// import postmarkProgress from './images/postmark-progress.png';
+// import postmarkWarning from './images/postmark-warning.png';
+// import postmarkSuccess from './images/postmark-success.png';
+// import postmarkError from './images/postmark-error.png';
+const [
+  postmarkBlack,
+  postmarkWhite,
+  postmarkDefault,
+  postmarkPrimary,
+  postmarkSecondary,
+  postmarkProgress,
+  postmarkWarning,
+  postmarkSuccess,
+  postmarkError,
+] = [
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-black.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-white.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-default.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-primary.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-secondary.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-progress.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-warning.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-success.png',
+  'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-error.png',
+];
 
 class Postmark extends Component {
   componentWillUnmount() {}

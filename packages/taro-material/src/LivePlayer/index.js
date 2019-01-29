@@ -1,16 +1,35 @@
 import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro';
-import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
+import PropTypes from 'prop-types';
+
+import theme from '../styles/theme';
+
+import './LivePlayer.scss';
+
 import FullScreen from './images/fullscreen.png';
 import Refresh from './images/refresh.png';
 import FullScreenExit from './images/fullscreen_exit.png';
 import ArrowUp from './images/arrow_drop_up.png';
 import ArrowDown from './images/arrow_down.png';
-import RoundPlayCircle from './images/round_play_circle2.png';
+import RoundPlayCircle from './images/round_play_circle.png';
 import RoundPauseCircle from './images/round_pause_circle.png';
-
-import './LivePlayer.scss';
-import theme from '../styles/theme';
+// const [
+//   FullScreen,
+//   Refresh,
+//   FullScreenExit,
+//   ArrowUp,
+//   ArrowDown,
+//   RoundPlayCircle,
+//   RoundPauseCircle,
+// ] = [
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/fullscreen.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/refresh.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/fullscreen_exit.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/arrow_drop_up.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/arrow_down.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/round_play_circle.png',
+//   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/LivePlayer/images/round_pause_circle.png',
+// ];
 
 class RMLivePlayer extends Component {
   constructor(props) {
