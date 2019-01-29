@@ -4,25 +4,25 @@ import { View, Text } from '@tarojs/components';
 import classNames from 'classnames';
 
 import AtComponent from '../common/component';
-import './index.scss';
+import '../CountDown/index.scss';
 
 export default class RMCountDown extends AtComponent {
   constructor() {
     super(...arguments);
-    const { deadline } = this.props;
-    this.milliseconds = this.offsetSeconds(deadline);
+    const { initial } = this.props;
+    this.milliseconds = this.offsetSeconds(initial);
     this.state = { ...this.format() };
     this.timer = null;
   }
 
-  offsetSeconds(deadline) {
+  offsetSeconds(initial) {
     let [timestamp] = [0];
     const now = new Date().getTime();
 
-    if (deadline instanceof Date) {
-      timestamp = deadline.getTime() - now;
-    } else if (deadline) {
-      timestamp = deadline - now;
+    if (initial instanceof Date) {
+      timestamp = now - initial.getTime();
+    } else if (initial) {
+      timestamp = now - initial;
     }
 
     return timestamp;
@@ -80,21 +80,19 @@ export default class RMCountDown extends AtComponent {
   }
 
   countdonwn() {
-    const { isShowMillisecond, deadline } = this.props;
+    const { isShowMillisecond } = this.props;
 
     const { days, hours, minutes, seconds } = this.format();
     this.setState({ days, hours, minutes, seconds });
 
+    let step = isShowMillisecond ? 500 : 1000;
+
     if (this.milliseconds <= 0) {
       this.clearTimer();
-      if (deadline) {
-        this.props.onTimeUp();
-      }
-      return;
+      step = Math.abs(this.milliseconds);
     }
 
-    const step = isShowMillisecond ? 500 : 1000;
-    this.milliseconds -= step;
+    this.milliseconds += step;
 
     this.timer = setTimeout(() => {
       this.countdonwn();
@@ -103,24 +101,24 @@ export default class RMCountDown extends AtComponent {
 
   componentWillReceiveProps(nextProps) {
     const props = this.props;
-    if (nextProps.deadline === props.deadline) {
+    if (nextProps.initial === props.initial) {
       return;
     }
 
-    if (nextProps.deadline && props.deadline) {
+    if (nextProps.initial && props.initial) {
       let timestamp = 0;
       let _timestamp = -1;
 
-      if (nextProps.deadline instanceof Date) {
-        timestamp = nextProps.deadline.getTime();
+      if (nextProps.initial instanceof Date) {
+        timestamp = nextProps.initial.getTime();
       } else {
-        timestamp = nextProps.deadline;
+        timestamp = nextProps.initial;
       }
 
-      if (props.deadline instanceof Date) {
-        _timestamp = props.deadline.getTime();
+      if (props.initial instanceof Date) {
+        _timestamp = props.initial.getTime();
       } else {
-        _timestamp = props.deadline;
+        _timestamp = props.initial;
       }
 
       if (timestamp === _timestamp) {
@@ -128,7 +126,7 @@ export default class RMCountDown extends AtComponent {
       }
     }
 
-    this.milliseconds = this.offsetSeconds(nextProps.deadline);
+    this.milliseconds = this.offsetSeconds(nextProps.initial);
 
     this.clearTimer();
     this.setTimer();
@@ -230,8 +228,7 @@ RMCountDown.defaultProps = {
     minute: '分',
     second: '秒',
   },
-  deadline: 0,
-  onTimeUp: () => {},
+  initial: new Date(),
   size: 'normal',
 };
 
@@ -242,7 +239,6 @@ RMCountDown.propTypes = {
   isShowMillisecond: PropTypes.bool,
   isDark: PropTypes.bool,
   format: PropTypes.object,
-  deadline: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.number]),
-  onTimeUp: PropTypes.func,
+  initial: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.number]),
   size: PropTypes.oneOf(['large', 'medium', 'normal', 'small', 'xs']),
 };
