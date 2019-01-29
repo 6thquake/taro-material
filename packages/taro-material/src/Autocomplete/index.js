@@ -1,50 +1,50 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, ScrollView } from '@tarojs/components'
-import PropTypes from 'prop-types'
+import Taro, { Component } from '@tarojs/taro';
+import { View, ScrollView } from '@tarojs/components';
+import PropTypes from 'prop-types';
 
-import RMDropdown from '../Dropdown'
-import RMTextField from '../TextField'
-import './index.scss'
-import theme from '../styles/theme'
+import RMDropdown from '../Dropdown';
+import RMTextField from '../TextField';
+import './index.scss';
+import theme from '../styles/theme';
 
 class Autocomplete extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       open: false,
-    }
+    };
   }
 
-  componentWillMount () {}
+  componentWillMount() {}
 
   handleClick = e => {
-    this.props.onChange(e)
+    this.props.onChange(e);
     this.setState({
       open: false,
-    })
+    });
   };
 
   handleChange = e => {
-    this.props.onFilterChange(e)
+    this.props.onFilterChange(e);
     this.setState({
       open: true,
-    })
+    });
   };
 
   handleFocus = () => {
-    this.props.onFocus()
+    this.props.onFocus();
     this.setState({
       open: true,
-    })
+    });
   };
   handleClose = () => {
     this.setState({
       open: false,
-    })
+    });
   };
 
-  render () {
-    const { open } = this.state
+  render() {
+    const { open } = this.state;
     const {
       disabled,
       InputProps,
@@ -53,7 +53,7 @@ class Autocomplete extends Component {
       editable,
       customStyle,
       DropdownProps,
-    } = this.props
+    } = this.props;
     const {
       startAdornment,
       endAdornment,
@@ -65,19 +65,19 @@ class Autocomplete extends Component {
       helperText,
       helperTextClass,
       helperTextStyle,
-    } = InputProps
+    } = InputProps;
     const {
       customStyle: dropDownStyle,
       maskStyle,
       scrollDropDownStyle,
       listStyle,
       scrollable,
-    } = DropdownProps
+    } = DropdownProps;
     return (
-      <View className='root' customStyle={customStyle}>
+      <View className="root" customStyle={customStyle}>
         <RMDropdown
           renderHeader={
-            <View className='content'>
+            <View className="content">
               <RMTextField
                 name={name}
                 title={title}
@@ -110,7 +110,7 @@ class Autocomplete extends Component {
           scrollDropDownStyle={scrollDropDownStyle}
         />
       </View>
-    )
+    );
   }
 }
 
@@ -126,7 +126,7 @@ Autocomplete.defaultProps = {
   onFocus: () => {},
   editable: true,
   disabled: false,
-}
+};
 Autocomplete.propTypes = {
   options: PropTypes.array,
   InputProps: PropTypes.object,
@@ -137,5 +137,5 @@ Autocomplete.propTypes = {
   disabled: PropTypes.bool,
   editable: PropTypes.bool,
   DropdownProps: PropTypes.object,
-}
-export default Autocomplete
+};
+export default Autocomplete;
