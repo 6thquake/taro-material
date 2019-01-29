@@ -1,4 +1,4 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
 $hd: 2; // 基本单位
 
@@ -56,7 +56,6 @@ $spacing-v-md: 9px * $hd;
 $spacing-v-lg: 12px * $hd;
 $spacing-v-xl: 15px * $hd;
 
-
 // 默认主题下 $color-border-lighter
 @mixin border-thin(
   $color: $color-border-lighter,
@@ -69,11 +68,7 @@ $spacing-v-xl: 15px * $hd;
   }
 }
 
-@mixin border-thin-top(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-top($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, top, $width);
 }
 
@@ -145,25 +140,26 @@ $spacing-v-xl: 15px * $hd;
       }
     }
     &--active {
-      &.default, &.primary {
+      &.default,
+      &.primary {
         color: $palettePrimaryMain;
       }
-      &.inherit{
+      &.inherit {
         color: inherit;
       }
-      &.secondary{
+      &.secondary {
         color: $paletteSecondaryMain;
       }
-      &.error{
+      &.error {
         color: $paletteErrorMain;
       }
-      &.success{
+      &.success {
         color: $paletteSuccessMain;
       }
-      &.warning{
+      &.warning {
         color: $paletteWarningMain;
       }
-      &.progress{
+      &.progress {
         color: $paletteProgressMain;
       }
     }
@@ -174,4 +170,27 @@ $spacing-v-xl: 15px * $hd;
       // @include border-thin-top($color: $color-grey-4, $width: 1PX);
     }
   }
+}
+
+.header {
+  position: relative;
+  z-index: $zIndexDropdown;
+}
+.dropdown {
+  background: $paletteBackgroundPaper;
+  position: absolute;
+  height: 400px;
+  width: 100%;
+  box-shadow: $shadows1;
+  z-index: $zIndexDropdown;
+}
+.mask {
+  width: 100vh;
+  height: 100vh;
+  position: fixed;
+  opacity: 0;
+  background: black;
+  left: 0;
+  top: 0;
+  z-index: $zIndexDropdown - 1;
 }

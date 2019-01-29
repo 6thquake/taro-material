@@ -244,6 +244,11 @@ class ToolBar extends Component {
     });
   }
 
+  handleDropDownClose = () => {
+    this.setState({
+      expanded: false,
+    });
+  };
   render() {
     const { filters } = this.props;
 
@@ -328,7 +333,15 @@ class ToolBar extends Component {
             </RMIcon>
           </View>
         </View>
-        {expanded && <RMDropdown options={normalSorts} value={value} onClick={this.handleChange} />}
+        {
+          <RMDropdown
+            isOpened={expanded}
+            options={normalSorts}
+            onClose={this.handleDropDownClose}
+            value={value}
+            onChange={this.handleChange}
+          />
+        }
         <RMDrawer
           ref={this.refDrawer}
           show={show}

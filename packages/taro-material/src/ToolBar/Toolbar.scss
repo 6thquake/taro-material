@@ -1,18 +1,20 @@
 @import '../styles/theme.scss';
 
-.root{
+.root {
   background: #{$paletteBackgroundPaper};
   position: relative;
-  .header{
+  .header {
     display: flex;
+    position: relative;
+    z-index: $zIndexDropdown;
     align-items: center;
     justify-content: space-between;
     padding: #{$spacingUnit * 3}px;
     border-bottom: solid 1px $paletteGrey200;
-    .title{
+    .title {
       display: flex;
       align-items: center;
-      .label{
+      .label {
         margin-right: #{$spacingUnit}px;
       }
     }

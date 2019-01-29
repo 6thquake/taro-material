@@ -37,6 +37,11 @@ class Autocomplete extends Component {
       open: true,
     });
   };
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
     const { open } = this.state;
@@ -47,7 +52,7 @@ class Autocomplete extends Component {
       value,
       editable,
       customStyle,
-      scrollDropDownStyle,
+      DropdownProps,
     } = this.props;
     const {
       startAdornment,
@@ -61,45 +66,43 @@ class Autocomplete extends Component {
       helperTextClass,
       helperTextStyle,
     } = InputProps;
+    const { customStyle: dropDownStyle, maskStyle, scrollDropDownStyle, listStyle } = DropdownProps;
     return (
       <View className="root" customStyle={customStyle}>
-        <View className="content">
-          <RMTextField
-            name={name}
-            title={title}
-            type={type}
-            placeholder={placeholder}
-            value={InputProps.value}
-            // onBlur={this.handleBlur}
-            onChange={this.handleChange.bind(value)}
-            startAdornment={startAdornment}
-            endAdornment={endAdornment}
-            editable={editable}
-            required={required}
-            helperText={helperText}
-            helperTextClass={helperTextClass}
-            disabled={disabled}
-            helperTextStyle={helperTextStyle}
-            onFocus={this.handleFocus}
-          />
-        </View>
-        {open &&
-          options.length > 0 && (
-            <ScrollView
-              style={scrollDropDownStyle}
-              className="dropdown"
-              scrollY
-              scrollWithAnimation
-              scrollTop="0"
-            >
-              <RMDropdown
-                options={options}
-                value={value}
-                onClick={this.handleClick}
-                customStyle={{ boxShadow: theme.shadows[0] }}
+        <RMDropdown
+          renderHeader={
+            <View className="content">
+              <RMTextField
+                name={name}
+                title={title}
+                type={type}
+                placeholder={placeholder}
+                value={InputProps.value}
+                // onBlur={this.handleBlur}
+                onChange={this.handleChange.bind(value)}
+                startAdornment={startAdornment}
+                endAdornment={endAdornment}
+                editable={editable}
+                required={required}
+                helperText={helperText}
+                helperTextClass={helperTextClass}
+                disabled={disabled}
+                helperTextStyle={helperTextStyle}
+                onFocus={this.handleFocus}
               />
-            </ScrollView>
-          )}
+            </View>
+          }
+          isOpened={open && options.length > 0}
+          scrollable
+          options={options}
+          value={value}
+          onChange={this.handleClick}
+          onClose={this.handleClose}
+          customStyle={dropDownStyle}
+          maskStyle={maskStyle}
+          listStyle={listStyle}
+          scrollDropDownStyle={scrollDropDownStyle}
+        />
       </View>
     );
   }
@@ -107,6 +110,7 @@ class Autocomplete extends Component {
 
 Autocomplete.defaultProps = {
   InputProps: {},
+  DropdownProps: {},
   onChange: () => {},
   onFilterChange: () => {},
   options: [],
@@ -116,10 +120,6 @@ Autocomplete.defaultProps = {
   onFocus: () => {},
   editable: true,
   disabled: false,
-  scrollDropDownStyle: {},
-  // NoDataProps: {
-  //   title: '暂无数据',
-  // },
 };
 Autocomplete.propTypes = {
   options: PropTypes.array,
@@ -130,6 +130,6 @@ Autocomplete.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
   editable: PropTypes.bool,
-  scrollDropDownStyle: PropTypes.object,
+  DropdownProps: PropTypes.object,
 };
 export default Autocomplete;

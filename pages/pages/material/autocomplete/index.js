@@ -116,8 +116,10 @@ class Index extends RMPage {
       margin: `${theme.spacing.unit * 2}px`,
       position: 'relative',
     };
-    const scrollDropDownStyle = {
-      height: '300px',
+    const DropdownProps = {
+      scrollDropDownStyle: {
+        height: '200px',
+      },
     };
     return (
       <View className="root" style={style}>
@@ -128,7 +130,7 @@ class Index extends RMPage {
           value={value}
           InputProps={InputProps}
           onFocus={this.handleFocus}
-          scrollDropDownStyle={scrollDropDownStyle}
+          DropdownProps={DropdownProps}
         />
       </View>
     );
