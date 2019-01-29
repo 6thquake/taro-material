@@ -1,11 +1,11 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 
-import { RMAutocomplete } from '../../../';
+import { RMAutocomplete } from '../../../'
 
-import RMPage from '../../../Page';
+import RMPage from '../../../Page'
 
-import theme from '../../../styles/theme';
+import theme from '../../../styles/theme'
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -41,11 +41,11 @@ const suggestions = [
   { label: 'Bouvet Island' },
   { label: 'Brazil' },
   { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
+  { label: 'Brunei Darussalam' }
 ].map(suggestion => ({
   value: suggestion.label,
   label: suggestion.label,
-}));
+}))
 
 class Index extends RMPage {
   config = {
@@ -58,21 +58,21 @@ class Index extends RMPage {
     search: '',
   };
 
-  componentWillMount() {}
+  componentWillMount () {}
 
-  componentDidMount() {}
+  componentDidMount () {}
 
-  componentDidShow() {}
+  componentDidShow () {}
 
-  componentDidHide() {}
+  componentDidHide () {}
 
   handleChange = v => {
-    const { options } = this.state;
-    const option = options.find(r => r.value === v);
+    const { options } = this.state
+    const option = options.find(r => r.value === v)
     this.setState({
       value: v,
       search: option.label,
-    });
+    })
   };
 
   handleFocus = () => {
@@ -80,15 +80,15 @@ class Index extends RMPage {
   };
 
   fetch = () => {
-    const { search } = this.state;
+    const { search } = this.state
     const data = suggestions.filter(option => {
-      const label = option.label.toLocaleLowerCase();
-      const s = search.toLocaleLowerCase();
-      return label.indexOf(s) !== -1;
-    });
+      const label = option.label.toLocaleLowerCase()
+      const s = search.toLocaleLowerCase()
+      return label.indexOf(s) !== -1
+    })
     this.setState({
       options: data,
-    });
+    })
   };
 
   handlFilterChange = e => {
@@ -98,31 +98,32 @@ class Index extends RMPage {
         value: '',
       },
       () => {
-        this.fetch();
-      },
-    );
+        this.fetch()
+      }
+    )
   };
-  render() {
-    const { options, value, search } = this.state;
-    const helperTextStyle = { display: 'none' };
+  render () {
+    const { options, value, search } = this.state
+    const helperTextStyle = { display: 'none' }
     const InputProps = {
       name: 'Auto Auto',
       title: 'GO GO',
       placeholder: 'enter',
       value: search,
       helperTextStyle,
-    };
+    }
     const style = {
       margin: `${theme.spacing.unit * 2}px`,
       position: 'relative',
-    };
+    }
     const DropdownProps = {
+      scrollable: true,
       scrollDropDownStyle: {
         height: '200px',
       },
-    };
+    }
     return (
-      <View className="root" style={style}>
+      <View className='root' style={style}>
         <RMAutocomplete
           onChange={this.handleChange}
           onFilterChange={this.handlFilterChange}
@@ -133,8 +134,8 @@ class Index extends RMPage {
           DropdownProps={DropdownProps}
         />
       </View>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index
