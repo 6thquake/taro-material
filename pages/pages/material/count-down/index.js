@@ -43,6 +43,11 @@ class Index extends Component {
     });
   }
 
+  handleTimeUp3() {
+    console.log('--------time up--------');
+    this.handleTimeUp();
+  }
+
   handleTimeUp2() {
     this.setState({ end: true });
     this.handleTimeUp();
@@ -60,10 +65,14 @@ class Index extends Component {
     return (
       <View className="root">
         <View className="count-downs">
-          <View className="title">handle on time up：</View>
+          <View className="title">count down and timer：</View>
           <View className="count-down">
-            {!end && <RMCountDown deadline={second} size="normal" onTimeUp={this.handleTimeUp2} />}
-            {end && <RMTimer initial={second} size="normal" isDark={false} />}
+            <RMCountDown
+              deadline={second}
+              size="normal"
+              onTimeUp={this.handleTimeUp3}
+              autoTerminate={false}
+            />
           </View>
 
           <View className="title">2 days：</View>
@@ -88,7 +97,7 @@ class Index extends Component {
           </View>
           <View className="title">handle on time up：</View>
           <View className="count-down">
-            <RMCountDown deadline={second} size="normal" onTimeUp={this.handleTimeUp} />
+            <RMCountDown deadline={minute} size="normal" onTimeUp={this.handleTimeUp} />
           </View>
           <View className="title">dark：</View>
           <View className="count-down">
@@ -137,6 +146,12 @@ class Index extends Component {
           <View className="title">timer xs：</View>
           <View className="count-down">
             <RMTimer initial={now} isDark={false} size="xs" />
+          </View>
+
+          <View className="title">count down and timer：</View>
+          <View className="count-down">
+            {!end && <RMCountDown deadline={second} size="normal" onTimeUp={this.handleTimeUp2} />}
+            {end && <RMTimer initial={second} size="normal" isDark={false} />}
           </View>
         </View>
       </View>

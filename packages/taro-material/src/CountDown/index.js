@@ -29,9 +29,10 @@ export default class RMCountDown extends AtComponent {
   }
 
   format() {
+    const { autoTerminate } = this.props;
     let [days, hours, minutes, seconds, milliseconds] = [0, 0, 0, 0, 0];
 
-    if (this.milliseconds > 0) {
+    if (!autoTerminate || this.milliseconds > 0) {
       const [daysUnit, hoursUnit, minutesUnit, secondsUnit] = [
         1000 * 60 * 60 * 24,
         1000 * 60 * 60,
@@ -39,7 +40,7 @@ export default class RMCountDown extends AtComponent {
         1000 * 1,
       ];
 
-      let timestamp = this.milliseconds;
+      let timestamp = Math.abs(this.milliseconds);
       days = Math.floor(timestamp / daysUnit);
 
       timestamp -= days * daysUnit;
@@ -80,20 +81,23 @@ export default class RMCountDown extends AtComponent {
   }
 
   countdonwn() {
-    const { isShowMillisecond, deadline } = this.props;
+    const { isShowMillisecond, deadline, autoTerminate } = this.props;
 
     const { days, hours, minutes, seconds } = this.format();
     this.setState({ days, hours, minutes, seconds });
 
+    const step = isShowMillisecond ? 500 : 1000;
+
     if (this.milliseconds <= 0) {
-      this.clearTimer();
-      if (deadline) {
+      if (deadline && this.milliseconds > -step) {
         this.props.onTimeUp();
       }
-      return;
+      if (autoTerminate) {
+        this.clearTimer();
+        return;
+      }
     }
 
-    const step = isShowMillisecond ? 500 : 1000;
     this.milliseconds -= step;
 
     this.timer = setTimeout(() => {
@@ -157,10 +161,17 @@ export default class RMCountDown extends AtComponent {
       format,
       isShowDay,
       isShowMillisecond,
-      isDark,
       size,
+      autoTerminate,
     } = this.props;
     const { days, hours, minutes, seconds, milliseconds } = this.state;
+
+    const _milliseconds = this.milliseconds;
+
+    let isDark = this.props;
+    if (!autoTerminate && _milliseconds < 0) {
+      isDark = false;
+    }
 
     return (
       <View
@@ -233,6 +244,7 @@ RMCountDown.defaultProps = {
   deadline: 0,
   onTimeUp: () => {},
   size: 'normal',
+  autoTerminate: true,
 };
 
 RMCountDown.propTypes = {
@@ -245,4 +257,5 @@ RMCountDown.propTypes = {
   deadline: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.number]),
   onTimeUp: PropTypes.func,
   size: PropTypes.oneOf(['large', 'medium', 'normal', 'small', 'xs']),
+  autoTerminate: PropTypes.bool,
 };
