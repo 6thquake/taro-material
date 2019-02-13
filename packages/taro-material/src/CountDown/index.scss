@@ -69,7 +69,7 @@ $font-size: $font-size-lg;
       background-color: $paletteCommonBlack;
 
       &::after {
-        background-color: $paletteGrey400;
+        background-color: $paletteGrey500;
       }
     }
   }
@@ -79,7 +79,7 @@ $font-size: $font-size-lg;
 
     .rm-count-down__time-box {
       min-width: 32px;
-      padding: $spacing-v-xs 0;
+      padding: #{$spacing-v-xs + 4} 0 $spacing-v-xs 0;
       line-height: 1;
       font: {
         size: 32px;
@@ -96,7 +96,7 @@ $font-size: $font-size-lg;
 
     .rm-count-down__time-box {
       min-width: 24px;
-      padding: $spacing-v-xs 0;
+      padding: #{$spacing-v-xs + 4} 0 $spacing-v-xs 0;
       line-height: 1;
       font: {
         size: 24px;
@@ -108,18 +108,19 @@ $font-size: $font-size-lg;
     }
   }
   &--small {
-    min-height: 16px;
+    min-height: 18px;
 
     .rm-count-down__time-box {
-      min-width: 16px;
-      padding: $spacing-v-xs 0;
+      border-radius: $border-radius-sm;
+      min-width: 18px;
+      padding: #{$spacing-v-xs/2 + 2} 0 #{$spacing-v-xs/2} 0;
       line-height: 1;
       font: {
-        size: 16px;
+        size: 18px;
       }
     }
     .rm-count-down__separator {
-      font-size: 20px;
+      font-size: 18px;
       padding: 0 $spacing-v-xs;
     }
   }
@@ -127,8 +128,9 @@ $font-size: $font-size-lg;
     min-height: 12px;
 
     .rm-count-down__time-box {
+      border-radius: $border-radius-sm;
       min-width: 12px;
-      padding: $spacing-v-xs 0;
+      padding: #{$spacing-v-xs/2 + 2} 0 #{$spacing-v-xs/2} 0;
       line-height: 1;
       font: {
         size: 12px;
@@ -136,7 +138,7 @@ $font-size: $font-size-lg;
     }
     .rm-count-down__separator {
       font-size: 16px;
-      padding: 0 $spacing-v-xs;
+      padding: 0 #{$spacing-v-xs/2};
     }
   }
 }

@@ -74,6 +74,32 @@
 
   &--large {
     &.meter {
+      min-height: 48px;
+    }
+    .meter {
+      &__int-box,
+      &__dec-box {
+        border-radius: 24px;
+        min-width: 48px;
+        padding: #{$spacingUnit + 2}px 0 #{$spacingUnit}px 0;
+        margin: 0 #{$spacingUnit/2}px;
+        line-height: 1;
+        font: {
+          size: 48px;
+        }
+      }
+      &__separator {
+        font-size: 48px;
+        display: inline-flex;
+        align-items: center;
+        text-align: justify;
+        padding: 0 #{$spacingUnit}px;
+      }
+    }
+  }
+  &--normal,
+  &--medium {
+    &.meter {
       min-height: 32px;
     }
     .meter {
@@ -81,66 +107,40 @@
       &__dec-box {
         border-radius: 16px;
         min-width: 32px;
-        padding: #{$spacingUnit}px;
-        margin: #{$spacingUnit/2}px;
+        padding: #{$spacingUnit/2 + 2}px 0 #{$spacingUnit/2}px 0;
+        margin: 0 #{$spacingUnit/4}px;
         line-height: 1;
         font: {
           size: 32px;
         }
       }
       &__separator {
-        font-size: 40px;
+        font-size: 32px;
         display: inline-flex;
         align-items: center;
         text-align: justify;
-        padding: #{$spacingUnit * 2}px;
-      }
-    }
-  }
-  &--normal,
-  &--medium {
-    &.meter {
-      min-height: 24px;
-    }
-    .meter {
-      &__int-box,
-      &__dec-box {
-        border-radius: 12px;
-        min-width: 24px;
-        padding: #{$spacingUnit/2}px;
-        margin: #{$spacingUnit/4}px;
-        line-height: 1;
-        font: {
-          size: 24px;
-        }
-      }
-      &__separator {
-        font-size: 28px;
-        display: inline-flex;
-        align-items: center;
-        text-align: justify;
-        padding: #{$spacingUnit/4}px;
+        padding: 0 #{$spacingUnit/4}px;
       }
     }
   }
   &--small {
     &.meter {
-      min-height: 16px;
+      min-height: 20px;
     }
     .meter {
       &__int-box,
       &__dec-box {
-        border-radius: 8px;
-        min-width: 16px;
-        padding: #{$spacingUnit/2}px;
-        margin: #{$spacingUnit/4}px;
+        border-radius: 10px;
+        min-width: 20px;
+        padding: #{$spacingUnit/2 + 2}px 0 #{$spacingUnit/2}px 0;
+        margin: 0 #{$spacingUnit/4}px;
         line-height: 1;
         font: {
-          size: 16px;
+          size: 20px;
         }
       }
       &__separator {
-        font-size: 24px;
+        font-size: 20px;
         display: inline-flex;
         align-items: center;
         text-align: justify;
@@ -157,15 +157,15 @@
       &__dec-box {
         border-radius: 6px;
         min-width: 12px;
-        padding: #{$spacingUnit/4}px;
-        margin: #{$spacingUnit/8}px;
+        padding: #{$spacingUnit/4 + 2}px 0 #{$spacingUnit/4}px 0;
+        margin: 0 #{$spacingUnit/8}px;
         line-height: 1;
         font: {
           size: 12px;
         }
       }
       &__separator {
-        font-size: 16px;
+        font-size: 12px;
         display: inline-flex;
         align-items: center;
         text-align: justify;

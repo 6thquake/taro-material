@@ -24,7 +24,7 @@ class Index extends RMPage {
   render() {
     return (
       <View className="root">
-        <View className="title">small</View>
+        <View className="title">xs</View>
         <View className="meter">
           <RMMeter value={12345.67} type="water" size="xs" />
           12345.67
@@ -82,7 +82,7 @@ class Index extends RMPage {
 
         <View className="title">large</View>
         <View className="meter">
-          <RMMeter value={0.0} type="water" size="large" />
+          <RMMeter value={12.3} type="water" size="large" />
         </View>
         <View className="meter">
           <RMMeter value={0.0} type="power" size="large" />

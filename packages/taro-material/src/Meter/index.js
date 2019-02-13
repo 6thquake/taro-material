@@ -22,8 +22,8 @@ class Index extends Component {
 
   render() {
     const { value, type, className, customStyle, size } = this.props;
-    let intr = 0,
-      decl = 0;
+    let intr = 0;
+    let decl = 0;
     switch (type) {
       case 'gas':
         intr = 5;
