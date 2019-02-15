@@ -11,8 +11,15 @@ import './index.scss';
 class Affix extends Component {
   state = {
     fixed: false,
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    width: 0,
+    height: 0,
+    scrollLeft: 0,
+    scrollTop: 0,
   };
-  mount = false;
 
   componentWillUpdate(nextProps, nextState) {
     const { onChange } = this.props;
@@ -36,19 +43,21 @@ class Affix extends Component {
       const info = Taro.getSystemInfoSync();
       const { windowWidth, windowHeight } = info;
       let { left, top, bottom, right, width, height } = rect;
+      const { fixed, scrollLeft, scrollTop } = this.state;
+      const { resize } = this.props;
 
-      if (this.mount) {
+      if (fixed) {
         this.setState({
           width,
           height,
         });
       } else {
-        right = -left - width + windowWidth;
-        bottom = -top - height + windowHeight;
+        right = -left - scrollLeft - width + windowWidth;
+        bottom = -top - scrollTop - height + windowHeight;
 
         this.setState({
-          left,
-          top,
+          left: left + scrollLeft,
+          top: top + scrollTop,
           bottom,
           right,
           width,
@@ -56,24 +65,20 @@ class Affix extends Component {
         });
       }
 
-      this.mount = true;
+      if (resize) {
+        this.interval = setTimeout(function() {
+          task.exec();
+        }, 1000);
+      }
     });
 
     task.exec();
-
-    this.interval = setInterval(() => {
-      const { resize } = this.props;
-      const { fixed } = this.state;
-      if (fixed && resize) {
-        task.exec();
-      }
-    }, 1000);
   }
 
   componentWillMount() {}
 
   componentWillUnmount() {
-    this.interval && clearInterval(this.interval);
+    this.interval && clearTimeout(this.interval);
   }
 
   componentDidShow() {}
@@ -103,6 +108,8 @@ class Affix extends Component {
     this.setState({
       fixed: _fixed,
       affix: _affix,
+      scrollTop: params.scrollTop,
+      scrollLeft: params.scrollLeft,
     });
   }
 
