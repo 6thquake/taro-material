@@ -11,7 +11,7 @@ import './BackTop.scss';
 class BackTop extends Component {
   state = {
     visibility: false,
-    isIPhoneX: false,
+    // isIPhoneX: false,
   };
 
   componentWillMount() {}
@@ -23,11 +23,11 @@ class BackTop extends Component {
       onAddPageScroll(this.handlePageScroll.bind(this));
     }
 
-    const curEnv = Taro.getEnv();
+    // const curEnv = Taro.getEnv()
 
-    if (curEnv === Taro.ENV_TYPE.WEAPP && Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0) {
-      this.setState({ isIPhoneX: true });
-    }
+    // if (curEnv === Taro.ENV_TYPE.WEAPP && Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0) {
+    //   this.setState({ isIPhoneX: true })
+    // }
   }
 
   componentWillUnmount() {}
@@ -56,11 +56,11 @@ class BackTop extends Component {
 
   render() {
     const { container, size, customStyle, bottom, right } = this.props;
-    const { visibility, isIPhoneX } = this.state;
-    const bottomPx = `${isIPhoneX ? bottom + 34 : bottom}px`;
+    const { visibility /*, isIPhoneX */ } = this.state;
+    // const bottomPx = `${isIPhoneX ? bottom + 34 : bottom}px`;
     const style = {
       ...customStyle,
-      bottom: bottomPx,
+      bottom: `${bottom}px`,
       right: `${right}px`,
     };
     return (

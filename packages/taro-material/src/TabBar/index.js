@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Image } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -24,19 +24,15 @@ const objectToString = style => {
 };
 
 class TabBar extends Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      isIPhoneX: false,
-    };
-  }
+  // state = {
+  //   isIPhoneX: false,
+  // };
 
   componentDidMount() {
-    const curEnv = Taro.getEnv();
-
-    if (curEnv === Taro.ENV_TYPE.WEAPP && Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0) {
-      this.setState({ isIPhoneX: true });
-    }
+    // const curEnv = Taro.getEnv();
+    // if (curEnv === Taro.ENV_TYPE.WEAPP && Taro.getSystemInfoSync().model.indexOf('iPhone X') >= 0) {
+    //   this.setState({ isIPhoneX: true });
+    // }
   }
 
   handleClick(i) {
@@ -66,7 +62,7 @@ class TabBar extends Component {
       fontSize,
       selectedColor,
     } = this.props;
-    const { isIPhoneX } = this.state;
+    // const { isIPhoneX } = this.state;
     const defaultStyle = `color: ${color};`;
     const selectedStyle = `color: ${selectedColor};`;
     const titleStyle = `font-size: ${fontSize}px;`;
@@ -78,7 +74,7 @@ class TabBar extends Component {
           {
             'at-tab-bar': true,
             'at-tab-bar--fixed': fixed,
-            'at-tab-bar--ipx': isIPhoneX,
+            // 'at-tab-bar--ipx': isIPhoneX,
           },
           className,
         )}

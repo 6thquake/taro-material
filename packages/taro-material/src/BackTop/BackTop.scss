@@ -1,14 +1,16 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
 .container-window {
-	position: fixed;
-	bottom: #{$spacingUnit * 2}px;
-	right: #{$spacingUnit * 2}px;
-	opacity: #{$paletteActionHoverOpacity * 10};
-	display: none;
-	z-index: $zIndexBackTop;
+  position: fixed;
+  bottom: #{$spacingUnit * 2}px;
+  right: #{$spacingUnit * 2}px;
+  opacity: #{$paletteActionHoverOpacity * 10};
+  display: none;
+  z-index: $zIndexBackTop;
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
 
-	&.visibility {
-	 	display: block
-	}
+  &.visibility {
+    display: block;
+  }
 }

@@ -1,9 +1,6 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-@function tint(
-  $color,
-  $percent
-) {
+@function tint($color, $percent) {
   @return mix($paletteCommonWhite, $color, $percent);
 }
 
@@ -98,13 +95,12 @@ $icon-size-lg: 36px * $hd;
 /* z-index */
 $zindex-form: 700;
 $zindex-nav: $zIndexAppBar;
-$zindex-flot-layout: #{ $zIndexAppBar + 10 };
+$zindex-flot-layout: #{$zIndexAppBar + 10};
 $zindex-drawer: $zIndexDrawer;
 $zindex-modal: $zIndexModal;
-$zindex-action-sheet: #{ $zIndexModal + 10 };
-$zindex-picker: #{ $zIndexModal + 10 };
+$zindex-action-sheet: #{$zIndexModal + 10};
+$zindex-picker: #{$zIndexModal + 10};
 $zindex-toast: $zIndexSnackbar;
-
 
 // 默认主题下 $color-border-lighter
 @mixin border-thin(
@@ -118,35 +114,19 @@ $zindex-toast: $zIndexSnackbar;
   }
 }
 
-@mixin border-thin-top(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-top($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, top, $width);
 }
 
-@mixin border-thin-left(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-left($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, left, $width);
 }
 
-@mixin border-thin-right(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-right($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, right, $width);
 }
 
-@mixin border-thin-bottom(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-bottom($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, bottom, $width);
 }
 
@@ -163,7 +143,6 @@ $zindex-toast: $zIndexSnackbar;
   }
 }
 
-
 .at-tab-bar {
   display: flex;
   width: 100%;
@@ -174,7 +153,7 @@ $zindex-toast: $zIndexSnackbar;
   justify-content: center;
   align-items: start;
   background-color: $color-bg;
-  @include border-thin-top($width: 1PX);
+  @include border-thin-top($width: 1px);
 
   &__item {
     flex: 1;
@@ -184,7 +163,7 @@ $zindex-toast: $zIndexSnackbar;
     transition: all 0.2s;
   }
 
-  &__icon{
+  &__icon {
     line-height: 100%;
     margin-bottom: -10px;
   }
@@ -212,7 +191,7 @@ $zindex-toast: $zIndexSnackbar;
 
   &--ipx {
     &.at-tab-bar--fixed {
-      padding-bottom: 68px;
+      // padding-bottom: 68px;
     }
   }
 }
