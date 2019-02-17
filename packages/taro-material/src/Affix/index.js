@@ -46,27 +46,28 @@ class Affix extends Component {
     }
 
     const task = this.affix.boundingClientRect(rect => {
-      const { left, top, bottom, right, width, height } = rect;
-
-      const info = Taro.getSystemInfoSync();
-      const { windowWidth, windowHeight } = info;
-
-      const { fixed } = this.state;
+      const { left, top, /* bottom, right, */ width, height } = rect;
       const { resize } = this.props;
+      const { fixed } = this.state;
 
-      const { scrollLeft, scrollTop } = this.position;
+      if (width !== 0 && height !== 0) {
+        const info = Taro.getSystemInfoSync();
+        const { windowWidth, windowHeight } = info;
 
-      if (!fixed) {
-        this.position.left = left + scrollLeft;
-        this.position.top = top + scrollTop;
-        this.position.bottom = -top - scrollTop - height + windowHeight;
-        this.position.right = -left - scrollLeft - width + windowWidth;
+        const { scrollLeft = 0, scrollTop = 0 } = this.position;
+
+        if (!fixed) {
+          this.position.left = left + scrollLeft;
+          this.position.top = top + scrollTop;
+          this.position.bottom = -top - scrollTop - height + windowHeight;
+          this.position.right = -left - scrollLeft - width + windowWidth;
+        }
+
+        this.setState({
+          width,
+          height,
+        });
       }
-
-      this.setState({
-        width,
-        height,
-      });
 
       if (resize) {
         this.interval = setTimeout(() => {
@@ -80,8 +81,8 @@ class Affix extends Component {
     Taro.createSelectorQuery()
       .selectViewport()
       .scrollOffset(res => {
-        this.position.scrollTop = res.scrollTop;
-        this.position.scrollLeft = res.scrollLeft;
+        this.position.scrollTop = res.scrollTop || 0;
+        this.position.scrollLeft = res.scrollLeft || 0;
         task.exec();
       })
       .exec();
@@ -100,8 +101,8 @@ class Affix extends Component {
   handlePageScroll(params) {
     const { scrollTop, scrollLeft } = params;
 
-    this.position.scrollTop = scrollTop;
-    this.position.scrollLeft = scrollLeft;
+    this.position.scrollTop = scrollTop || 0;
+    this.position.scrollLeft = scrollLeft || 0;
 
     if (this.mount) {
       const { offsetBottom, offsetTop } = this.props;
