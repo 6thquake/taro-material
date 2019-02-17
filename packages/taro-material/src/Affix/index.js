@@ -11,14 +11,20 @@ import './index.scss';
 class Affix extends Component {
   state = {
     fixed: false,
+    position: {},
+    width: 0,
+    height: 0,
+  };
+
+  mount = false;
+
+  position = {
+    scrollLeft: 0,
+    scrollTop: 0,
     left: 0,
     top: 0,
     bottom: 0,
     right: 0,
-    width: 0,
-    height: 0,
-    scrollLeft: 0,
-    scrollTop: 0,
   };
 
   componentWillUpdate(nextProps, nextState) {
@@ -40,39 +46,45 @@ class Affix extends Component {
     }
 
     const task = this.affix.boundingClientRect(rect => {
+      const { left, top, bottom, right, width, height } = rect;
+
       const info = Taro.getSystemInfoSync();
       const { windowWidth, windowHeight } = info;
-      let { left, top, bottom, right, width, height } = rect;
-      const { fixed, scrollLeft, scrollTop } = this.state;
+
+      const { fixed } = this.state;
       const { resize } = this.props;
 
-      if (fixed) {
-        this.setState({
-          width,
-          height,
-        });
-      } else {
-        right = -left - scrollLeft - width + windowWidth;
-        bottom = -top - scrollTop - height + windowHeight;
+      const { scrollLeft, scrollTop } = this.position;
 
-        this.setState({
-          left: left + scrollLeft,
-          top: top + scrollTop,
-          bottom,
-          right,
-          width,
-          height,
-        });
+      if (!fixed) {
+        this.position.left = left + scrollLeft;
+        this.position.top = top + scrollTop;
+        this.position.bottom = -top - scrollTop - height + windowHeight;
+        this.position.right = -left - scrollLeft - width + windowWidth;
       }
 
+      this.setState({
+        width,
+        height,
+      });
+
       if (resize) {
-        this.interval = setTimeout(function() {
+        this.interval = setTimeout(() => {
           task.exec();
         }, 1000);
       }
+
+      this.mount = true;
     });
 
-    task.exec();
+    Taro.createSelectorQuery()
+      .selectViewport()
+      .scrollOffset(res => {
+        this.position.scrollTop = res.scrollTop;
+        this.position.scrollLeft = res.scrollLeft;
+        task.exec();
+      })
+      .exec();
   }
 
   componentWillMount() {}
@@ -86,31 +98,37 @@ class Affix extends Component {
   componentDidHide() {}
 
   handlePageScroll(params) {
-    const { offsetBottom, offsetTop } = this.props;
-    const { left, top, bottom, right, width, height } = this.state;
+    const { scrollTop, scrollLeft } = params;
 
-    let _fixed = false;
-    const _affix = {};
-    const offset = Math.floor(height) !== height ? 1 : 0;
+    this.position.scrollTop = scrollTop;
+    this.position.scrollLeft = scrollLeft;
 
-    if (isNumber(offsetTop)) {
-      _fixed = top <= params.scrollTop + offsetTop;
-      _affix.top = `${offsetTop - offset}px`;
-    } else if (isNumber(offsetBottom)) {
-      _fixed = bottom <= -params.scrollTop + offsetBottom;
-      _affix.bottom = `${offsetBottom - offset}px`;
+    if (this.mount) {
+      const { offsetBottom, offsetTop } = this.props;
+      const { width, height } = this.state;
+      const { left, top, bottom, right } = this.position;
+
+      let _fixed = false;
+      const _position = {};
+      const offset = Math.floor(height) !== height ? 1 : 0;
+
+      if (isNumber(offsetTop)) {
+        _fixed = top < params.scrollTop + offsetTop;
+        _position.top = `${offsetTop - offset}px`;
+      } else if (isNumber(offsetBottom)) {
+        _fixed = bottom < -params.scrollTop + offsetBottom;
+        _position.bottom = `${offsetBottom - offset}px`;
+      }
+
+      if (_fixed) {
+        _position.left = `${left}px`;
+      }
+
+      this.setState({
+        fixed: _fixed,
+        position: _position,
+      });
     }
-
-    if (_fixed) {
-      _affix.left = `${left}px`;
-    }
-
-    this.setState({
-      fixed: _fixed,
-      affix: _affix,
-      scrollTop: params.scrollTop,
-      scrollLeft: params.scrollLeft,
-    });
   }
 
   ref = node => {
@@ -118,8 +136,8 @@ class Affix extends Component {
   };
 
   render() {
-    const { offsetBottom, offsetTop, target, onChange, customStyle } = this.props;
-    const { fixed, left, top, bottom, right, width, height, affix = {} } = this.state;
+    const { customStyle } = this.props;
+    const { fixed, width, height, position = {} } = this.state;
 
     let style = null;
 
@@ -131,7 +149,7 @@ class Affix extends Component {
         ...customStyle,
         ...{
           position: 'fixed',
-          ...affix,
+          ...position,
         },
       };
     } else {
