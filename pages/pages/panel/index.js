@@ -395,6 +395,10 @@ export default class PanelBasic extends Component {
             id: 'Count-Down',
             name: '倒计时',
           },
+          {
+            id: 'Pretty-Number',
+            name: '格式化数字',
+          },
         ],
       },
     };
