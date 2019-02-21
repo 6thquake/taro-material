@@ -50,9 +50,9 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      files: [],
+      _files: [],
     };
-    this.files = [];
+    this._files = [];
   }
 
   handleDelete = (item, e) => {
@@ -61,20 +61,20 @@ class Upload extends Component {
       return;
     }
 
-    const { files } = this.state;
+    const { _files } = this.state;
 
-    let indexToDelete = files.indexOf(item);
+    let indexToDelete = _files.indexOf(item);
     if (indexToDelete !== -1) {
-      files.splice(indexToDelete, 1);
+      _files.splice(indexToDelete, 1);
     }
 
-    indexToDelete = this.files.indexOf(item);
+    indexToDelete = this._files.indexOf(item);
     if (indexToDelete !== -1) {
-      this.files.splice(indexToDelete, 1);
+      this._files.splice(indexToDelete, 1);
     }
 
     this.setState({
-      files: files.slice(),
+      _files: _files.slice(),
     });
 
     if (this.props.onDelete) {
@@ -93,7 +93,7 @@ class Upload extends Component {
     }
 
     let { maxLength, multiple } = this.props;
-    const { length } = this.files;
+    const { length } = this._files;
     if (multiple) {
       if (!maxLength) {
         maxLength = 2;
@@ -131,9 +131,9 @@ class Upload extends Component {
       return;
     }
 
-    const _files = this.files;
+    const __files = this._files;
 
-    if (_files.indexOf(file) > -1) {
+    if (__files.indexOf(file) > -1) {
       return;
     }
 
@@ -147,16 +147,16 @@ class Upload extends Component {
     }
 
     if (!multiple) {
-      const { files } = this.state;
-      if (files.length > 0) {
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
+      const { _files } = this.state;
+      if (_files.length > 0) {
+        for (let i = 0; i < _files.length; i++) {
+          const file = _files[i];
           this.handleDelete(null, file);
         }
       }
     }
 
-    const { length } = _files;
+    const { length } = __files;
 
     if (length >= maxLength) {
       Taro.showModal({
@@ -171,21 +171,21 @@ class Upload extends Component {
     }
 
     this.setState(preState => ({
-      files: multiple ? [...preState.files, file] : [file],
+      _files: multiple ? [...preState._files, file] : [file],
     }));
-    this.files = multiple ? [...this.files, file] : [file];
+    this._files = multiple ? [...this._files, file] : [file];
   }
 
   upload = (url, params) => {
     const { disabled } = this.props;
-    const { files } = this.state;
+    const { _files } = this.state;
 
-    if (disabled || !url || !files || files.length <= 0) {
+    if (disabled || !url || !_files || _files.length <= 0) {
       return Promise.resolve([]);
     }
 
     return Promise.all(
-      files.map(
+      _files.map(
         (item, index) =>
           new Promise((resolve, reject) => {
             Upload.queue++;
@@ -207,15 +207,15 @@ class Upload extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { onChange, disabled } = this.props;
 
-    if (!disabled && prevState.files != this.state.files) {
-      onChange(this.state.files);
+    if (!disabled && prevState._files != this.state._files) {
+      onChange(this.state._files);
     }
   }
 
   reset = () => {
-    const { files } = this.state;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    const { _files } = this.state;
+    for (let i = 0; i < _files.length; i++) {
+      const file = _files[i];
       this.handleDelete(file);
     }
     Upload.queue = 0;
@@ -233,8 +233,8 @@ class Upload extends Component {
       helperTextClass,
       square,
     } = this.props;
-    const { files } = this.state;
-    const { length } = files;
+    const { _files } = this.state;
+    const { length } = _files;
     let { maxLength } = this.props;
 
     if (multiple) {
@@ -265,7 +265,7 @@ class Upload extends Component {
           </Label>
         )}
         <View className="array" disabled={disabled}>
-          {files.map(item => {
+          {_files.map(item => {
             const url = `${item}`;
             return (
               <View key={url} className="chip" onClick={this.preview.bind(this, url)}>
@@ -319,7 +319,7 @@ Upload.defaultProps = {
   multiple: true,
   disabled: false,
   files: [],
-  onChange: files => {},
+  onChange: _files => {},
   onDelete: file => {},
   label: 'upload',
   name: '',

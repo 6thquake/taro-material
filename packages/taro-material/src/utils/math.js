@@ -2,9 +2,9 @@ const toFixed = (number, digits = 0) => {
   if (typeof number !== 'number') {
     return number;
   }
-  let d = Math.pow(10, digits);
-  let result = Math.round(number * d) / d;
-  return result;
+  const d = Math.pow(10, digits);
+  const result = Math.round(number * d) / d;
+  return result.toFixed(digits) * 1;
 };
 
 const format = (number, digits, decPoint, thousandsSep) => {
@@ -18,16 +18,16 @@ const format = (number, digits, decPoint, thousandsSep) => {
    * decPoint：小数点符号
    * thousandsSep：千分位符号
    * */
-  number = (number + '').replace(/[^0-9+-Ee.]/g, '');
+  number = `${number}`.replace(/[^0-9+-Ee.]/g, '');
   let n = !isFinite(+number) ? 0 : +number,
     prec = !isFinite(+digits) ? 0 : Math.abs(digits),
     sep = typeof thousandsSep === 'undefined' ? ',' : thousandsSep,
     dec = typeof decPoint === 'undefined' ? '.' : decPoint;
 
-  let s = `${prec ? toFixed(n, prec) : Math.round(n)}`.split('.');
-  let re = /(-?\d+)(\d{3})/;
+  const s = `${prec ? toFixed(n, prec) : Math.round(n)}`.split('.');
+  const re = /(-?\d+)(\d{3})/;
   while (re.test(s[0])) {
-    s[0] = s[0].replace(re, '$1' + sep + '$2');
+    s[0] = s[0].replace(re, `$1${sep}$2`);
   }
 
   if ((s[1] || '').length < prec) {
