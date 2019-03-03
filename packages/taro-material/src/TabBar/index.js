@@ -3,8 +3,7 @@ import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import AtBadge from '../components/badge';
-
+import RMBadge from '../Badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
@@ -90,7 +89,11 @@ class TabBar extends Component {
               onClick={this.handleClick.bind(this, i)}
             >
               {item.iconType ? (
-                <AtBadge dot={!!badge.dot} value={badge.value} max={badge.maxValue}>
+                <RMBadge
+                  variant={badge.variant || 'text'}
+                  value={badge.value}
+                  maxValue={badge.maxValue}
+                >
                   <View className="at-tab-bar__icon" style={{ fontSize: `${iconSize}px` }}>
                     <RMIcon
                       prefixClass={item.iconPrefixClass}
@@ -102,20 +105,20 @@ class TabBar extends Component {
                         : item.iconType}
                     </RMIcon>
                   </View>
-                </AtBadge>
+                </RMBadge>
               ) : null}
               <View>
-                <AtBadge
-                  dot={item.iconType ? false : !!badge.dot}
+                <RMBadge
+                  variant={item.iconType ? 'text' : badge.variant}
                   value={item.iconType ? '' : badge.value}
-                  max={item.iconType ? '' : badge.maxValue}
+                  maxValue={item.iconType ? 0 : badge.maxValue}
                 >
                   <View className="at-tab-bar__title" style={titleStyle}>
                     <RMTypography className="caption" color="inherit" fontSize="inherit">
                       {item.title}
                     </RMTypography>
                   </View>
-                </AtBadge>
+                </RMBadge>
               </View>
             </View>
           );

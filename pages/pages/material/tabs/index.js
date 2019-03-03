@@ -13,23 +13,40 @@ const allNavList = [
     title: '充值中心1',
     showIcon: true,
     icon: 'aspect_ratio',
+    badge: {
+      variant: 'dot',
+    },
   },
   {
     title: '账户余额2',
     icon: 'aspect_ratio',
+    badge: {
+      variant: 'text',
+      value: '哈哈哈',
+    },
   },
   {
     title: '资源余量3',
     icon: 'aspect_ratio',
+
+    badge: {
+      variant: 'ribbon',
+      value: '奖',
+    },
   },
   {
     title: '充值中心4',
     showIcon: true,
     icon: 'aspect_ratio',
+    badge: {
+      variant: 'mark',
+      value: '热',
+    },
   },
   {
     title: '账户余额5',
     icon: 'aspect_ratio',
+    badge: {},
   },
   {
     title: '资源余量6',

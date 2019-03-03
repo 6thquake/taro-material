@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import AtComponent from '../common/component';
-import './index.scss';
 
+import RMBadge from '../Badge';
 import Typography from '../Typography';
 import RMIcon from '../Icon';
 import theme from '../styles/theme';
+
+import './index.scss';
 
 export default class AtTabs extends AtComponent {
   constructor() {
@@ -131,41 +133,46 @@ export default class AtTabs extends AtComponent {
       _color = color.charAt(0).toUpperCase() + color.substring(1);
     }
 
-    const tabItems = tabList.map((item, i) => (
-      <View
-        className={classNames({
-          'at-tabs__item': true,
-          'at-tabs__item--active': current === i,
-        })}
-        id={`tab${i}`}
-        key={item.title}
-        onClick={this.handleClick.bind(this, i)}
-      >
-        <View className="at-tabs__item__title">
-          {item.icon &&
-            item.showIcon && (
-              <RMIcon
-                block
+    const tabItems = tabList.map((item, i) => {
+      const badge = item.badge || {};
+      return (
+        <View
+          className={classNames({
+            'at-tabs__item': true,
+            'at-tabs__item--active': current === i,
+          })}
+          id={`tab${i}`}
+          key={item.title}
+          onClick={this.handleClick.bind(this, i)}
+        >
+          <RMBadge variant={badge.variant || 'text'} value={badge.value} maxValue={badge.maxValue}>
+            <View className="at-tabs__item__title">
+              {item.icon &&
+                item.showIcon && (
+                  <RMIcon
+                    block
+                    color="inherit"
+                    fontSize={16}
+                    customStyle={{ marginRight: `${theme.spacing.unit / 2}px` }}
+                  >
+                    {item.icon}
+                  </RMIcon>
+                )}
+              <Typography
+                className={classNames({
+                  body1: current !== i,
+                  body2: current === i,
+                })}
                 color="inherit"
-                fontSize={16}
-                customStyle={{ marginRight: `${theme.spacing.unit / 2}px` }}
+                block
               >
-                {item.icon}
-              </RMIcon>
-            )}
-          <Typography
-            className={classNames({
-              body1: current !== i,
-              body2: current === i,
-            })}
-            color="inherit"
-            block
-          >
-            {item.title}
-          </Typography>
+                {item.title}
+              </Typography>
+            </View>
+          </RMBadge>
         </View>
-      </View>
-    ));
+      );
+    });
 
     return (
       <View

@@ -143,7 +143,7 @@ export default class ListPage extends Component {
                     title="标题文字"
                     arrow="right"
                     badge={{
-                      dot: true,
+                      variant: 'dot',
                     }}
                   />
                   <RMListItem
@@ -152,17 +152,7 @@ export default class ListPage extends Component {
                     iconThumb="date_range"
                     iconThumbColor="warning"
                     badge={{
-                      dot: true,
-                    }}
-                  />
-                  <RMListItem
-                    title="标题文字"
-                    note="描述信息"
-                    arrow="right"
-                    iconThumb="date_range"
-                    iconThumbColor="warning"
-                    badge={{
-                      dot: true,
+                      variant: 'dot',
                     }}
                   />
                   <RMListItem
@@ -172,6 +162,17 @@ export default class ListPage extends Component {
                     iconThumb="date_range"
                     iconThumbColor="warning"
                     badge={{
+                      variant: 'dot',
+                    }}
+                  />
+                  <RMListItem
+                    title="标题文字"
+                    note="描述信息"
+                    arrow="right"
+                    iconThumb="date_range"
+                    iconThumbColor="warning"
+                    badge={{
+                      variant: 'text',
                       value: 999,
                       maxValue: 99,
                     }}
@@ -187,7 +188,7 @@ export default class ListPage extends Component {
                     extraIconThumb="bookmark"
                     extraIconThumbColor="warning"
                     badge={{
-                      dot: true,
+                      variant: 'dot',
                     }}
                   />
                   <RMListItem
@@ -201,9 +202,55 @@ export default class ListPage extends Component {
                     extraIconThumb="bookmark"
                     extraIconThumbColor="warning"
                     badge={{
+                      variant: 'text',
                       value: 999,
                       maxValue: 99,
                     }}
+                  />
+
+                  <RMListItem
+                    title="标题文字"
+                    note="描述信息"
+                    arrow="right"
+                    iconThumb="date_range"
+                    iconThumbColor="warning"
+                    extraText="信息"
+                    extraTextColor="warning"
+                    extraIconThumb="bookmark"
+                    extraIconThumbColor="warning"
+                    badge={{
+                      value: '热',
+                      variant: 'mark',
+                    }}
+                  />
+
+                  <RMListItem
+                    title="标题文字"
+                    note="描述信息"
+                    arrow="right"
+                    iconThumb="date_range"
+                    iconThumbColor="warning"
+                    extraText="信息"
+                    extraTextColor="warning"
+                    extraIconThumb="bookmark"
+                    extraIconThumbColor="warning"
+                    badge={{
+                      value: '奖',
+                      variant: 'ribbon',
+                    }}
+                  />
+
+                  <RMListItem
+                    title="标题文字"
+                    note="描述信息"
+                    arrow="right"
+                    iconThumb="date_range"
+                    iconThumbColor="warning"
+                    extraText="信息"
+                    extraTextColor="warning"
+                    extraIconThumb="bookmark"
+                    extraIconThumbColor="warning"
+                    badge={{}}
                   />
                 </RMList>
               </View>

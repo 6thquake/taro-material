@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { isFunction } from '../utils/typeof';
 
-import AtBadge from '../components/badge/index';
+import RMBadge from '../Badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 import RMButton from '../Button';
@@ -117,7 +117,7 @@ class ListItem extends Component {
           </View>
         </View>
         <View className="at-list__item-extra item-extra">
-          <AtBadge dot={!!badge.dot} value={badge.value} max={badge.maxValue}>
+          <RMBadge variant={badge.variant || 'text'} value={badge.value} maxValue={badge.maxValue}>
             <View
               className={classNames({
                 'item-extra__badge': true,
@@ -163,7 +163,7 @@ class ListItem extends Component {
                 </View>
               )}
             </View>
-          </AtBadge>
+          </RMBadge>
 
           {!extraText &&
             !extraThumb &&
@@ -250,7 +250,7 @@ ListItem.propTypes = {
   renderExtra: PropTypes.element,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   badge: PropTypes.shape({
-    dot: PropTypes.bool,
+    variant: PropTypes.oneOf(['text', 'ribbon', 'mark', 'dot']),
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     maxValue: PropTypes.number,
   }),

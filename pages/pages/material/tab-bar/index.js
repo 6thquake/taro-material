@@ -17,9 +17,26 @@ class Index extends RMPage {
   state = {
     current: 0,
     tabs: [
-      { title: '首页', iconType: 'home', size: 'inherit' },
-      { title: '日程', iconType: 'event_note', size: 'inherit' },
-      { title: '我的', iconType: 'person', size: 'inherit' },
+      { title: '首页', iconType: 'home', size: 'inherit', badge: { variant: 'dot' } },
+      {
+        title: '日程',
+        iconType: 'event_note',
+        size: 'inherit',
+        badge: { variant: 'text', value: 999, maxValue: 99 },
+      },
+      {
+        title: '发现',
+        iconType: 'person_pin_circle',
+        size: 'inherit',
+        badge: { value: '热', variant: 'mark' },
+      },
+      {
+        title: '日程',
+        iconType: 'local_grocery_store',
+        size: 'inherit',
+        badge: { value: '奖', variant: 'ribbon' },
+      },
+      { title: '我的', iconType: 'person', size: 'inherit', badge: {} },
     ],
   };
 

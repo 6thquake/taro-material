@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import { View, Image } from '@tarojs/components';
 
+import RMBadge from '../Badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
@@ -73,14 +74,19 @@ class Index extends Component {
 
     return (
       <View className={`root ${size}`} style={customStyle}>
-        {data.map(
-          (item, index) =>
-            item ? (
-              <View
-                style={style}
-                key={index}
-                onClick={this.handleClick.bind(this, item)}
-                className="box"
+        {data.map((item, index) => {
+          const badge = item.badge || {};
+          return item ? (
+            <View
+              style={style}
+              key={index}
+              onClick={this.handleClick.bind(this, item)}
+              className="box"
+            >
+              <RMBadge
+                variant={badge.variant || 'text'}
+                value={badge.value}
+                maxValue={badge.maxValue}
               >
                 <View
                   className="image"
@@ -131,11 +137,12 @@ class Index extends Component {
                       </RMTypography>
                     </View>
                   )}
-              </View>
-            ) : (
-              <View style={style} key={index} className="box" />
-            ),
-        )}
+              </RMBadge>
+            </View>
+          ) : (
+            <View style={style} key={index} className="box" />
+          );
+        })}
       </View>
     );
   }

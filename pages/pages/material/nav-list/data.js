@@ -8,6 +8,9 @@ const navigators = [
     color: theme.palette.primary.main,
     shortcut: true,
     path: '../../pages/navigators/index?group=payment',
+    badge: {
+      variant: 'dot',
+    },
   },
   {
     id: 'monitor',
@@ -16,6 +19,10 @@ const navigators = [
     color: theme.palette.primary.main,
     path: '../../pages/navigators/index?group=monitor',
     shortcut: true,
+    badge: {
+      variant: 'text',
+      value: '哈哈哈',
+    },
   },
   {
     id: 'bi',
@@ -24,6 +31,10 @@ const navigators = [
     color: theme.palette.primary.main,
     path: '../../pages/navigators/index?group=bi',
     shortcut: true,
+    badge: {
+      variant: 'ribbon',
+      value: '奖',
+    },
   },
   {
     id: 'purchase',
@@ -32,6 +43,10 @@ const navigators = [
     icon: 'shopping_cart',
     path: '../../pages/navigators/index?group=purchase',
     shortcut: true,
+    badge: {
+      variant: 'mark',
+      value: '热',
+    },
   },
   {
     id: 'analysis',
@@ -40,6 +55,7 @@ const navigators = [
     color: theme.palette.primary.main,
     path: '../../pages/navigators/index?group=analysis',
     shortcut: true,
+    badge: {},
   },
   {
     id: 'employ',
