@@ -23,6 +23,10 @@ class Index extends Component {
 
   componentDidHide() {}
 
+  handleNavListClick() {
+    console.log(arguments);
+  }
+
   render() {
     return (
       <View className="root">

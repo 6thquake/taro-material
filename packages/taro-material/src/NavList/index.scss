@@ -8,12 +8,15 @@
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-  .box {
-    width: 20%;
+  .box,
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  .box {
+    width: 20%;
     padding: #{$spacingUnit * 2}px 0px;
     font-size: #{0.75 * $typographyFontSize}px;
 

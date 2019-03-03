@@ -76,71 +76,68 @@ class Index extends Component {
       <View className={`root ${size}`} style={customStyle}>
         {data.map((item, index) => {
           const badge = item.badge || {};
-          return item ? (
-            <View
-              style={style}
-              key={index}
-              onClick={this.handleClick.bind(this, item)}
-              className="box"
-            >
-              <RMBadge
-                variant={badge.variant || 'text'}
-                value={badge.value}
-                maxValue={badge.maxValue}
-              >
-                <View
-                  className="image"
-                  style={{
-                    background: item.background || backgroundColor || 'inherit',
-                    color: item.color || color || 'inherit',
-                  }}
-                >
-                  {item.image && (
-                    <Image
+          return (
+            <View style={style} key={index} className="box">
+              {item && (
+                <View className="content" onClick={this.handleClick.bind(this, item)}>
+                  <RMBadge
+                    variant={badge.variant || 'text'}
+                    value={badge.value}
+                    maxValue={badge.maxValue}
+                  >
+                    <View
+                      className="image"
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        background: theme.palette.background.paper,
+                        background: item.background || backgroundColor || 'inherit',
+                        color: item.color || color || 'inherit',
                       }}
-                      src={item.image}
-                    />
-                  )}
-                  {item.icon && (
-                    <RMIcon
-                      block
-                      fontSize={item.fontSize || 'inherit'}
-                      customStyle={item.customStyle}
                     >
-                      {item.icon}
-                    </RMIcon>
-                  )}
-                </View>
-                {!concise &&
-                  item.title && (
-                    <View className="title">
-                      <RMTypography
-                        className="body1"
-                        fontSize="inherit"
-                        color={titleColor || 'inherit'}
-                        block
-                      >
-                        {item.title}
-                      </RMTypography>
+                      {item.image && (
+                        <Image
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            background: theme.palette.background.paper,
+                          }}
+                          src={item.image}
+                        />
+                      )}
+                      {item.icon && (
+                        <RMIcon
+                          block
+                          fontSize={item.fontSize || 'inherit'}
+                          customStyle={item.customStyle}
+                        >
+                          {item.icon}
+                        </RMIcon>
+                      )}
                     </View>
-                  )}
+                  </RMBadge>
+                  {!concise &&
+                    item.title && (
+                      <View className="title">
+                        <RMTypography
+                          className="body1"
+                          fontSize="inherit"
+                          color={titleColor || 'inherit'}
+                          block
+                        >
+                          {item.title}
+                        </RMTypography>
+                      </View>
+                    )}
 
-                {!concise &&
-                  item.subTitle && (
-                    <View className="subTitle">
-                      <RMTypography className="caption" color={subTitleColor || 'default'}>
-                        {item.subTitle}
-                      </RMTypography>
-                    </View>
-                  )}
-              </RMBadge>
+                  {!concise &&
+                    item.subTitle && (
+                      <View className="subTitle">
+                        <RMTypography className="caption" color={subTitleColor || 'default'}>
+                          {item.subTitle}
+                        </RMTypography>
+                      </View>
+                    )}
+                </View>
+              )}
             </View>
-          ) : (
-            <View style={style} key={index} className="box" />
           );
         })}
       </View>
