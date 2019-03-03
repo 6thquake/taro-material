@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { isFunction } from '../utils/typeof';
 
+import AtBadge from '../components/badge/index';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 import RMButton from '../Button';
@@ -59,6 +60,7 @@ class ListItem extends Component {
       switchIsCheck,
       disabled,
       customStyle,
+      badge = { dot: false, value: '', maxValue: 0 },
     } = this.props;
 
     let arrowIcon = null;
@@ -115,45 +117,65 @@ class ListItem extends Component {
           </View>
         </View>
         <View className="at-list__item-extra item-extra">
-          {extraText && (
-            <View className="item-extra__info">
-              <RMTypography className="body1" color={extraTextColor}>
-                {extraText}
-              </RMTypography>
+          <AtBadge dot={!!badge.dot} value={badge.value} max={badge.maxValue}>
+            <View
+              className={classNames({
+                'item-extra__badge': true,
+              })}
+            >
+              {extraText && (
+                <View className="item-extra__info">
+                  <RMTypography className="body1" color={extraTextColor}>
+                    {extraText}
+                  </RMTypography>
+                </View>
+              )}
+
+              {extraThumb && (
+                <View className="item-extra__image">
+                  <Image className="item-extra__image-info" mode="aspectFit" src={extraThumb} />
+                </View>
+              )}
+
+              {extraIconThumb && (
+                <View className="item-extra__image">
+                  <RMIcon
+                    className="item-extra__image-info"
+                    color={extraIconThumbColor}
+                    fontSize="inherit"
+                    block
+                  >
+                    {extraIconThumb}
+                  </RMIcon>
+                </View>
+              )}
+
+              {this.props.renderExtra}
+
+              {isSwitch && (
+                <View className="item-extra__switch" onClick={this.handleSwitchClick}>
+                  <Switch
+                    color={theme.palette.primary.main}
+                    checked={switchIsCheck}
+                    onChange={this.handleSwitchChange}
+                    disabled={disabled}
+                  />
+                </View>
+              )}
             </View>
-          )}
+          </AtBadge>
 
-          {extraThumb && (
-            <View className="item-extra__image">
-              <Image className="item-extra__image-info" mode="aspectFit" src={extraThumb} />
-            </View>
-          )}
-
-          {extraIconThumb && (
-            <View className="item-extra__image">
-              <RMIcon
-                className="item-extra__image-info"
-                color={extraIconThumbColor}
-                fontSize="inherit"
-                block
-              >
-                {extraIconThumb}
-              </RMIcon>
-            </View>
-          )}
-
-          {this.props.renderExtra}
-
-          {isSwitch && (
-            <View className="item-extra__switch" onClick={this.handleSwitchClick}>
-              <Switch
-                color={theme.palette.primary.main}
-                checked={switchIsCheck}
-                onChange={this.handleSwitchChange}
-                disabled={disabled}
+          {!extraText &&
+            !extraThumb &&
+            !extraIconThumb &&
+            !isSwitch &&
+            (badge.dot || badge.value) && (
+              <View
+                className={classNames({
+                  'item-extra__badge-num': badge.value,
+                })}
               />
-            </View>
-          )}
+            )}
 
           {arrowIcon && (
             <View
@@ -163,7 +185,7 @@ class ListItem extends Component {
               }}
             >
               <RMButton variant="text" color="default" size="normal" disabled={disabled}>
-                <RMIcon color="inherit" fontSize="inherit">
+                <RMIcon color="inherit" fontSize="inherit" block>
                   {arrowIcon}
                 </RMIcon>
               </RMButton>
@@ -180,6 +202,7 @@ ListItem.defaultProps = {
   isSwitch: false,
   disabled: false,
   customStyle: {},
+  badge: { dot: false, value: '', maxValue: 0 },
 };
 
 ListItem.propTypes = {
@@ -226,6 +249,11 @@ ListItem.propTypes = {
   renderTitle: PropTypes.element,
   renderExtra: PropTypes.element,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  badge: PropTypes.shape({
+    dot: PropTypes.bool,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    maxValue: PropTypes.number,
+  }),
 };
 
 export default ListItem;

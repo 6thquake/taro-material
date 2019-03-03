@@ -80,41 +80,46 @@ class TabBar extends Component {
         )}
         style={this.mergeStyle(rootStyle, customStyle)}
       >
-        {tabList.map((item, i) => (
-          <View
-            className="at-tab-bar__item"
-            style={current === i ? selectedStyle : defaultStyle}
-            key={item.title}
-            onClick={this.handleClick.bind(this, i)}
-          >
-            {item.iconType ? (
-              <AtBadge dot={!!item.dot} value={item.text} max={item.max}>
-                <View className="at-tab-bar__icon" style={{ fontSize: `${iconSize}px` }}>
-                  <RMIcon
-                    prefixClass={item.iconPrefixClass}
-                    fontSize="inherit"
-                    color={current === i ? selectedColor : color}
-                  >
-                    {current === i && item.selectedIconType ? item.selectedIconType : item.iconType}
-                  </RMIcon>
-                </View>
-              </AtBadge>
-            ) : null}
-            <View>
-              <AtBadge
-                dot={item.iconType ? false : !!item.dot}
-                value={item.iconType ? '' : item.text}
-                max={item.iconType ? '' : item.max}
-              >
-                <View className="at-tab-bar__title" style={titleStyle}>
-                  <RMTypography className="caption" color="inherit" fontSize="inherit">
-                    {item.title}
-                  </RMTypography>
-                </View>
-              </AtBadge>
+        {tabList.map((item, i) => {
+          const { badge = {} } = item;
+          return (
+            <View
+              className="at-tab-bar__item"
+              style={current === i ? selectedStyle : defaultStyle}
+              key={item.title}
+              onClick={this.handleClick.bind(this, i)}
+            >
+              {item.iconType ? (
+                <AtBadge dot={!!badge.dot} value={badge.value} max={badge.maxValue}>
+                  <View className="at-tab-bar__icon" style={{ fontSize: `${iconSize}px` }}>
+                    <RMIcon
+                      prefixClass={item.iconPrefixClass}
+                      fontSize="inherit"
+                      color={current === i ? selectedColor : color}
+                    >
+                      {current === i && item.selectedIconType
+                        ? item.selectedIconType
+                        : item.iconType}
+                    </RMIcon>
+                  </View>
+                </AtBadge>
+              ) : null}
+              <View>
+                <AtBadge
+                  dot={item.iconType ? false : !!badge.dot}
+                  value={item.iconType ? '' : badge.value}
+                  max={item.iconType ? '' : badge.maxValue}
+                >
+                  <View className="at-tab-bar__title" style={titleStyle}>
+                    <RMTypography className="caption" color="inherit" fontSize="inherit">
+                      {item.title}
+                    </RMTypography>
+                  </View>
+                </AtBadge>
+              </View>
             </View>
-          </View>
-        ))}
+          );
+        })}
       </View>
     );
   }

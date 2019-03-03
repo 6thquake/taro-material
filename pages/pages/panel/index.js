@@ -399,6 +399,10 @@ export default class PanelBasic extends Component {
             id: 'Pretty-Number',
             name: '格式化数字',
           },
+          {
+            id: 'List',
+            name: '列表',
+          },
         ],
       },
     };
