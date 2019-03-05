@@ -12,6 +12,10 @@ class Index extends Component {
   };
   state = {};
 
+  handleClick(name) {
+    console.log(name);
+  }
+
   render() {
     return (
       <View className="root">
@@ -19,25 +23,33 @@ class Index extends Component {
           <View className="title">text：</View>
           <View className="badge">
             <RMBadge value={10} variant="text">
-              <RMButton variant="contained">测试</RMButton>
+              <RMButton variant="contained" onClick={this.handleClick.bind(this, 'text')}>
+                测试
+              </RMButton>
             </RMBadge>
           </View>
           <View className="title">dot：</View>
           <View className="badge">
             <RMBadge value={10} variant="dot">
-              <RMButton variant="contained">测试</RMButton>
+              <RMButton variant="contained" onClick={this.handleClick.bind(this, 'dot')}>
+                测试
+              </RMButton>
             </RMBadge>
           </View>
           <View className="title">mark：</View>
           <View className="badge">
             <RMBadge value="热" variant="mark">
-              <RMButton variant="contained">测试</RMButton>
+              <RMButton variant="contained" onClick={this.handleClick.bind(this, 'mark')}>
+                测试
+              </RMButton>
             </RMBadge>
           </View>
           <View className="title">ribbon：</View>
           <View className="badge">
             <RMBadge value="点我抽奖" variant="ribbon">
-              <RMButton variant="contained">测试</RMButton>
+              <RMButton variant="contained" onClick={this.handleClick.bind(this, 'ribbon1')}>
+                测试
+              </RMButton>
             </RMBadge>
           </View>
 
@@ -65,6 +77,7 @@ class Index extends Component {
                   color: theme.palette.primary.contrastText,
                   fontSize: '96px',
                 }}
+                onClick={this.handleClick.bind(this, 'ribbon2')}
               >
                 测试
               </View>

@@ -16,14 +16,16 @@ export default class Badge extends Component {
       this.refElem
         .boundingClientRect(res => {
           const { width, height } = res;
-          const w = width;
-          const h = height;
+          const w = Math.ceil(width);
+          const h = Math.ceil(height);
+          const top = Math.ceil((Math.sqrt(2) / 2) * h) + 2;
+          const right = Math.ceil((1 - 1 / Math.sqrt(2)) * w + h / Math.sqrt(2)) + 2;
 
           this.setState({
             width: `${w}px`,
             height: `${h}px`,
-            top: `-${(Math.sqrt(2) / 2) * h}px`,
-            right: `-${(1 - 1 / Math.sqrt(2)) * w + h / Math.sqrt(2)}px`,
+            top: `-${top}px`,
+            right: `-${right}px`,
             transform: 'rotate(45deg)',
             transformOrigin: 'left top',
             sutureStyle: height < 32 ? 'solid' : 'dashed',
@@ -32,6 +34,14 @@ export default class Badge extends Component {
           });
         })
         .exec();
+    }
+  }
+
+  handleClick() {
+    const { onClick } = this.props;
+
+    if (onClick) {
+      onClick();
     }
   }
 
@@ -72,7 +82,10 @@ export default class Badge extends Component {
     }
 
     return (
-      <View className={classNames('rm-badge', this.props.className)}>
+      <View
+        className={classNames('rm-badge', this.props.className)}
+        onClick={this.handleClick.bind(this)}
+      >
         {variant === 'dot' && (
           <AtBadge value={value} maxValue={maxValue} dot customStyle={customStyle}>
             {this.props.children}
@@ -123,6 +136,7 @@ Badge.defaultProps = {
   customStyle: {},
   className: '',
   renderValue: null,
+  onClick: () => {},
 };
 
 Badge.propTypes = {
@@ -142,4 +156,5 @@ Badge.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   renderValue: PropTypes.element,
+  onClick: PropTypes.func,
 };
