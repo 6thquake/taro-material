@@ -8,6 +8,10 @@ $zIndex: 10;
   font-size: 0;
   vertical-align: middle;
 
+  &.block {
+    display: block;
+  }
+
   &-mark {
     position: absolute;
     z-index: $zIndex;
@@ -45,6 +49,7 @@ $zIndex: 10;
     height: 100%;
     overflow: hidden;
   }
+
   &-ribbon {
     position: absolute;
     z-index: #{($zIndex - 1)};
