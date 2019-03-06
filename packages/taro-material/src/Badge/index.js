@@ -92,11 +92,14 @@ export default class Badge extends Component {
           </AtBadge>
         )}
 
-        {variant === 'text' && (
-          <AtBadge value={value} maxValue={maxValue} dot={false} customStyle={customStyle}>
-            {this.props.children}
-          </AtBadge>
-        )}
+        {value &&
+          variant === 'text' && (
+            <AtBadge value={value} maxValue={maxValue} dot={false} customStyle={customStyle}>
+              {this.props.children}
+            </AtBadge>
+          )}
+
+        {!value && variant === 'text' && <View>{this.props.children} </View>}
 
         {variant === 'mark' && (
           <View>
