@@ -71,7 +71,7 @@ class RMCheckbox extends Component {
 }
 
 RMCheckbox.propTypes = {
-  value: PropTypes.object,
+  value: PropTypes.oneOf([PropTypes.object, PropTypes.string, PropTypes.number]),
   color: PropTypes.oneOf([
     'default',
     'primary',
