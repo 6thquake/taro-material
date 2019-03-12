@@ -10,7 +10,7 @@
 
   &__item {
     position: relative;
-    padding: $spacing-v-lg $spacing-h-lg;
+    padding: #{$spacingUnit * 4}px #{$spacingUnit * 4}px;
     font-size: $font-size-base;
     // color: $color-text-base;
     text-overflow: ellipsis;
