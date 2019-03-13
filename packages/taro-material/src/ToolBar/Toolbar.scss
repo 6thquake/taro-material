@@ -9,7 +9,7 @@
     z-index: $zIndexDropdown;
     align-items: center;
     justify-content: space-between;
-    padding: #{$spacingUnit * 3}px;
+    padding: #{$spacingUnit * 2}px #{$spacingUnit * 3}px;
     border-bottom: solid 1px $paletteGrey200;
     .title {
       display: flex;
