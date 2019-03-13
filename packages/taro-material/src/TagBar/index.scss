@@ -26,5 +26,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: #{$spacingUnit}px;
+    position: fixed;
+    min-height: 40px;
+    width: 100%;
   }
 }

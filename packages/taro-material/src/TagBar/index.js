@@ -26,19 +26,21 @@ class TagBar extends Component {
       onAddPageScroll(this.handlePageScroll.bind(this));
     }
 
+    // setTimeout(() => {
     this.scrollbarRefEle
       .boundingClientRect(rect => {
         this.setState({
           top: rect.top,
-          scrollbar: { ...rect, opacity: 1, _height: rect.height },
+          scrollbar: { ...rect, opacity: 1, height: rect.height },
         });
       })
       .exec();
     this.valueBarRefEle
       .boundingClientRect(rect => {
-        this.setState({ valueBar: rect, opacity: 0, _height: rect.height });
+        this.setState({ valueBar: { ...rect, opacity: 0, height: rect.height } });
       })
       .exec();
+    // }, 1000);
   }
 
   componentWillUnmount() {}
@@ -140,7 +142,7 @@ class TagBar extends Component {
   }
 
   render() {
-    const { data, values, offsetTop, color } = this.props;
+    const { data, values, offsetTop, color, customStyle } = this.props;
     const { scrollbar, valueBar } = this.state;
     const valText = Object.values(values).join(' · ') || '暂无过滤条件';
     const valColor = theme.palette[color] ? theme.palette[color].main : color;
@@ -152,6 +154,7 @@ class TagBar extends Component {
           style={{
             opacity: scrollbar.opacity,
             height: `${scrollbar._height}px`,
+            ...customStyle,
           }}
         >
           {data.map((item, index) => (
@@ -201,10 +204,8 @@ class TagBar extends Component {
           style={{
             opacity: valueBar.opacity,
             height: `${valueBar._height}px`,
-            minHeight: '24px',
-            position: 'fixed',
             top: `${offsetTop}px`,
-            width: '100%',
+            ...customStyle,
           }}
         >
           <RMTypography color={valColor} className="body2" block>
@@ -222,7 +223,7 @@ TagBar.propTypes = {
   data: PropTypes.array,
   values: PropTypes.object,
   offsetTop: PropTypes.number,
-
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   color: PropTypes.oneOf([
     'default',
     'inherit',
@@ -242,6 +243,7 @@ TagBar.defaultProps = {
   onAddPageScroll: () => {},
   offsetTop: 0,
   color: 'primary',
+  customStyle: {},
 };
 
 export default TagBar;
