@@ -403,6 +403,10 @@ export default class PanelBasic extends Component {
             id: 'List',
             name: '列表',
           },
+          {
+            id: 'Tag-Bar',
+            name: '过滤条',
+          },
         ],
       },
     };

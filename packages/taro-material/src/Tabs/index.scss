@@ -10,7 +10,7 @@
 
   &__item {
     position: relative;
-    padding: #{$spacingUnit * 4}px #{$spacingUnit * 4}px;
+    padding: #{$spacingUnit * 3}px #{$spacingUnit * 4}px;
     font-size: $font-size-base;
     // color: $color-text-base;
     text-overflow: ellipsis;
@@ -149,6 +149,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: #{$spacingUnit * 4}px;
 
       &::after {
         top: 0;

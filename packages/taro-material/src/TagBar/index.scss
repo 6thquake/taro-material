@@ -1,0 +1,30 @@
+@import '../styles/theme.scss';
+
+.tagbar {
+  .scrollbar {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: #{$spacingUnit}px 0px;
+  }
+
+  .tag {
+    display: inline-block;
+    overflow: visible;
+    margin: 0px #{$spacingUnit * 2}px;
+  }
+
+  .vals {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}

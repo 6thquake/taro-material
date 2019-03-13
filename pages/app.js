@@ -91,6 +91,7 @@ class App extends Component {
       'pages/material/count-down/index',
       'pages/material/pretty-number/index',
       'pages/material/list/index',
+      'pages/material/tag-bar/index',
     ],
     window: {
       backgroundTextStyle: 'light',
