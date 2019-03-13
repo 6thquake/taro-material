@@ -12,8 +12,8 @@ import './index.scss';
 class TagBar extends Component {
   state = {
     scrollTop: 0,
-    scrollbar: { opacity: 1, _height: 'auto' },
-    valueBar: { opacity: 0, _height: 'auto' },
+    scrollbar: { opacity: 1, visibility: 'visible', _height: 'auto' },
+    valueBar: { opacity: 0, visibility: 'hidden', _height: 'auto' },
   };
 
   scrollbarRef = node => (this.scrollbarRefEle = node);
@@ -31,13 +31,27 @@ class TagBar extends Component {
       .boundingClientRect(rect => {
         this.setState({
           top: rect.top,
-          scrollbar: { ...rect, opacity: 1, height: rect.height },
+          scrollbar: {
+            ...rect,
+            opacity: 1,
+            visibility: 'visible',
+            height: rect.height,
+            _height: 'auto',
+          },
         });
       })
       .exec();
     this.valueBarRefEle
       .boundingClientRect(rect => {
-        this.setState({ valueBar: { ...rect, opacity: 0, height: rect.height } });
+        this.setState({
+          valueBar: {
+            ...rect,
+            opacity: 0,
+            visibility: 'hidden',
+            height: rect.height,
+            _height: 'auto',
+          },
+        });
       })
       .exec();
     // }, 1000);
@@ -60,11 +74,13 @@ class TagBar extends Component {
         scrollbar: {
           ...scrollbar,
           opacity: 1,
+          visibility: 'visible',
           _height: scrollbar.height,
         },
         valueBar: {
           ...valueBar,
           opacity: 0,
+          visibility: 'hidden',
           _height: 0,
         },
       };
@@ -75,11 +91,13 @@ class TagBar extends Component {
         scrollbar: {
           ...scrollbar,
           opacity: 1 - opacity,
+          visibility: 'visible',
           _height: scrollbar.height - h,
         },
         valueBar: {
           ...valueBar,
           opacity,
+          visibility: 'visible',
           _height: h,
         },
       };
@@ -88,11 +106,13 @@ class TagBar extends Component {
         scrollbar: {
           ...scrollbar,
           opacity: 0,
+          visibility: 'hidden',
           _height: scrollbar.height - valueBar.height,
         },
         valueBar: {
           ...valueBar,
           opacity: 1,
+          visibility: 'visible',
           _height: valueBar.height,
         },
       };
@@ -152,9 +172,10 @@ class TagBar extends Component {
         <View
           ref={this.scrollbarRef}
           style={{
-            opacity: scrollbar.opacity,
-            height: `${scrollbar._height}px`,
             ...customStyle,
+            opacity: scrollbar.opacity,
+            // height: `${scrollbar._height}px`,
+            visibility: scrollbar.visibility,
           }}
         >
           {data.map((item, index) => (
@@ -202,10 +223,11 @@ class TagBar extends Component {
           className="vals"
           ref={this.valueBarRef}
           style={{
+            ...customStyle,
             opacity: valueBar.opacity,
             height: `${valueBar._height}px`,
+            visibility: valueBar.visibility,
             top: `${offsetTop}px`,
-            ...customStyle,
           }}
         >
           <RMTypography color={valColor} className="body2" block>
