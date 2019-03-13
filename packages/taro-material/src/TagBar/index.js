@@ -133,7 +133,7 @@ class TagBar extends Component {
 
   handleClick(name, option, e) {
     const { values, onChange } = this.props;
-    const { value, disabled } = option;
+    const { value, disabled, label } = option;
 
     if (disabled) {
       return;
@@ -143,7 +143,7 @@ class TagBar extends Component {
       onChange(
         {
           ...values,
-          [name]: value,
+          [name]: { value, label },
         },
         e,
       );
@@ -164,7 +164,11 @@ class TagBar extends Component {
   render() {
     const { data, values, offsetTop, color, customStyle } = this.props;
     const { scrollbar, valueBar } = this.state;
-    const valText = Object.values(values).join(' · ') || '暂无过滤条件';
+
+    const valuesText =
+      Object.values(values)
+        .map(option => option.label)
+        .join(' · ') || '暂无过滤条件';
 
     const _color = theme.palette[color];
     const valColor = _color ? _color.main : color;
@@ -198,7 +202,9 @@ class TagBar extends Component {
 
                 {item.options.map((option, key) => {
                   const active =
-                    !option.disabled && values[item.name] && values[item.name] === option.value;
+                    !option.disabled &&
+                    values[item.name] &&
+                    values[item.name].value === option.value;
 
                   return (
                     <View
@@ -234,7 +240,7 @@ class TagBar extends Component {
           }}
         >
           <RMTypography color={valColor} className="body2" block>
-            {valText}
+            {valuesText}
           </RMTypography>
         </View>
       </View>

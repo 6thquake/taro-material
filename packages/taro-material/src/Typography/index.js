@@ -50,6 +50,7 @@ class Typography extends Component {
         <Text space={space} selectable={selectable} decode={decode}>
           {this.props.children}
         </Text>
+        {this.props.children}
       </View>
     );
   }
