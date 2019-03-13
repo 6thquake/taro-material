@@ -133,7 +133,7 @@ class TagBar extends Component {
 
   handleClick(name, option, e) {
     const { values, onChange } = this.props;
-    const { value, disabled, label } = option;
+    const { value, disabled } = option;
 
     if (disabled) {
       return;
@@ -143,7 +143,7 @@ class TagBar extends Component {
       onChange(
         {
           ...values,
-          [name]: { value, label },
+          [name]: value,
         },
         e,
       );
@@ -161,14 +161,28 @@ class TagBar extends Component {
     onChange && onChange(rs, e);
   }
 
+  getValuesText() {
+    const { values, data } = this.props;
+
+    const text = [];
+    Object.keys(values).forEach(key => {
+      const d = data.find(item => item.name === key);
+      if (d) {
+        const op = d.options.find(option => option.value === values[key]);
+        if (op) {
+          text.push(op.label);
+        }
+      }
+    });
+
+    return text.join(' · ') || '暂无过滤条件';
+  }
+
   render() {
     const { data, values, offsetTop, color, customStyle } = this.props;
     const { scrollbar, valueBar } = this.state;
 
-    const valuesText =
-      Object.values(values)
-        .map(option => option.label)
-        .join(' · ') || '暂无过滤条件';
+    const valuesText = this.getValuesText();
 
     const _color = theme.palette[color];
     const valColor = _color ? _color.main : color;
@@ -201,10 +215,7 @@ class TagBar extends Component {
                 </View>
 
                 {item.options.map((option, key) => {
-                  const active =
-                    !option.disabled &&
-                    values[item.name] &&
-                    values[item.name].value === option.value;
+                  const active = !option.disabled && values[item.name] === option.value;
 
                   return (
                     <View
