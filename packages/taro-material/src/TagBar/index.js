@@ -165,7 +165,10 @@ class TagBar extends Component {
     const { data, values, offsetTop, color, customStyle } = this.props;
     const { scrollbar, valueBar } = this.state;
     const valText = Object.values(values).join(' · ') || '暂无过滤条件';
-    const valColor = theme.palette[color] ? theme.palette[color].main : color;
+
+    const _color = theme.palette[color];
+    const valColor = _color ? _color.main : color;
+    const labelColor = _color ? _color.contrastText : color;
 
     return (
       <View className="tagbar">
@@ -187,7 +190,7 @@ class TagBar extends Component {
                       {item.label}
                     </RMTag>
                   ) : (
-                    <RMTypography color="default" className="body1" block>
+                    <RMTypography color={labelColor} className="body1" block>
                       {item.label}
                     </RMTypography>
                   )}
@@ -208,7 +211,7 @@ class TagBar extends Component {
                           {option.label}
                         </RMTag>
                       ) : (
-                        <RMTypography color="default" className="body1" block>
+                        <RMTypography color={labelColor} className="body1" block>
                           {option.label}
                         </RMTypography>
                       )}
