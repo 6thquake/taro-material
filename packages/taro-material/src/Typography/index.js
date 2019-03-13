@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, Text } from '@tarojs/components';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -13,7 +13,17 @@ class Typography extends Component {
   };
 
   render() {
-    const { className, color, block, onClick, customStyle, fontSize } = this.props;
+    const {
+      className,
+      color,
+      block,
+      onClick,
+      customStyle,
+      fontSize,
+      space,
+      decode,
+      selectable,
+    } = this.props;
 
     const classes = classNames(
       {
@@ -37,7 +47,9 @@ class Typography extends Component {
 
     return (
       <View className={classes} style={style} onClick={onClick}>
-        {this.props.children}
+        <Text space={space} selectable={selectable} decode={decode}>
+          {this.props.children}
+        </Text>
       </View>
     );
   }
@@ -49,6 +61,9 @@ Typography.defaultProps = {
   block: false,
   onClick: () => {},
   customStyle: {},
+  space: 'nbsp',
+  decode: false,
+  selectable: true,
 };
 
 Typography.propTypes = {
@@ -58,6 +73,9 @@ Typography.propTypes = {
   block: PropTypes.bool,
   onClick: PropTypes.func,
   customStyle: PropTypes.object,
+  space: PropTypes.oneOf(['ensp', 'emsp', 'nbsp']),
+  selectable: PropTypes.bool,
+  decode: PropTypes.bool,
 };
 
 export default Typography;
