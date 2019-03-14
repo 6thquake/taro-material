@@ -291,6 +291,7 @@ class RMButton extends Component {
         _customStyle.color = _fontColor;
         _customStyle.border = `1px solid ${_color}`;
         _customStyle.background = _color;
+        _customStyle.minWidth = 'auto';
         break;
       case 'outlined':
         _customStyle.color = _color;
