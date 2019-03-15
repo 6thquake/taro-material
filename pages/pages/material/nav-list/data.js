@@ -1,4 +1,4 @@
-import theme from '../../../styles/theme';
+import theme from '../../../styles/theme'
 
 const navigators = [
   {
@@ -19,6 +19,7 @@ const navigators = [
     color: theme.palette.primary.main,
     path: '../../pages/navigators/index?group=monitor',
     shortcut: true,
+    mark: 'v2',
     badge: {
       variant: 'text',
       value: '哈哈哈',
@@ -79,38 +80,51 @@ const navigators = [
     },
   },
   {
+    id: 'monitor',
+    title: '实时监控',
+    icon: 'store',
+    color: theme.palette.primary.main,
+    path: '../../pages/navigators/index?group=monitor',
+    shortcut: true,
+    mark: 'v2',
+    badge: {
+      variant: 'text',
+      value: '哈哈哈',
+    },
+  },
+  {
     id: 'chamberlain',
     title: '管家服务',
     icon: 'security',
     shortcut: true,
     color: theme.palette.primary.main,
     path: '../../pages/navigators/index?group=chamberlain',
-  },
-];
+  }
+]
 
-const navList = [];
+const navList = []
 
-function find(items) {
+function find (items) {
   if (!items || items.lenght <= 0) {
-    return;
+    return
   }
   items.map(item => {
     if (item.shortcut) {
-      navList.push(item);
+      navList.push(item)
     }
-    find(item.children);
-  });
+    find(item.children)
+  })
 }
 
-find(navigators);
+find(navigators)
 
 navList.push({
   title: '更多',
   icon: 'widgets',
   color: theme.palette.grey['600'],
   path: '../navigators/index',
-});
+})
 
-export { navList };
+export { navList }
 
-export default navigators;
+export default navigators
