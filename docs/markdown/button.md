@@ -14,6 +14,15 @@ import { AtButton } from 'taro-ui'
 ```
 :::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-ui/dist/style/components/loading.scss";
+```
+:::
+
 ## 一般用法
 
 :::demo

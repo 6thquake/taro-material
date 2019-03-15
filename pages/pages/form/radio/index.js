@@ -1,13 +1,14 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtRadio from '../../../components/radio/index';
+import { AtRadio } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   constructor() {
     super(...arguments);
     this.state = {

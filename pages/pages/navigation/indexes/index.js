@@ -1,13 +1,14 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtIndexes from '../../../components/indexes/index';
+import { AtIndexes } from 'taro-ui';
 import mockData from './mock-data';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   onClick(item) {
     console.log(item);
   }

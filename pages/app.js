@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import Index from './index/index';
+import Index from './pages/index/index';
 
 import './app.scss';
 
@@ -58,6 +58,8 @@ class App extends Component {
       'pages/form/image-picker/index',
       'pages/form/range/index',
       'pages/advanced/calendar/index',
+      'pages/theme/index',
+
       'pages/material/filters/index',
       'pages/material/search/index',
       'pages/material/affix/index',
@@ -95,7 +97,7 @@ class App extends Component {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#ffffff',
+      navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black',
     },

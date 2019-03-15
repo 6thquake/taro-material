@@ -1,18 +1,13 @@
-/* eslint taro/custom-component-children: 0 */
-
 import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-
-import AtActionSheet from '../../../components/action-sheet';
-import AtActionSheetItem from '../../../components/action-sheet/body/item/index';
+import { AtActionSheet, AtActionSheetItem } from 'taro-ui';
 import AtButton from '../../../components/button/index';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class ActionSheetPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {

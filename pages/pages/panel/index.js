@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
-
 import iconBasic from '../../assets/images/icon-list-basic.png';
 import iconView from '../../assets/images/icon-list-view.png';
 import iconAction from '../../assets/images/icon-list-action.png';
@@ -14,7 +13,7 @@ import './index.scss';
 
 export default class PanelBasic extends Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -422,7 +421,7 @@ export default class PanelBasic extends Component {
   gotoComponent = e => {
     const { id, parent } = e.currentTarget.dataset;
     Taro.navigateTo({
-      url: `../${parent.toLowerCase()}/${id.toLowerCase()}/index`,
+      url: `/pages/${parent.toLowerCase()}/${id.toLowerCase()}/index`,
     });
   };
 

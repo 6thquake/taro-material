@@ -1,13 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View, Text, Swiper, SwiperItem, Slider, Image } from '@tarojs/components';
-import AtList from '../../../components/list/index';
-import AtListItem from '../../../components/list/item/index';
+import { AtList, AtListItem } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class PageSlider extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -94,13 +93,7 @@ export default class PageSlider extends Taro.Component {
                 >
                   {imgUrls.map((item, idx) => (
                     <SwiperItem key={idx}>
-                      <Image
-                        mode="widthFix"
-                        src={item}
-                        className="slide-image"
-                        width="355"
-                        height="150"
-                      />
+                      <Image src={item} className="slide-image" width="355" height="150" />
                     </SwiperItem>
                   ))}
                 </Swiper>

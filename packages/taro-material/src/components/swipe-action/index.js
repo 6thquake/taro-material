@@ -3,14 +3,17 @@ import { View, Text } from '@tarojs/components'
 
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+
+import _isNil from 'lodash/isNil'
+import _isEmpty from 'lodash/isEmpty'
 import _inRange from 'lodash/inRange'
 import _isFunction from 'lodash/isFunction'
 
 import AtComponent from '../../common/component'
 import AtSwipeActionOptions from './options/index'
-import { delayQuerySelector } from '../../common/utils'
+import { delayGetClientRect, delayGetScrollOffset } from '../../common/utils'
 
-import './index.scss'
+let id = 0
 
 export default class AtSwipeAction extends AtComponent {
   constructor (props) {
@@ -28,17 +31,25 @@ export default class AtSwipeAction extends AtComponent {
     this.isTouching = false
 
     this.state = {
+      componentId: ++id,
       offsetSize: 0,
       _isOpened: isOpened
     }
   }
 
-  componentDidMount () {
-    delayQuerySelector(
-      Taro.getEnv() === Taro.ENV_TYPE.WEB ? this : this.$scope,
-      '.at-swipe-action'
-    ).then(res => {
-      this.domInfo = res[0]
+  getDomInfo () {
+    this.domInfo = {}
+    return Promise.all([
+      delayGetClientRect({
+        self: this,
+        delayTime: 0,
+        selectorStr: `#swipeAction-${this.state.componentId}`
+      }),
+      delayGetScrollOffset({ delayTime: 0 })
+    ]).then(([rect, scrollOffset]) => {
+      rect[0].top += scrollOffset[0].scrollTop
+      rect[0].bottom += scrollOffset[0].scrollTop
+      this.domInfo = rect[0]
     })
   }
 
@@ -70,6 +81,13 @@ export default class AtSwipeAction extends AtComponent {
     }
   }
 
+  computeTransform = value => {
+    if (Taro.getEnv() === Taro.ENV_TYPE.ALIPAY) {
+      return !_isNil(value) ? `translate3d(${value}px,0,0)` : null
+    }
+    return value ? `translate3d(${value}px,0,0)` : null
+  }
+
   handleOpened = () => {
     if (_isFunction(this.props.onOpened) && !this.state._isOpened) {
       this.props.onOpened()
@@ -87,12 +105,18 @@ export default class AtSwipeAction extends AtComponent {
 
     if (this.props.disabled) return
 
+    this.getDomInfo()
+
     this.startX = clientX
     this.startY = clientY
     this.isTouching = true
   }
 
   handleTouchMove = e => {
+    if (_isEmpty(this.domInfo)) {
+      return
+    }
+
     const { startX, startY } = this
     const { top, bottom, left, right } = this.domInfo
     const { clientX, clientY, pageX, pageY } = e.touches[0]
@@ -159,12 +183,13 @@ export default class AtSwipeAction extends AtComponent {
   }
 
   render () {
-    const { offsetSize } = this.state
+    const { offsetSize, componentId } = this.state
     const { options } = this.props
     const rootClass = classNames('at-swipe-action', this.props.className)
 
     return (
       <View
+        id={`swipeAction-${componentId}`}
         className={rootClass}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}
@@ -175,14 +200,17 @@ export default class AtSwipeAction extends AtComponent {
             animtion: !this.isTouching
           })}
           style={{
-            transform: offsetSize ? `translate3d(${offsetSize}px,0,0)` : null
+            transform: this.computeTransform(offsetSize)
           }}
         >
           {this.props.children}
         </View>
 
         {Array.isArray(options) && options.length > 0 ? (
-          <AtSwipeActionOptions onQueryedDom={this.handleDomInfo}>
+          <AtSwipeActionOptions
+            componentId={id}
+            onQueryedDom={this.handleDomInfo}
+          >
             {options.map((item, key) => (
               <View
                 key={key}
@@ -204,6 +232,7 @@ export default class AtSwipeAction extends AtComponent {
 }
 
 AtSwipeAction.defaultProps = {
+  isTest: false,
   options: [],
   isOpened: false,
   disabled: false,
@@ -211,6 +240,7 @@ AtSwipeAction.defaultProps = {
 }
 
 AtSwipeAction.propTypes = {
+  isTest: PropTypes.bool,
   isOpened: PropTypes.bool,
   disabled: PropTypes.bool,
   autoClose: PropTypes.bool,

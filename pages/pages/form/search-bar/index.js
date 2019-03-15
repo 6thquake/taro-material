@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtSearchBar from '../../../components/search-bar/index';
+import { AtSearchBar } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -18,6 +18,7 @@ export default class Index extends Taro.Component {
       value3: '',
     };
   }
+
   onChange(stateName, value) {
     this.setState({
       [stateName]: value,
@@ -75,6 +76,7 @@ export default class Index extends Taro.Component {
             <View className="panel__content no-padding">
               <View className="component-item">
                 <AtSearchBar
+                  placeholder="请输入ISBN号"
                   showActionButton
                   value={this.state.value3}
                   onChange={this.onChange.bind(this, 'value3')}

@@ -1,13 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtSteps from '../../../components/steps/index';
+import { AtSteps } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class TimelinePage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -74,7 +73,7 @@ export default class TimelinePage extends Taro.Component {
       {
         title: '步骤一',
         desc: '这里是额外的信息，最多两行',
-        success: true,
+        status: 'success',
       },
       {
         title: '步骤二',
@@ -83,7 +82,7 @@ export default class TimelinePage extends Taro.Component {
       {
         title: '步骤三',
         desc: '这里是额外的信息，最多两行',
-        error: true,
+        status: 'error',
       },
     ];
 

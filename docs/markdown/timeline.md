@@ -14,6 +14,15 @@ import { AtTimeline } from 'taro-ui'
 ```
 :::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/timeline.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+```
+:::
+
 ## 用法
 
 :::demo

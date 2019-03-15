@@ -1,5 +1,5 @@
-@import "../style/mixins/index.scss";
-@import '../style/theme/default.scss';
+@import '../style/mixins/index.scss';
+@import '../style/variables/default.scss';
 @import '../styles/theme.scss';
 
 .at-selection {
@@ -13,9 +13,9 @@
 
   &__container {
     position: relative;
-    padding: #{$spacingUnit * 2}px;
+    padding: 0px #{$spacingUnit * 2}px;
   }
-  
+
   &__selection {
     position: absolute;
     top: 0px;
@@ -35,7 +35,9 @@
   }
 
   &--disabled {
-    .at-selection__selection, .checkbox, .radio {
+    .at-selection__selection,
+    .checkbox,
+    .radio {
       opacity: $opacity-disabled;
     }
 
@@ -58,7 +60,7 @@
     .radio {
       &.checked {
         border-color: $paletteGrey500;
-      }  
+      }
     }
   }
   &.primary {
@@ -69,13 +71,13 @@
       &.checked {
         background: $palettePrimaryMain;
         border-color: $palettePrimaryMain;
-        color: $palettePrimaryContrastText;  
-      }  
+        color: $palettePrimaryContrastText;
+      }
     }
     .radio {
       &.checked {
         border-color: $palettePrimaryMain;
-      }  
+      }
     }
   }
   &.secondary {
@@ -86,7 +88,7 @@
       &.checked {
         background: $paletteSecondaryMain;
         border-color: $paletteSecondaryMain;
-        color: $paletteSecondaryContrastText;   
+        color: $paletteSecondaryContrastText;
       }
     }
     .radio {
@@ -103,13 +105,13 @@
       &.checked {
         background: $paletteErrorMain;
         border-color: $paletteErrorMain;
-        color: $paletteErrorContrastText; 
-      }   
+        color: $paletteErrorContrastText;
+      }
     }
     .radio {
       &.checked {
         border-color: $paletteErrorMain;
-      }   
+      }
     }
   }
   &.success {
@@ -120,13 +122,13 @@
       &.checked {
         background: $paletteSuccessMain;
         border-color: $paletteSuccessMain;
-        color: $paletteSuccessContrastText; 
-      }   
+        color: $paletteSuccessContrastText;
+      }
     }
     .radio {
       &.checked {
         border-color: $paletteSuccessMain;
-      }   
+      }
     }
   }
   &.warning {
@@ -137,13 +139,13 @@
       &.checked {
         background: $paletteWarningMain;
         border-color: $paletteWarningMain;
-        color: $paletteWarningContrastText; 
-      }   
+        color: $paletteWarningContrastText;
+      }
     }
     .radio {
       &.checked {
         border-color: $paletteWarningMain;
-      }   
+      }
     }
   }
   &.progress {
@@ -154,8 +156,8 @@
       &.checked {
         background: $paletteProgressMain;
         border-color: $paletteProgressMain;
-        color: $paletteProgressContrastText; 
-      }   
+        color: $paletteProgressContrastText;
+      }
     }
     .radio {
       &.checked {
@@ -164,16 +166,25 @@
     }
   }
 
-  &.default, &.primary, &.secondary, &.error, &.success, &.warning, &.progress {
-    .checkbox, .radio, .point {
+  &.default,
+  &.primary,
+  &.secondary,
+  &.error,
+  &.success,
+  &.warning,
+  &.progress {
+    .checkbox,
+    .radio,
+    .point {
       transition: all 200ms $transitionsEasingEaseInOut 0ms;
     }
   }
 
-  .checkbox, .radio {
+  .checkbox,
+  .radio {
     line-height: 100%;
-    font-size: 20Px;
-    line-height:100%;
+    font-size: 32px;
+    line-height: 100%;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -181,8 +192,8 @@
     align-items: center;
     border: 2px solid $paletteTextPrimary;
     border-radius: 0;
-    width: 20Px;
-    height: 20Px;
+    width: 32px;
+    height: 32px;
   }
 
   .radio {
@@ -190,8 +201,8 @@
   }
 
   .point {
-    width: 14Px;
-    height: 14Px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
   }
 }

@@ -1,11 +1,6 @@
-import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
-import { RMButton } from '../../../';
-
+import { RMButton } from '../../..';
 import RMPage from '../../../Page';
-
-import theme from '../../../styles/theme';
 import './index.scss';
 
 class Index extends RMPage {
@@ -31,7 +26,7 @@ class Index extends RMPage {
     return e.returnValue;
   }
 
-  handle2(e) {
+  handle2() {
     console.log('------button click-------');
     if (Math.random() > 0.5) {
       throw new Error('button click error');
@@ -182,6 +177,25 @@ class Index extends RMPage {
             </RMButton>
             <RMButton onClick={this.handle2} color="default" variant="extendedFab" size="small">
               extendedFab button - small
+            </RMButton>
+          </View>
+
+          <View className="actions">
+            <View className="title">small size</View>
+            <RMButton onClick={this.handle.bind(this)} color="default" size="small">
+              text status button - small
+            </RMButton>
+            <RMButton onClick={this.handle} color="default" variant="contained" size="small">
+              contained status button - small
+            </RMButton>
+            <RMButton onClick={this.handle} color="default" variant="outlined" size="small">
+              outlined status button - small
+            </RMButton>
+            <RMButton onClick={this.handle} color="default" variant="fab" size="small">
+              +
+            </RMButton>
+            <RMButton onClick={this.handle} color="default" variant="extendedFab" size="small">
+              extendedFab status button - small
             </RMButton>
           </View>
         </View>

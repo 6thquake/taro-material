@@ -2,12 +2,9 @@ import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { View, Button } from '@tarojs/components';
-
 import AtButton from '../components/button/index';
 import AtActivityIndicator from '../components/activity-indicator';
-
 import RMIcon from '../Icon';
-
 import theme from '../styles/theme';
 
 import './Button.scss';
@@ -73,7 +70,7 @@ class RMButton extends Component {
       return void 0;
     }
 
-    let promise = e.returnValue;
+    const promise = e.returnValue;
     if (promise instanceof Promise) {
       this.status.status = 'progress';
       this.setState({
@@ -317,19 +314,19 @@ class RMButton extends Component {
       ...customStyle,
     };
 
-    let classes = classNames({
+    const classes = classNames({
       text: true,
       fat: variant === 'fab',
     });
 
-    let _countdown = second >= 0 && second < 3;
-    let _second = second + 1;
+    const _countdown = second >= 0 && second < 3;
+    const _second = second + 1;
 
     return (
       <AtButton
         size={_size}
         className="status-button"
-        type={'primary'}
+        type="primary"
         circle={circle}
         loading={false}
         disabled={disabled}
@@ -353,14 +350,14 @@ class RMButton extends Component {
         <View className="box">
           {loading && (
             <View>
-              <AtActivityIndicator size={iconSize} color={_reverse ? _color : _fontColor} />
+              <AtActivityIndicator size={iconSize * 1.5} color={_reverse ? _color : _fontColor} />
             </View>
           )}
           {_countdown && countdown && <View>{_second}</View>}
           {(!_countdown || (_countdown && !countdown)) &&
             !loading &&
             icon && (
-              <RMIcon fontSize={'inherit'} color={'inherit'} block={true}>
+              <RMIcon fontSize="inherit" color="inherit" block>
                 {icon}
               </RMIcon>
             )}
@@ -400,8 +397,7 @@ RMButton.defaultProps = {
 };
 
 RMButton.propTypes = {
-  size: PropTypes.oneOf(['medium', 'normal', 'small']),
-  variant: PropTypes.oneOf(['text', 'outlined', 'contained', 'fab', 'extendedFab']),
+  appParameter: PropTypes.string,
   color: PropTypes.oneOf([
     'default',
     'inherit',
@@ -412,12 +408,20 @@ RMButton.propTypes = {
     'warning',
     'progress',
   ]),
+  countdown: PropTypes.bool,
 
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  delay: PropTypes.number,
+  disabled: PropTypes.bool,
 
   formType: PropTypes.oneOf(['submit', 'reset', '']),
+  lang: PropTypes.string,
+  onClick: PropTypes.func,
+  onContact: PropTypes.func,
+  onError: PropTypes.func,
+  onGetPhoneNumber: PropTypes.func,
+  onGetUserInfo: PropTypes.func,
+  onOpenSetting: PropTypes.func,
   openType: PropTypes.oneOf([
     'contact',
     'share',
@@ -429,20 +433,13 @@ RMButton.propTypes = {
     'getRealnameAuthInfo',
     '',
   ]),
-  lang: PropTypes.string,
-  sessionFrom: PropTypes.string,
-  sendMessageTitle: PropTypes.string,
-  sendMessagePath: PropTypes.string,
   sendMessageImg: PropTypes.string,
+  sendMessagePath: PropTypes.string,
+  sendMessageTitle: PropTypes.string,
+  sessionFrom: PropTypes.string,
   showMessageCard: PropTypes.bool,
-  appParameter: PropTypes.string,
-  onGetUserInfo: PropTypes.func,
-  onContact: PropTypes.func,
-  onGetPhoneNumber: PropTypes.func,
-  onError: PropTypes.func,
-  onOpenSetting: PropTypes.func,
-  delay: PropTypes.number,
-  countdown: PropTypes.bool,
+  size: PropTypes.oneOf(['medium', 'normal', 'small']),
+  variant: PropTypes.oneOf(['text', 'outlined', 'contained', 'fab', 'extendedFab']),
 };
 
 export default RMButton;

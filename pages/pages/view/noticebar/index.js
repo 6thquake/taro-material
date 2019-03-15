@@ -1,14 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
-import AtNoticebar from '../../../components/noticebar/index';
+import { AtNoticebar } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class NoticebarPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -17,8 +15,14 @@ export default class NoticebarPage extends Taro.Component {
   }
 
   onGotoMore() {
-    if (Taro.getEnv() === Taro.ENV_TYPE.WEAPP) Taro.showModal({ content: '点击了更多!' });
-    else if (Taro.getEnv() === Taro.ENV_TYPE.WEB) alert('您点击了更多!');
+    if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+      alert('您点击了更多!');
+    } else {
+      Taro.showModal({
+        content: '点击了更多!',
+        cancelText: '取消',
+      });
+    }
   }
 
   render() {
@@ -142,12 +146,18 @@ export default class NoticebarPage extends Taro.Component {
                 </AtNoticebar>
               </View>
               <View className="bar-item">
-                <AtNoticebar close moreUrl="https://taro.aotu.io/" single>
+                <AtNoticebar close onGotoMore={this.onGotoMore.bind(this)} single showMore>
                   [单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏
                 </AtNoticebar>
               </View>
               <View className="bar-item">
-                <AtNoticebar close icon="volume-plus" moreUrl="https://taro.aotu.io/" single>
+                <AtNoticebar
+                  close
+                  icon="volume-plus"
+                  showMore
+                  onGotoMore={this.onGotoMore.bind(this)}
+                  single
+                >
                   [单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏
                 </AtNoticebar>
               </View>
@@ -158,13 +168,13 @@ export default class NoticebarPage extends Taro.Component {
                 </AtNoticebar>
               </View>
               <View className="bar-item">
-                <AtNoticebar close moreUrl="https://taro.aotu.io/">
+                <AtNoticebar close>
                   [多行]
                   这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏
                 </AtNoticebar>
               </View>
               <View className="bar-item">
-                <AtNoticebar close icon="volume-plus" moreUrl="https://taro.aotu.io/">
+                <AtNoticebar close icon="volume-plus">
                   [多行]
                   这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏
                 </AtNoticebar>

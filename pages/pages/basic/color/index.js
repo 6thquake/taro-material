@@ -1,13 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-
 import DocsHeader from '../../components/doc-header';
 
 import './index.scss';
 
 export default class BasicColor extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {

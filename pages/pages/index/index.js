@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-
 import logoImg from '../../assets/images/logo_taro.png';
 import iconBasic from '../../assets/images/icon-list-basic.png';
 import iconView from '../../assets/images/icon-list-view.png';
@@ -15,7 +14,7 @@ import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -77,7 +76,7 @@ export default class Index extends Taro.Component {
 
   onShareAppMessage() {
     return {
-      title: 'Taro Material',
+      title: 'Taro UI',
       path: '/pages/index/index',
       imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg',
     };
@@ -98,7 +97,7 @@ export default class Index extends Taro.Component {
         <View className="logo">
           <Image src={logoImg} className="img" mode="widthFix" />
         </View>
-        <View className="page-title">Taro Material</View>
+        <View className="page-title">Taro UI</View>
         <View className="module-list">
           {list.map((item, index) => (
             <View

@@ -1,8 +1,7 @@
 import Taro from '@tarojs/taro';
-
-import './components/article/index.scss';
-import './components/flex/index.scss';
-import './components/flex/item/index.scss';
+import './style/index.scss';
+import './style/themes/red.scss';
+import './style/themes/purple.scss';
 
 import './styles/fonts.scss';
 
@@ -50,7 +49,7 @@ export { default as AtSwipeAction } from './components/swipe-action';
 export { default as AtSearchBar } from './components/search-bar';
 export { default as AtLoadMore } from './components/load-more';
 export { default as AtDivider } from './components/divider';
-export { default as AtCountDown } from './components/countdown';
+export { default as AtCountdown } from './components/countdown';
 export { default as AtSteps } from './components/steps';
 export { default as AtCurtain } from './components/curtain';
 export { default as AtMessage } from './components/message';

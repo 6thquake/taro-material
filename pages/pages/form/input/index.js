@@ -1,15 +1,15 @@
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import AtInput from '../../../components/input/index';
-import AtForm from '../../../components/form/index';
-import verificationCode from '../../../assets/images/verification_code.png';
+import { AtInput, AtForm } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
+import verificationCode from '../../../assets/images/verification_code.png';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -30,9 +30,11 @@ export default class Index extends Taro.Component {
       second: 60,
     };
   }
+
   showTipText() {
     return this.state.disabled ? `${this.state.second}s后重试` : '发送验证码';
   }
+
   sendCode() {
     if (this.state.disabled) return;
     this.setState({
@@ -53,11 +55,13 @@ export default class Index extends Taro.Component {
       }
     }, 1000);
   }
+
   handleInput(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
+
   handleClick() {
     Taro.showToast({
       title: '已发送验证码',
@@ -65,6 +69,7 @@ export default class Index extends Taro.Component {
       duration: 2000,
     });
   }
+
   onClickErrorIcon() {
     Taro.showToast({
       title: '请输入数字',
@@ -72,6 +77,7 @@ export default class Index extends Taro.Component {
       duration: 2000,
     });
   }
+
   render() {
     return (
       <View className="page">
@@ -232,7 +238,7 @@ export default class Index extends Taro.Component {
                     name="value14"
                     title="验证码"
                     type="text"
-                    maxlength="4"
+                    maxLength="4"
                     clear
                     placeholder="验证码"
                     value={this.state.value14}

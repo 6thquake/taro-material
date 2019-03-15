@@ -2,13 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FaviconWebpackPlugin = require('favicons-webpack-plugin');
-
 const conf = require('./conf');
 const { getProjectRoot } = require('./util');
 
 const projectRoot = getProjectRoot();
 
 module.exports = {
+  mode: 'none',
   output: {
     path: path.resolve(projectRoot, conf.output),
     filename: 'js/[name].js',

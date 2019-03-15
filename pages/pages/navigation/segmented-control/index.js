@@ -1,13 +1,14 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtSegmentedControl from '../../../components/segmented-control/index';
+import { AtSegmentedControl } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -15,11 +16,13 @@ export default class Index extends Taro.Component {
       current2: 0,
     };
   }
+
   handleClick(num, value) {
     this.setState({
       [`current${num}`]: value,
     });
   }
+
   render() {
     const { current1, current2 } = this.state;
     const tabList1 = ['标签页1', '标签页2'];
@@ -40,7 +43,6 @@ export default class Index extends Taro.Component {
               <View>
                 <AtSegmentedControl
                   onClick={this.handleClick.bind(this, 1)}
-                  selectedColor="#6190E8"
                   current={current1}
                   values={tabList2}
                 />

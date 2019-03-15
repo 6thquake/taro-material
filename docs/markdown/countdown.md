@@ -1,4 +1,4 @@
-# CountDown 倒计时
+# Countdown 倒计时
 
 ---
 倒计时组件
@@ -8,11 +8,17 @@
 在 Taro 文件中引入组件
 
 :::demo
-
 ```js
 import { AtCountdown } from 'taro-ui'
 ```
+:::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/countdown.scss";
+```
 :::
 
 ## 一般用法
@@ -26,7 +32,7 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtCountdown } from 'taro-ui'
 
-export default class CountDownPage extends Taro.Component {
+export default class CountdownPage extends Taro.Component {
   onTimeUp () {
     Taro.showToast({
       title: '时间到',

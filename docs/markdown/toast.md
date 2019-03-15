@@ -9,11 +9,18 @@
 在 Taro 文件中引入组件
 
 :::demo
-
 ```js
 import { AtToast } from "taro-ui"
 ```
+:::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/toast.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+```
 :::
 
 ## 一般用法
@@ -21,13 +28,7 @@ import { AtToast } from "taro-ui"
 :::demo
 
 ```html
-<AtToast
-  isOpened
-  text={text}
-  iconSize={iconSize}
-  iconType={iconType}
-  iconColor={iconColor}
-  isHiddenIcon={isHiddenIcon}></AtToast>
+<AtToast isOpened text="{text}" icon="{icon}"></AtToast>
 ```
 
 :::

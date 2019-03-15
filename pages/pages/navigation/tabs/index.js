@@ -1,15 +1,14 @@
-/* eslint-disable react/no-direct-mutation-state */
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtTabs from '../../../components/tabs/index';
-import AtTabsPane from '../../../components/tabs-pane/index';
+import { AtTabs, AtTabsPane } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -20,11 +19,13 @@ export default class Index extends Taro.Component {
       current5: 0,
     };
   }
+
   handleClick(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
+
   render() {
     const { current1, current2, current3, current4, current5 } = this.state;
     const tabList1 = [{ title: '标签页1' }, { title: '标签页2' }, { title: '标签页3' }];

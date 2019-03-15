@@ -19,6 +19,9 @@ const config = {
     },
   },
   defineConstants: {},
+  alias: {
+    'taro-ui': path.resolve(__dirname, '../pages/ui.js'),
+  },
   weapp: {},
   h5: {
     staticDirectory: 'static',
@@ -43,17 +46,6 @@ if (process.env.TARO_BUILD_TYPE === 'component') {
     enableDll: false,
   });
   config.h5.webpackChain = chain => {
-    const sassLoader = chain.toConfig().module.rules[4];
-    const copySassLoader = { ...sassLoader };
-    delete copySassLoader.exclude;
-    copySassLoader.include = [
-      path.resolve(__dirname, '..', './.temp/components/article/index.scss'),
-      path.resolve(__dirname, '..', './.temp/components/flex/index.scss'),
-      path.resolve(__dirname, '..', './.temp/components/flex/item/index.scss'),
-    ];
-    copySassLoader.use[0] = {
-      loader: MiniCssExtractPlugin.loader,
-    };
     chain.plugins.delete('htmlWebpackPlugin');
     chain.plugins.delete('addAssetHtmlWebpackPlugin');
     chain.merge({
@@ -69,11 +61,6 @@ if (process.env.TARO_BUILD_TYPE === 'component') {
         '@tarojs/components': 'commonjs2 @tarojs/components',
         '@tarojs/taro-h5': 'commonjs2 @tarojs/taro-h5',
         weui: 'commonjs2 weui',
-      },
-      module: {
-        rule: {
-          specialSass: copySassLoader,
-        },
       },
       plugin: {
         extractCSS: {

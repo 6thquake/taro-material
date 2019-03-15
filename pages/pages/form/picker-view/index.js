@@ -5,7 +5,7 @@ import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -52,11 +52,12 @@ export default class Index extends Taro.Component {
     const env = Taro.getEnv();
     this.setState({
       isWeapp: env === Taro.ENV_TYPE.WEAPP,
+      isAlipay: env === Taro.ENV_TYPE.ALIPAY,
     });
   }
 
   render() {
-    const { years, months, days, value, year, month, day, isWeapp } = this.state;
+    const { years, months, days, value, year, month, day, isWeapp, isAlipay } = this.state;
 
     return (
       <View className="page">
@@ -72,7 +73,7 @@ export default class Index extends Taro.Component {
             <View className="panel__content">
               <View className="example-item">
                 <View className="example-item__desc">嵌入页面的滑动选择器</View>
-                {isWeapp ? (
+                {isWeapp || isAlipay ? (
                   <View>
                     <View className="title-date">
                       {year}年{month}月{day}日

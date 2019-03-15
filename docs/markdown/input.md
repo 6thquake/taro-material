@@ -11,11 +11,18 @@
 在 Taro 文件中引入组件
 
 :::demo
-
 ```js
 import { AtInput, AtForm } from 'taro-ui'
 ```
+:::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/input.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+```
 :::
 
 ## 一般用法
@@ -178,7 +185,7 @@ export default class Index extends Taro.Component {
   clear
   title='验证码'
   type='text'
-  maxlength='4'
+  maxLength='4'
   placeholder='验证码'
   value={this.state.value}
   onChange={this.handleChange.bind(this)}
@@ -200,7 +207,7 @@ export default class Index extends Taro.Component {
 | placeholderStyle | √ | x | 指定 placeholder 的样式，只在小程序有效  | String  | - | - |
 | placeholderClass | √ | x | 指定 placeholder 的样式类，只在小程序有效  | String | - | - |
 | title     | √ | √ | 输入框左侧标题，若传入为空，则不显示标题  | String | - | -  |
-| maxlength | √ | √ |最大长度 | Number  | -  | 140      |
+| maxLength | √ | √ |最大长度 | Number  | -  | 140      |
 | cursorSpacing | √ | x |指定光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离,只在微信小程序有效 | Number  | -  | 50      |
 | confirmType | √ | x |设置键盘右下角按钮的文字,只在小程序有效| String | - | '完成' |
 | cursor | √ | x |指定 focus 时的光标位置 | Number | - | - |
@@ -213,7 +220,7 @@ export default class Index extends Taro.Component {
 | error     | √ | √ | 是否出现错误 | Boolean | - | false |
 | clear     | √ | √ | 是否显示清除按钮，需要传入 onChange 事件来改变value | Boolean | - | false |
 | autoFocus  | √ | x | 是否自动聚焦 | Boolean | - | false |
-| focus     | √ | x | 是否聚焦 | Boolean | - | false |
+| focus     | √ | √ | 是否聚焦 | Boolean | - | false |
 
 ## Input 事件
 

@@ -1,13 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtAvatar from '../../../components/avatar/index';
+import { AtAvatar } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class AvatarPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -104,10 +103,10 @@ export default class AvatarPage extends Taro.Component {
             </View>
           </View>
 
-          {/* openData 头像（仅小程序支持） */}
+          {/* openData 头像（仅微信小程序支持） */}
           {Taro.getEnv() === Taro.ENV_TYPE.WEAPP && (
             <View className="panel">
-              <View className="panel__title">openData 头像（仅小程序支持）</View>
+              <View className="panel__title">openData 头像（仅微信小程序支持）</View>
               <View className="panel__content">
                 <View className="example-item">
                   <View className="subitem">

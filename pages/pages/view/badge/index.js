@@ -1,22 +1,19 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
-import AtBadge from '../../../components/badge/index';
-import AtButton from '../../../components/button/index';
+import { AtBadge, AtButton } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class BadgePage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
     super(...arguments);
     this.state = {};
   }
-  /** eslint-disable */
+
   render() {
     const dot = '···';
 

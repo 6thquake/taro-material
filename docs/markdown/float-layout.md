@@ -9,11 +9,17 @@
 在 Taro 文件中引入组件
 
 :::demo
-
 ```js
 import { AtFloatLayout } from "taro-ui"
 ```
+:::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/float-layout.scss";
+```
 :::
 
 ## 一般用法
@@ -21,7 +27,7 @@ import { AtFloatLayout } from "taro-ui"
 :::demo
 
 ```html
-<AtFloatLayout isOpened title="这是个标题" onClose="{" this.handleClose }>
+<AtFloatLayout isOpened title="这是个标题" onClose={this.handleClose.bind(this)}>
   这是内容区 随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
   随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写
 </AtFloatLayout>

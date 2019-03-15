@@ -8,11 +8,26 @@
 在 Taro 文件中引入组件
 
 :::demo
-
 ```js
 import { AtTabBar } from 'taro-ui'
 ```
+:::
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/tab-bar.scss";
+@import "~taro-ui/dist/style/components/badge.scss";
+```
+:::
+
+使用带图标标签栏时还需引入以下样式文件（仅按需引用时需要）
+
+:::demo
+```scss
+@import "~taro-ui/dist/style/components/icon.scss";
+```
 :::
 
 ## 一般用法
@@ -134,6 +149,24 @@ export default class Index extends Taro.Component {
 
 :::
 
+## 使用图片作为图标
+
+:::demo
+
+```html
+<AtTabBar
+  tabList={[
+      { title: '领取中心', image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png', selectedImage: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png', text: 'new' },
+      { title: '找折扣', image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png' },
+      { title: '领会员', image: 'https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png', text: '100', max: '99' }
+    ]}
+  onClick={this.handleClick.bind(this)}
+  current={this.state.current}
+/>
+```
+
+:::
+
 ## 参数
 
 | 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
@@ -155,6 +188,8 @@ export default class Index extends Taro.Component {
 | iconPrefixClass |  icon className 前缀，用于第三方字体图标库，比如想使用'fa fa-clock' 的图标，则 传入`iconPrefixClass='fa' iconType='clock'`,[拓展图标库详细](/#/docs/icon) | String | - | - | - |
 | iconType | 未选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | String | - | - | 可选 |
 | selectedIconType  | 选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | String | - | - |可选 |
+| image | 未选中时图片icon的链接 | String | - | - | 可选 |
+| selectedImage | 选中时图片icon的链接 | String | - | - | 可选 |
 | text | 右上角显示到文本，可以为数字或文字，如果有 dot，优先显示 dot | String  | - | - | 可选 |
 | max | text 可显示的最大数字，超过则显示最大数字加'+'，如'99+' | Number  | - | - | 可选 |
 | dot | 是否显示红点，优先级比 text 高 | Boolean  | - | false |可选 |

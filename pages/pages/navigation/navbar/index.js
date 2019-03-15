@@ -1,20 +1,22 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtNavBar from '../../../components/nav-bar/index';
+import { AtNavBar } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   handleClick(title) {
     Taro.showToast({
-      title: title,
+      title,
       duration: 2000,
       icon: 'success',
     });
   }
+
   clickReturn() {
     Taro.showToast({
       title: '返回',
@@ -22,6 +24,7 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
+
   clickMy() {
     Taro.showToast({
       title: '我的',
@@ -29,6 +32,7 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
+
   clickList() {
     Taro.showToast({
       title: '功能列表',
@@ -36,6 +40,7 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
+
   render() {
     return (
       <View className="page">

@@ -1,12 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
+import { AtSlider } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-import AtSlider from '../../../components/slider/index';
 import './index.scss';
 
 export default class PageSlider extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   render() {

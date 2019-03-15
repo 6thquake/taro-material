@@ -1,5 +1,5 @@
-@import "../style/mixins/index.scss";
-@import '../style/theme/default.scss';
+@import '../style/mixins/index.scss';
+@import '../style/variables/default.scss';
 @import '../styles/theme.scss';
 
 .at-switch {
@@ -33,7 +33,7 @@
     flex: 1;
   }
 
-  &__required{
+  &__required {
     margin-left: #{$spacingUnit}px;
     color: #{$paletteSecondaryMain};
     // font-size: #{$typographyFontSize}px;
@@ -63,7 +63,7 @@
     }
   }
 
-  &__desc{
+  &__desc {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;

@@ -1,13 +1,14 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtInputNumber from '../../../components/input-number/index';
+import { AtInputNumber } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
+
   constructor() {
     super(...arguments);
     this.state = {
@@ -18,11 +19,13 @@ export default class Index extends Taro.Component {
       number5: 1,
     };
   }
+
   handleNumberChange(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
+
   render() {
     return (
       <View className="page">

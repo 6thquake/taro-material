@@ -1,15 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-
-import AtFloatLayout from '../../../components/float-layout/index';
-import AtButton from '../../../components/button/index';
+import { AtFloatLayout, AtButton } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
-
 import './index.scss';
 
 export default class FloatLayoutPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -84,11 +81,7 @@ export default class FloatLayoutPage extends Taro.Component {
           </View>
         </View>
 
-        <AtFloatLayout
-          title="这是个标题"
-          isOpened={isOpened1}
-          onClose={this.handleClose.bind(this, '1')}
-        >
+        <AtFloatLayout isOpened={isOpened1} onClose={this.handleClose.bind(this, '1')}>
           <View className="content-wrapper">
             这是内容区 随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
             随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写

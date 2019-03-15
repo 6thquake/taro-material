@@ -1,12 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import AtTabBar from '../../../components/tab-bar/index';
+import { AtTabBar } from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -16,6 +16,7 @@ export default class Index extends Taro.Component {
       current2: 0,
       current3: 0,
       current4: 0,
+      current5: 0,
     };
   }
 
@@ -26,7 +27,7 @@ export default class Index extends Taro.Component {
   }
 
   render() {
-    const { current1, current2, current3, current4 } = this.state;
+    const { current1, current2, current3, current4, current5 } = this.state;
     const tabList1 = [
       { title: '待办事项', text: 8 },
       { title: '拍照' },
@@ -36,6 +37,28 @@ export default class Index extends Taro.Component {
       { title: '待办事项', iconType: 'bullet-list', text: 'new' },
       { title: '拍照', iconType: 'camera' },
       { title: '文件夹', iconType: 'folder', text: '100', max: '99' },
+    ];
+    const tabList3 = [
+      {
+        title: '领取中心',
+        image:
+          'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+        selectedImage:
+          'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',
+        text: 'new',
+      },
+      {
+        title: '找折扣',
+        image:
+          'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
+      },
+      {
+        title: '领会员',
+        image:
+          'https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+        text: '100',
+        max: '99',
+      },
     ];
 
     return (
@@ -73,6 +96,16 @@ export default class Index extends Taro.Component {
                 tabList={tabList2}
                 onClick={this.handleClick.bind(this, 3)}
                 current={current3}
+              />
+            </View>
+          </View>
+          <View className="panel">
+            <View className="panel__title">图片icon</View>
+            <View className="panel__content no-padding" style="padding-bottom: 24px;">
+              <AtTabBar
+                tabList={tabList3}
+                onClick={this.handleClick.bind(this, 5)}
+                current={current5}
               />
             </View>
           </View>

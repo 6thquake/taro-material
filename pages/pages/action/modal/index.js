@@ -1,20 +1,21 @@
-/* eslint taro/custom-component-children: 0 */
 import Taro from '@tarojs/taro';
 import { View, Button } from '@tarojs/components';
-
-import AtButton from '../../../components/button/index';
-import AtModal from '../../../components/modal/index';
-import AtModalHeader from '../../../components/modal/header/index';
-import AtModalContent from '../../../components/modal/content/index';
-import AtModalAction from '../../../components/modal/action/index';
-
+import {
+  AtButton,
+  AtModal,
+  AtModalHeader,
+  AtModalContent,
+  AtModalAction,
+  AtIndexes,
+} from 'taro-ui';
 import DocsHeader from '../../components/doc-header';
+import mockData from '../../navigation/indexes/mock-data';
 
 import './index.scss';
 
 export default class ModalPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro Material',
+    navigationBarTitleText: 'Taro UI',
   };
 
   constructor() {
@@ -24,6 +25,7 @@ export default class ModalPage extends Taro.Component {
       isOpened2: false,
       isOpened3: false,
       isOpened4: false,
+      isOpened5: false,
     };
   }
 
@@ -57,7 +59,7 @@ export default class ModalPage extends Taro.Component {
   };
 
   render() {
-    const { isOpened1, isOpened2, isOpened3, isOpened4 } = this.state;
+    const { isOpened1, isOpened2, isOpened3, isOpened4, isOpened5 } = this.state;
 
     return (
       <View className="page">
@@ -103,6 +105,16 @@ export default class ModalPage extends Taro.Component {
               </View>
             </View>
           </View>
+
+          {/* 城市索引 */}
+          <View className="panel">
+            <View className="panel__title">城市索引</View>
+            <View className="panel__content">
+              <View className="example-item">
+                <AtButton onClick={this.handleClick.bind(this, 5)}>打开城市索引</AtButton>
+              </View>
+            </View>
+          </View>
         </View>
 
         {/* 基础模态框 */}
@@ -116,9 +128,7 @@ export default class ModalPage extends Taro.Component {
           </AtModalContent>
           <AtModalAction>
             <Button onClick={this.closeModal.bind(this, 1, '点击了取消')}>取消</Button>
-            <Button style="color:#6190E8" onClick={this.closeModal.bind(this, 1, '点击了确定')}>
-              确定
-            </Button>
+            <Button onClick={this.closeModal.bind(this, 1, '点击了确定')}>确定</Button>
           </AtModalAction>
         </AtModal>
 
@@ -126,10 +136,7 @@ export default class ModalPage extends Taro.Component {
         <AtModal isOpened={isOpened2} onClose={this.closeModal.bind(this, 2, 'Modal被关闭了')}>
           <AtModalHeader>标题</AtModalHeader>
           <AtModalContent>
-            <View className="modal-content">
-              这里是正文内容，欢迎加入京东凹凸实验室 这里是正文内容，欢迎加入京东凹凸实验室
-              这里是正文内容，欢迎加入京东凹凸实验室
-            </View>
+            <View className="modal-content">这里是正文内容，欢迎加入京东凹凸实验室</View>
           </AtModalContent>
           <AtModalAction>
             <Button onClick={this.closeModal.bind(this, 2, '点击了确定')}>确定</Button>
@@ -146,9 +153,7 @@ export default class ModalPage extends Taro.Component {
           </AtModalContent>
           <AtModalAction>
             <Button onClick={this.closeModal.bind(this, 3, '点击了取消')}>取消</Button>
-            <Button style="color:#6190E8" onClick={this.closeModal.bind(this, 3, '点击了确定')}>
-              确定
-            </Button>
+            <Button onClick={this.closeModal.bind(this, 3, '点击了确定')}>确定</Button>
           </AtModalAction>
         </AtModal>
 
@@ -163,6 +168,14 @@ export default class ModalPage extends Taro.Component {
           onCancel={this.closeModal.bind(this, 4, '点击了取消')}
           onConfirm={this.closeModalConfirm.bind(this, 4, '点击了确认')}
         />
+
+        <AtModal isOpened={isOpened5}>
+          <AtModalContent>
+            <AtIndexes list={mockData} topKey="Top">
+              <View className="custom-area">用户自定义内容</View>
+            </AtIndexes>
+          </AtModalContent>
+        </AtModal>
       </View>
     );
   }

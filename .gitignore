@@ -21,6 +21,6 @@ coverage
 !/pages/assets/
 !/pages/app.js
 !/pages/app.scss
+!/pages/ui.js
 !/pages/index.html
 !/pages/pages/
-
