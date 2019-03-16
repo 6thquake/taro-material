@@ -1,0 +1,44 @@
+@import './fonts.scss';
+
+@import './theme.scss';
+
+/* The Color of 7FRESH Brand */
+$color-brand: $palettePrimaryMain;
+$color-brand-light: $palettePrimaryLight;
+$color-brand-dark: $palettePrimaryDark;
+
+/* 辅助色 */
+$color-success: $paletteSuccessMain;
+$color-error: $paletteErrorMain;
+$color-warning: $paletteWarningMain;
+$color-info: $palettePrimaryLight;
+
+/* 文本颜色 */
+$color-text-base: $paletteTextPrimary;
+$color-text-title: $paletteTextPrimary; // 文章标题
+
+/* 组件样式 */
+$at-button-border-color-primary: transparent;
+$at-button-bg: linear-gradient(90deg, $palettePrimaryMain, $palettePrimaryMain 100%);
+
+$at-message-bg-color: $paletteGrey500;
+
+$at-tag-color: $color-text-base;
+$at-tag-color-primary: $color-brand-light;
+$at-tag-color-primary-active: $color-brand-light;
+$at-tag-border-color: $paletteGrey400;
+$at-tag-bg-color: $paletteBackgroundPaper;
+$at-tag-bg-color-primary: $paletteGrey200;
+$at-tag-bg-color-primary-active: $paletteGrey200;
+
+$at-range-track-bg-color: $color-brand-light;
+
+$at-indexes-nav-color: $color-text-title;
+
+$at-steps-bg-color-active: $color-brand-light;
+
+$at-timeline-dot-border-color: $color-brand;
+
+$at-calendar-day-color: $color-text-base;
+
+@import '../style/index.scss';

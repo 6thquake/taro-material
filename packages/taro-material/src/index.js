@@ -1,9 +1,7 @@
 import Taro from '@tarojs/taro';
 import './style/index.scss';
-import './style/themes/red.scss';
-import './style/themes/purple.scss';
 
-import './styles/fonts.scss';
+import './styles/default.scss';
 
 Taro.initPxTransform({ designWidth: 750 });
 
