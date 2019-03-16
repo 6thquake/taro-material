@@ -37,7 +37,7 @@ class PageHeader extends Nerv.Component {
             <div className='logo'>
               <Link to='/'>
                 <img className='logo-img' src={require('../../assets/logo-taro.png')} />
-                <span>Taro UI</span>
+                <span>Taro Material</span>
               </Link>
             </div>
             <i className='icon icon-menu nav-icon' onClick={this.toggleMenu} />

@@ -31,7 +31,7 @@ $ taro init myApp
 ```
 :::
 
-### 3. 安装 Taro UI
+### 3. 安装 Taro Material
 
 :::demo
 ```bash
@@ -49,12 +49,12 @@ $ npm install taro-ui
 :::demo
 ```js
 h5: {
-  esnextModules: ['taro-ui']
+  esnextModules: ['taro-material']
 }
 ```
 :::
 
-### 4. 使用 Taro UI
+### 4. 使用 Taro Material
 
 #### 引入所需组件
 
@@ -63,7 +63,7 @@ h5: {
 :::demo
 ```js
 // page.js
-import { AtButton } from 'taro-ui'
+import { AtButton } from 'taro-material'
 
 // 除了引入所需的组件，还需要手动引入组件样式
 // app.js
@@ -104,7 +104,7 @@ import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 ```jsx
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+import { AtButton } from 'taro-material'
 
 import './index.scss'
 

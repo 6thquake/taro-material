@@ -1,12 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtFloatLayout, AtButton } from 'taro-ui';
+import { AtFloatLayout, AtButton } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class FloatLayoutPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

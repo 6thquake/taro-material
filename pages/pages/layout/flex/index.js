@@ -6,7 +6,7 @@ import './index.scss';
 
 export default class FlexPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   render() {

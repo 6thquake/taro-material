@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtSegmentedControl } from 'taro-ui'
+import { AtSegmentedControl } from 'taro-material'
 ```
 :::
 
@@ -31,7 +31,7 @@ import { AtSegmentedControl } from 'taro-ui'
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtSegmentedControl }  from 'taro-ui'
+import { AtSegmentedControl }  from 'taro-material'
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

@@ -9,7 +9,7 @@ Taro-UI 版本需要在 `v1.3.1` 以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
-import { AtAccordion } from 'taro-ui'
+import { AtAccordion } from 'taro-material'
 ```
 :::
 
@@ -33,7 +33,7 @@ import { AtAccordion } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtAccordion, AtList, AtListItem } from 'taro-ui'
+import { AtAccordion, AtList, AtListItem } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {

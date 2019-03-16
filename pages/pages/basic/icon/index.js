@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtIcon } from 'taro-ui';
+import { AtIcon } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import ICONS from './icons';
 import './index.scss';
 
 export default class IconPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

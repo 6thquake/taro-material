@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtCurtain } from 'taro-ui'
+import { AtCurtain } from 'taro-material'
 ```
 :::
 
@@ -32,7 +32,7 @@ import { AtCurtain } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
-import { AtCurtain,AtButton } from 'taro-ui'
+import { AtCurtain,AtButton } from 'taro-material'
 import curtainPng from '../../../assets/images/curtain.png'
 
 export default class TagPage extends Taro.Component {

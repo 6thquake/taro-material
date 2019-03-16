@@ -30,7 +30,7 @@ className)} style={customStyle}>
 :::demo
 ```js
 h5: {
-  esnextModules: ['taro-ui']
+  esnextModules: ['taro-material']
 }
 ```
 :::

@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtNoticebar } from 'taro-ui'
+import { AtNoticebar } from 'taro-material'
 ```
 :::
 

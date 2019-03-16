@@ -1,12 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View, Form } from '@tarojs/components';
-import { AtButton, AtForm } from 'taro-ui';
+import { AtButton, AtForm } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class ButtonPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   state = {
@@ -23,7 +23,7 @@ export default class ButtonPage extends Taro.Component {
 
   onShareAppMessage() {
     return {
-      title: 'Taro UI',
+      title: 'Taro Material',
       path: '/pages/index/index',
       imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg',
     };
@@ -262,7 +262,7 @@ export default class ButtonPage extends Taro.Component {
                     openType="contact"
                     onContact={this.onContact.bind(this)}
                   >
-                    联系 Taro UI 客服
+                    联系 Taro Material 客服
                   </AtButton>
                 </View>
 

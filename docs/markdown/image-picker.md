@@ -9,7 +9,7 @@ Taro-UI 版本需要在 `v1.5.0` 以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
-import { AtImagePicker } from 'taro-ui'
+import { AtImagePicker } from 'taro-material'
 ```
 :::
 
@@ -36,7 +36,7 @@ import { AtImagePicker } from 'taro-ui'
 
 ```jsx
 import Taro from '@tarojs/taro'
-import { AtImagePicker } from 'taro-ui'
+import { AtImagePicker } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {

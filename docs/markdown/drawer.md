@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtDrawer } from 'taro-ui'
+import { AtDrawer } from 'taro-material'
 ```
 :::
 

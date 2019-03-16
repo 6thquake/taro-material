@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtLoadMore } from 'taro-ui'
+import { AtLoadMore } from 'taro-material'
 ```
 :::
 
@@ -32,7 +32,7 @@ import { AtLoadMore } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtLoadMore } from 'taro-ui'
+import { AtLoadMore } from 'taro-material'
 
 export default class LoadMorePage extends Taro.Component {
   constructor () {

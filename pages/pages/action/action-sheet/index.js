@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import { AtActionSheet, AtActionSheetItem } from 'taro-ui';
+import { AtActionSheet, AtActionSheetItem } from 'taro-material';
 import AtButton from '../../../components/button/index';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class ActionSheetPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

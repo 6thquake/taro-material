@@ -1,12 +1,12 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtNoticebar } from 'taro-ui';
+import { AtNoticebar } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class NoticebarPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

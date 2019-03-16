@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import { AtCurtain, AtButton } from 'taro-ui';
+import { AtCurtain, AtButton } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import curtainPng from '../../../assets/images/curtain.png';
 import './index.scss';
 
 export default class TagPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtButton, AtIcon, AtProgress } from 'taro-ui';
+import { AtButton, AtIcon, AtProgress } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
@@ -8,7 +8,7 @@ const OFFSET = 15;
 
 export default class ProgressPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

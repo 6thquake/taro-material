@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtCheckbox } from 'taro-ui'
+import { AtCheckbox } from 'taro-material'
 ```
 :::
 
@@ -35,7 +35,7 @@ import { AtCheckbox } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtCheckbox } from 'taro-ui'
+import { AtCheckbox } from 'taro-material'
 
 
 export default class Index extends Taro.Component {

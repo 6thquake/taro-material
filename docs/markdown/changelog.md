@@ -266,7 +266,7 @@
           <span>2018-08-24</span>
         </p>
         <ul class="content">
-          <li>发布<span>Taro UI</span>v1.0.0</li>
+          <li>发布<span>Taro Material</span>v1.0.0</li>
           <li>发布第一个版本，包含<span>33</span>个组件</li>
         </ul>
       </div>

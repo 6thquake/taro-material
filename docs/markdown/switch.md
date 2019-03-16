@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtForm, AtSwitch } from 'taro-ui'
+import { AtForm, AtSwitch } from 'taro-material'
 ```
 :::
 
@@ -31,7 +31,7 @@ import { AtForm, AtSwitch } from 'taro-ui'
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtForm, AtSwitch }  from 'taro-ui'
+import { AtForm, AtSwitch }  from 'taro-material'
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

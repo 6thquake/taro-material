@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtToast, AtButton } from 'taro-ui';
+import { AtToast, AtButton } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
@@ -16,7 +16,7 @@ const INIT_STATE = {
 
 export default class ToastPage extends Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

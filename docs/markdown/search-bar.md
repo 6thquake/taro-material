@@ -9,7 +9,7 @@ Taro-UI 版本需要在 `v1.3.1` 以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
-import { AtSearchBar } from 'taro-ui'
+import { AtSearchBar } from 'taro-material'
 ```
 :::
 
@@ -37,7 +37,7 @@ import { AtSearchBar } from 'taro-ui'
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtSearchBar } from 'taro-ui'
+import { AtSearchBar } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {
@@ -71,7 +71,7 @@ export default class Index extends Taro.Component {
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtSearchBar } from 'taro-ui'
+import { AtSearchBar } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {
@@ -109,7 +109,7 @@ export default class Index extends Taro.Component {
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtSearchBar } from 'taro-ui'
+import { AtSearchBar } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {

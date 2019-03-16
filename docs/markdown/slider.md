@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtSlider } from 'taro-ui'
+import { AtSlider } from 'taro-material'
 ```
 :::
 

@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtProgress } from 'taro-ui'
+import { AtProgress } from 'taro-material'
 ```
 :::
 

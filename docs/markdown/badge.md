@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtBadge } from 'taro-ui'
+import { AtBadge } from 'taro-material'
 ```
 :::
 

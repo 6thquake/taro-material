@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import classNames from 'classnames';
 import { View } from '@tarojs/components';
-import { AtDrawer, AtButton, AtIcon, AtBadge } from 'taro-ui';
+import { AtDrawer, AtButton, AtIcon, AtBadge } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
 export default class DrawerPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

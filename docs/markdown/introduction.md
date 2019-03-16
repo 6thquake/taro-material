@@ -2,7 +2,7 @@
 
 ----
 
-`Taro UI` 是一款基于 [Taro](https://taro.aotu.io) 框架开发的多端 UI 组件库
+`Taro Material` 是一款基于 [Taro](https://taro.aotu.io) 框架开发的多端 UI 组件库
 
 ## Taro
 
@@ -24,7 +24,7 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 
 ## 官方示例
 
-[Taro UI 官方示例](https://github.com/NervJS/taro-ui-demo)
+[Taro Material 官方示例](https://github.com/NervJS/taro-ui-demo)
 
 ## 版本
 
@@ -36,8 +36,8 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 
 ## 开发计划
 
-[Taro UI 开发计划](https://github.com/NervJS/taro-ui/blob/dev/PLANS.md)
+[Taro Material 开发计划](https://github.com/NervJS/taro-ui/blob/dev/PLANS.md)
 
 ## 贡献
 
-如果你在使用 `Taro UI` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/nervjs/taro-ui/issues) 或 [Pull Request](https://github.com/nervjs/taro-ui/pulls)
+如果你在使用 `Taro Material` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/nervjs/taro-ui/issues) 或 [Pull Request](https://github.com/nervjs/taro-ui/pulls)

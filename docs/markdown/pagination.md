@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtPagination } from 'taro-ui'
+import { AtPagination } from 'taro-material'
 ```
 :::
 

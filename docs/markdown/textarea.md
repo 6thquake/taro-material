@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtTextarea } from 'taro-ui'
+import { AtTextarea } from 'taro-material'
 ```
 :::
 
@@ -36,7 +36,7 @@ import { AtTextarea } from 'taro-ui'
 ```js
 
 import Taro from '@tarojs/taro'
-import { AtTextarea }  from 'taro-ui'
+import { AtTextarea }  from 'taro-material'
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

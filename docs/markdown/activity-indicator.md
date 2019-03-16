@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtActivityIndicator } from 'taro-ui'
+import { AtActivityIndicator } from 'taro-material'
 ```
 :::
 

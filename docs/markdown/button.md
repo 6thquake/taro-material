@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtButton } from 'taro-ui'
+import { AtButton } from 'taro-material'
 ```
 :::
 

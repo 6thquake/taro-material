@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import { AtInput, AtForm } from 'taro-ui';
+import { AtInput, AtForm } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import verificationCode from '../../../assets/images/verification_code.png';
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

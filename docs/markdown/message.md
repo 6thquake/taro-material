@@ -9,7 +9,7 @@ Taro-UI 版本需要在 `v1.4.1` 以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
-import { AtMessage } from 'taro-ui'
+import { AtMessage } from 'taro-material'
 ```
 :::
 
@@ -32,7 +32,7 @@ import { AtMessage } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtMessage } from 'taro-ui'
+import { AtMessage } from 'taro-material'
 
 export default class LoadMorePage extends Taro.Component {
   handleClick (type) {

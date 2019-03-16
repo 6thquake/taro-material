@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtAvatar } from 'taro-ui'
+import { AtAvatar } from 'taro-material'
 ```
 :::
 

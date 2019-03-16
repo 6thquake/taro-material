@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtCountdown } from 'taro-ui'
+import { AtCountdown } from 'taro-material'
 ```
 :::
 
@@ -30,7 +30,7 @@ import { AtCountdown } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtCountdown } from 'taro-ui'
+import { AtCountdown } from 'taro-material'
 
 export default class CountdownPage extends Taro.Component {
   onTimeUp () {

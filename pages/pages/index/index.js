@@ -14,7 +14,7 @@ import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {
@@ -76,7 +76,7 @@ export default class Index extends Taro.Component {
 
   onShareAppMessage() {
     return {
-      title: 'Taro UI',
+      title: 'Taro Material',
       path: '/pages/index/index',
       imageUrl: 'http://storage.360buyimg.com/mtd/home/share1535013100318.jpg',
     };
@@ -97,7 +97,7 @@ export default class Index extends Taro.Component {
         <View className="logo">
           <Image src={logoImg} className="img" mode="widthFix" />
         </View>
-        <View className="page-title">Taro UI</View>
+        <View className="page-title">Taro Material</View>
         <View className="module-list">
           {list.map((item, index) => (
             <View

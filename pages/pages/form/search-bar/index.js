@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtSearchBar } from 'taro-ui';
+import { AtSearchBar } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 
 import './index.scss';
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

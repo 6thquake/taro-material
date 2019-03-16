@@ -20,7 +20,7 @@ const config = {
   },
   defineConstants: {},
   alias: {
-    'taro-ui': path.resolve(__dirname, '../pages/ui.js'),
+    'taro-material': path.resolve(__dirname, '../pages/ui.js'),
   },
   weapp: {},
   h5: {

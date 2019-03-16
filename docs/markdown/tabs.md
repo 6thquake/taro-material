@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtTabs, AtTabsPane } from 'taro-ui'
+import { AtTabs, AtTabsPane } from 'taro-material'
 ```
 :::
 
@@ -42,7 +42,7 @@ import { AtTabs, AtTabsPane } from 'taro-ui'
 ```js
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTabs, AtTabsPane } from 'taro-ui'
+import { AtTabs, AtTabsPane } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {

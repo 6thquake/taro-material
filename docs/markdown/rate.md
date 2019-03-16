@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtRate } from 'taro-ui'
+import { AtRate } from 'taro-material'
 ```
 :::
 
@@ -34,7 +34,7 @@ import { AtRate } from 'taro-ui'
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtRate }  from 'taro-ui'
+import { AtRate }  from 'taro-material'
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

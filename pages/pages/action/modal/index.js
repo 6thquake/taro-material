@@ -7,7 +7,7 @@ import {
   AtModalContent,
   AtModalAction,
   AtIndexes,
-} from 'taro-ui';
+} from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import mockData from '../../navigation/indexes/mock-data';
 
@@ -15,7 +15,7 @@ import './index.scss';
 
 export default class ModalPage extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

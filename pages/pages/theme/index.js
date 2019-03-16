@@ -4,7 +4,7 @@ import './index.scss';
 
 export default class PanelBasic extends Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   render() {

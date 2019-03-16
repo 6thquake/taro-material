@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtDivider } from 'taro-ui'
+import { AtDivider } from 'taro-material'
 ```
 :::
 
@@ -51,7 +51,7 @@ import { AtDivider } from 'taro-ui'
 :::demo
 
 ```html
-/* import { AtDivider,AtIcon } from 'taro-ui' */
+/* import { AtDivider,AtIcon } from 'taro-material' */
 <AtDivider>
   <AtIcon value='check-circle'></AtIcon>
 </AtDivider>

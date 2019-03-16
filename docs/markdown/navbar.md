@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtNavBar } from 'taro-ui'
+import { AtNavBar } from 'taro-material'
 ```
 :::
 

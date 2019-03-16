@@ -16,7 +16,7 @@ imports:
 
 :::demo
 ```js
-import { AtIcon } from 'taro-ui'
+import { AtIcon } from 'taro-material'
 ```
 :::
 

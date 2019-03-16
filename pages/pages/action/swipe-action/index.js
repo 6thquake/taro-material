@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtList, AtListItem, AtButton, AtSwipeAction } from 'taro-ui';
+import { AtList, AtListItem, AtButton, AtSwipeAction } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
@@ -61,7 +61,7 @@ export default class SwipeActionPage extends Taro.Component {
   }
 
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   handleClick = (item, key, e) => {

@@ -9,7 +9,7 @@
 
 :::demo
 ```js
-import { AtRadio } from 'taro-ui'
+import { AtRadio } from 'taro-material'
 ```
 :::
 
@@ -34,7 +34,7 @@ import { AtRadio } from 'taro-ui'
 
 ```js
 import Taro from '@tarojs/taro'
-import { AtRadio }  from 'taro-ui'
+import { AtRadio }  from 'taro-material'
 export default class Index extends Taro.Component {
   constructor () {
     super(...arguments)

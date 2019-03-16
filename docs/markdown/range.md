@@ -9,7 +9,7 @@ Taro-UI 版本需要在 `v1.5.0` 以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
-import { AtRange } from 'taro-ui'
+import { AtRange } from 'taro-material'
 ```
 :::
 
@@ -28,7 +28,7 @@ import { AtRange } from 'taro-ui'
 ```jsx
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtRange,AtToast } from 'taro-ui'
+import { AtRange,AtToast } from 'taro-material'
 
 export default class Index extends Taro.Component {
   constructor () {

@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import { AtImagePicker } from 'taro-ui';
+import { AtImagePicker } from 'taro-material';
 import DocsHeader from '../../components/doc-header';
 import './index.scss';
 
@@ -18,7 +18,7 @@ const dogaImages = [
 
 export default class Index extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {

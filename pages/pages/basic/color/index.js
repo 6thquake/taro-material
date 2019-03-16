@@ -6,7 +6,7 @@ import './index.scss';
 
 export default class BasicColor extends Taro.Component {
   config = {
-    navigationBarTitleText: 'Taro UI',
+    navigationBarTitleText: 'Taro Material',
   };
 
   constructor() {
