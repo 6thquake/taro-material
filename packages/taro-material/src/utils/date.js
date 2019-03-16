@@ -1,4 +1,10 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+import 'dayjs/locale/zh-cn';
+
+dayjs.extend(relativeTime);
+dayjs.locale('zh-cn');
 
 const localeData = {
   en: {
@@ -31,18 +37,20 @@ const localeData = {
   },
 };
 
-const ago = (date, format) => {
+const ago = (date, format) => dayjs(date, format).fromNow();
+
+const ago2 = (date, format) => {
   if (!date) {
     return '';
   }
 
-  const _ago = moment(date, format || `YYYY-MM-DD HH:mm:ss`);
-  const now = moment();
+  const _ago = dayjs(date, format || `YYYY-MM-DD HH:mm:ss`);
+  const now = dayjs();
 
   const range = now.diff(_ago);
 
   let key = '';
-  const locale = moment.locale();
+  const locale = 'zh-cn';
 
   if (range > 366 * 24 * 60 * 60 * 1000) {
     key = 'years';
@@ -81,12 +89,12 @@ const ago = (date, format) => {
 };
 
 const greet = () => {
-  const now = moment();
+  const now = dayjs();
   const hour = now.hour();
   const minute = now.minute();
 
   let key = '';
-  const locale = moment.locale();
+  const locale = 'zh-cn';
 
   let resource = null;
   switch (locale) {
@@ -122,4 +130,4 @@ const greet = () => {
 };
 
 export default ago;
-export { greet };
+export { greet, ago2 };

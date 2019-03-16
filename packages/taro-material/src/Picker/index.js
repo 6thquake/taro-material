@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import { View, Picker } from '@tarojs/components';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import RMTextField from '../TextField';
 
@@ -10,7 +10,7 @@ class DatePicker extends Component {
     super(props);
 
     if (!props.value && props.format) {
-      this.props.value = moment().format(props.format);
+      this.props.value = dayjs().format(props.format);
     }
   }
 

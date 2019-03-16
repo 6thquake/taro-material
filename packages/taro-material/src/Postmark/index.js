@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { isString, isDate } from '../utils/typeof';
 
@@ -58,7 +58,7 @@ class Postmark extends Component {
     if (isString(date)) {
       _date = date;
     } else if (isDate(date)) {
-      _date = moment(date).format(format);
+      _date = dayjs(date).format(format);
     }
 
     switch (color) {
