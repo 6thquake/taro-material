@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { RMCountDown, RMTimer } from '../../../';
 
@@ -15,22 +15,22 @@ class Index extends Component {
   state = { end: false, now: new Date().getTime() };
 
   componentDidMount() {
-    const day = moment()
+    const day = dayjs()
       .add(2, 'days')
       .toDate()
       .getTime();
 
-    const hour = moment()
+    const hour = dayjs()
       .add(2, 'hours')
       .toDate()
       .getTime();
 
-    const minute = moment()
+    const minute = dayjs()
       .add(2, 'minutes')
       .toDate()
       .getTime();
 
-    const second = moment()
+    const second = dayjs()
       .add(10, 'seconds')
       .toDate()
       .getTime();

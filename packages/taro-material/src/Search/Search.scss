@@ -15,7 +15,7 @@ $placeholderPadding: 5 * 2;
   box-sizing: content-box;
   overflow: hidden;
   background-color: $color-bg;
-  // @include hairline-bottom();
+  @include hairline-bottom($width: 0px);
 
   &__container {
     position: relative;
