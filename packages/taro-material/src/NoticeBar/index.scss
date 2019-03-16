@@ -7,7 +7,7 @@ $noticebar-color-bg: #fcf6ed;
 $noticebar-color-font: #de8c17;
 $noticebar-icon-size: 26px;
 
-.at-noticebar {
+.rm-noticebar {
   position: relative;
   padding: #{$spacingUnit}px 0px;
   font-size: 0;
@@ -23,7 +23,7 @@ $noticebar-icon-size: 26px;
   &.colorAction {
     color: $paletteActionActive;
     background: $paletteActionDisabledBackground;
-    .at-noticebar__more {
+    .rm-noticebar__more {
       color: $paletteTextHint;
     }
   }
@@ -34,7 +34,7 @@ $noticebar-icon-size: 26px;
   &.colorDisabled {
     color: $paletteActionDisabled;
     background: $paletteActionDisabledBackground;
-    .at-noticebar__more {
+    .rm-noticebar__more {
       color: $paletteActionDisabled;
     }
   }
@@ -54,7 +54,7 @@ $noticebar-icon-size: 26px;
     color: $paletteTextPrimary;
     background: $paletteBackgroundPaper;
 
-    .at-noticebar__more {
+    .rm-noticebar__more {
       color: $paletteTextSecondary;
     }
   }
@@ -62,7 +62,7 @@ $noticebar-icon-size: 26px;
     color: inherit;
     background: inherit;
 
-    .at-noticebar__more {
+    .rm-noticebar__more {
       color: $paletteTextSecondary;
     }
   }
@@ -102,46 +102,46 @@ $noticebar-icon-size: 26px;
   //   top: 50%;
   //   margin-top: -($noticebar-icon-size / 2 + 4);
 
-  //   + .at-noticebar__content {
+  //   + .rm-noticebar__content {
   //     margin-left: 50px;
   //   }
   // }
 
   &--marquee {
-    &.at-noticebar--single {
-      .at-noticebar__content-text {
+    &.rm-noticebar--single {
+      .rm-noticebar__content-text {
         height: 36px;
         line-height: 36px;
 
-        .at-noticebar__content-inner {
+        .rm-noticebar__content-inner {
           &.vertical {
             // padding-top: 36px;
           }
         }
       }
     }
-    .at-noticebar__content-text {
+    .rm-noticebar__content-text {
       height: #{36 * 2}px;
       line-height: 36px;
       overflow: hidden;
       display: block;
 
-      .at-noticebar__content-inner {
+      .rm-noticebar__content-inner {
         &.vertical {
           // padding-top: #{36 * 2}px;
         }
       }
     }
 
-    // .at-noticebar__content-icon {
+    // .rm-noticebar__content-icon {
     //   position: absolute;
 
-    //   + .at-noticebar__content-text {
+    //   + .rm-noticebar__content-text {
     //     margin-left: 45px;
     //   }
     // }
 
-    .at-noticebar__content-inner {
+    .rm-noticebar__content-inner {
       display: inline-block;
       // animation: marquee 1s linear infinite both;
       transform: translateZ(0);
@@ -158,27 +158,27 @@ $noticebar-icon-size: 26px;
   }
 
   &--single {
-    &.at-noticebar--more {
-      .at-noticebar__content-text {
+    &.rm-noticebar--more {
+      .rm-noticebar__content-text {
         // display: inline-block;
         // max-width: 525px;
         @include line(1);
       }
 
-      // .at-noticebar__content-icon + .at-noticebar__content-text {
+      // .rm-noticebar__content-icon + .rm-noticebar__content-text {
       //   max-width: 475px;
       // }
     }
   }
 
   // &--more {
-  //   .at-noticebar__content {
+  //   .rm-noticebar__content {
   //     max-width: 525px;
   //   }
   // }
 
   &--weapp {
-    .at-noticebar__content-inner {
+    .rm-noticebar__content-inner {
       animation: none;
     }
   }

@@ -179,7 +179,7 @@ class NoticeBar extends AtComponent {
     } = this.props;
     const height = rows * 18;
     const { animationData } = this.state;
-    const rootClassName = ['at-noticebar'];
+    const rootClassName = ['rm-noticebar'];
     const _moreText = this.props.moreText;
     const single = rows === 1;
 
@@ -188,7 +188,7 @@ class NoticeBar extends AtComponent {
 
     const style = {};
     const contentStyle = {};
-    const innerClassName = ['at-noticebar__content-inner'];
+    const innerClassName = ['rm-noticebar__content-inner'];
     if (marquee) {
       // close = false
       // style['animation-duration'] = `${dura * 1000}s`
@@ -209,10 +209,10 @@ class NoticeBar extends AtComponent {
     }
 
     const classObject = {
-      'at-noticebar--marquee': marquee,
-      'at-noticebar--weapp': marquee && this.state.isWEAPP,
-      'at-noticebar--more': !marquee && showMore,
-      'at-noticebar--single': single || (marquee && !vertical), // ! marquee &&
+      'rm-noticebar--marquee': marquee,
+      'rm-noticebar--weapp': marquee && this.state.isWEAPP,
+      'rm-noticebar--more': !marquee && showMore,
+      'rm-noticebar--single': single || (marquee && !vertical), // ! marquee &&
       [`color${_color}`]: color !== 'inherit',
     };
 
@@ -222,22 +222,22 @@ class NoticeBar extends AtComponent {
           className={classNames(rootClassName, classObject, this.props.className)}
           style={customStyle}
         >
-          <View className="at-noticebar__content">
+          <View className="rm-noticebar__content">
             {close && (
-              <View className="at-noticebar__close" onClick={this.onClose.bind(this)}>
+              <View className="rm-noticebar__close" onClick={this.onClose.bind(this)}>
                 <RMIcon color="action" fontSize={24}>
                   close
                 </RMIcon>
               </View>
             )}
             {icon && (
-              <View className="at-noticebar__content-icon">
+              <View className="rm-noticebar__content-icon">
                 <RMIcon color={iconColor || 'inherit'} fontSize={24}>
                   {icon}
                 </RMIcon>
               </View>
             )}
-            <View className="at-noticebar__content-text" style={contentStyle}>
+            <View className="rm-noticebar__content-text" style={contentStyle}>
               <View
                 animation={animationData}
                 className={innerClassName}
@@ -250,10 +250,10 @@ class NoticeBar extends AtComponent {
               </View>
             </View>
             {showMore && (
-              <View className="at-noticebar__more" onClick={this.onGotoMore.bind(this)}>
+              <View className="rm-noticebar__more" onClick={this.onGotoMore.bind(this)}>
                 {unread && <View className="unread" />}
                 <Text className="text">{_moreText}</Text>
-                <View className="at-noticebar__more-icon">
+                <View className="rm-noticebar__more-icon">
                   <RMIcon color="inherit" fontSize={24}>
                     chevron_right
                   </RMIcon>
