@@ -275,6 +275,7 @@ class ToolBar extends Component {
               <RMTypography
                 color={selectedSort.active ? theme.palette.primary.main : 'default'}
                 className="body2"
+                block
               >
                 {selectedSort.label}
               </RMTypography>
@@ -293,7 +294,7 @@ class ToolBar extends Component {
                 className="priorities"
                 onClick={this.handlePriorities.bind(this, index)}
               >
-                <RMTypography color={color} className={className}>
+                <RMTypography color={color} className={className} block>
                   {item.label}
                 </RMTypography>
               </View>
@@ -311,7 +312,7 @@ class ToolBar extends Component {
                 className="priorities"
                 onClick={this.handleFilters.bind(this, item.i, item.j)}
               >
-                <RMTypography color={color} className={className}>
+                <RMTypography color={color} className={className} block>
                   {item.label}
                 </RMTypography>
               </View>
@@ -323,6 +324,7 @@ class ToolBar extends Component {
               <RMTypography
                 color={multiLength > 0 ? theme.palette.primary.main : 'default'}
                 className="body2"
+                block
               >
                 筛选
                 {multiLength ? `(${multiLength})` : ''}

@@ -7,6 +7,16 @@ $font-size: $font-size-lg;
 .rm-count-down {
   display: inline-block;
 
+  &.block {
+    display: block;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__item {
     display: inline-flex;
     align-items: center;

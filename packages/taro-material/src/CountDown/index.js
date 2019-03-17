@@ -163,6 +163,7 @@ export default class RMCountDown extends AtComponent {
       isShowMillisecond,
       size,
       autoTerminate,
+      block,
     } = this.props;
     const { days, hours, minutes, seconds, milliseconds } = this.state;
 
@@ -181,45 +182,48 @@ export default class RMCountDown extends AtComponent {
             'rm-count-down--card': true,
             'rm-count-down--dark': isDark,
             [`rm-count-down--${size}`]: true,
+            block,
           },
           className,
         )}
         style={customStyle}
       >
-        {isShowDay && (
+        <View className="rm-count-down-wrapper">
+          {isShowDay && (
+            <View className="rm-count-down__item">
+              <View className="rm-count-down__time-box">
+                <Text className="rm-count-down__time">{this.formatNum(days)}</Text>
+              </View>
+              <Text className="rm-count-down__separator">{format.days || format.day}</Text>
+            </View>
+          )}
           <View className="rm-count-down__item">
             <View className="rm-count-down__time-box">
-              <Text className="rm-count-down__time">{this.formatNum(days)}</Text>
+              <Text className="rm-count-down__time">{this.formatNum(hours)}</Text>
             </View>
-            <Text className="rm-count-down__separator">{format.days || format.day}</Text>
+            <Text className="rm-count-down__separator">{format.hours || format.hour}</Text>
           </View>
-        )}
-        <View className="rm-count-down__item">
-          <View className="rm-count-down__time-box">
-            <Text className="rm-count-down__time">{this.formatNum(hours)}</Text>
+          <View className="rm-count-down__item">
+            <View className="rm-count-down__time-box">
+              <Text className="rm-count-down__time">{this.formatNum(minutes)}</Text>
+            </View>
+            <Text className="rm-count-down__separator">{format.minutes || format.minute}</Text>
           </View>
-          <Text className="rm-count-down__separator">{format.hours || format.hour}</Text>
-        </View>
-        <View className="rm-count-down__item">
-          <View className="rm-count-down__time-box">
-            <Text className="rm-count-down__time">{this.formatNum(minutes)}</Text>
+          <View className="rm-count-down__item">
+            <View className="rm-count-down__time-box">
+              <Text className="rm-count-down__time">{this.formatNum(seconds)}</Text>
+            </View>
+            <Text className="rm-count-down__separator">{format.seconds || format.second}</Text>
           </View>
-          <Text className="rm-count-down__separator">{format.minutes || format.minute}</Text>
-        </View>
-        <View className="rm-count-down__item">
-          <View className="rm-count-down__time-box">
-            <Text className="rm-count-down__time">{this.formatNum(seconds)}</Text>
-          </View>
-          <Text className="rm-count-down__separator">{format.seconds || format.second}</Text>
-        </View>
 
-        {isShowMillisecond && (
-          <View className="rm-count-down__item">
-            <View className="rm-count-down__time-box">
-              <Text className="rm-count-down__time">{milliseconds}</Text>
+          {isShowMillisecond && (
+            <View className="rm-count-down__item">
+              <View className="rm-count-down__time-box">
+                <Text className="rm-count-down__time">{milliseconds}</Text>
+              </View>
             </View>
-          </View>
-        )}
+          )}
+        </View>
       </View>
     );
   }
@@ -258,4 +262,5 @@ RMCountDown.propTypes = {
   onTimeUp: PropTypes.func,
   size: PropTypes.oneOf(['large', 'medium', 'normal', 'small', 'xs']),
   autoTerminate: PropTypes.bool,
+  block: PropTypes.bool,
 };

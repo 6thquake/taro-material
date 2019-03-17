@@ -40,27 +40,32 @@ class Panel extends Component {
         <View onClick={this.handleClick} className="header">
           <View className="left">
             <View className="name">
-              {title && (
+              {title ? (
                 <RMTypography block className="subheading">
                   {title}
                 </RMTypography>
+              ) : (
+                this.props.renderTitle
               )}
-              {this.props.renderTitle}
             </View>
             <View className="company">
-              {note && (
+              {note ? (
                 <RMTypography block className="caption">
                   {note}
                 </RMTypography>
+              ) : (
+                this.props.renderNote
               )}
-              {this.props.renderNote}
             </View>
           </View>
           <View className="right">
             <View className="right-box">
               <View className="extra">
-                {extra && <RMTypography className="caption">{extra}</RMTypography>}
-                {this.props.renderExtra}
+                {extra ? (
+                  <RMTypography className="caption">{extra}</RMTypography>
+                ) : (
+                  this.props.renderExtra
+                )}
               </View>
               {expandable && (
                 <View>
@@ -90,6 +95,7 @@ class Panel extends Component {
                 </View>
               );
             })}
+            {this.props.renderActions}
           </View>
         )}
       </View>
@@ -99,28 +105,12 @@ class Panel extends Component {
 
 Panel.defaultProps = {
   open: false,
-  title: '',
-  note: '',
+  title: null,
+  note: null,
   expandable: false,
-  extra: ' ',
+  extra: null,
   onAction: () => {},
-  actions: [],
-  // actions: [
-  //   {
-  //     name: 'cancel',
-  //     size: 'small',
-  //     variant: 'outlined',
-  //     color: 'default',
-  //     label: '取消',
-  //   },
-  //   {
-  //     name: 'ok',
-  //     size: 'small',
-  //     variant: 'contained',
-  //     color: 'primary',
-  //     label: '确认'
-  //   },
-  // ],
+  actions: null,
   customStyle: {},
 };
 Panel.propTypes = {
@@ -131,6 +121,7 @@ Panel.propTypes = {
   renderTitle: PropTypes.element,
   renderNote: PropTypes.element,
   renderExtra: PropTypes.element,
+  renderActions: PropTypes.element,
   expandable: PropTypes.bool,
   action: PropTypes.array,
   customStyle: PropTypes.object,

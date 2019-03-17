@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { View, Button } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import AtButton from '../components/button/index';
 import AtActivityIndicator from '../components/activity-indicator';
 import RMIcon from '../Icon';
@@ -112,7 +112,7 @@ class RMButton extends Component {
     const { delay } = this.props;
 
     return new Promise((resolve, reject) => {
-      if (delay == 0) {
+      if (delay === 0) {
         this.status = {
           status: '',
           text: '',
@@ -166,6 +166,7 @@ class RMButton extends Component {
       disabled,
       customStyle,
       countdown,
+      block,
 
       formType,
       openType,
@@ -183,32 +184,31 @@ class RMButton extends Component {
       onContact,
     } = this.props;
 
-    const common = theme.palette.common.white;
+    // const common = theme.palette.common.white
     const progress = theme.palette.progress.main;
     const success = theme.palette.success.main;
     const error = theme.palette.error.main;
-    const primary = theme.palette.primary.main;
+    // const primary = theme.palette.primary.main
     const grey = theme.palette.grey['300'];
 
     const { status, second } = this.state;
 
-    let loading = false,
-      circle = false,
-      _color = null,
-      _fontColor = null,
-      icon = null,
-      iconComponent = null,
-      _customStyle = {},
-      _status = status.status,
-      _size = null,
-      _diameter = 56,
-      iconSize = 20,
-      _reverse = variant === 'outlined' || variant === 'text';
+    let loading = false;
+    let circle = false;
+    let _color = null;
+    let _fontColor = null;
+    let icon = null;
+    let _customStyle = {};
+    const _status = status.status;
+    let _size = null;
+    let _diameter = 56;
+    let iconSize = 20;
+    const _reverse = variant === 'outlined' || variant === 'text';
 
     switch (size) {
       case 'small':
         _size = 'small';
-        _diameter = variant == 'fab' ? 40 : 32;
+        _diameter = variant === 'fab' ? 40 : 32;
         iconSize = 16;
         _customStyle.padding = `0 ${theme.spacing.unit / 2}px`;
         break;
@@ -216,7 +216,7 @@ class RMButton extends Component {
       case 'normal':
       default:
         _size = 'normal';
-        _diameter = variant == 'fab' ? 56 : 48;
+        _diameter = variant === 'fab' ? 56 : 48;
         iconSize = 20;
         _customStyle.padding = `0 ${theme.spacing.unit}px`;
         break;
@@ -310,9 +310,13 @@ class RMButton extends Component {
     }
 
     _customStyle = {
-      ..._customStyle,
       ...customStyle,
+      ..._customStyle,
     };
+
+    if (block) {
+      _customStyle.display = 'block';
+    }
 
     const classes = classNames({
       text: true,
@@ -440,6 +444,7 @@ RMButton.propTypes = {
   showMessageCard: PropTypes.bool,
   size: PropTypes.oneOf(['medium', 'normal', 'small']),
   variant: PropTypes.oneOf(['text', 'outlined', 'contained', 'fab', 'extendedFab']),
+  block: PropTypes.bool,
 };
 
 export default RMButton;
