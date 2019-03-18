@@ -1,5 +1,5 @@
-import Taro, { Component, ScrollView } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+import { View, ScrollView } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
