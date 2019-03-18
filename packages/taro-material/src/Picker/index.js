@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 import RMTextField from '../TextField';
 
-class DatePicker extends Component {
+class RMDatePicker extends Component {
   constructor(props) {
     super(props);
 
@@ -69,7 +69,7 @@ class DatePicker extends Component {
   }
 }
 
-DatePicker.defaultProps = {
+RMDatePicker.defaultProps = {
   title: '日期',
   name: 'date',
   placeholder: '请选择日期',
@@ -83,4 +83,4 @@ DatePicker.defaultProps = {
   format: 'YYYY-MM-DD',
 };
 
-export default DatePicker;
+export default RMDatePicker;

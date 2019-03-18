@@ -6,23 +6,7 @@ import classNames from 'classnames';
 import AtComponent from '../common/component';
 import './index.scss';
 
-export default class AtTabsPane extends AtComponent {
-  static defaultProps = {
-    customStyle: '',
-    className: '',
-    tabDirection: 'horizontal',
-    index: 0,
-    current: 0,
-  };
-
-  static propTypes = {
-    customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-    tabDirection: PropTypes.oneOf(['horizontal', 'vertical']),
-    index: PropTypes.number,
-    current: PropTypes.number,
-  };
-
+export default class RMTabsPane extends AtComponent {
   render() {
     const { customStyle, className, tabDirection, index, current } = this.props;
 
@@ -44,3 +28,19 @@ export default class AtTabsPane extends AtComponent {
     );
   }
 }
+
+RMTabsPane.defaultProps = {
+  customStyle: '',
+  className: '',
+  tabDirection: 'horizontal',
+  index: 0,
+  current: 0,
+};
+
+RMTabsPane.propTypes = {
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  tabDirection: PropTypes.oneOf(['horizontal', 'vertical']),
+  index: PropTypes.number,
+  current: PropTypes.number,
+};

@@ -8,7 +8,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-class Affix extends Component {
+class RMAffix extends Component {
   state = {
     fixed: false,
     position: {},
@@ -106,8 +106,8 @@ class Affix extends Component {
 
     if (this.mount) {
       const { offsetBottom, offsetTop } = this.props;
-      const { width, height } = this.state;
-      const { left, top, bottom, right } = this.position;
+      const { /* width, */ height } = this.state;
+      const { left, top, bottom /* right, */ } = this.position;
 
       let _fixed = false;
       const _position = {};
@@ -177,7 +177,7 @@ class Affix extends Component {
   }
 }
 
-Affix.propTypes = {
+RMAffix.propTypes = {
   /**
    * 距离窗口底部达到指定偏移量后触发
    */
@@ -202,7 +202,7 @@ Affix.propTypes = {
   resize: PropTypes.bool,
 };
 
-Affix.defaultProps = {
+RMAffix.defaultProps = {
   offsetBottom: null,
   offsetTop: null,
   target: 'window',
@@ -212,4 +212,4 @@ Affix.defaultProps = {
   resize: false,
 };
 
-export default Affix;
+export default RMAffix;

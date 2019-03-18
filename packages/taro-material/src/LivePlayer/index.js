@@ -32,6 +32,8 @@ import RoundPauseCircle from './images/round_pause_circle.png';
 // ];
 
 class RMLivePlayer extends Component {
+  livePlayerContext = null;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,11 +48,12 @@ class RMLivePlayer extends Component {
       play: props.autoplay,
     };
   }
-  livePlayerContext = null;
+
   componentDidMount() {
     const { livePlayerId } = this.state;
     this.livePlayerContext = Taro.createLivePlayerContext(livePlayerId, this.$scope);
   }
+
   handleScreenChange = e => {
     const { fullScreen } = e.detail;
     this.props.onFullScreenChange({ fullScreen });

@@ -8,7 +8,7 @@ import RMTextField from '../TextField';
 import AtFloatLayout from '../components/float-layout';
 import AtRadio from '../components/radio';
 
-class Select extends Component {
+class RMSelect extends Component {
   state = {
     open: false,
   };
@@ -87,7 +87,7 @@ class Select extends Component {
   }
 }
 
-Select.defaultProps = {
+RMSelect.defaultProps = {
   InputProps: {},
   onChange: () => {},
   options: [],
@@ -97,7 +97,7 @@ Select.defaultProps = {
   editable: true,
   disabled: false,
 };
-Select.propTypes = {
+RMSelect.propTypes = {
   options: PropTypes.array,
   InputProps: PropTypes.object,
   onChange: PropTypes.func,
@@ -108,4 +108,4 @@ Select.propTypes = {
   editable: PropTypes.bool,
 };
 
-export default Select;
+export default RMSelect;

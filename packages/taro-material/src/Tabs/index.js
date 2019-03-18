@@ -13,7 +13,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-export default class AtTabs extends AtComponent {
+export default class RMTabs extends AtComponent {
   constructor() {
     super(...arguments);
     this.state = {
@@ -234,7 +234,7 @@ export default class AtTabs extends AtComponent {
   }
 }
 
-AtTabs.defaultProps = {
+RMTabs.defaultProps = {
   customStyle: '',
   className: '',
   tabDirection: 'horizontal',
@@ -249,7 +249,7 @@ AtTabs.defaultProps = {
   centered: true,
 };
 
-AtTabs.propTypes = {
+RMTabs.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   height: PropTypes.string,

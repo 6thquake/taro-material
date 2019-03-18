@@ -39,7 +39,7 @@ const isEqual = (array1, array2) => {
   return true;
 };
 
-class ToolBar extends Component {
+class RMToolBar extends Component {
   state = {
     expanded: false,
     show: false,
@@ -364,18 +364,18 @@ class ToolBar extends Component {
   }
 }
 
-ToolBar.propTypes = {
+RMToolBar.propTypes = {
   onChange: PropTypes.func,
   filters: PropTypes.array,
   sorts: PropTypes.array,
   renderTools: PropTypes.element,
 };
 
-ToolBar.defaultProps = {
+RMToolBar.defaultProps = {
   onChange: () => {},
   filters: [],
   sorts: [],
   renderTools: null,
 };
 
-export default ToolBar;
+export default RMToolBar;

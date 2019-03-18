@@ -1,16 +1,16 @@
-import Taro, { Component } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
+import { View, Image } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { View, Text, Image } from '@tarojs/components';
 
 import AtComponent from '../common/component';
 
-import theme from '../styles/theme';
+// import theme from '../styles/theme'
 import ago from '../utils/date';
 
 import './index.scss';
 
-class Notice extends AtComponent {
+class RMNotice extends AtComponent {
   state = {
     date: new Date(),
   };
@@ -64,7 +64,7 @@ class Notice extends AtComponent {
   }
 }
 
-Notice.propTypes = {
+RMNotice.propTypes = {
   title: PropTypes.string,
   content: PropTypes.string,
   rows: PropTypes.number,
@@ -82,7 +82,7 @@ Notice.propTypes = {
   ]),
   icon: PropTypes.string,
 };
-Notice.defaultProps = {
+RMNotice.defaultProps = {
   title: '',
   content: '',
   rows: 0,
@@ -90,4 +90,4 @@ Notice.defaultProps = {
   icon: '',
 };
 
-export default Notice;
+export default RMNotice;

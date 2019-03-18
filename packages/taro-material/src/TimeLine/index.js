@@ -13,7 +13,7 @@ import theme from '../styles/theme';
 
 import './Timeline.scss';
 
-class Timeline extends Component {
+class RMTimeline extends Component {
   componentWillReceiveProps(nextProps) {}
 
   componentWillUnmount() {}
@@ -87,8 +87,12 @@ class Timeline extends Component {
   }
 }
 
-Timeline.defaultProps = {
+RMTimeline.defaultProps = {
   data: [],
 };
 
-export default Timeline;
+RMTimeline.propTypes = {
+  data: PropTypes.array,
+};
+
+export default RMTimeline;

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import './List.scss';
 
-class List extends Component {
+class RMList extends Component {
   render() {
     const { hasBorder, className, customStyle } = this.props;
 
@@ -25,14 +25,14 @@ class List extends Component {
   }
 }
 
-List.defaultProps = {
+RMList.defaultProps = {
   hasBorder: true,
   customStyle: {},
 };
 
-List.propTypes = {
+RMList.propTypes = {
   hasBorder: PropTypes.bool,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
-export default List;
+export default RMList;

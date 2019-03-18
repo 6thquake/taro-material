@@ -7,7 +7,7 @@ import AtBadge from '../components/badge';
 
 import './index.scss';
 
-export default class Badge extends Component {
+export default class RMBadge extends Component {
   ref = node => (this.refElem = node);
 
   componentDidMount() {
@@ -131,7 +131,7 @@ export default class Badge extends Component {
   }
 }
 
-Badge.defaultProps = {
+RMBadge.defaultProps = {
   value: '',
   maxValue: 99,
   variant: 'text',
@@ -142,7 +142,7 @@ Badge.defaultProps = {
   onClick: () => {},
 };
 
-Badge.propTypes = {
+RMBadge.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   maxValue: PropTypes.number,
   variant: PropTypes.oneOf(['text', 'ribbon', 'mark', 'dot']),

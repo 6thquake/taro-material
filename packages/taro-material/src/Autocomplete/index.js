@@ -1,13 +1,15 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, ScrollView } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 
 import RMDropdown from '../Dropdown';
 import RMTextField from '../TextField';
-import './index.scss';
-import theme from '../styles/theme';
 
-class Autocomplete extends Component {
+// import theme from '../styles/theme'
+
+import './index.scss';
+
+class RMAutocomplete extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -114,7 +116,7 @@ class Autocomplete extends Component {
   }
 }
 
-Autocomplete.defaultProps = {
+RMAutocomplete.defaultProps = {
   InputProps: {},
   DropdownProps: {},
   onChange: () => {},
@@ -127,7 +129,8 @@ Autocomplete.defaultProps = {
   editable: true,
   disabled: false,
 };
-Autocomplete.propTypes = {
+
+RMAutocomplete.propTypes = {
   options: PropTypes.array,
   InputProps: PropTypes.object,
   onChange: PropTypes.func,
@@ -138,4 +141,5 @@ Autocomplete.propTypes = {
   editable: PropTypes.bool,
   DropdownProps: PropTypes.object,
 };
-export default Autocomplete;
+
+export default RMAutocomplete;

@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import RMIcon from '../Icon';
@@ -12,7 +11,7 @@ import AtRadio from '../components/radio';
 
 import './Accordion.scss';
 
-class Accordion extends Component {
+class RMAccordion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,10 +102,16 @@ class Accordion extends Component {
   }
 }
 
-Accordion.defaultProps = {
+RMAccordion.defaultProps = {
   onChange: () => {},
   value: 'score',
   options: [],
 };
 
-export default Accordion;
+RMAccordion.propTypes = {
+  onChange: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  optins: PropTypes.array,
+};
+
+export default RMAccordion;

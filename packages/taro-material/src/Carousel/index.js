@@ -6,7 +6,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-class Carousel extends Component {
+class RMCarousel extends Component {
   componentWillMount() {}
 
   componentDidMount() {}
@@ -58,7 +58,7 @@ class Carousel extends Component {
         style={style}
       >
         {items.map((item, index) => (
-          <SwiperItem key={item.src} className="item">
+          <SwiperItem key={index} className="item">
             <Image className="image" src={item.src} mode="aspectFill" />
           </SwiperItem>
         ))}
@@ -67,7 +67,7 @@ class Carousel extends Component {
   }
 }
 
-Carousel.propTypes = {
+RMCarousel.propTypes = {
   /**
    * item list
    * eg.
@@ -121,7 +121,7 @@ Carousel.propTypes = {
   customStyle: PropTypes.object,
 };
 
-Carousel.defaultProps = {
+RMCarousel.defaultProps = {
   items: [],
   speed: 500,
   delay: 5000,
@@ -134,4 +134,4 @@ Carousel.defaultProps = {
   onChange: () => {},
 };
 
-export default Carousel;
+export default RMCarousel;

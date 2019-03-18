@@ -22,7 +22,7 @@ const objectToString = style => {
   return style;
 };
 
-class TabBar extends Component {
+class RMTabBar extends Component {
   // state = {
   //   isIPhoneX: false,
   // };
@@ -128,7 +128,7 @@ class TabBar extends Component {
   }
 }
 
-TabBar.defaultProps = {
+RMTabBar.defaultProps = {
   customStyle: '',
   className: '',
   fixed: false,
@@ -143,7 +143,7 @@ TabBar.defaultProps = {
   onClick: () => {},
 };
 
-TabBar.propTypes = {
+RMTabBar.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   fixed: PropTypes.bool,
@@ -158,4 +158,4 @@ TabBar.propTypes = {
   onClick: PropTypes.func,
 };
 
-export default TabBar;
+export default RMTabBar;

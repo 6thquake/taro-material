@@ -6,12 +6,14 @@ import PropTypes from 'prop-types';
 import AtIcon from '../components/icon/index';
 import AtComponent from '../common/component';
 // import RMButton from '../Button'
-import './Search.scss';
+
 import theme from '../styles/theme';
+
+import './Search.scss';
 
 const defaultFunc = () => {};
 
-export default class Search extends AtComponent {
+export default class RMSearch extends AtComponent {
   constructor(props) {
     super(...arguments);
     this.state = {
@@ -153,7 +155,7 @@ export default class Search extends AtComponent {
   }
 }
 
-Search.defaultProps = {
+RMSearch.defaultProps = {
   value: '',
   placeholder: '搜索',
   maxlength: 140,
@@ -172,7 +174,7 @@ Search.defaultProps = {
   square: false,
 };
 
-Search.propTypes = {
+RMSearch.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   maxlength: PropTypes.number,

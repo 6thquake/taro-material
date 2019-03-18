@@ -9,7 +9,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-class Index extends Component {
+class RMNavList extends Component {
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -142,7 +142,7 @@ class Index extends Component {
   }
 }
 
-Index.defaultProps = {
+RMNavList.defaultProps = {
   data: [],
   onClick: () => {},
   columnNum: 4,
@@ -155,7 +155,7 @@ Index.defaultProps = {
   customStyle: {},
 };
 
-Index.propTypes = {
+RMNavList.propTypes = {
   size: PropTypes.oneOf(['large', 'medium', 'normal', 'small']),
 };
-export default Index;
+export default RMNavList;

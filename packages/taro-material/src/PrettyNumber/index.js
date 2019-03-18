@@ -1,9 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { Text } from '@tarojs/components';
 
 import { RMTypography } from '../Typography';
 
-class PrettyNumber extends Component {
+class RMPrettyNumber extends Component {
   render() {
     const { className, value, fontSize, color, prefix, suffix } = this.props;
 
@@ -21,7 +21,7 @@ class PrettyNumber extends Component {
     );
   }
 }
-PrettyNumber.defaultProps = {
+RMPrettyNumber.defaultProps = {
   fontSize: 24,
   value: 0,
   color: '',
@@ -29,4 +29,4 @@ PrettyNumber.defaultProps = {
   suffix: '',
 };
 
-export default PrettyNumber;
+export default RMPrettyNumber;

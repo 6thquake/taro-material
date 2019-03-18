@@ -6,11 +6,11 @@ import { getClassName } from '../utils/styles';
 import AtList from '../List';
 import AtListItem from '../ListItem';
 
-import theme from '../styles/theme';
+// import theme from '../styles/theme'
 
 import './Drawer.scss';
 
-export default class Drawer extends Component {
+export default class RMDrawer extends Component {
   constructor() {
     super(...arguments);
     this.state = { animShow: false };
@@ -119,7 +119,7 @@ export default class Drawer extends Component {
   }
 }
 
-Drawer.defaultProps = {
+RMDrawer.defaultProps = {
   show: false,
   mask: true,
   width: 368,
@@ -129,7 +129,7 @@ Drawer.defaultProps = {
   onClose: () => {},
 };
 
-Drawer.propTypes = {
+RMDrawer.propTypes = {
   show: PropTypes.bool,
   mask: PropTypes.bool,
   width: PropTypes.number,

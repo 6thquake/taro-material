@@ -41,7 +41,7 @@ const [
   'https://raw.githubusercontent.com/6thquake/taro-material/master/packages/taro-material/src/Postmark/images/postmark-error.png',
 ];
 
-class Postmark extends Component {
+class RMPostmark extends Component {
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -153,7 +153,7 @@ class Postmark extends Component {
   }
 }
 
-Postmark.defaultProps = {
+RMPostmark.defaultProps = {
   /**
    * enum: 'primary', 'secondary', 'error', 'success', 'warning', 'progress', 'default', 'white', 'black'
    * The color of the component. It supports those theme colors that make sense for this component.
@@ -166,4 +166,4 @@ Postmark.defaultProps = {
   format: 'YYYY-MM-DD HH:mm:ss',
 };
 
-export default Postmark;
+export default RMPostmark;

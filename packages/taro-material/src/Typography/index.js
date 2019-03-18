@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './Typography.scss';
 
-class Typography extends Component {
+class RMTypography extends Component {
   static externalClasses = ['classes'];
 
   static options = {
@@ -55,7 +55,7 @@ class Typography extends Component {
     );
   }
 }
-Typography.defaultProps = {
+RMTypography.defaultProps = {
   className: '',
   color: 'default',
   fontSize: 'default',
@@ -67,7 +67,7 @@ Typography.defaultProps = {
   selectable: true,
 };
 
-Typography.propTypes = {
+RMTypography.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -79,4 +79,4 @@ Typography.propTypes = {
   decode: PropTypes.bool,
 };
 
-export default Typography;
+export default RMTypography;

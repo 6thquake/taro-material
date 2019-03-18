@@ -8,7 +8,7 @@ import RMIcon from '../Icon';
 import './NoData.scss';
 // import NoDataImg from '../../../images/NoData.png'
 
-class NoData extends Component {
+class RMNoData extends Component {
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -46,10 +46,10 @@ class NoData extends Component {
   }
 }
 
-NoData.defaultProps = {
+RMNoData.defaultProps = {
   title: '暂时没有数据',
   background: '',
   color: '',
 };
 
-export default NoData;
+export default RMNoData;

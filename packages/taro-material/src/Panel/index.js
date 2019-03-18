@@ -8,7 +8,7 @@ import RMButton from '../Button';
 
 import './Panel.scss';
 
-class Panel extends Component {
+class RMPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,7 +103,7 @@ class Panel extends Component {
   }
 }
 
-Panel.defaultProps = {
+RMPanel.defaultProps = {
   open: false,
   title: null,
   note: null,
@@ -113,7 +113,8 @@ Panel.defaultProps = {
   actions: null,
   customStyle: {},
 };
-Panel.propTypes = {
+
+RMPanel.propTypes = {
   open: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   note: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -126,4 +127,4 @@ Panel.propTypes = {
   action: PropTypes.array,
   customStyle: PropTypes.object,
 };
-export default Panel;
+export default RMPanel;

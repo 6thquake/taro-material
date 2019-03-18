@@ -12,7 +12,7 @@ import theme from '../styles/theme';
 
 import './Tag.scss';
 
-class Tag extends Component {
+class RMTag extends Component {
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -125,7 +125,7 @@ class Tag extends Component {
   }
 }
 
-Tag.defaultProps = {
+RMTag.defaultProps = {
   color: 'default',
   size: 'normal',
   name: '',
@@ -139,7 +139,7 @@ Tag.defaultProps = {
   suffix: '',
 };
 
-Tag.propTypes = {
+RMTag.propTypes = {
   color: PropTypes.oneOf([
     'default',
     'inherit',
@@ -162,4 +162,4 @@ Tag.propTypes = {
   suffix: PropTypes.string,
 };
 
-export default Tag;
+export default RMTag;

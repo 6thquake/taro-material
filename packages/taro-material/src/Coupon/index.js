@@ -7,7 +7,7 @@ import { format } from '../utils/math';
 
 import './index.scss';
 
-export default class Coupon extends Component {
+export default class RMCoupon extends Component {
   handleClick() {
     const { disabled, onClick } = this.props;
     !disabled && onClick && onClick(...arguments);
@@ -62,7 +62,7 @@ export default class Coupon extends Component {
   }
 }
 
-Coupon.defaultProps = {
+RMCoupon.defaultProps = {
   title: '',
   prefix: '￥',
   suffix: '',
@@ -75,7 +75,7 @@ Coupon.defaultProps = {
   onClick: () => {},
 };
 
-Coupon.propTypes = {
+RMCoupon.propTypes = {
   title: PropTypes.string,
   prefix: PropTypes.string,
   suffix: PropTypes.string,

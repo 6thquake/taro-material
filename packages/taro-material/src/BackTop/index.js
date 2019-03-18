@@ -1,14 +1,14 @@
 import Taro, { Component } from '@tarojs/taro';
+import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { View } from '@tarojs/components';
 
 import RMButton from '../Button';
 import RMIcon from '../Icon';
 import theme from '../styles/theme';
 import './BackTop.scss';
 
-class BackTop extends Component {
+class RMBackTop extends Component {
   state = {
     visibility: false,
     // isIPhoneX: false,
@@ -86,7 +86,7 @@ class BackTop extends Component {
   }
 }
 
-BackTop.defaultProps = {
+RMBackTop.defaultProps = {
   visibilityHeight: 300,
   container: 'window',
   size: 'medium',
@@ -97,7 +97,7 @@ BackTop.defaultProps = {
   right: theme.spacing.unit * 2,
 };
 
-BackTop.propTypes = {
+RMBackTop.propTypes = {
   /**
    * show BackTop button when scroll to this height
    */
@@ -124,4 +124,4 @@ BackTop.propTypes = {
   right: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-export default BackTop;
+export default RMBackTop;

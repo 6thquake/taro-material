@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './Icon.scss';
 
-class Icon extends Component {
+class RMIcon extends Component {
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -13,10 +13,12 @@ class Icon extends Component {
   componentDidHide() {}
 
   render() {
-    let { fontSize, color, block, customStyle } = this.props;
+    const { color, block, customStyle } = this.props;
+    let { fontSize } = this.props;
+
     const style = { ...customStyle };
 
-    if (fontSize && fontSize != 'default') {
+    if (fontSize && fontSize !== 'default') {
       if (typeof fontSize === 'number') {
         fontSize += 'px';
       }
@@ -31,7 +33,7 @@ class Icon extends Component {
     const classes = classNames({
       root: true,
       'material-icons': true,
-      'inherit-size': fontSize == 'inherit',
+      'inherit-size': fontSize === 'inherit',
       block,
       [`color${_color}`]: color !== 'inherit',
     });
@@ -44,7 +46,7 @@ class Icon extends Component {
   }
 }
 
-Icon.defaultProps = {
+RMIcon.defaultProps = {
   /**
    * enum: 'inherit', 'primary', 'secondary', 'action', 'error', 'disabled', 'success', 'warning', 'progress', 'default'
    * The color of the component. It supports those theme colors that make sense for this component.
@@ -61,4 +63,20 @@ Icon.defaultProps = {
   customStyle: {},
 };
 
-export default Icon;
+RMIcon.propTypes = {
+  color: PropTypes.oneOf([
+    'default',
+    'inherit',
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+  ]),
+  fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  block: PropTypes.bool,
+  customStyle: PropTypes.object,
+};
+
+export default RMIcon;

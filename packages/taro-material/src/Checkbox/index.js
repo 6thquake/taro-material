@@ -1,12 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { View, Checkbox, Label } from '@tarojs/components';
+import { View, Checkbox } from '@tarojs/components';
 import classNames from 'classnames';
 
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
-import theme from '../styles/theme';
+// import theme from '../styles/theme'
 
 import './index.scss';
 

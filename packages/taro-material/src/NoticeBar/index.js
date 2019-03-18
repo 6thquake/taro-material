@@ -9,7 +9,7 @@ import RMTypography from '../Typography';
 
 import './index.scss';
 
-class NoticeBar extends AtComponent {
+class RMNoticeBar extends AtComponent {
   // initial = false;
 
   constructor() {
@@ -267,7 +267,7 @@ class NoticeBar extends AtComponent {
   }
 }
 
-NoticeBar.propTypes = {
+RMNoticeBar.propTypes = {
   close: PropTypes.bool, //  是否需要关闭按钮  Boolean - false
   marquee: PropTypes.bool, // 内容是否滚动（内容只能单行）  Boolean - false
   duration: PropTypes.number, // 内容滚动速度 （默认速度100px/秒）  Number  - 100
@@ -297,7 +297,7 @@ NoticeBar.propTypes = {
   unread: PropTypes.bool,
 };
 
-NoticeBar.defaultProps = {
+RMNoticeBar.defaultProps = {
   close: false,
   marquee: false,
   moreText: '查看详情',
@@ -321,4 +321,4 @@ NoticeBar.defaultProps = {
   unread: false,
 };
 
-export default NoticeBar;
+export default RMNoticeBar;

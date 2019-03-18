@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
-import theme from '../styles/theme';
+// import theme from '../styles/theme'
 
 const defaultFunc = () => {};
 

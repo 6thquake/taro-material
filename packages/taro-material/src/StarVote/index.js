@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,11 +8,12 @@ import RMTypography from '../Typography';
 
 import './index.scss';
 
-class StarVote extends Component {
+class RMStarVote extends Component {
   render() {
-    let {
+    let { value } = this.props;
+
+    const {
       count,
-      value,
       defaultValue,
       allowHalf,
       color,
@@ -23,7 +24,7 @@ class StarVote extends Component {
       customStyle,
     } = this.props;
 
-    if (!value && value != 0) {
+    if (!value && value !== 0) {
       value = defaultValue;
     }
 
@@ -95,7 +96,8 @@ class StarVote extends Component {
     );
   }
 }
-StarVote.propTypes = {
+
+RMStarVote.propTypes = {
   /**
    *  total count of star
    */
@@ -140,7 +142,8 @@ StarVote.propTypes = {
   showValue: PropTypes.bool,
   customStyle: PropTypes.object,
 };
-StarVote.defaultProps = {
+
+RMStarVote.defaultProps = {
   count: 5,
   value: 0,
   defaultValue: 0,
@@ -156,4 +159,4 @@ StarVote.defaultProps = {
   customStyle: {},
 };
 
-export default StarVote;
+export default RMStarVote;

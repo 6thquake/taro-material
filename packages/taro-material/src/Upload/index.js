@@ -11,7 +11,7 @@ import theme from '../styles/theme';
 import './Upload.scss';
 
 function uploadFile(url, item, params, resolve, reject) {
-  if (Upload.queue > 10) {
+  if (RMUpload.queue > 10) {
     return setTimeout(() => {
       uploadFile(url, item, params, resolve, reject);
     }, 100);
@@ -39,12 +39,12 @@ function uploadFile(url, item, params, resolve, reject) {
         reject(res);
       }
 
-      Upload.queue--;
+      RMUpload.queue--;
     },
   });
 }
 
-class Upload extends Component {
+class RMUpload extends Component {
   static queue = 0;
 
   constructor(props) {
@@ -92,8 +92,9 @@ class Upload extends Component {
       return;
     }
 
-    let { maxLength, multiple } = this.props;
+    const { multiple } = this.props;
     const { length } = this._files;
+    let { maxLength } = this.props;
     if (multiple) {
       if (!maxLength) {
         maxLength = 2;
@@ -137,7 +138,8 @@ class Upload extends Component {
       return;
     }
 
-    let { maxLength, multiple } = this.props;
+    const { multiple } = this.props;
+    let { maxLength } = this.props;
     if (multiple) {
       if (!maxLength) {
         maxLength = 2;
@@ -150,8 +152,7 @@ class Upload extends Component {
       const { _files } = this.state;
       if (_files.length > 0) {
         for (let i = 0; i < _files.length; i++) {
-          const file = _files[i];
-          this.handleDelete(null, file);
+          this.handleDelete(null, _files[i]);
         }
       }
     }
@@ -186,9 +187,9 @@ class Upload extends Component {
 
     return Promise.all(
       _files.map(
-        (item, index) =>
+        item =>
           new Promise((resolve, reject) => {
-            Upload.queue++;
+            RMUpload.queue++;
             uploadFile(url, item, params, resolve, reject);
           }),
       ),
@@ -207,7 +208,7 @@ class Upload extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { onChange, disabled } = this.props;
 
-    if (!disabled && prevState._files != this.state._files) {
+    if (!disabled && prevState._files !== this.state._files) {
       onChange(this.state._files);
     }
   }
@@ -218,7 +219,7 @@ class Upload extends Component {
       const file = _files[i];
       this.handleDelete(file);
     }
-    Upload.queue = 0;
+    RMUpload.queue = 0;
   };
 
   render() {
@@ -314,13 +315,13 @@ class Upload extends Component {
   }
 }
 
-Upload.defaultProps = {
+RMUpload.defaultProps = {
   acceptType: '*/*',
   multiple: true,
   disabled: false,
   files: [],
-  onChange: _files => {},
-  onDelete: file => {},
+  onChange: () => {},
+  onDelete: () => {},
   label: 'upload',
   name: '',
   maxLength: 9,
@@ -333,4 +334,10 @@ Upload.defaultProps = {
   square: false,
 };
 
-export default Upload;
+RMUpload.propTypes = {
+  multiple: PropTypes.bool,
+  disabled: PropTypes.bool,
+  maxLength: PropTypes.number,
+};
+
+export default RMUpload;

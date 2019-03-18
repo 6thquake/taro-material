@@ -9,10 +9,7 @@ import RMTypography from '../Typography';
 import './Loading.scss';
 import theme from '../styles/theme';
 
-class Loading extends Component {
-  constructor(props) {
-    super(props);
-  }
+class RMLoading extends Component {
   render() {
     const { size, mode, color, content, status, message } = this.props;
     return (
@@ -32,7 +29,7 @@ class Loading extends Component {
   }
 }
 
-Loading.defaultProps = {
+RMLoading.defaultProps = {
   size: 24,
   color: theme.palette.progress.main,
   status: 'closed',
@@ -40,7 +37,7 @@ Loading.defaultProps = {
   message: '坦白说 这已经是我的所有了',
 };
 
-Loading.propTypes = {
+RMLoading.propTypes = {
   status: PropTypes.oneOf(['loading', 'end', 'closed']),
   size: PropTypes.number,
   mode: PropTypes.string,
@@ -48,4 +45,4 @@ Loading.propTypes = {
   content: PropTypes.string,
 };
 
-export default Loading;
+export default RMLoading;

@@ -7,7 +7,7 @@ import theme from '../styles/theme';
 import './Watermark.scss';
 
 const unit = 80;
-class Watermark extends Component {
+class RMWatermark extends Component {
   state = {
     id: null,
     width: 300,
@@ -18,7 +18,7 @@ class Watermark extends Component {
 
   componentDidMount() {
     const id = `watermark-${new Date().getTime()}-${Math.floor(Math.random() * 100)}`;
-    const res = wx.getSystemInfoSync();
+    const res = Taro.getSystemInfoSync();
     this.setState(
       {
         width: res.windowWidth,
@@ -27,7 +27,7 @@ class Watermark extends Component {
       },
       () => {
         // setTimeout(()=>{
-        this.ctx = wx.createCanvasContext(id, this.$scope);
+        this.ctx = Taro.createCanvasContext(id, this.$scope);
         this.draw();
         // },2000)
       },
@@ -50,7 +50,7 @@ class Watermark extends Component {
     }
 
     const { text, type } = this.props;
-    const { width, height, id } = this.state;
+    const { width, height } = this.state;
 
     const fontSize = theme.typography.fontSize;
     const fontColor = theme.palette.text.divider;
@@ -85,7 +85,7 @@ class Watermark extends Component {
 
     ctx.draw(false, () => {
       const { id } = this.state;
-      wx.canvasToTempFilePath(
+      Taro.canvasToTempFilePath(
         {
           canvasId: id,
           quality: 1,
@@ -101,7 +101,7 @@ class Watermark extends Component {
   }
 
   render() {
-    const { id, height, mark } = this.state;
+    const { id, /* height, */ mark } = this.state;
     const { customStyle, type, container, onClick } = this.props;
 
     const position = container === 'window' ? 'fixed' : 'absolute';
@@ -135,7 +135,7 @@ class Watermark extends Component {
   }
 }
 
-Watermark.defaultProps = {
+RMWatermark.defaultProps = {
   text: '',
   type: 'stretch', // stretch, rightBottom,
   customStyle: {},
@@ -143,7 +143,7 @@ Watermark.defaultProps = {
   onClick: () => {},
 };
 
-Watermark.propTypes = {
+RMWatermark.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['stretch', 'rightBottom']),
   customStyle: PropTypes.object,
@@ -151,4 +151,4 @@ Watermark.propTypes = {
   onClick: PropTypes.func,
 };
 
-export default Watermark;
+export default RMWatermark;

@@ -8,7 +8,7 @@ import AtRadio from '../components/radio';
 
 import RMTextField from '../TextField';
 
-class AsyncSelect extends Component {
+class RMAsyncSelect extends Component {
   state = {
     open: false,
   };
@@ -95,7 +95,7 @@ class AsyncSelect extends Component {
   }
 }
 
-AsyncSelect.defaultProps = {
+RMAsyncSelect.defaultProps = {
   title: '请选择',
   name: 'select',
   placeholder: '请选择一项',
@@ -109,4 +109,8 @@ AsyncSelect.defaultProps = {
   helperText: '',
 };
 
-export default AsyncSelect;
+RMAsyncSelect.propTypes = {
+  title: PropTypes.string,
+};
+
+export default RMAsyncSelect;

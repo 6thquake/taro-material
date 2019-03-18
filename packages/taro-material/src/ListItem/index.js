@@ -13,7 +13,7 @@ import theme from '../styles/theme';
 
 import './ListItem.scss';
 
-class ListItem extends Component {
+class RMListItem extends Component {
   handleClick = (...args) => {
     const { disabled } = this.props;
 
@@ -197,7 +197,7 @@ class ListItem extends Component {
   }
 }
 
-ListItem.defaultProps = {
+RMListItem.defaultProps = {
   hasBorder: true,
   isSwitch: false,
   disabled: false,
@@ -205,7 +205,7 @@ ListItem.defaultProps = {
   badge: { dot: false, value: '', maxValue: 0 },
 };
 
-ListItem.propTypes = {
+RMListItem.propTypes = {
   note: PropTypes.string,
   title: PropTypes.string,
   thumb: PropTypes.string,
@@ -256,4 +256,4 @@ ListItem.propTypes = {
   }),
 };
 
-export default ListItem;
+export default RMListItem;

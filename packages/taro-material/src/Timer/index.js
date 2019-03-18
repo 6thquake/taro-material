@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import AtComponent from '../common/component';
 import '../CountDown/index.scss';
 
-export default class RMCountDown extends AtComponent {
+export default class RMTimer extends AtComponent {
   constructor() {
     super(...arguments);
     const { initial } = this.props;
@@ -212,7 +212,7 @@ export default class RMCountDown extends AtComponent {
   }
 }
 
-RMCountDown.defaultProps = {
+RMTimer.defaultProps = {
   customStyle: '',
   className: '',
   isShowDay: false,
@@ -232,7 +232,7 @@ RMCountDown.defaultProps = {
   size: 'normal',
 };
 
-RMCountDown.propTypes = {
+RMTimer.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   isShowDay: PropTypes.bool,

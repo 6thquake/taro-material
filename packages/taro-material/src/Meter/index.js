@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { View, Text } from '@tarojs/components';
 import classNames from 'classnames';
 
-import theme from '../../theme';
+// import theme from '../../theme'
 
 import './index.scss';
 
-class Index extends Component {
+class RMMeter extends Component {
   state = {};
 
   componentWillReceiveProps(nextProps) {}
@@ -88,7 +88,7 @@ class Index extends Component {
   }
 }
 
-Index.defaultProps = {
+RMMeter.defaultProps = {
   value: 0,
   type: 'water',
   customStyle: {},
@@ -96,11 +96,11 @@ Index.defaultProps = {
   size: 'normal',
 };
 
-Index.propTypes = {
+RMMeter.propTypes = {
   value: PropTypes.number,
   type: PropTypes.oneOf(['water', 'power', 'gas']),
   size: PropTypes.oneOf(['large', 'medium', 'normal', 'small', 'xs']),
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
-export default Index;
+export default RMMeter;

@@ -12,7 +12,7 @@ import './TextField.scss';
 
 const defaultFunc = () => {};
 
-class TextField extends Component {
+class RMTextField extends Component {
   onInput(e) {
     const { multiline, count, maxlength } = this.props;
     if (multiline && count) {
@@ -313,7 +313,7 @@ class TextField extends Component {
   }
 }
 
-TextField.defaultProps = {
+RMTextField.defaultProps = {
   className: '',
   customStyle: '',
   value: '',
@@ -356,7 +356,7 @@ TextField.defaultProps = {
   fixed: false,
 };
 
-TextField.propTypes = {
+RMTextField.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   customStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -400,4 +400,4 @@ TextField.propTypes = {
   fixed: PropTypes.bool,
 };
 
-export default TextField;
+export default RMTextField;
