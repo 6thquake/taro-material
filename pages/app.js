@@ -94,6 +94,7 @@ class App extends Component {
       'pages/material/pretty-number/index',
       'pages/material/list/index',
       'pages/material/tag-bar/index',
+      'pages/material/indexes/index',
     ],
     window: {
       backgroundTextStyle: 'light',

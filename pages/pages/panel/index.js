@@ -406,6 +406,10 @@ export default class PanelBasic extends Component {
             id: 'Tag-Bar',
             name: '过滤条',
           },
+          {
+            id: 'Indexes',
+            name: '索引选择器',
+          },
         ],
       },
     };
