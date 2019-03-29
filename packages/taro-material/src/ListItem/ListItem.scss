@@ -247,12 +247,14 @@ $item-horizontal-padding: 24px;
       color: inherit;
       font-size: inherit;
       line-height: $line-height-zh;
+      text-align: left;
     }
 
     &-note {
       color: $color-grey-2;
       font-size: $font-size-base;
       line-height: $line-height-zh;
+      text-align: left;
     }
   }
 }
