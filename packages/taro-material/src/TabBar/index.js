@@ -94,12 +94,14 @@ class RMTabBar extends Component {
                   value={badge.value}
                   maxValue={badge.maxValue}
                 >
-                  <View className="at-tab-bar__icon" style={{ fontSize: `${iconSize}px` }}>
-                    <RMIcon
-                      prefixClass={item.iconPrefixClass}
-                      fontSize="inherit"
-                      color={current === i ? selectedColor : color}
-                    >
+                  <View
+                    className="at-tab-bar__icon"
+                    style={{
+                      ...{ fontSize: `${iconSize}px` },
+                      ...{ color: current === i ? selectedStyle : defaultStyle },
+                    }}
+                  >
+                    <RMIcon prefixClass={item.iconPrefixClass} fontSize="inherit" color="inherit">
                       {current === i && item.selectedIconType
                         ? item.selectedIconType
                         : item.iconType}

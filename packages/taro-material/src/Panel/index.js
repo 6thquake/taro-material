@@ -110,7 +110,7 @@ RMPanel.defaultProps = {
   expandable: false,
   extra: null,
   onAction: () => {},
-  actions: null,
+  actions: [],
   customStyle: {},
 };
 
@@ -124,7 +124,7 @@ RMPanel.propTypes = {
   renderExtra: PropTypes.element,
   renderActions: PropTypes.element,
   expandable: PropTypes.bool,
-  action: PropTypes.array,
+  actions: PropTypes.array,
   customStyle: PropTypes.object,
 };
 export default RMPanel;

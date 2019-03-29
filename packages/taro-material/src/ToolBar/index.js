@@ -330,7 +330,7 @@ class RMToolBar extends Component {
                 {multiLength ? `(${multiLength})` : ''}
               </RMTypography>
             </View>
-            <RMIcon color={multiLength > 0 ? 'primary' : ''} block fontSize="inherit">
+            <RMIcon color={multiLength > 0 ? 'primary' : 'inherit'} block fontSize="inherit">
               {'filter_list'}
             </RMIcon>
           </View>
