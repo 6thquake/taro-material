@@ -61,7 +61,6 @@ export { default as AtLoading } from './components/loading';
 export { default as AtComponent } from './common/component';
 
 export { default as RMAffix } from './Affix';
-export { default as RMAccordion } from './Accordion';
 export { default as RMAutocomplete } from './Autocomplete';
 export { default as RMBackTop } from './BackTop';
 export { default as RMButton } from './Button';

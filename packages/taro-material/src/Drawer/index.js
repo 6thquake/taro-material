@@ -1,10 +1,11 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { getClassName } from '../utils/styles';
 
-import AtList from '../List';
-import AtListItem from '../ListItem';
+import RMList from '../List';
+import RMListItem from '../ListItem';
 
 // import theme from '../styles/theme'
 
@@ -17,14 +18,14 @@ export default class RMDrawer extends Component {
     if (this.props.show) this.animShow();
   }
 
-  onItemClick(index, e) {
+  onItemClick(item, e) {
     if (this.props.onItemClick) {
-      const result = this.props.onItemClick(index);
+      const result = this.props.onItemClick(item);
       if (result === false) {
         return;
       }
     }
-    this.animHide(e, index);
+    this.animHide(e, item);
   }
 
   onHide() {
@@ -67,7 +68,7 @@ export default class RMDrawer extends Component {
   }
 
   render() {
-    const { mask, width, right, items } = this.props;
+    const { mask, width, right, items, itemsAlign, color } = this.props;
     const { animShow, show } = this.state;
     let rootClassName = ['at-drawer'];
 
@@ -99,19 +100,32 @@ export default class RMDrawer extends Component {
             onClick={this.onMaskClick.bind(this)}
           />
 
-          <View className="at-drawer__content" style={listStyle}>
-            <AtList>
-              {items.map((name, index) => (
-                <AtListItem
-                  key={index}
-                  data-index={index}
-                  onClick={this.onItemClick.bind(this, index)}
-                  title={name}
-                  arrow="right"
-                />
-              ))}
-              {this.props.children}
-            </AtList>
+          <View
+            className={classNames({
+              [color]: true,
+              'at-drawer__content': true,
+              [itemsAlign]: true,
+            })}
+            style={listStyle}
+          >
+            {items.map((group, key) => (
+              <View key={key} className="at-drawer__wrapper">
+                <View className="at-drawer__list--title">{group.name}</View>
+                <RMList hasBorder={false} customStyle={{ backgroundColor: 'transparent' }}>
+                  {group.children.map((item, index) => (
+                    <RMListItem
+                      key={index}
+                      data-index={index}
+                      onClick={this.onItemClick.bind(this, item)}
+                      title={item.name}
+                      arrow="right"
+                      hasBorder
+                    />
+                  ))}
+                </RMList>
+              </View>
+            ))}
+            {this.props.children}
           </View>
         </View>
       )
@@ -125,8 +139,10 @@ RMDrawer.defaultProps = {
   width: 368,
   right: false,
   items: [],
+  itemsAlign: 'top',
   onItemClick: () => {},
   onClose: () => {},
+  color: 'default',
 };
 
 RMDrawer.propTypes = {
@@ -134,6 +150,17 @@ RMDrawer.propTypes = {
   mask: PropTypes.bool,
   width: PropTypes.number,
   items: PropTypes.arrayOf(PropTypes.string),
+  itemsAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
   onItemClick: PropTypes.func,
   onClose: PropTypes.func,
+  color: PropTypes.oneOf([
+    'default',
+    'inherit',
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+  ]),
 };

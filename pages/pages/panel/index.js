@@ -410,6 +410,10 @@ export default class PanelBasic extends Component {
             id: 'Indexes',
             name: '索引选择器',
           },
+          {
+            id: 'Drawer',
+            name: '抽屉',
+          },
         ],
       },
     };

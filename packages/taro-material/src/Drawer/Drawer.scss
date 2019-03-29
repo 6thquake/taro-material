@@ -1,6 +1,6 @@
 @import '../styles/theme.scss';
 
-$drawer-content-width: 368Px;
+$drawer-content-width: 368px;
 
 $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
 
@@ -30,10 +30,56 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     bottom: 0;
     width: $drawer-content-width;
     text-align: left;
-    background-color: $paletteBackgroundPaper;
     opacity: 0;
     overflow: auto;
     z-index: #{$zIndexDrawer + 2};
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.top {
+      justify-content: flex-start;
+    }
+    &.middle {
+      justify-content: center;
+    }
+    &.bottom {
+      justify-content: flex-end;
+    }
+
+    &.default {
+      background-color: $paletteBackgroundPaper;
+    }
+    &.inherit {
+      background-color: inherit;
+    }
+    &.primary {
+      background-color: $palettePrimaryMain;
+    }
+    &.secondary {
+      background-color: $paletteSecondaryMain;
+    }
+    &.error {
+      background-color: $paletteErrorMain;
+    }
+    &.success {
+      background-color: $paletteSuccessMain;
+    }
+    &.warning {
+      background-color: $paletteWarningMain;
+    }
+    &.progress {
+      background-color: $paletteProgressMain;
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  &__list--title {
+    padding: 0 #{$spacingUnit * 3}px;
   }
 
   &.at-drawer--left {
