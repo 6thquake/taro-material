@@ -1,5 +1,5 @@
-import Taro, { Component, LivePlayer, CoverView, CoverImage } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+import { View, LivePlayer, CoverView, CoverImage } from '@tarojs/components';
 import PropTypes from 'prop-types';
 
 import theme from '../styles/theme';
