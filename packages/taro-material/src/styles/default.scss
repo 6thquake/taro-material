@@ -70,7 +70,7 @@ $zindex-form: $zIndexDropdown !default;
 $zindex-nav: $zIndexToolBar !default;
 $zindex-search-bar: $zIndexToolBar !default;
 $zindex-indexes: $zIndexAppBar !default;
-$zindex-flot-layout: #{$zIndexAppBar + 10} !default;
+$zindex-flot-layout: #{$zIndexDrawer - 10} !default;
 $zindex-drawer: $zIndexDrawer !default;
 $zindex-modal: $zIndexModal !default;
 $zindex-action-sheet: #{$zIndexModal + 10} !default;

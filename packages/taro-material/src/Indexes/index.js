@@ -238,7 +238,7 @@ RMIndexes.defaultProps = {
   list: [],
   onClick: () => {},
   ListProps: {
-    hasBorder: true,
+    hasBorder: false,
   },
   ListItemProps: {
     hasBorder: true,

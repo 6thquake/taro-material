@@ -47,9 +47,11 @@ class RMTypography extends Component {
 
     return (
       <View className={classes} style={style} onClick={onClick}>
+        {/*
         <Text space={space} selectable={selectable} decode={decode}>
           {this.props.children}
         </Text>
+        */}
         {this.props.children}
       </View>
     );
