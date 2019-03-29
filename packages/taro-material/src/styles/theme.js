@@ -159,6 +159,7 @@ const theme = {
     affix: 1120,
     drawer: 1200,
     modal: 1300,
+    curtain: 1350,
     snackbar: 1400,
     tooltip: 1500,
   },
