@@ -136,7 +136,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="default"
+            selectedColor="default"
           />
         </View>
 
@@ -147,7 +147,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="inherit"
+            selectedColor="inherit"
           />
         </View>
 
@@ -158,7 +158,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="primary"
+            selectedColor="primary"
           />
         </View>
 
@@ -169,7 +169,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="secondary"
+            selectedColor="secondary"
           />
         </View>
 
@@ -180,7 +180,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="error"
+            selectedColor="error"
           />
         </View>
 
@@ -191,7 +191,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="success"
+            selectedColor="success"
           />
         </View>
 
@@ -202,7 +202,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="warning"
+            selectedColor="warning"
           />
         </View>
 
@@ -213,7 +213,7 @@ class Index extends RMPage {
             values={values}
             onChange={this.handleChange}
             onAddPageScroll={this.onAddPageScroll}
-            color="progress"
+            selectedColor="progress"
           />
         </View>
 

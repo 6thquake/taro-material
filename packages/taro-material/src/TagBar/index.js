@@ -181,13 +181,15 @@ class RMTagBar extends Component {
   }
 
   render() {
-    const { data, values, offsetTop, color, customStyle } = this.props;
+    const { data, values, offsetTop, color, selectedColor, customStyle } = this.props;
     const { scrollbar, valueBar } = this.state;
 
     const valuesText = this.getValuesText();
 
-    const _color = theme.palette[color];
-    const valColor = _color ? _color.main : color;
+    let _color = theme.palette[selectedColor];
+    const valColor = _color ? _color.main : theme.palette.text.primary;
+
+    _color = theme.palette[color];
     const labelColor = _color ? _color.contrastText : color;
 
     return (
@@ -206,7 +208,7 @@ class RMTagBar extends Component {
               <View className="scrollbar">
                 <View onClick={this.handleReset.bind(this, item.name)} className="tag">
                   {!values[item.name] ? (
-                    <RMTag circle color={color} size="small" active block>
+                    <RMTag circle color={selectedColor} size="small" active block>
                       {item.label}
                     </RMTag>
                   ) : (
@@ -226,7 +228,7 @@ class RMTagBar extends Component {
                       key={key}
                     >
                       {active ? (
-                        <RMTag circle color={color} size="small" active block>
+                        <RMTag circle color={selectedColor} size="small" active block>
                           {option.label}
                         </RMTag>
                       ) : (
@@ -268,6 +270,15 @@ RMTagBar.propTypes = {
   values: PropTypes.object,
   offsetTop: PropTypes.number,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  selectedColor: PropTypes.oneOf([
+    'default',
+    'primary',
+    'secondary',
+    'error',
+    'success',
+    'warning',
+    'progress',
+  ]),
   color: PropTypes.oneOf([
     'default',
     'inherit',
@@ -286,7 +297,8 @@ RMTagBar.defaultProps = {
   values: {},
   onAddPageScroll: () => {},
   offsetTop: 0,
-  color: 'primary',
+  color: 'default',
+  selectedColor: 'primary',
   customStyle: {},
 };
 
