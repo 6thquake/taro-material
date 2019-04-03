@@ -68,7 +68,7 @@ export default class RMDrawer extends Component {
   }
 
   render() {
-    const { mask, width, right, items, itemsAlign, color } = this.props;
+    const { mask, width, right, items, itemsAlign, color, ListProps, ListItemProps } = this.props;
     const { animShow, show } = this.state;
     let rootClassName = ['at-drawer'];
 
@@ -132,6 +132,7 @@ export default class RMDrawer extends Component {
                       extraThumb={item.extraThumb}
                       extraIconThumb={item.extraIconThumb}
                       extraIconThumbColor={item.extraIconThumbColor}
+                      customExtraStyle={ListItemProps.customExtraStyle}
                     />
                   ))}
                 </RMList>
@@ -155,6 +156,8 @@ RMDrawer.defaultProps = {
   onItemClick: () => {},
   onClose: () => {},
   color: 'default',
+  ListProps: {},
+  ListItemProps: {},
 };
 
 RMDrawer.propTypes = {
@@ -175,4 +178,6 @@ RMDrawer.propTypes = {
     'warning',
     'progress',
   ]),
+  ListProps: PropTypes.object,
+  ListItemProps: PropTypes.object,
 };

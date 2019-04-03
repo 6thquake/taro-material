@@ -49,6 +49,7 @@ class RMListItem extends Component {
       title,
       thumb,
       iconThumb,
+      iconThumbFill,
       iconThumbColor,
       isSwitch,
       extraText,
@@ -56,10 +57,12 @@ class RMListItem extends Component {
       hasBorder,
       extraThumb,
       extraIconThumb,
+      extraIconThumbFill,
       extraIconThumbColor,
       switchIsCheck,
       disabled,
       customStyle,
+      customExtraStyle,
       badge = { dot: false, value: '', maxValue: 0 },
     } = this.props;
 
@@ -97,7 +100,13 @@ class RMListItem extends Component {
         )}
         {iconThumb && (
           <View className="at-list__item-thumb item-thumb">
-            <RMIcon className="item-thumb-info" color={iconThumbColor} fontSize="inherit" block>
+            <RMIcon
+              className="item-thumb-info"
+              color={iconThumbColor}
+              fill={iconThumbFill}
+              fontSize="inherit"
+              block
+            >
               {iconThumb}
             </RMIcon>
           </View>
@@ -116,7 +125,7 @@ class RMListItem extends Component {
             {<View className="item-content__info-note">{this.props.renderNote}</View>}
           </View>
         </View>
-        <View className="at-list__item-extra item-extra">
+        <View className="at-list__item-extra item-extra" style={customExtraStyle}>
           <RMBadge variant={badge.variant || 'text'} value={badge.value} maxValue={badge.maxValue}>
             <View
               className={classNames({
@@ -142,6 +151,7 @@ class RMListItem extends Component {
                   <RMIcon
                     className="item-extra__image-info"
                     color={extraIconThumbColor}
+                    fill={extraIconThumbFill}
                     fontSize="inherit"
                     block
                   >
@@ -202,6 +212,7 @@ RMListItem.defaultProps = {
   isSwitch: false,
   disabled: false,
   customStyle: {},
+  customExtraStyle: {},
   badge: { dot: false, value: '', maxValue: 0 },
 };
 
@@ -210,6 +221,7 @@ RMListItem.propTypes = {
   title: PropTypes.string,
   thumb: PropTypes.string,
   iconThumb: PropTypes.string,
+  iconThumbFill: PropTypes.string,
   iconThumbColor: PropTypes.oneOf([
     'inherit',
     'primary',
@@ -230,6 +242,7 @@ RMListItem.propTypes = {
   extraTextColor: PropTypes.string,
   extraThumb: PropTypes.string,
   extraIconThumb: PropTypes.string,
+  extraIconThumbFill: PropTypes.string,
   extraIconThumbColor: PropTypes.oneOf([
     'inherit',
     'primary',
@@ -249,6 +262,7 @@ RMListItem.propTypes = {
   renderTitle: PropTypes.element,
   renderExtra: PropTypes.element,
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  customExtraStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   badge: PropTypes.shape({
     variant: PropTypes.oneOf(['text', 'ribbon', 'mark', 'dot']),
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

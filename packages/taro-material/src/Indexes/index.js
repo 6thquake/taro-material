@@ -159,6 +159,7 @@ class RMIndexes extends AtComponent {
                 note={item.note}
                 thumb={item.thumb}
                 iconThumb={item.iconThumb}
+                iconThumbFill={item.iconThumbFill}
                 iconThumbColor={item.iconThumbColor}
                 isSwitch={item.isSwitch}
                 switchIsCheck={item.switchIsCheck}
@@ -166,6 +167,7 @@ class RMIndexes extends AtComponent {
                 extraTextColor={item.extraTextColor}
                 extraThumb={item.extraThumb}
                 extraIconThumb={item.extraIconThumb}
+                extraIconThumbFill={item.extraIconThumbFill}
                 extraIconThumbColor={item.extraIconThumbColor}
                 arrow={item.arrow}
                 disabled={item.disabled}
