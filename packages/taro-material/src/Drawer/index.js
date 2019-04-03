@@ -111,19 +111,22 @@ export default class RMDrawer extends Component {
             {items.map((group, key) => (
               <View key={key} className="at-drawer__wrapper">
                 <View className="at-drawer__list--title">{group.name}</View>
-                <RMList hasBorder={false} customStyle={{ backgroundColor: 'transparent' }}>
+                <RMList
+                  hasBorder={ListProps.hasBorder}
+                  customStyle={{ ...ListProps.customStyle, ...{ backgroundColor: 'transparent' } }}
+                >
                   {group.children.map((item, index) => (
                     <RMListItem
                       key={index}
                       data-index={index}
                       onClick={this.onItemClick.bind(this, item)}
-                      hasBorder
                       arrow={item.arrow}
                       disabled={item.disabled}
                       note={item.note}
                       title={item.title || item.name}
                       thumb={item.thumb}
                       iconThumb={item.iconThumb}
+                      iconThumbFill={item.iconThumbFill}
                       iconThumbColor={item.iconThumbColor}
                       isSwitch={item.isSwitch}
                       switchIsCheck={item.switchIsCheck}
@@ -131,7 +134,10 @@ export default class RMDrawer extends Component {
                       extraTextColor={item.extraTextColor}
                       extraThumb={item.extraThumb}
                       extraIconThumb={item.extraIconThumb}
+                      extraIconThumbFill={item.extraIconThumbFill}
                       extraIconThumbColor={item.extraIconThumbColor}
+                      hasBorder={ListItemProps.hasBorder}
+                      customStyle={ListItemProps.customStyle}
                       customExtraStyle={ListItemProps.customExtraStyle}
                     />
                   ))}
@@ -156,8 +162,8 @@ RMDrawer.defaultProps = {
   onItemClick: () => {},
   onClose: () => {},
   color: 'default',
-  ListProps: {},
-  ListItemProps: {},
+  ListProps: { hasBorder: false },
+  ListItemProps: { hasBorder: true },
 };
 
 RMDrawer.propTypes = {

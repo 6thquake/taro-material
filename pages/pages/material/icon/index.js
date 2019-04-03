@@ -30,10 +30,17 @@ class Index extends RMPage {
           <RMIcon fontSize="inherit" color="primary">
             place
           </RMIcon>
+
           <View className="title">48, default</View>
           <RMIcon fontSize={48} color="default">
             rotate_right
           </RMIcon>
+
+          <View className="title">fill</View>
+          <RMIcon fill="#AA00FF" color="default" fontSize={32} block>
+            insert_chart
+          </RMIcon>
+
           <View className="title">inherit</View>
           <RMIcon color="inherit" fontSize="inherit" block>
             insert_chart
