@@ -12,15 +12,16 @@ $circularH: 28px;
   box-sizing: border-box;
 
   &__circular {
+    display: flex;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    line-height: $circularH;
+    // line-height: $circularH;
     // 为了让图标垂直水平居中
-    font-size: 0;
-    height: $circularH;
-    width: $circularH;
-    text-align: center;
+    // font-size: 0;
+    // height: $circularH;
+    // width: $circularH;
+    // text-align: center;
     z-index: $zindex-steps;
     transition: all 0.3s;
   }
@@ -34,7 +35,7 @@ $circularH: 28px;
     &--active {
       .at-steps__circular {
         color: $color-white;
-        background-color: $color-brand;
+        background-color: $palettePrimaryMain;
       }
     }
 
