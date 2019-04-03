@@ -1,0 +1,13 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  .dark {
+    padding: 40px 0;
+    background: $palettePrimaryMain;
+  }
+  .box {
+    padding: 20px 0;
+    outline: 1px salmon dashed;
+    margin: 40px 0;
+  }
+}

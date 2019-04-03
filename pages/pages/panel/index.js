@@ -335,6 +335,10 @@ export default class PanelBasic extends Component {
             name: '开关',
           },
           {
+            id: 'Steps',
+            name: '步进器',
+          },
+          {
             id: 'Tab-Bar',
             name: '导航栏',
           },
