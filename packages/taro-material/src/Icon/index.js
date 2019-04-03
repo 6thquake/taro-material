@@ -3,6 +3,8 @@ import { View } from '@tarojs/components';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import { isColor } from '../utils/styles';
+
 import './Icon.scss';
 
 class RMIcon extends Component {
@@ -13,16 +15,22 @@ class RMIcon extends Component {
   componentDidHide() {}
 
   render() {
-    const { color, block, customStyle } = this.props;
+    const { color, block, customStyle, fill, size } = this.props;
     let { fontSize } = this.props;
 
     const style = { ...customStyle };
+
+    fontSize = fontSize || size;
 
     if (fontSize && fontSize !== 'default') {
       if (typeof fontSize === 'number') {
         fontSize += 'px';
       }
       style.fontSize = fontSize;
+    }
+
+    if (fill && isColor(fill)) {
+      style.color = fill;
     }
 
     let _color = '';
@@ -58,7 +66,7 @@ RMIcon.defaultProps = {
    * The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size.
    */
   fontSize: 'default',
-
+  size: 'default',
   block: false,
   customStyle: {},
 };
@@ -74,7 +82,9 @@ RMIcon.propTypes = {
     'warning',
     'progress',
   ]),
+  fill: PropTypes.string,
   fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   block: PropTypes.bool,
   customStyle: PropTypes.object,
 };

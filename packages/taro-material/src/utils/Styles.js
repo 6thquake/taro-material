@@ -18,9 +18,7 @@ const objectToString = style => {
  * @param {Object|String} style2
  * @returns {String}
  */
-const mergeStyle = (style1, style2) => {
-  return objectToString(style1) + objectToString(style2);
-};
+const mergeStyle = (style1, style2) => objectToString(style1) + objectToString(style2);
 
 const getClassName = (arg, className) => {
   // const { className } = props
@@ -43,4 +41,12 @@ const getClassName = (arg, className) => {
   return componentClass.concat(propsClass);
 };
 
-export { objectToString, getClassName, mergeStyle };
+const isColor = () => {
+  const hex = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
+
+  const rgb = /^[rR][gG][Bb][Aa]?[(]([\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),){2}[\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),?[\s]*(0\.\d{1,2}|1|0)?[)]{1}$/g;
+
+  return color => hex.test(color) || rgb(color);
+};
+
+export { objectToString, getClassName, mergeStyle, isColor };

@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import AtIcon from '../components/icon/index';
+import RMIcon from '../Icon';
 import AtComponent from '../common/component';
-// import RMButton from '../Button'
 
 import theme from '../styles/theme';
 
@@ -115,7 +115,9 @@ export default class RMSearch extends AtComponent {
           })}
         >
           <View className="at-search-bar__placeholder_wrap" style={placeholderStyle}>
-            <AtIcon value="search" size="15" color={hint} />
+            <RMIcon fontSize={15} fill={hint}>
+              search
+            </RMIcon>
             <Text
               className="at-search-bar__placeholder"
               style={value.length ? 'visibility: hidden;' : 'visibility: visible;'}
@@ -140,7 +142,9 @@ export default class RMSearch extends AtComponent {
             style={value.length ? 'display: flex;' : 'display: none;'}
             onTouchStart={this.handleClear.bind(this)}
           >
-            <AtIcon value="close-circle" size="15" color={hint} />
+            <RMIcon fontSize={15} fill={hint}>
+              cancel
+            </RMIcon>
           </View>
         </View>
         <View
