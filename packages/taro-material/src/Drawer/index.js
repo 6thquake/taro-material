@@ -117,9 +117,21 @@ export default class RMDrawer extends Component {
                       key={index}
                       data-index={index}
                       onClick={this.onItemClick.bind(this, item)}
-                      title={item.name}
-                      arrow="right"
                       hasBorder
+                      arrow={item.arrow}
+                      disabled={item.disabled}
+                      note={item.note}
+                      title={item.title || item.name}
+                      thumb={item.thumb}
+                      iconThumb={item.iconThumb}
+                      iconThumbColor={item.iconThumbColor}
+                      isSwitch={item.isSwitch}
+                      switchIsCheck={item.switchIsCheck}
+                      extraText={item.extraText}
+                      extraTextColor={item.extraTextColor}
+                      extraThumb={item.extraThumb}
+                      extraIconThumb={item.extraIconThumb}
+                      extraIconThumbColor={item.extraIconThumbColor}
                     />
                   ))}
                 </RMList>
@@ -149,7 +161,7 @@ RMDrawer.propTypes = {
   show: PropTypes.bool,
   mask: PropTypes.bool,
   width: PropTypes.number,
-  items: PropTypes.arrayOf(PropTypes.string),
+  items: PropTypes.array,
   itemsAlign: PropTypes.oneOf(['top', 'middle', 'bottom']),
   onItemClick: PropTypes.func,
   onClose: PropTypes.func,
