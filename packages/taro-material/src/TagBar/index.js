@@ -29,6 +29,7 @@ class RMTagBar extends Component {
     // setTimeout(() => {
     this.scrollbarRefEle
       .boundingClientRect(rect => {
+        if (!rect) return;
         this.setState({
           top: rect.top,
           scrollbar: {
@@ -43,6 +44,7 @@ class RMTagBar extends Component {
       .exec();
     this.valueBarRefEle
       .boundingClientRect(rect => {
+        if (!rect) return;
         this.setState({
           valueBar: {
             ...rect,

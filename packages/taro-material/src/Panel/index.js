@@ -80,21 +80,22 @@ class RMPanel extends Component {
         {(!expandable || expanded) && <View className="body">{this.props.children}</View>}
         {(!expandable || expanded) && (
           <View className="footer">
-            {actions.map(item => {
-              const { name, label, size = 'small', variant, color } = item;
-              return (
-                <View key={name} className="action">
-                  <RMButton
-                    size={size}
-                    variant={variant}
-                    color={color}
-                    onClick={this.handleAction.bind(this, name)}
-                  >
-                    <View className="button">{label || name}</View>
-                  </RMButton>
-                </View>
-              );
-            })}
+            {actions &&
+              actions.map(item => {
+                const { name, label, size = 'small', variant, color } = item;
+                return (
+                  <View key={name} className="action">
+                    <RMButton
+                      size={size}
+                      variant={variant}
+                      color={color}
+                      onClick={this.handleAction.bind(this, name)}
+                    >
+                      <View className="button">{label || name}</View>
+                    </RMButton>
+                  </View>
+                );
+              })}
             {this.props.renderActions}
           </View>
         )}

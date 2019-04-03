@@ -15,6 +15,7 @@ export default class RMBadge extends Component {
     if (variant === 'ribbon') {
       this.refElem
         .boundingClientRect(res => {
+          if (!res) return;
           const { width, height } = res;
           const w = Math.ceil(width);
           const h = Math.ceil(height);

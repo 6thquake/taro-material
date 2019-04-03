@@ -46,6 +46,7 @@ class RMAffix extends Component {
     }
 
     const task = this.affix.boundingClientRect(rect => {
+      if (!rect) return;
       const { left, top, /* bottom, right, */ width, height } = rect;
       const { resize } = this.props;
       const { fixed } = this.state;
