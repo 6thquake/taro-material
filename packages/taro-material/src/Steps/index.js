@@ -1,15 +1,15 @@
-import Taro from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import RMTypography from '../Typography';
-import RMIcon from '../Icon';
-import AtComponent from '../common/component';
-import theme from '../styles/theme';
+import Taro from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import RMTypography from '../Typography'
+import RMIcon from '../Icon'
+import AtComponent from '../common/component'
+import theme from '../styles/theme'
 
-import './index.scss';
+import './index.scss'
 
-export default class AtSteps extends AtComponent {
+export default class RMSteps extends AtComponent {
   static defaultProps = {
     customStyle: '',
     className: '',
@@ -30,12 +30,12 @@ export default class AtSteps extends AtComponent {
     activeColor: PropTypes.string,
   };
 
-  handleClick() {
-    this.props.onChange(...arguments);
+  handleClick () {
+    this.props.onChange(...arguments)
   }
 
-  render() {
-    const { customStyle, className, items, current, isDark, activeColor } = this.props;
+  render () {
+    const { customStyle, className, items, current, isDark, activeColor } = this.props
 
     return (
       <View className={classNames('at-steps', className)} style={customStyle}>
@@ -49,20 +49,20 @@ export default class AtSteps extends AtComponent {
             })}
             onClick={this.handleClick.bind(this, i)}
           >
-            <View className="at-steps__circular-wrap">
-              {i !== 0 ? <View className="at-steps__left-line" /> : null}
+            <View className='at-steps__circular-wrap'>
+              {i !== 0 ? <View className='at-steps__left-line' /> : null}
               {item.success || item.error ? (
                 <RMIcon
                   block
                   customStyle={{ fontSize: '28px' }}
-                  fontSize="28px"
+                  fontSize='28px'
                   color={item.success ? 'success' : 'error'}
                 >
                   {item.success ? 'done' : 'clear'}
                 </RMIcon>
               ) : (
                 <View
-                  className="at-steps__circular"
+                  className='at-steps__circular'
                   style={{
                     background: current === i ? activeColor : '',
                   }}
@@ -77,22 +77,22 @@ export default class AtSteps extends AtComponent {
                       {item.icon.value}
                     </RMIcon>
                   ) : (
-                    <Text className="at-steps__num">{item.value}</Text>
+                    <Text className='at-steps__num'>{item.value}</Text>
                   )}
                 </View>
               )}
-              {i !== items.length - 1 ? <View className="at-steps__right-line" /> : null}
+              {i !== items.length - 1 ? <View className='at-steps__right-line' /> : null}
             </View>
             <RMTypography
               color={isDark ? theme.palette.primary.contrastText : 'default'}
-              className="body1"
+              className='body1'
             >
               {item.title}
             </RMTypography>
-            <View className="at-steps__desc">{item.desc}</View>
+            <View className='at-steps__desc'>{item.desc}</View>
           </View>
         ))}
       </View>
-    );
+    )
   }
 }
