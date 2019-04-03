@@ -41,6 +41,38 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
 
+    background: $paletteBackgroundPaper;
+    color: $paletteTextPrimary;
+
+    &.dark {
+      background: $paletteCommonBlack;
+      color: $paletteTextPrimary2;
+    }
+
+    &.default {
+    }
+    &.inherit {
+      color: inherit;
+    }
+    &.primary {
+      color: $palettePrimaryMain;
+    }
+    &.secondary {
+      color: $paletteSecondaryMain;
+    }
+    &.error {
+      color: $paletteErrorMain;
+    }
+    &.success {
+      color: $paletteSuccessMain;
+    }
+    &.warning {
+      color: $paletteWarningMain;
+    }
+    &.progress {
+      color: $paletteProgressMain;
+    }
+
     &.top {
       justify-content: flex-start;
     }
@@ -49,31 +81,6 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     }
     &.bottom {
       justify-content: flex-end;
-    }
-
-    &.default {
-      background-color: $paletteBackgroundPaper;
-    }
-    &.inherit {
-      background-color: inherit;
-    }
-    &.primary {
-      background-color: $palettePrimaryMain;
-    }
-    &.secondary {
-      background-color: $paletteSecondaryMain;
-    }
-    &.error {
-      background-color: $paletteErrorMain;
-    }
-    &.success {
-      background-color: $paletteSuccessMain;
-    }
-    &.warning {
-      background-color: $paletteWarningMain;
-    }
-    &.progress {
-      background-color: $paletteProgressMain;
     }
   }
 

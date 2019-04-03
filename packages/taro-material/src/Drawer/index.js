@@ -68,7 +68,17 @@ export default class RMDrawer extends Component {
   }
 
   render() {
-    const { mask, width, right, items, itemsAlign, color, ListProps, ListItemProps } = this.props;
+    const {
+      mask,
+      width,
+      right,
+      items,
+      itemsAlign,
+      color,
+      dark,
+      ListProps,
+      ListItemProps,
+    } = this.props;
     const { animShow, show } = this.state;
     let rootClassName = ['at-drawer'];
 
@@ -103,6 +113,7 @@ export default class RMDrawer extends Component {
           <View
             className={classNames({
               [color]: true,
+              dark,
               'at-drawer__content': true,
               [itemsAlign]: true,
             })}
@@ -162,6 +173,7 @@ RMDrawer.defaultProps = {
   onItemClick: () => {},
   onClose: () => {},
   color: 'default',
+  dark: false,
   ListProps: { hasBorder: false },
   ListItemProps: { hasBorder: true },
 };
@@ -184,6 +196,7 @@ RMDrawer.propTypes = {
     'warning',
     'progress',
   ]),
+  dark: PropTypes.bool,
   ListProps: PropTypes.object,
   ListItemProps: PropTypes.object,
 };
