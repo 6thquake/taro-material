@@ -97,6 +97,7 @@ class App extends Component {
       'pages/material/tag-bar/index',
       'pages/material/indexes/index',
       'pages/material/drawer/index',
+      'pages/material/timeline/index',
     ],
     window: {
       backgroundTextStyle: 'light',

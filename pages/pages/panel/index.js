@@ -418,6 +418,10 @@ export default class PanelBasic extends Component {
             id: 'Drawer',
             name: '抽屉',
           },
+          {
+            id: 'Timeline',
+            name: '时间轴',
+          },
         ],
       },
     };

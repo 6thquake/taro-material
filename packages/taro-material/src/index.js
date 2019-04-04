@@ -91,6 +91,7 @@ export { default as RMTag } from './Tag';
 export { default as RMTextArea } from './TextArea';
 export { default as RMTextField } from './TextField';
 export { default as RMTimeline } from './Timeline';
+export { default as RMTimelineItem } from './TimelineItem';
 export { default as RMToolBar } from './ToolBar';
 export { default as RMTypography } from './Typography';
 export { default as RMUpload } from './Upload';

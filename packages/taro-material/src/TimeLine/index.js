@@ -1,17 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
-import PropTypes from 'prop-types';
 import { View } from '@tarojs/components';
-
-import RMIcon from '../Icon';
-import RMTypography from '../Typography';
-
-import AtAvatar from '../components/avatar';
-
-import ago from '../utils/date';
-
-import theme from '../styles/theme';
-
-import './Timeline.scss';
+import PropTypes from 'prop-types';
+import RMTimelineItem from '../TimelineItem';
 
 class RMTimeline extends Component {
   componentWillReceiveProps(nextProps) {}
@@ -26,62 +16,29 @@ class RMTimeline extends Component {
     const { data } = this.props;
     return (
       <View className="root">
-        {data.map((item, index) => {
-          const tail = data.length - 1 !== index;
-          const { avatar, name, date, status, color = theme.palette.text.primary, remark } = item;
-          return (
-            <View className="step" key={item.id}>
-              <View className="box">
-                <View className="avatar">
-                  {avatar === 'success' && (
-                    <View className="result success">
-                      <RMIcon fontSize="inherit" color="inherit" block>
-                        check
-                      </RMIcon>
-                    </View>
-                  )}
-                  {avatar === 'failure' && (
-                    <View className="result failure">
-                      <RMIcon fontSize="inherit" color="inherit" block>
-                        close
-                      </RMIcon>
-                    </View>
-                  )}
-                  {avatar !== 'success' &&
-                    avatar !== 'failure' && (
-                      <AtAvatar circle image={avatar} text={name} size="small" />
-                    )}
-                  {tail && <View className="tail" />}
-                </View>
-                <View className="content">
-                  <View>
-                    <RMTypography className="body2">{name}</RMTypography>
-                  </View>
-                  {status && (
-                    <View>
-                      <RMTypography color={color} className="body1">
-                        {status}
-                      </RMTypography>
-                    </View>
-                  )}
-                  {remark && (
-                    <View>
-                      <RMTypography className="body1">{remark}</RMTypography>
-                    </View>
-                  )}
-                  {date && (
-                    <View>
-                      <RMTypography className="caption">{date}</RMTypography>
-                    </View>
-                  )}
-                </View>
-              </View>
-              <View className="time">
-                {date && <RMTypography className="caption">{ago(date)}</RMTypography>}
-              </View>
-            </View>
-          );
-        })}
+        {data &&
+          data.map((item, index) => {
+            const tail =
+              item.tail !== true || item.tail !== false ? data.length - 1 === index : item.tail;
+
+            const { title, avatar, name, status, color, remark, date } = item;
+
+            return (
+              <RMTimelineItem
+                key={index}
+                title={title}
+                tail={tail}
+                avatar={avatar}
+                name={name}
+                status={status}
+                color={color}
+                remark={remark}
+                date={date}
+              />
+            );
+          })}
+
+        {this.props.children}
       </View>
     );
   }
