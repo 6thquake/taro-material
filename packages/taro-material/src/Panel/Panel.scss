@@ -1,41 +1,43 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-.root{
+.root {
   // display: flex;
   background: #{$paletteBackgroundPaper};
   padding: #{$spacingUnit * 2}px;
-  .header{
+  .header {
     display: flex;
 
-    .left{
+    .left {
       display: flex;
       flex-direction: column;
-      max-width: 60%;
-    }
-    .right{
-      display: flex;
-      flex: 1;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: flex-start;
-      .right-box{
-        display: flex;
-        align-items: center;
-        .extra{
-          margin-right: #{$spacingUnit}px
-        }
+      flex: 1;
+
+      .name,
+      .note {
+        width: 100%;
       }
-      
+    }
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .extra {
+        margin: 0px #{$spacingUnit}px;
+      }
     }
   }
-  .body{
+  .body {
     margin: #{$spacingUnit * 3}px 0;
   }
-  .footer{
+  .footer {
     display: flex;
     justify-content: flex-end;
-    .action{
-      margin: 0 #{$spacingUnit}px ;
-      .button{
+    .action {
+      margin: 0 #{$spacingUnit}px;
+      .button {
         font-size: #{0.875 * $typographyFontSize}px;
         text-transform: uppercase;
         font-weight: $typographyFontWeightMedium;

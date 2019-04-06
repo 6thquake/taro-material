@@ -48,7 +48,7 @@ class RMPanel extends Component {
                 this.props.renderTitle
               )}
             </View>
-            <View className="company">
+            <View className="note">
               {note ? (
                 <RMTypography block className="caption">
                   {note}
@@ -59,22 +59,20 @@ class RMPanel extends Component {
             </View>
           </View>
           <View className="right">
-            <View className="right-box">
-              <View className="extra">
-                {extra ? (
-                  <RMTypography className="caption">{extra}</RMTypography>
-                ) : (
-                  this.props.renderExtra
-                )}
-              </View>
-              {expandable && (
-                <View>
-                  <RMIcon block fontSize="inherit">
-                    {expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
-                  </RMIcon>
-                </View>
+            <View className="extra">
+              {extra ? (
+                <RMTypography className="caption">{extra}</RMTypography>
+              ) : (
+                this.props.renderExtra
               )}
             </View>
+            {expandable && (
+              <View className="expand">
+                <RMIcon block fontSize="inherit">
+                  {expanded ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
+                </RMIcon>
+              </View>
+            )}
           </View>
         </View>
         {(!expandable || expanded) && <View className="body">{this.props.children}</View>}
