@@ -123,17 +123,21 @@ class RMTag extends Component {
         onClick={onClick}
       >
         <View className={tagClasses}>
-          <RMIcon fontSize="inherit" color="inherit" block>
-            {prefix}
-          </RMIcon>
+          {prefix && (
+            <RMIcon fontSize="inherit" color="inherit" block>
+              {prefix}
+            </RMIcon>
+          )}
           <View className="content" style={margin}>
             <RMTypography block className="body1" fontSize="inherit" color="inherit">
               {this.props.children}
             </RMTypography>
           </View>
-          <RMIcon fontSize="inherit" color="inherit" block>
-            {suffix}
-          </RMIcon>
+          {suffix && (
+            <RMIcon fontSize="inherit" color="inherit" block>
+              {suffix}
+            </RMIcon>
+          )}
         </View>
       </AtTag>
     );

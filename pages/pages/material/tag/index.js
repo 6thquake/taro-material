@@ -34,6 +34,7 @@ class Index extends RMPage {
           <RMTag color="success">success</RMTag>
           <RMTag color="warning">warning</RMTag>
           <RMTag color="progress">progress</RMTag>
+          <RMTag color="progress">热</RMTag>
 
           <RMTag circle color="default" active prefix="account_circle" suffix="alarm" block>
             default
@@ -58,6 +59,9 @@ class Index extends RMPage {
           </RMTag>
           <RMTag circle color="progress" active prefix="account_circle" suffix="alarm" block>
             progress
+          </RMTag>
+          <RMTag circle color="progress" active prefix="account_circle" suffix="alarm" block>
+            热
           </RMTag>
 
           <AtDivider />
@@ -84,6 +88,9 @@ class Index extends RMPage {
           </RMTag>
           <RMTag color="progress" size="small">
             progress
+          </RMTag>
+          <RMTag color="progress" size="small">
+            热
           </RMTag>
 
           <RMTag color="default" size="small" prefix="account_circle" suffix="alarm">
@@ -166,6 +173,9 @@ class Index extends RMPage {
           <RMTag circle color="progress" active size="small" prefix="account_circle" suffix="alarm">
             progress
           </RMTag>
+          <RMTag circle color="progress" active size="small" prefix="account_circle" suffix="alarm">
+            热
+          </RMTag>
 
           <AtDivider />
 
@@ -192,6 +202,9 @@ class Index extends RMPage {
           </RMTag>
           <RMTag color="progress" size="xs">
             progress
+          </RMTag>
+          <RMTag color="progress" size="xs">
+            热
           </RMTag>
 
           <RMTag color="default" size="xs" prefix="account_circle" suffix="alarm">
@@ -266,6 +279,9 @@ class Index extends RMPage {
           </RMTag>
           <RMTag circle color="progress" active size="xs" prefix="account_circle" suffix="alarm">
             progress
+          </RMTag>
+          <RMTag circle color="progress" active size="xs" prefix="account_circle" suffix="alarm">
+            热
           </RMTag>
         </View>
       </View>
