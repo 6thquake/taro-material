@@ -45,9 +45,11 @@ class RMTimelineItem extends Component {
 
     return (
       <View className="step">
-        <View className="header">
-          <View className="title">{title}</View>
-          {date && (
+        {title && (
+          <View className="header">
+            <View className="title">
+              <RMTypography className="subheading">{title}</RMTypography>
+            </View>
             <View className="time">
               {date && (
                 <RMTypography className="caption" fontSize={10}>
@@ -55,8 +57,8 @@ class RMTimelineItem extends Component {
                 </RMTypography>
               )}
             </View>
-          )}
-        </View>
+          </View>
+        )}
 
         <View className="body">
           <View className="box">
@@ -91,11 +93,13 @@ class RMTimelineItem extends Component {
             </View>
             <View className="content">
               <View className="subtitle">
-                <RMTypography className="body2" block>
+                <RMTypography className="subheading" block>
                   {name}
                 </RMTypography>
                 <View className="time">
-                  <RMTypography className="caption">{date}</RMTypography>
+                  <RMTypography className="caption">
+                    {!title && date ? ago(date) : date}
+                  </RMTypography>
                 </View>
               </View>
               {status && (
@@ -110,6 +114,12 @@ class RMTimelineItem extends Component {
                   </RMTypography>
                 </View>
               )}
+              {!title &&
+                date && (
+                  <View>
+                    <RMTypography className="body1">{date}</RMTypography>
+                  </View>
+                )}
               {remark && (
                 <View>
                   <RMTypography className="body1">{remark}</RMTypography>

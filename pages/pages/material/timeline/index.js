@@ -20,7 +20,6 @@ class Index extends RMPage {
         name: 'lico',
         date: '2019-04-10',
         // status: 'failure',
-        color: theme.palette.text.primary,
         remark: 'hahahahahha',
       },
       {
@@ -29,7 +28,6 @@ class Index extends RMPage {
         name: 'lico2',
         date: '2019-03-10',
         // status: 'success',
-        color: theme.palette.text.primary,
         remark: 'hahahahahha',
       },
       {
@@ -38,7 +36,6 @@ class Index extends RMPage {
         name: 'lico3',
         date: '2019-02-10',
         // status: 'progress',
-        color: theme.palette.text.primary,
         remark: 'hahahahahha',
       },
     ],
@@ -82,7 +79,7 @@ class Index extends RMPage {
   componentDidHide() {}
 
   render() {
-    const { data } = this.state;
+    const { data, data2 } = this.state;
     return (
       <View className="root">
         <RMTimeline data={data} />
@@ -98,7 +95,6 @@ class Index extends RMPage {
               tail={false}
               name={item.name}
               status={item.status}
-              color={item.color}
               remark={item.remark}
               date={item.date}
               renderMore={<View>{index}</View>}
@@ -117,7 +113,23 @@ class Index extends RMPage {
               tail={false}
               name={item.name}
               status={item.status}
-              color={item.color}
+              remark={item.remark}
+              date={item.date}
+              renderMore={<View>{index}</View>}
+            />
+          ))}
+        </RMTimeline>
+
+        <AtDivider />
+
+        <RMTimeline>
+          {data2.map((item, index) => (
+            <RMTimelineItem
+              key={index}
+              avatar={item.avatar}
+              tail={false}
+              name={item.name}
+              status={item.status}
               remark={item.remark}
               date={item.date}
               renderMore={<View>{index}</View>}

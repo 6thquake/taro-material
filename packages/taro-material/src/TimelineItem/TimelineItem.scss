@@ -24,6 +24,7 @@
     flex: 1;
     .box {
       display: flex;
+      min-height: 128px;
       .avatar {
         display: flex;
         flex-direction: column;
