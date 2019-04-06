@@ -83,22 +83,37 @@ class RMTag extends Component {
       display: block ? 'block' : 'inline-block',
     };
 
-    const small = size === 'small';
+    let spacing = 1;
+    if (size === 'xs') {
+      spacing = 4;
+      _customStyle.padding = `0px ${theme.spacing.unit}px`;
+      _customStyle.height = `13px`;
+      _customStyle.lineHeight = `12px`;
+      if (!circle) {
+        _customStyle.borderRadius = `${theme.spacing.unit / spacing}px`;
+      }
+      //
+    } else if (size === 'small') {
+      spacing = 2;
+    } else {
+      spacing = 1;
+    }
+
     const tagClasses = classNames({
       tag: true,
-      small,
+      [size]: true,
     });
 
     const margin = {
       marginTop: `0px`,
       marginBottom: `0px`,
-      marginLeft: prefix ? `${theme.spacing.unit / (small ? 2 : 1)}px` : `0px`,
-      marginRight: suffix ? `${theme.spacing.unit / (small ? 2 : 1)}px` : `0px`,
+      marginLeft: prefix ? `${theme.spacing.unit / spacing}px` : `0px`,
+      marginRight: suffix ? `${theme.spacing.unit / spacing}px` : `0px`,
     };
 
     return (
       <AtTag
-        size={size}
+        size={size === 'xs' ? 'normal' : size}
         name={name}
         circle={circle}
         active={active}
@@ -150,7 +165,7 @@ RMTag.propTypes = {
     'warning',
     'progress',
   ]),
-  size: PropTypes.oneOf(['normal', 'small']),
+  size: PropTypes.oneOf(['normal', 'small', 'xs']),
   name: PropTypes.string,
   circle: PropTypes.bool,
   active: PropTypes.bool,
