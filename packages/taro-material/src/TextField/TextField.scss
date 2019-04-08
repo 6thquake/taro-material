@@ -1,11 +1,7 @@
-@import "../styles/theme.scss";
-@import "../Typography/Typography.scss";
+@import '../styles/theme.scss';
+@import '../Typography/Typography.scss';
 
-
-@function tint(
-  $color,
-  $percent
-) {
+@function tint($color, $percent) {
   @return mix($paletteCommonWhite, $color, $percent);
 }
 
@@ -100,13 +96,12 @@ $icon-size-lg: 36px * $hd;
 /* z-index */
 $zindex-form: 700;
 $zindex-nav: $zIndexAppBar;
-$zindex-flot-layout: #{ $zIndexAppBar + 10 };
+$zindex-flot-layout: #{$zIndexAppBar + 10};
 $zindex-drawer: $zIndexDrawer;
 $zindex-modal: $zIndexModal;
-$zindex-action-sheet: #{ $zIndexModal + 10 };
-$zindex-picker: #{ $zIndexModal + 10 };
+$zindex-action-sheet: #{$zIndexModal + 10};
+$zindex-picker: #{$zIndexModal + 10};
 $zindex-toast: $zIndexSnackbar;
-
 
 // 默认主题下 $color-border-lighter
 @mixin border-thin(
@@ -120,35 +115,19 @@ $zindex-toast: $zIndexSnackbar;
   }
 }
 
-@mixin border-thin-top(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-top($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, top, $width);
 }
 
-@mixin border-thin-left(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-left($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, left, $width);
 }
 
-@mixin border-thin-right(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-right($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, right, $width);
 }
 
-@mixin border-thin-bottom(
-  $color: $color-border-lighter,
-  $style: solid,
-  $width: 1px
-) {
+@mixin border-thin-bottom($color: $color-border-lighter, $style: solid, $width: 1px) {
   @include border-thin($color, $style, bottom, $width);
 }
 
@@ -165,15 +144,14 @@ $zindex-toast: $zIndexSnackbar;
   }
 }
 
-
 .at-input {
   flex: 1;
   // padding: $spacing-v-lg 0;
   // background-color: $color-bg;
   color: $color-text-base;
-  margin: #{$spacingUnit*2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+  margin: #{$spacingUnit * 2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
 
-  &__root{
+  &__root {
     display: flex;
     align-items: center;
     width: 100%;
@@ -185,7 +163,7 @@ $zindex-toast: $zIndexSnackbar;
     align-items: stretch;
     flex-direction: column;
   }
-  &__required{
+  &__required {
     margin-left: #{$spacingUnit}px;
     color: #{$paletteSecondaryMain};
     // font-size: #{$typographyFontSize}px;
@@ -209,15 +187,16 @@ $zindex-toast: $zIndexSnackbar;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    @include border-thin($paletteTextDivider, solid, bottom, 1Px)
+    @include border-thin($paletteTextDivider, solid, bottom, 1px);
 
     &.multiline {
-      @include border-thin($paletteTextDivider, solid, top bottom right left, 1Px)
+      @include border-thin($paletteTextDivider, solid, top bottom right left, 1px);
       margin-top: #{$spacingUnit}px;
     }
   }
-  
-  &__input, &__textarea {
+
+  &__input,
+  &__textarea {
     flex: 1;
     display: inline-block;
     // padding-right: $spacing-v-md;
@@ -255,20 +234,23 @@ $zindex-toast: $zIndexSnackbar;
     font-size: $font-size-lg;
     text-align: center;
 
-    &::hover, &::focus {
+    &::hover,
+    &::focus {
       color: $palettePrimaryLight;
       @include border-thin-right($palettePrimaryLight);
     }
   }
 
-  &__children, &__end-adornment {
+  &__children,
+  &__end-adornment {
     display: inline-flex;
     @include border-thin-left;
     padding: 0 0 0 $spacing-v-md;
     color: $paletteTextHint;
     font-size: $font-size-lg;
     text-align: center;
-    &::hover, &::focus {
+    &::hover,
+    &::focus {
       color: $palettePrimaryLight;
       @include border-thin-left($palettePrimaryLight);
     }
@@ -292,11 +274,11 @@ $zindex-toast: $zIndexSnackbar;
     }
   }
 
-  &__children{
+  &__children {
     padding: 0 0;
   }
 
-  &__desc{
+  &__desc {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -335,9 +317,9 @@ $zindex-toast: $zIndexSnackbar;
   &--error {
     color: $color-error;
     .at-input__box {
-      @include border-thin($color-error, solid, bottom, 2Px)
+      @include border-thin($color-error, solid, bottom, 2px);
       &.multiline {
-        @include border-thin($color-error, solid, top bottom right left, 2Px)
+        @include border-thin($color-error, solid, top bottom right left, 2px);
       }
     }
   }
@@ -345,9 +327,9 @@ $zindex-toast: $zIndexSnackbar;
   &--disabled {
     opacity: $opacity-disabled;
     .at-input__box {
-      @include border-thin($paletteTextDivider, dashed, bottom, 1Px)
+      @include border-thin($paletteTextDivider, dashed, bottom, 1px);
       &.multiline {
-        @include border-thin($paletteTextDivider, dashed, top bottom right left, 1Px)
+        @include border-thin($paletteTextDivider, dashed, top bottom right left, 1px);
       }
     }
   }
@@ -355,9 +337,9 @@ $zindex-toast: $zIndexSnackbar;
   &--readonly {
     opacity: 1 !important;
     .at-input__box {
-      @include border-thin($paletteTextDivider, solid, bottom, 1Px)
+      @include border-thin($paletteTextDivider, solid, bottom, 1px);
       &.multiline {
-        @include border-thin($paletteTextDivider, solid, top bottom right left, 1Px)
+        @include border-thin($paletteTextDivider, solid, top bottom right left, 1px);
       }
     }
   }
@@ -365,10 +347,10 @@ $zindex-toast: $zIndexSnackbar;
   &--focus {
     color: $palettePrimaryMain;
     .at-input__box {
-      @include border-thin($palettePrimaryMain, solid, bottom, 2Px)
+      @include border-thin($palettePrimaryMain, solid, bottom, 2px);
 
       &.multiline {
-        @include border-thin($palettePrimaryMain, solid, top bottom right left, 2Px)
+        @include border-thin($palettePrimaryMain, solid, top bottom right left, 2px);
       }
     }
   }
@@ -376,14 +358,17 @@ $zindex-toast: $zIndexSnackbar;
   &--without-border {
     border: none;
 
-    .at-input__box{
+    .at-input__box {
       border: none;
       &.multiline {
         border: none;
       }
     }
 
-    .at-input--error, .at-input--disabled, .at-input--readonly, .at-input--focus {
+    .at-input--error,
+    .at-input--disabled,
+    .at-input--readonly,
+    .at-input--focus {
       .at-input__box {
         border: none;
         &.multiline {
@@ -394,5 +379,4 @@ $zindex-toast: $zIndexSnackbar;
   }
 
   // &::hover, &::focus,
-
 }
