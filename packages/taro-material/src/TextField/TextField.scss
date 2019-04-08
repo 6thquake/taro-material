@@ -204,7 +204,7 @@ $zindex-toast: $zIndexSnackbar;
     // line-height: $line-height-zh;
     vertical-align: middle;
     @include placeholder;
-    @extend .typography.subheading;
+    @extend .typography, .subheading;
   }
 
   input {
