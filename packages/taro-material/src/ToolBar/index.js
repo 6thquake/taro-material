@@ -290,7 +290,7 @@ class RMToolBar extends Component {
             const className = item.active ? 'body2' : 'body1';
             return (
               <View
-                key={item.value || index}
+                key={item.value}
                 className="priorities"
                 onClick={this.handlePriorities.bind(this, index)}
               >
@@ -308,7 +308,7 @@ class RMToolBar extends Component {
             const className = item.active ? 'body2' : 'body1';
             return (
               <View
-                key={item.value || `${item.i}-${item.j}`}
+                key={item.value}
                 className="priorities"
                 onClick={this.handleFilters.bind(this, item.i, item.j)}
               >

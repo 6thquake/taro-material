@@ -58,7 +58,7 @@ class RMCarousel extends Component {
         style={style}
       >
         {items.map((item, index) => (
-          <SwiperItem key={index} className="item">
+          <SwiperItem key={item.id || item.src} className="item">
             <Image className="image" src={item.src} mode="aspectFill" />
           </SwiperItem>
         ))}

@@ -187,7 +187,7 @@ export default class DrawerPage extends Taro.Component {
                     width={320}
                   >
                     {this.state.childrenItem.map((group, key) => (
-                      <View key={key} style={{ width: '100%' }}>
+                      <View key={group.name} style={{ width: '100%' }}>
                         <View>{group.name}</View>
                         <View>
                           {group.children.map((item, index) => (
@@ -196,7 +196,7 @@ export default class DrawerPage extends Taro.Component {
                                 'drawer-item--sub': index !== 0,
                               })}
                               onClick={this.onItemClick.bind(this, index)}
-                              key={index}
+                              key={item.name}
                             >
                               {item.name}
                               {index === 0 &&

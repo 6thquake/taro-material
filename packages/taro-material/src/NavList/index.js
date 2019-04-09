@@ -1,10 +1,13 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import { View, Image } from '@tarojs/components';
+
 import RMBadge from '../Badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
+
 import { parse, stringify } from '../utils/qs';
+
 import theme from '../styles/theme';
 
 import './index.scss';
@@ -73,7 +76,7 @@ class RMNavList extends Component {
         {data.map((item, index) => {
           const badge = item.badge || {};
           return (
-            <View style={style} key={index} className="box">
+            <View style={style} key={item.id || item.title} className="box">
               {item && (
                 <View className="content" onClick={this.handleClick.bind(this, item)}>
                   <RMBadge

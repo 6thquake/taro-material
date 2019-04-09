@@ -120,7 +120,7 @@ export default class RMDrawer extends Component {
             style={listStyle}
           >
             {items.map((group, key) => (
-              <View key={key} className="at-drawer__wrapper">
+              <View key={group.id || group.name} className="at-drawer__wrapper">
                 <View className="at-drawer__list--title">{group.name}</View>
                 <RMList
                   hasBorder={ListProps.hasBorder}
@@ -128,7 +128,7 @@ export default class RMDrawer extends Component {
                 >
                   {group.children.map((item, index) => (
                     <RMListItem
-                      key={index}
+                      key={item.id || item.title || item.name}
                       data-index={index}
                       onClick={this.onItemClick.bind(this, item)}
                       arrow={item.arrow}

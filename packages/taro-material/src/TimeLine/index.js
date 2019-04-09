@@ -1,7 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
+
 import RMTimelineItem from '../TimelineItem';
+
+import { identity } from '../utils/common';
 
 class RMTimeline extends Component {
   componentWillReceiveProps(nextProps) {}
@@ -14,6 +17,9 @@ class RMTimeline extends Component {
 
   render() {
     const { data } = this.props;
+
+    identity(data);
+
     return (
       <View className="root">
         {data &&
@@ -25,7 +31,7 @@ class RMTimeline extends Component {
 
             return (
               <RMTimelineItem
-                key={index}
+                key={item.id}
                 title={title}
                 tail={tail}
                 avatar={avatar}

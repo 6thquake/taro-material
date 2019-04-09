@@ -116,36 +116,36 @@ class RMPostmark extends Component {
             </RMTypography>
           </View>
           <View className="signature">
-            {signature.split('').map((char, index) => {
-              const cls = classNames({
-                char: true,
-                clockwise: true,
-                [`char${index}`]: true,
-              });
-              return (
-                <View className={cls} key={index}>
-                  <RMTypography className="caption" color={_color} fontSize="inherit">
-                    {char}
-                  </RMTypography>
-                </View>
-              );
-            })}
+            {signature.split('').map((char, index) => (
+              <View
+                className={classNames({
+                  char: true,
+                  clockwise: true,
+                  [`char${index}`]: true,
+                })}
+                key={`${char}${index}`}
+              >
+                <RMTypography className="caption" color={_color} fontSize="inherit">
+                  {char}
+                </RMTypography>
+              </View>
+            ))}
           </View>
           <View className="date">
-            {_date.split('').map((char, index) => {
-              const cls = classNames({
-                char: true,
-                'anti-clockwise': true,
-                [`char${index}`]: true,
-              });
-              return (
-                <View className={cls} key={index}>
-                  <RMTypography className="caption" color={_color} fontSize="inherit">
-                    {char}
-                  </RMTypography>
-                </View>
-              );
-            })}
+            {_date.split('').map((char, index) => (
+              <View
+                className={classNames({
+                  char: true,
+                  'anti-clockwise': true,
+                  [`char${index}`]: true,
+                })}
+                key={`${char}${index}`}
+              >
+                <RMTypography className="caption" color={_color} fontSize="inherit">
+                  {char}
+                </RMTypography>
+              </View>
+            ))}
           </View>
         </View>
       </View>

@@ -15,6 +15,7 @@ class Index extends RMPage {
   state = {
     data: [
       {
+        id: '1',
         title: 'yoyo',
         // avatar: 'lico',
         name: 'lico',
@@ -23,6 +24,7 @@ class Index extends RMPage {
         remark: 'hahahahahha',
       },
       {
+        id: '2',
         title: 'yoyo2',
         // avatar: 'lico2',
         name: 'lico2',
@@ -31,6 +33,7 @@ class Index extends RMPage {
         remark: 'hahahahahha',
       },
       {
+        id: '3',
         title: 'yoyo2',
         // avatar: 'lico3',
         name: 'lico3',
@@ -41,6 +44,7 @@ class Index extends RMPage {
     ],
     data2: [
       {
+        id: '4',
         title: 'yoyo2',
         // avatar: 'lico2',
         name: 'lico2',
@@ -50,6 +54,7 @@ class Index extends RMPage {
         remark: 'hahahahahha',
       },
       {
+        id: '5',
         title: 'yoyo2',
         // avatar: 'lico3',
         name: 'lico3',
@@ -59,6 +64,7 @@ class Index extends RMPage {
         remark: 'hahahahahha',
       },
       {
+        id: '6',
         title: 'yoyo',
         // avatar: 'lico',
         name: 'lico',
@@ -89,7 +95,7 @@ class Index extends RMPage {
         <RMTimeline>
           {data.map((item, index) => (
             <RMTimelineItem
-              key={index}
+              key={item.id}
               title={item.title}
               avatar={item.avatar}
               tail={false}
@@ -107,7 +113,7 @@ class Index extends RMPage {
         <RMTimeline>
           {data2.map((item, index) => (
             <RMTimelineItem
-              key={index}
+              key={item.id}
               title={item.title}
               avatar={item.avatar}
               tail={false}
@@ -125,7 +131,7 @@ class Index extends RMPage {
         <RMTimeline>
           {data2.map((item, index) => (
             <RMTimelineItem
-              key={index}
+              key={item.id}
               avatar={item.avatar}
               tail={false}
               name={item.name}

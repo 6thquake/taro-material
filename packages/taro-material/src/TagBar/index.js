@@ -204,7 +204,7 @@ class RMTagBar extends Component {
           }}
         >
           {data.map((item, index) => (
-            <ScrollView key={index} scrollX scrollWithAnimation style={{ width: 'auto' }}>
+            <ScrollView key={item.name} scrollX scrollWithAnimation style={{ width: 'auto' }}>
               <View className="scrollbar">
                 <View onClick={this.handleReset.bind(this, item.name)} className="tag">
                   {!values[item.name] ? (
@@ -225,7 +225,7 @@ class RMTagBar extends Component {
                     <View
                       onClick={this.handleClick.bind(this, item.name, option)}
                       className="tag"
-                      key={key}
+                      key={option.value}
                     >
                       {active ? (
                         <RMTag circle color={selectedColor} size="small" active block>
