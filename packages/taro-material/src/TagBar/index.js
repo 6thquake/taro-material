@@ -71,7 +71,8 @@ class RMTagBar extends Component {
     const { offsetTop } = this.props;
 
     let comps = {};
-    if (scrollTop - offsetTop < scrollbar.height - valueBar.height) {
+
+    if (scrollTop < top - offsetTop || scrollTop - offsetTop < scrollbar.height - valueBar.height) {
       comps = {
         scrollbar: {
           ...scrollbar,
