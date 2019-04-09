@@ -65,6 +65,7 @@ export default class RMSteps extends AtComponent {
                   className="at-steps__circular"
                   style={{
                     background: current === i ? activeColor : '',
+                    ...item.style,
                   }}
                 >
                   {item.icon ? (

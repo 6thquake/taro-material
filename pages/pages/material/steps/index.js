@@ -32,11 +32,16 @@ class Index extends Component {
 
   render() {
     const { current } = this.state;
+    const style = {
+      background: '#69f0ae',
+      color: '#fff',
+    };
     const items = [
       { title: '4000', desc: '这里是额外的信息，最多两行', value: 2 },
       { title: '6000', desc: '这里是额外的信息，最多两行', value: 3 },
       { title: '8000', desc: '这里是额外的信息，最多两行', value: 4 },
       { title: '10000', desc: '这里是额外的信息，最多两行', value: 5 },
+      { title: '10000', desc: '这里是额外的信息，最多两行', value: 5, style },
     ];
 
     const items2 = [
@@ -64,10 +69,10 @@ class Index extends Component {
         title: '步骤三',
         desc: '这里是额外的信息，最多两行',
         icon: {
-          value: 'clear',
+          value: 'looks_3',
           activeColor: '#fff',
           inactiveColor: '#78A4FA',
-          size: '14',
+          size: '20',
         },
       },
     ];
