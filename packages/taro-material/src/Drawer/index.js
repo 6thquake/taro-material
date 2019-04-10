@@ -124,7 +124,10 @@ export default class RMDrawer extends Component {
                 <View className="at-drawer__list--title">{group.name}</View>
                 <RMList
                   hasBorder={ListProps.hasBorder}
-                  customStyle={{ ...ListProps.customStyle, ...{ backgroundColor: 'transparent' } }}
+                  customStyle={{
+                    ...ListProps.customStyle,
+                    ...{ backgroundColor: 'transparent' },
+                  }}
                 >
                   {group.children.map((item, index) => (
                     <RMListItem

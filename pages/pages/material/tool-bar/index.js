@@ -220,6 +220,17 @@ class Index extends RMPage {
           }
         />
         <View>{value}</View>
+
+        <RMToolBar
+          onChange={this.handleFilterChange}
+          sorts={[]}
+          filters={[]}
+          renderTools={
+            <RMButton variant="contained" size="small">
+              测试
+            </RMButton>
+          }
+        />
       </View>
     );
   }

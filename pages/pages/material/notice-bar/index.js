@@ -430,14 +430,6 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="action" showMore unread>
-              <RMNotice rows={1} color="action">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
             <RMNoticeBar icon="volume_up" marquee rows={1} color="disabled" showMore unread>
               <RMNotice rows={1} color="disabled">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar

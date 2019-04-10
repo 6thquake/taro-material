@@ -7,8 +7,9 @@
   align-items: stretch;
   position: relative;
   height: 100vh;
-  max-height: 100vh;
   min-height: 100vh;
+  width: 100%;
+  flex: 1;
 
   .filters {
     display: flex;
