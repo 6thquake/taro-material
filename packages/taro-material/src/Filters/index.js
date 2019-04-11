@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, ScrollView } from '@tarojs/components';
 import PropTypes from 'prop-types';
 
 import RMTag from '../Tag';
@@ -28,7 +28,7 @@ class Filters extends Component {
     }
   }
 
-  handleClick(i, j, immediately, e) {
+  handleClick(i, j, immediately) {
     const { onChange } = this.props;
     const { data } = this.state;
 
@@ -124,39 +124,42 @@ class Filters extends Component {
     return (
       <View className="root">
         <View className="filters">
-          {options.map((option, i) => {
-            const { label, value, data } = option;
-            return (
-              <View key={value} className="option">
-                <View className="title">
-                  <RMTypography className="body2">{label}</RMTypography>
-                </View>
-                <View className="tags">
-                  {data.map((item, j) => (
-                    <View
-                      onClick={this.handleClick.bind(this, i, j, false)}
-                      key={item.value}
-                      className="tag"
-                    >
-                      <RMTag
-                        active={false}
-                        circle={false}
-                        block
-                        color={item.active ? 'primary' : 'default'}
-                        size="normal"
-                        customStyle={tagCustomStyle}
-                      >
-                        <RMTypography color="inherit" fontSize={12} block>
-                          {item.label}
-                        </RMTypography>
-                      </RMTag>
+          <ScrollView scroll-y scrollX={false} style="height: calc(100vh - 48px); width: 100%;">
+            {options &&
+              options.map((option, i) => {
+                const { label, value, data } = option;
+                return (
+                  <View key={value} className="option">
+                    <View className="title">
+                      <RMTypography className="body2">{label}</RMTypography>
                     </View>
-                  ))}
-                  <View className="spacing" />
-                </View>
-              </View>
-            );
-          })}
+                    <View className="tags">
+                      {data.map((item, j) => (
+                        <View
+                          onClick={this.handleClick.bind(this, i, j, false)}
+                          key={item.value}
+                          className="tag"
+                        >
+                          <RMTag
+                            active={false}
+                            circle={false}
+                            block
+                            color={item.active ? 'primary' : 'default'}
+                            size="normal"
+                            customStyle={tagCustomStyle}
+                          >
+                            <RMTypography color="inherit" fontSize={12} block>
+                              {item.label}
+                            </RMTypography>
+                          </RMTag>
+                        </View>
+                      ))}
+                      <View className="spacing" />
+                    </View>
+                  </View>
+                );
+              })}
+          </ScrollView>
         </View>
         <View className="actions">
           <View className="button">
