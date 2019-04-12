@@ -19,6 +19,9 @@ const localeData = {
     afternoon: 'afternoon',
     evening: 'evening',
     night: 'evening',
+    today: 'today',
+    thisMonth: 'this month',
+    thisYear: 'this year',
   },
   zh: {
     years: '年',
@@ -34,6 +37,9 @@ const localeData = {
     afternoon: '下午',
     evening: '晚上',
     night: '晚上',
+    today: '今天',
+    thisMonth: '本月',
+    thisYear: '今年',
   },
 };
 
@@ -54,10 +60,16 @@ const ago2 = (date, format) => {
 
   if (range > 366 * 24 * 60 * 60 * 1000) {
     key = 'years';
+  } else if (format === 'YYYY') {
+    key = 'thisYear';
   } else if (range > 31 * 24 * 60 * 60 * 1000) {
     key = 'months';
+  } else if (format === 'YYYY-MM') {
+    key = 'thisMonth';
   } else if (range > 24 * 60 * 60 * 1000) {
     key = 'days';
+  } else if (format === 'YYYY-MM-DD') {
+    key = 'today';
   } else if (range > 60 * 60 * 1000) {
     key = 'hours';
   } else if (range > 60 * 1000) {
@@ -84,6 +96,12 @@ const ago2 = (date, format) => {
 
   if (!key) {
     return `${resource.milliseconds}`;
+  } else if (key === 'thisYear') {
+    return `${resource.thisYear}`;
+  } else if (key === 'thisMonth') {
+    return `${resource.thisMonth}`;
+  } else if (key === 'today') {
+    return `${resource.today}`;
   }
   return `${now.diff(_ago, key)} ${resource[key]} ${resource.ago}`;
 };
@@ -129,5 +147,5 @@ const greet = () => {
   }
 };
 
-export default ago;
-export { greet, ago2 };
+export default ago2;
+export { greet, ago, ago2 };

@@ -25,7 +25,16 @@ class RMTimelineItem extends Component {
   componentDidHide() {}
 
   render() {
-    const { /* id, */ title, avatar, tail, name, status, remark, date } = this.props;
+    const {
+      /* id, */ title,
+      avatar,
+      tail,
+      name,
+      status,
+      remark,
+      date,
+      dateFormat = 'YYYY-MM-DD HH:mm:ss',
+    } = this.props;
 
     let color = null;
     switch (status) {
@@ -53,7 +62,7 @@ class RMTimelineItem extends Component {
             <View className="time">
               {date && (
                 <RMTypography className="caption" fontSize={10}>
-                  {ago(date)}
+                  {ago(date, dateFormat)}
                 </RMTypography>
               )}
             </View>
@@ -147,6 +156,7 @@ RMTimelineItem.propTypes = {
   remark: PropTypes.string,
   date: PropTypes.string,
   renderMore: PropTypes.element,
+  dateFormat: PropTypes.string,
 };
 
 export default RMTimelineItem;
