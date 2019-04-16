@@ -135,5 +135,18 @@ export {
   isDate,
 } from './utils/typeof';
 export { default as stringify, parse } from './utils/qs';
+export {
+  clamp,
+  convertHexToRGB,
+  rgbToHex,
+  decomposeColor,
+  recomposeColor,
+  getContrastRatio,
+  getLuminance,
+  emphasize,
+  fade,
+  darken,
+  lighten,
+} from './utils/colorManipulator';
 
 export { default as theme } from './styles/theme';
