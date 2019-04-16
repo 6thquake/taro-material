@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
 import 'dayjs/locale/zh-cn';
 
 dayjs.extend(relativeTime);
@@ -43,7 +42,7 @@ const localeData = {
   },
 };
 
-const ago = (date, format) => dayjs(date, format).fromNow();
+const ago = (date, format) => (!date ? '' : dayjs(date, format).fromNow());
 
 const ago2 = (date, format) => {
   if (!date) {
