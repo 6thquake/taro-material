@@ -1,13 +1,14 @@
 import Taro, { Component } from '@tarojs/taro';
-import { RadioGroup, Radio, Label, View } from '@tarojs/components';
+import { CheckboxGroup, Checkbox, View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
 import '../Checkbox/index.scss';
 
-class RMRadioGroup extends Component {
+class RMCheckboxGroup extends Component {
   handleChange(e) {
     const { name, disabled, onChange } = this.props;
 
@@ -18,30 +19,34 @@ class RMRadioGroup extends Component {
     const { customStyle, options } = this.props;
 
     return (
-      <RadioGroup style={customStyle} onChange={this.handleChange}>
+      <CheckboxGroup style={customStyle} onChange={this.handleChange}>
         {options.map(item => {
-          const { color, name, value, label } = item;
-          const checked = value === this.props.value;
+          const { color, value, label, icon } = item;
+          const checked = this.props.value && this.props.value.indexOf(value) !== -1;
           const disabled = this.props.disabled || item.disabled;
           return (
-            <Label
+            <View
               className={classNames({
                 'at-selection': true,
                 'at-selection--disabled': disabled,
                 [color]: true,
               })}
+              style={customStyle}
               // onClick={this.handleChange.bind(this)}
-              for={name || value}
               key={value}
             >
               <View className="at-selection__container">
                 <View
                   className={classNames({
-                    radio: true,
+                    checkbox: true,
                     checked,
                   })}
                 >
-                  {checked && <View className="point" />}
+                  {checked && (
+                    <RMIcon fontSize="inherit" color="inherit" block>
+                      {icon}
+                    </RMIcon>
+                  )}
                 </View>
               </View>
               {
@@ -49,26 +54,24 @@ class RMRadioGroup extends Component {
                   {label}
                 </RMTypography>
               }
-
-              <Radio
+              <Checkbox
                 className="at-selection__selection"
                 value={value}
                 checked={checked}
                 disabled={disabled}
                 style={{ opacity: 0 }}
-                name={name || value}
                 // onChange={this.handleChange.bind(this)}
               />
               <View className="at-selection__mask" />
-            </Label>
+            </View>
           );
         })}
-      </RadioGroup>
+      </CheckboxGroup>
     );
   }
 }
 
-RMRadioGroup.propTypes = {
+RMCheckboxGroup.propTypes = {
   disabled: PropTypes.bool,
   value: PropTypes.object,
   onChange: PropTypes.func,
@@ -76,7 +79,7 @@ RMRadioGroup.propTypes = {
   name: PropTypes.string,
 };
 
-RMRadioGroup.defaultProps = {
+RMCheckboxGroup.defaultProps = {
   disabled: false,
   customStyle: {},
   value: null,
@@ -84,4 +87,4 @@ RMRadioGroup.defaultProps = {
   onChange: () => {},
 };
 
-export default RMRadioGroup;
+export default RMCheckboxGroup;

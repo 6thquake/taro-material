@@ -35,6 +35,7 @@
   }
 
   &--disabled {
+    pointer-events: none;
     .at-selection__selection,
     .checkbox,
     .radio {

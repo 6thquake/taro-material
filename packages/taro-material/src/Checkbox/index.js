@@ -1,12 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
-import PropTypes from 'prop-types';
 import { View, Checkbox } from '@tarojs/components';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
-
-// import theme from '../styles/theme'
 
 import './index.scss';
 
@@ -22,12 +20,12 @@ class RMCheckbox extends Component {
   componentDidHide() {}
 
   handleChange(e) {
-    const { value, checked, onChange } = this.props;
-    onChange && onChange(!checked, value, e);
+    const { disabled, value, checked, onChange } = this.props;
+    !disabled && onChange && onChange(!checked, value, e);
   }
 
   render() {
-    const { value, color, checked, disabled, customStyle, className, icon } = this.props;
+    const { value, color, checked, disabled, customStyle, className, icon, lable } = this.props;
     return (
       <View
         className={classNames({
@@ -36,6 +34,7 @@ class RMCheckbox extends Component {
           [color]: true,
         })}
         style={customStyle}
+        onClick={this.handleChange.bind(this)}
       >
         <View className="at-selection__container">
           <View
@@ -45,7 +44,7 @@ class RMCheckbox extends Component {
             })}
           >
             {checked && (
-              <RMIcon fontSize="inherit" color="inherit" block customStyle={{ marginLeft: '-1px' }}>
+              <RMIcon fontSize="inherit" color="inherit" block>
                 {icon}
               </RMIcon>
             )}
@@ -53,6 +52,7 @@ class RMCheckbox extends Component {
         </View>
         {
           <RMTypography className="subheading" color="inherit" block>
+            {lable || ''}
             {this.props.children}
           </RMTypography>
         }
@@ -62,7 +62,7 @@ class RMCheckbox extends Component {
           checked={checked}
           disabled={disabled}
           style={{ opacity: 0 }}
-          onClick={this.handleChange.bind(this)}
+          // onChange={this.handleChange.bind(this)}
         />
         <View className="at-selection__mask" />
       </View>
@@ -87,6 +87,7 @@ RMCheckbox.propTypes = {
   customStyle: PropTypes.object,
   required: PropTypes.bool,
   icon: PropTypes.string,
+  lable: PropTypes.string,
 };
 
 RMCheckbox.defaultProps = {

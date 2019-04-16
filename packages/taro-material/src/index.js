@@ -85,6 +85,8 @@ export { default as RMSwitch } from './Switch';
 export { default as RMRadio } from './Radio';
 export { default as RMRadioGroup } from './RadioGroup';
 export { default as RMCheckbox } from './Checkbox';
+export { default as RMCheckboxGroup } from './CheckboxGroup';
+
 export { default as RMAsyncSelect } from './AsyncSelect';
 export { default as RMTabBar } from './TabBar';
 export { default as RMTag } from './Tag';
