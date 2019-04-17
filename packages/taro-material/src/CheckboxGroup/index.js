@@ -20,52 +20,53 @@ class RMCheckboxGroup extends Component {
 
     return (
       <CheckboxGroup style={customStyle} onChange={this.handleChange}>
-        {options.map(item => {
-          const { color, value, label, icon } = item;
-          const checked = this.props.value && this.props.value.indexOf(value) !== -1;
-          const disabled = this.props.disabled || item.disabled;
-          return (
-            <View
-              className={classNames({
-                'at-selection': true,
-                'at-selection--disabled': disabled,
-                [color]: true,
-              })}
-              style={customStyle}
-              // onClick={this.handleChange.bind(this)}
-              key={value}
-            >
-              <View className="at-selection__container">
-                <View
-                  className={classNames({
-                    checkbox: true,
-                    checked,
-                  })}
-                >
-                  {checked && (
-                    <RMIcon fontSize="inherit" color="inherit" block>
-                      {icon}
-                    </RMIcon>
-                  )}
+        {options &&
+          options.map(item => {
+            const { color, value, label, icon } = item;
+            const checked = this.props.value && this.props.value.indexOf(value) !== -1;
+            const disabled = this.props.disabled || item.disabled;
+            return (
+              <View
+                className={classNames({
+                  'at-selection': true,
+                  'at-selection--disabled': disabled,
+                  [color]: true,
+                })}
+                style={customStyle}
+                // onClick={this.handleChange.bind(this)}
+                key={value}
+              >
+                <View className="at-selection__container">
+                  <View
+                    className={classNames({
+                      checkbox: true,
+                      checked,
+                    })}
+                  >
+                    {checked && (
+                      <RMIcon fontSize="inherit" color="inherit" block>
+                        {icon}
+                      </RMIcon>
+                    )}
+                  </View>
                 </View>
+                {
+                  <RMTypography className="subheading" color="inherit" block>
+                    {label}
+                  </RMTypography>
+                }
+                <Checkbox
+                  className="at-selection__selection"
+                  value={value}
+                  checked={checked}
+                  disabled={disabled}
+                  style={{ opacity: 0 }}
+                  // onChange={this.handleChange.bind(this)}
+                />
+                <View className="at-selection__mask" />
               </View>
-              {
-                <RMTypography className="subheading" color="inherit" block>
-                  {label}
-                </RMTypography>
-              }
-              <Checkbox
-                className="at-selection__selection"
-                value={value}
-                checked={checked}
-                disabled={disabled}
-                style={{ opacity: 0 }}
-                // onChange={this.handleChange.bind(this)}
-              />
-              <View className="at-selection__mask" />
-            </View>
-          );
-        })}
+            );
+          })}
       </CheckboxGroup>
     );
   }

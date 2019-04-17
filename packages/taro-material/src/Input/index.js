@@ -106,8 +106,6 @@ class RMInput extends Component {
       disabled = true;
     }
 
-    console.log(!error && !disabled && !readOnly && focus);
-
     return (
       <View className="at-input__root">
         <View

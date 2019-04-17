@@ -19,50 +19,51 @@ class RMRadioGroup extends Component {
 
     return (
       <RadioGroup style={customStyle} onChange={this.handleChange}>
-        {options.map(item => {
-          const { color, name, value, label } = item;
-          const checked = value === this.props.value;
-          const disabled = this.props.disabled || item.disabled;
-          return (
-            <Label
-              className={classNames({
-                'at-selection': true,
-                'at-selection--disabled': disabled,
-                [color]: true,
-              })}
-              // onClick={this.handleChange.bind(this)}
-              for={name || value}
-              key={value}
-            >
-              <View className="at-selection__container">
-                <View
-                  className={classNames({
-                    radio: true,
-                    checked,
-                  })}
-                >
-                  {checked && <View className="point" />}
+        {options &&
+          options.map(item => {
+            const { color, name, value, label } = item;
+            const checked = value === this.props.value;
+            const disabled = this.props.disabled || item.disabled;
+            return (
+              <Label
+                className={classNames({
+                  'at-selection': true,
+                  'at-selection--disabled': disabled,
+                  [color]: true,
+                })}
+                // onClick={this.handleChange.bind(this)}
+                for={name || value}
+                key={value}
+              >
+                <View className="at-selection__container">
+                  <View
+                    className={classNames({
+                      radio: true,
+                      checked,
+                    })}
+                  >
+                    {checked && <View className="point" />}
+                  </View>
                 </View>
-              </View>
-              {
-                <RMTypography className="subheading" color="inherit" block>
-                  {label}
-                </RMTypography>
-              }
+                {
+                  <RMTypography className="subheading" color="inherit" block>
+                    {label}
+                  </RMTypography>
+                }
 
-              <Radio
-                className="at-selection__selection"
-                value={value}
-                checked={checked}
-                disabled={disabled}
-                style={{ opacity: 0 }}
-                name={name || value}
-                // onChange={this.handleChange.bind(this)}
-              />
-              <View className="at-selection__mask" />
-            </Label>
-          );
-        })}
+                <Radio
+                  className="at-selection__selection"
+                  value={value}
+                  checked={checked}
+                  disabled={disabled}
+                  style={{ opacity: 0 }}
+                  name={name || value}
+                  // onChange={this.handleChange.bind(this)}
+                />
+                <View className="at-selection__mask" />
+              </Label>
+            );
+          })}
       </RadioGroup>
     );
   }
