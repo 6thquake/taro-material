@@ -3,12 +3,11 @@ import { View, CheckboxGroup, Checkbox, RadioGroup, Radio } from '@tarojs/compon
 
 import { RMSwitch, RMRadio, RMCheckbox, RMRadioGroup, RMCheckboxGroup } from '../../../';
 
-import theme from '../../../styles/theme';
 import './index.scss';
 
 class Index extends Component {
   config = {
-    navigationBarTitleText: 'Switch',
+    navigationBarTitleText: 'Selection Controls',
   };
 
   componentWillMount() {}
@@ -373,6 +372,60 @@ class Index extends Component {
                   label: 'disabled',
                   disabled: true,
                 },
+                {
+                  name: 'checkboxs4',
+                  value: 'checkboxs4',
+                  color: 'error',
+                  label: 'yes',
+                  icon: 'remove',
+                },
+                {
+                  name: 'checkboxs5',
+                  value: 'checkboxs5',
+                  color: 'success',
+                  label: 'no',
+                  disabled: false,
+                  icon: 'add',
+                },
+                {
+                  name: 'checkboxs6',
+                  value: 'checkboxs6',
+                  color: 'default',
+                  label: 'ok',
+                  disabled: true,
+                },
+              ]}
+            />
+          </View>
+          <View className="row">
+            <RMCheckboxGroup
+              onChange={this.handleChange.bind(this)}
+              name="checkboxs"
+              value={this.state.checkboxs}
+              vertical
+              options={[
+                {
+                  name: 'checkboxs1',
+                  value: 'checkboxs1',
+                  color: 'error',
+                  label: 'error',
+                  icon: 'remove',
+                },
+                {
+                  name: 'checkboxs2',
+                  value: 'checkboxs2',
+                  color: 'success',
+                  label: 'success',
+                  disabled: false,
+                  icon: 'add',
+                },
+                {
+                  name: 'checkboxs3',
+                  value: 'checkboxs3',
+                  color: 'default',
+                  label: 'disabled',
+                  disabled: true,
+                },
               ]}
             />
           </View>
@@ -385,6 +438,36 @@ class Index extends Component {
               onChange={this.handleChange.bind(this)}
               name="radios"
               value={this.state.radios}
+              options={[
+                {
+                  name: 'radios4',
+                  value: 'radios4',
+                  color: 'error',
+                  label: 'error',
+                },
+                {
+                  name: 'radios5',
+                  value: 'radios5',
+                  color: 'success',
+                  label: 'success',
+                  disabled: false,
+                },
+                {
+                  name: 'radios6',
+                  value: 'radios6',
+                  color: 'default',
+                  label: 'disabled',
+                  disabled: true,
+                },
+              ]}
+            />
+          </View>
+          <View className="row">
+            <RMRadioGroup
+              onChange={this.handleChange.bind(this)}
+              name="radios"
+              value={this.state.radios}
+              vertical
               options={[
                 {
                   name: 'radios4',

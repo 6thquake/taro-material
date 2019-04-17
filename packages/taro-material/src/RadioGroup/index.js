@@ -15,10 +15,14 @@ class RMRadioGroup extends Component {
   }
 
   render() {
-    const { customStyle, options } = this.props;
+    const { customStyle, options, vertical } = this.props;
 
     return (
-      <RadioGroup style={customStyle} onChange={this.handleChange}>
+      <RadioGroup
+        style={customStyle}
+        onChange={this.handleChange}
+        className={classNames({ 'radio-group': true, vertical })}
+      >
         {options &&
           options.map(item => {
             const { color, name, value, label } = item;
@@ -70,6 +74,7 @@ class RMRadioGroup extends Component {
 }
 
 RMRadioGroup.propTypes = {
+  vertical: PropTypes.bool,
   disabled: PropTypes.bool,
   value: PropTypes.object,
   onChange: PropTypes.func,
@@ -78,6 +83,7 @@ RMRadioGroup.propTypes = {
 };
 
 RMRadioGroup.defaultProps = {
+  vertical: false,
   disabled: false,
   customStyle: {},
   value: null,

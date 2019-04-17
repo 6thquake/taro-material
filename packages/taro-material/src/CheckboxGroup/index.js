@@ -16,10 +16,14 @@ class RMCheckboxGroup extends Component {
   }
 
   render() {
-    const { customStyle, options } = this.props;
+    const { customStyle, options, vertical } = this.props;
 
     return (
-      <CheckboxGroup style={customStyle} onChange={this.handleChange}>
+      <CheckboxGroup
+        style={customStyle}
+        onChange={this.handleChange}
+        className={classNames({ 'checkbox-group': true, vertical })}
+      >
         {options &&
           options.map(item => {
             const { color, value, label, icon } = item;
@@ -73,6 +77,7 @@ class RMCheckboxGroup extends Component {
 }
 
 RMCheckboxGroup.propTypes = {
+  vertical: PropTypes.bool,
   disabled: PropTypes.bool,
   value: PropTypes.object,
   onChange: PropTypes.func,
@@ -81,6 +86,7 @@ RMCheckboxGroup.propTypes = {
 };
 
 RMCheckboxGroup.defaultProps = {
+  vertical: false,
   disabled: false,
   customStyle: {},
   value: null,

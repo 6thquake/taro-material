@@ -207,3 +207,19 @@
     border-radius: 50%;
   }
 }
+.checkbox-group,
+.radio-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  // justify-items: flex-start;
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  .at-selection {
+    margin-right: #{$spacingUnit * 2}px;
+  }
+}
