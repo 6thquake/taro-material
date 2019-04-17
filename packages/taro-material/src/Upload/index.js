@@ -207,7 +207,7 @@ class RMUpload extends Component {
   };
 
   upload = (url, params) => {
-    const { disabled } = this.props;
+    const { disabled, files } = this.props;
     const { _files } = this.state;
 
     if (disabled || !url || !_files || _files.length <= 0) {
@@ -218,6 +218,11 @@ class RMUpload extends Component {
       _files.map(
         item =>
           new Promise((resolve, reject) => {
+            if (!/^http(s?):\/\/tmp\//g.test(item)) {
+              // files.indexOf(item) !== -1
+              return resolve(item);
+            }
+
             RMUpload.queue++;
             uploadFile(url, item, params, resolve, reject);
           }),
