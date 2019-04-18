@@ -14,7 +14,7 @@ function uploadFile(url, item, params, resolve, reject) {
   if (RMUpload.queue > 10) {
     return setTimeout(() => {
       uploadFile(url, item, params, resolve, reject);
-    }, 100);
+    }, 300);
   }
 
   Taro.uploadFile({
