@@ -7,22 +7,11 @@
 
 $hd: 2; // 基本单位
 
-/* The Color of O2Team Brand */
-$color-brand: $palettePrimaryMain;
-$color-brand-light: $palettePrimaryLight;
-$color-brand-dark: $palettePrimaryDark;
-
 /* Color */
 $color-success: $paletteSuccessMain;
 $color-error: $paletteErrorMain;
 $color-warning: $paletteWarningMain;
 $color-info: $palettePrimaryMain;
-
-/* Color Palette */
-$color-black-0: $paletteTextPrimary;
-$color-black-1: $paletteTextSecondary;
-$color-black-2: $paletteTextDisabled;
-$color-black-3: $paletteTextHint;
 
 $color-grey-0: $paletteGrey900;
 $color-grey-1: $paletteGrey700;
@@ -31,8 +20,6 @@ $color-grey-3: $paletteGrey300;
 $color-grey-4: $paletteGrey200;
 $color-grey-5: $paletteGrey100;
 $color-grey-6: $paletteGrey50;
-
-$color-white: $paletteCommonWhite;
 
 /* Text Color */
 $color-text-base: $paletteTextPrimary; // 文字的基本色
@@ -43,13 +30,6 @@ $color-text-disabled: $paletteTextDisabled;
 $color-text-title: $paletteTextPrimary; // 文章标题
 $color-text-paragraph: $paletteTextPrimary; // 文章段落
 
-/* 背景色 */
-$color-bg: $paletteBackgroundPaper;
-$color-bg-base: $paletteBackgroundDefault;
-$color-bg-light: $paletteBackgroundDefault;
-$color-bg-lighter: tint($color-bg-light, 50%);
-$color-bg-grey: $paletteBackgroundDefault;
-
 /* 边框颜色 */
 $color-border-base: $paletteGrey300;
 $color-border-split: $paletteTextDivider; // 分割线
@@ -59,7 +39,6 @@ $color-border-lightest: tint($color-border-base, 80%);
 $color-border-grey: $paletteGrey300;
 
 /* 透明度 */
-$opacity-active: 0.6; // Button 等组件点击态额透明度
 $opacity-disabled: 0.38; // Button 等组件禁用态的透明度
 
 /* Font */
@@ -87,21 +66,6 @@ $spacing-v-sm: 6px * $hd;
 $spacing-v-md: 9px * $hd;
 $spacing-v-lg: 12px * $hd;
 $spacing-v-xl: 15px * $hd;
-
-/* 图标尺寸 */
-$icon-size-sm: 18px * $hd;
-$icon-size-md: 22px * $hd;
-$icon-size-lg: 36px * $hd;
-
-/* z-index */
-$zindex-form: 700;
-$zindex-nav: $zIndexAppBar;
-$zindex-flot-layout: #{$zIndexAppBar + 10};
-$zindex-drawer: $zIndexDrawer;
-$zindex-modal: $zIndexModal;
-$zindex-action-sheet: #{$zIndexModal + 10};
-$zindex-picker: #{$zIndexModal + 10};
-$zindex-toast: $zIndexSnackbar;
 
 // 默认主题下 $color-border-lighter
 @mixin border-thin(
@@ -146,8 +110,6 @@ $zindex-toast: $zIndexSnackbar;
 
 .at-input {
   flex: 1;
-  // padding: $spacing-v-lg 0;
-  // background-color: $color-bg;
   color: $color-text-base;
   margin: #{$spacingUnit * 2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
 
@@ -166,13 +128,8 @@ $zindex-toast: $zIndexSnackbar;
   &__required {
     margin-left: #{$spacingUnit}px;
     color: #{$paletteSecondaryMain};
-    // font-size: #{$typographyFontSize}px;
   }
   &__title {
-    // margin-right: $spacing-h-md;
-    // width: 172px;
-    // font-size: $font-size-lg;
-    // line-height: $line-height-zh;
     vertical-align: middle;
     text-align: left;
     display: flex;
@@ -199,9 +156,6 @@ $zindex-toast: $zIndexSnackbar;
   &__textarea {
     flex: 1;
     display: inline-block;
-    // padding-right: $spacing-v-md;
-    // font-size: $font-size-lg;
-    // line-height: $line-height-zh;
     vertical-align: middle;
     @include placeholder;
     @extend .typography, .subheading;
@@ -210,12 +164,10 @@ $zindex-toast: $zIndexSnackbar;
   input {
     height: auto !important;
     min-height: auto !important;
-    // padding: 0px #{$spacingUnit / 2}px;
   }
 
   textarea {
     min-height: 150px;
-    // padding: 0px #{$spacingUnit / 2}px;
   }
 
   &__icon {
