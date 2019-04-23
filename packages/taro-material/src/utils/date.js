@@ -49,7 +49,7 @@ const ago2 = (date, format) => {
     return '';
   }
 
-  const _ago = dayjs(date, format || `YYYY-MM-DD HH:mm:ss`);
+  const _ago = dayjs(date); //, format || `YYYY-MM-DD HH:mm:ss`
   const now = dayjs();
 
   const range = now.diff(_ago);

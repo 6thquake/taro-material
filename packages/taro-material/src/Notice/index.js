@@ -16,7 +16,7 @@ class RMNotice extends AtComponent {
   };
 
   render() {
-    const { title, content, rows, color, icon } = this.props;
+    const { title, content, rows, color, icon, showTime } = this.props;
     const { date } = this.state;
 
     const height = (rows * 36) / 2;
@@ -52,7 +52,7 @@ class RMNotice extends AtComponent {
           {title && <View className="subheading">{title}</View>}
           {content && <View className="body2">{content}</View>}
           <View className="body2">{this.props.children}</View>
-          <View className="caption">{ago(date)}</View>
+          {showTime && <View className="caption">{ago(date)}</View>}
         </View>
         {icon && (
           <View className="rm-notice-icon" style={iconStyle}>
@@ -81,6 +81,7 @@ RMNotice.propTypes = {
     'default',
   ]),
   icon: PropTypes.string,
+  showTime: PropTypes.bool,
 };
 RMNotice.defaultProps = {
   title: '',
@@ -88,6 +89,7 @@ RMNotice.defaultProps = {
   rows: 0,
   color: 'default',
   icon: '',
+  showTime: false,
 };
 
 export default RMNotice;
