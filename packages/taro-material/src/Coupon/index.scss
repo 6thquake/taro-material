@@ -25,7 +25,7 @@ $coupon-disabled-base-color: $paletteGrey500;
       width: 100%;
       display: flex;
       align-items: center;
-      @extend .typography.body1;
+      @extend .typography, .body1;
 
       .lay:last-child {
         flex: 1;
@@ -33,7 +33,7 @@ $coupon-disabled-base-color: $paletteGrey500;
         @extend .typography, .subheading;
       }
       .em {
-        @extend .typography.display2;
+        @extend .typography, .display2;
         display: inline;
         color: inherit;
       }

@@ -1,0 +1,113 @@
+@import '../styles/theme.scss';
+@import '../Typography/Typography.scss';
+
+@mixin wave($size: 24px, $color: white) {
+  position: absolute;
+  background: $color;
+  width: $size;
+  height: $size;
+  content: '';
+  display: block;
+  border-radius: 50%;
+  -webkit-backface-visibility: hidden;
+}
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 32px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+
+  &.small {
+    padding: 28px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+    .item {
+      .circle {
+        width: 12px;
+        height: 12px;
+      }
+      .waves {
+        &::before {
+          @include wave(12px);
+        }
+      }
+      .line {
+        width: 2px;
+      }
+    }
+  }
+
+  &.large {
+    padding: 48px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+    .item {
+      .circle {
+        width: 24px;
+        height: 24px;
+      }
+      .waves {
+        &::before {
+          @include wave(24px);
+        }
+      }
+      .line {
+        width: 10px;
+      }
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .circle {
+      background: rgba(255, 255, 255, 0.2);
+      width: 16px;
+      height: 16px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      -webkit-backface-visibility: hidden;
+    }
+    .waves {
+      &::before {
+        @include wave(16px);
+        animation: wave-animate 3s infinite ease-out;
+      }
+    }
+    .line {
+      width: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: #{$spacingUnit}px;
+    }
+
+    .row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .value {
+      @extend .typography, .body1;
+      font-size: 24px;
+      margin: 0px #{$spacingUnit}px;
+
+      .prefix,
+      .suffix {
+        font-size: 16px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    }
+  }
+
+  @keyframes wave-animate {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+      transform-origin: center;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+      transform-origin: center;
+    }
+  }
+}
