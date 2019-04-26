@@ -422,6 +422,10 @@ export default class PanelBasic extends Component {
             id: 'Timeline',
             name: '时间轴',
           },
+          {
+            id: 'Trends',
+            name: 'Trends',
+          },
         ],
       },
     };

@@ -98,6 +98,7 @@ class App extends Component {
       'pages/material/indexes/index',
       'pages/material/drawer/index',
       'pages/material/timeline/index',
+      'pages/material/trends/index',
     ],
     window: {
       backgroundTextStyle: 'light',

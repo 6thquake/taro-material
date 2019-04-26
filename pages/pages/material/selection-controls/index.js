@@ -219,9 +219,7 @@ class Index extends Component {
               color="default"
               checked={this.state.radioA}
               onChange={this.handleChange.bind(this)}
-            >
-              default
-            </RMRadio>
+            />
             <RMRadio
               value="radioB"
               color="primary"
