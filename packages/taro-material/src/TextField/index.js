@@ -118,6 +118,7 @@ class RMTextField extends Component {
       count,
       autoHeight,
       fixed,
+      margin,
     } = this.props;
     let { maxlength, type, disabled } = this.props;
     const { readOnly, focus, _count } = this.state;
@@ -354,6 +355,7 @@ RMTextField.defaultProps = {
   autoHeight: true,
   count: true,
   fixed: false,
+  margin: 'normal',
 };
 
 RMTextField.propTypes = {
@@ -398,6 +400,7 @@ RMTextField.propTypes = {
   autoHeight: PropTypes.bool,
   count: PropTypes.bool,
   fixed: PropTypes.bool,
+  margin: PropTypes.oneOf(['none', 'dense', 'normal']),
 };
 
 export default RMTextField;

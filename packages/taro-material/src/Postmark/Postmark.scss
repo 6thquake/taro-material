@@ -1,152 +1,160 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-
-@mixin rotate($deg){
-	transform: rotate(#{$deg}deg);
+@mixin rotate($deg) {
+  transform: rotate(#{$deg}deg);
 }
-@mixin rotated-text-clockwise($num-letters: 100, $angle-span: 180deg, $angle-offset: 0deg){
-	$num-unit: $num-letters - 1;
-	$angle-per-char: $angle-span / $num-unit;
-	
-	@for $i from 0 through $num-unit {
-	    &.char#{$i} {
-	      @include rotate($angle-offset + $angle-per-char * $i)
-	    }
-	}
-}
+@mixin rotated-text-clockwise($num-letters: 100, $angle-span: 180deg, $angle-offset: 0deg) {
+  $num-unit: $num-letters - 1;
+  $angle-per-char: $angle-span / $num-unit;
 
-@mixin rotated-text-anti-clockwise($num-letters: 100, $angle-span: 180deg, $angle-offset: 0deg){
-	$num-unit: $num-letters - 1;
-	$angle-per-char: $angle-span / $num-unit;
-	
-	@for $i from 0 through $num-unit {
-	    &.char#{$i} {
-	      @include rotate($angle-span - $angle-offset - $angle-per-char * $i)
-	    }
-	}
+  @for $i from 0 through $num-unit {
+    &.char#{$i} {
+      @include rotate($angle-offset + $angle-per-char * $i);
+    }
+  }
 }
 
+@mixin rotated-text-anti-clockwise($num-letters: 100, $angle-span: 180deg, $angle-offset: 0deg) {
+  $num-unit: $num-letters - 1;
+  $angle-per-char: $angle-span / $num-unit;
 
-.root {
-	position: relative;
-	
-	&.primary, &.secondary, &.error, &.success, &.warning, &.progress, &.default, &.white, &.black {
-		background-position: center;
-		background-size: cover;
-	}
+  @for $i from 0 through $num-unit {
+    &.char#{$i} {
+      @include rotate($angle-span - $angle-offset - $angle-per-char * $i);
+    }
+  }
+}
 
-	&.small {
-		width: 224px;
-		height: 224px;
+.rm-postmark {
+  position: relative;
 
-		.info {
-			.text {
-				top: 78px;
-				font-size: 40px;
-				line-height: 40px;
-			}
-			.signature {
-				font-size: 20px;
-				line-height: 20px;
-				
-				.char {
-					height:96px;
-					width:0px;
-					left:112px;
-					top:30px;
-				}
-			}
-			.date {
-				font-size: 20px;
-				line-height: 20px;	
+  &.primary,
+  &.secondary,
+  &.error,
+  &.success,
+  &.warning,
+  &.progress,
+  &.default,
+  &.white,
+  &.black {
+    background-position: center;
+    background-size: cover;
+  }
 
-				.char {
-					height:60px;
-					width:0px;
-					left:112px;
-					top:176px;
-				}
-			}
-		}
-	}
+  &.small {
+    width: 224px;
+    height: 224px;
 
-	&.normal, &.medium {
-		width: 320px;
-		height: 320px;
+    .info {
+      .text {
+        top: 78px;
+        font-size: 40px;
+        line-height: 40px;
+      }
+      .signature {
+        font-size: 20px;
+        line-height: 20px;
 
-		.info {
-			.text {
-				font-size: 56px;
-				line-height: 56px;
-				top:112px;
-			}
-			.signature {
-				font-size: 34px;
-				line-height: 34px;
-				
-				.char {
-					width: 0px;
-					height:136px;
-					top:36px;
-					left:158px;
-				}
-			}
-			.date {
-				font-size: 32px;
-				line-height: 32px;	
+        .char {
+          height: 96px;
+          width: 0px;
+          left: 112px;
+          top: 30px;
+        }
+      }
+      .date {
+        font-size: 20px;
+        line-height: 20px;
 
-				.char {
-					height:88px;
-					width:0px;
-					top:248px;
-					left:158px;
-				}
-			}
-		}
-	}
+        .char {
+          height: 60px;
+          width: 0px;
+          left: 112px;
+          top: 176px;
+        }
+      }
+    }
+  }
 
-	
-	.info {
-		position:absolute;
-		text-align: center;
-		width: 100%;
-		height: 100%;
-		top: 0px;
-		left: 0px;
-		font-weight: $typographyFontWeightMedium;
+  &.normal,
+  &.medium {
+    width: 320px;
+    height: 320px;
 
-		@include rotate(7);
+    .info {
+      .text {
+        font-size: 56px;
+        line-height: 56px;
+        top: 112px;
+      }
+      .signature {
+        font-size: 34px;
+        line-height: 34px;
 
-		.text, .date, .signature {
-			position: absolute;
-			width:100%;
-		}
-		.date {
-			.char {
-				position:absolute;
-			    
-			    &.anti-clockwise{
-			    	transform-origin: -100% -100%;
+        .char {
+          width: 0px;
+          height: 136px;
+          top: 36px;
+          left: 158px;
+        }
+      }
+      .date {
+        font-size: 32px;
+        line-height: 32px;
 
-			    	@include rotated-text-anti-clockwise(19, 120, 60)
-			    }
-			}
-		}
-		.signature {
-			.char {
-				position:absolute;
+        .char {
+          height: 88px;
+          width: 0px;
+          top: 248px;
+          left: 158px;
+        }
+      }
+    }
+  }
 
-				&.clockwise{
-					transform-origin: 100% 100%;
+  .info {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    font-weight: $typographyFontWeightMedium;
 
-			    	@include rotated-text-clockwise(4, 60, -30)
-			    }
-			}
-		}
-	}
+    @include rotate(7);
 
-	.image {
-	  	width: 100%;
-	  	height: 100%;
-	}
+    .text,
+    .date,
+    .signature {
+      position: absolute;
+      width: 100%;
+    }
+    .date {
+      .char {
+        position: absolute;
+
+        &.anti-clockwise {
+          transform-origin: -100% -100%;
+
+          @include rotated-text-anti-clockwise(19, 120, 60);
+        }
+      }
+    }
+    .signature {
+      .char {
+        position: absolute;
+
+        &.clockwise {
+          transform-origin: 100% 100%;
+
+          @include rotated-text-clockwise(4, 60, -30);
+        }
+      }
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+  }
 }

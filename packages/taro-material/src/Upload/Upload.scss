@@ -1,6 +1,6 @@
 @import '../styles/theme.scss';
 
-.container {
+.rm-upload {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -25,7 +25,7 @@
       color: #{$paletteSecondaryMain};
     }
   }
-  .array {
+  .files {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -95,7 +95,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    min-height: 34rpx;
+    min-height: 34px;
     margin-top: #{$spacingUnit}px;
 
     &-icon {

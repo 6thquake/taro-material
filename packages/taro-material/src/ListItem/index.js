@@ -47,6 +47,7 @@ class RMListItem extends Component {
       note,
       arrow,
       title,
+      wrap,
       thumb,
       iconThumb,
       iconThumbFill,
@@ -113,7 +114,12 @@ class RMListItem extends Component {
         )}
         <View className="at-list__item-content item-content">
           <View className="item-content__info">
-            <View className="item-content__info-title">
+            <View
+              className={classNames({
+                'item-content__info-title': true,
+                wrap,
+              })}
+            >
               <RMTypography className="subheading">{title}</RMTypography>
               {this.props.renderTitle}
             </View>
@@ -208,6 +214,7 @@ class RMListItem extends Component {
 }
 
 RMListItem.defaultProps = {
+  wrap: false,
   hasBorder: true,
   isSwitch: false,
   disabled: false,
@@ -268,6 +275,7 @@ RMListItem.propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     maxValue: PropTypes.number,
   }),
+  wrap: PropTypes.bool,
 };
 
 export default RMListItem;

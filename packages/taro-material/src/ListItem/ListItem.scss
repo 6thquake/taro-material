@@ -275,6 +275,9 @@ $item-horizontal-padding: 24px;
 
   &__info {
     @include line(1);
+    &.wrap {
+      @include line(2);
+    }
 
     color: $color-grey-2;
     max-width: 160px;

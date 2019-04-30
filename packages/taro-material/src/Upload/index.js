@@ -22,11 +22,6 @@ function uploadFile(url, item, params, resolve, reject) {
     filePath: item,
     name: 'file',
     formData: params,
-    // success (res) {
-    //   //去掉微信返回的url多出的引号
-    //   let data = res.data.slice(1, -1);
-    //   resolve(data);
-    // },
     fail(res) {
       reject(res);
     },
@@ -266,7 +261,7 @@ class RMUpload extends Component {
     return (
       <View
         className={classNames({
-          container: true,
+          'rm-upload': true,
           rounded: !square,
         })}
       >
@@ -282,7 +277,7 @@ class RMUpload extends Component {
             </View>
           </Label>
         )}
-        <View className="array" disabled={disabled}>
+        <View className="files" disabled={disabled}>
           {_files.map(item => {
             const url = `${item}`;
             return (

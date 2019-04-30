@@ -111,7 +111,16 @@ $spacing-v-xl: 15px * $hd;
 .at-input {
   flex: 1;
   color: $color-text-base;
-  margin: #{$spacingUnit * 2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+  margin: 0px #{$spacingUnit}px 0px #{$spacingUnit}px;
+
+  &.normal {
+    margin-top: #{$spacingUnit * 4}px;
+    margin-bottom: #{$spacingUnit * 2}px;
+  }
+  &.dense {
+    margin-top: #{$spacingUnit * 2}px;
+    margin-bottom: #{$spacingUnit}px;
+  }
 
   &__root {
     display: flex;

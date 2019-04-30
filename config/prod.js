@@ -3,6 +3,19 @@ module.exports = {
   env: {
     NODE_ENV: '"production"',
   },
+  plugins: {
+    babel: {
+      sourceMap: false,
+    },
+    uglify: {
+      enable: true,
+      config: {},
+    },
+    csso: {
+      enable: true,
+      config: {},
+    },
+  },
   defineConstants: {},
   weapp: {
     postcss: {

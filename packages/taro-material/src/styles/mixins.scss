@@ -1,0 +1,12 @@
+@import '../style/mixins/libs/flex.scss';
+
+@mixin row($alignItems: center, $justifyContent: center) {
+  @include display-flex;
+  @include align-items($alignItems);
+  @include justify-content($justifyContent);
+}
+
+@mixin row-wrap($alignItems: center, $justifyContent: center, $wrap: wrap) {
+  @include row;
+  @include flex-wrap($wrap);
+}

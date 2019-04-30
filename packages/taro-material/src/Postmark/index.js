@@ -63,28 +63,13 @@ class RMPostmark extends Component {
 
     switch (color) {
       case 'warning':
-        _src = postmarkWarning;
-        _color = theme.palette.warning.main;
-        break;
       case 'progress':
-        _src = postmarkProgress;
-        _color = theme.palette.progress.main;
-        break;
       case 'success':
-        _src = postmarkSuccess;
-        _color = theme.palette.success.main;
-        break;
       case 'error':
-        _src = postmarkError;
-        _color = theme.palette.error.main;
-        break;
       case 'secondary':
-        _src = postmarkSecondary;
-        _color = theme.palette.secondary.main;
-        break;
       case 'primary':
-        _src = postmarkPrimary;
-        _color = theme.palette.primary.main;
+        _src = `postmark${color.charAt(0).toUpperCase()}${color.substring(1)}`;
+        _color = theme.palette[color].main;
         break;
       case 'white':
         _src = postmarkWhite;
@@ -102,7 +87,7 @@ class RMPostmark extends Component {
     }
 
     const rootCls = classNames({
-      root: true,
+      'rm-postmark': true,
       [size]: true,
     });
 
