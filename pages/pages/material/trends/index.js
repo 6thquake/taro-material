@@ -27,7 +27,6 @@ const data = [
     title: 'text',
     prefix: '$',
     suffix: '',
-    active: true,
   },
   {
     value: '332',
@@ -35,10 +34,16 @@ const data = [
     title: 'text',
     prefix: '$',
     suffix: '',
+    lineColor: '#ff5722',
   },
-
   {
     value: '145',
+    title: 'text',
+    prefix: '$',
+    suffix: '',
+  },
+  {
+    value: '251',
     title: 'text',
     prefix: '$',
     suffix: '',
@@ -61,34 +66,49 @@ class Index extends Component {
     console.log(item, iddex, e);
   };
   render() {
+    const data1 = data.slice(0);
+    const data2 = data.slice(0);
+    const data3 = data.slice(0);
+    const data4 = data.slice(0);
+    const data5 = data.slice(0);
+    const data6 = data.slice(0);
+    const data7 = data.slice(0);
+    data1[0] = { ...data1[0], ...{ active: true } };
+    data2[1] = { ...data2[1], ...{ active: true } };
+    data3[2] = { ...data3[2], ...{ active: true } };
+    data4[3] = { ...data4[3], ...{ active: true } };
+    data5[4] = { ...data5[4], ...{ active: true } };
+    data6[5] = { ...data6[5], ...{ active: true } };
+    data7[6] = { ...data7[6], ...{ active: true } };
+
     return (
       <View className="root">
         <View>
-          <RMTrends data={data} height={50} color="default" lineColor="#000" size="small" />
+          <RMTrends data={data1} height={50} color="default" lineColor="#000" size="small" />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="primary" lineColor="#000" size="normal" />
+          <RMTrends data={data2} height={50} color="primary" lineColor="#000" size="normal" />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="secondary" lineColor="#fff" size="large" />
+          <RMTrends data={data3} height={50} color="secondary" lineColor="#fff" size="large" />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="success" lineColor="#fff" variant="text" />
+          <RMTrends data={data4} height={50} color="success" lineColor="#fff" variant="text" />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="warning" lineColor="#fff" />
+          <RMTrends data={data5} height={50} color="warning" lineColor="#fff" />
         </View>
         <View>
           <RMTrends
             onClick={this.handleClick}
-            data={data}
+            data={data6}
             height={50}
             color="primary"
             lineColor="#fff"
           />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="error" lineColor="#fff" />
+          <RMTrends data={data7} height={50} color="error" lineColor="#fff" />
         </View>
       </View>
     );

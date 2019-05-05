@@ -37,31 +37,29 @@ export default class RMTrends extends Component {
       >
         {data &&
           data.map((item, index) => {
-            let __color;
-            if (index < activeIndex) {
+            let __color = null;
+            if (item.lineColor) {
+              __color = item.lineColor;
+            } else if (index < activeIndex) {
               __color = preColor;
             } else if (index === activeIndex) {
               __color = lineColor;
             } else {
               __color = sufColor;
             }
+
             return (
               <View
-                className="item"
+                className={classNames({
+                  item: true,
+                  active: item.active,
+                })}
                 onClick={this.handleClick.bind(this, item, index)}
                 key={item.value}
               >
-                {variant === 'dot' && (
-                  <View
-                    className={classNames({
-                      circle: true,
-                      waves: item.active,
-                    })}
-                    style={{ background: item.color || __color }}
-                  />
-                )}
+                {variant === 'dot' && <View className="dot" style={{ background: __color }} />}
                 {variant === 'text' && (
-                  <View className="row value" style={{ color: item.color || __color }}>
+                  <View className="row value" style={{ color: __color }}>
                     <View className="prefix">{showValue && item.prefix}</View>
                     <View>{showValue && item.value}</View>
                     <View className="suffix">{showValue && item.suffix}</View>
