@@ -31,6 +31,7 @@ const data = [
   },
   {
     value: '332',
+    color: 'teal',
     title: 'text',
     prefix: '$',
     suffix: '',
@@ -56,7 +57,9 @@ class Index extends Component {
   componentDidShow() {}
 
   componentDidHide() {}
-
+  handleClick = (item, iddex, e) => {
+    console.log(item, iddex, e);
+  };
   render() {
     return (
       <View className="root">
@@ -76,7 +79,13 @@ class Index extends Component {
           <RMTrends data={data} height={50} color="warning" lineColor="#fff" />
         </View>
         <View>
-          <RMTrends data={data} height={50} color="primary" lineColor="#fff" />
+          <RMTrends
+            onClick={this.handleClick}
+            data={data}
+            height={50}
+            color="primary"
+            lineColor="#fff"
+          />
         </View>
         <View>
           <RMTrends data={data} height={50} color="error" lineColor="#fff" />

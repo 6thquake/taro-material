@@ -9,6 +9,10 @@ import theme from '../styles/theme';
 import './index.scss';
 
 export default class RMTrends extends Component {
+  handleClick = (...args) => {
+    const { onClick } = this.props;
+    onClick(...args);
+  };
   render() {
     const { data, height, color, lineColor = '#FFFFFF', size, showValue, variant } = this.props;
     const max = data && data.length > 0 ? Math.max(...data.map(item => item.value)) : 1;
@@ -25,7 +29,6 @@ export default class RMTrends extends Component {
     const activeIndex = _data.findIndex(item => item.active);
     return (
       <View
-        onClick={this.handleClick}
         style={`background: ${_color}`}
         className={classNames({
           progress: true,
@@ -43,18 +46,22 @@ export default class RMTrends extends Component {
               __color = sufColor;
             }
             return (
-              <View className="item" key={item.value}>
+              <View
+                className="item"
+                onClick={this.handleClick.bind(this, item, index)}
+                key={item.value}
+              >
                 {variant === 'dot' && (
                   <View
                     className={classNames({
                       circle: true,
                       waves: item.active,
                     })}
-                    style={{ background: __color }}
+                    style={{ background: item.color || __color }}
                   />
                 )}
                 {variant === 'text' && (
-                  <View className="row value" style={{ color: __color }}>
+                  <View className="row value" style={{ color: item.color || __color }}>
                     <View className="prefix">{showValue && item.prefix}</View>
                     <View>{showValue && item.value}</View>
                     <View className="suffix">{showValue && item.suffix}</View>
@@ -88,6 +95,7 @@ export default class RMTrends extends Component {
 }
 
 RMTrends.defaultProps = {
+  onClick: () => {},
   data: [],
   variant: 'dot',
   height: 50,
@@ -113,4 +121,5 @@ RMTrends.propTypes = {
   lineColor: PropTypes.string,
   size: PropTypes.oneOf(['small', 'normal', 'large']),
   showValue: PropTypes.bool,
+  onClick: PropTypes.func,
 };

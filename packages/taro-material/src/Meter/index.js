@@ -30,7 +30,7 @@ class RMMeter extends Component {
         decl = 3;
         break;
       case 'power':
-        intr = 4;
+        intr = 5;
         decl = 1;
         break;
       case 'water':
