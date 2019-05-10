@@ -13,25 +13,62 @@ export default class RMTrends extends Component {
     const { onClick } = this.props;
     onClick(...args);
   };
+
   render() {
-    const { data, height, color, lineColor = '#FFFFFF', size, showValue, variant } = this.props;
-    const max = data && data.length > 0 ? Math.max(...data.map(item => item.value)) : 1;
+    const {
+      data,
+      height,
+      color,
+      lineColor = '#FFFFFF',
+      size,
+      showValue,
+      showTitle,
+      variant,
+    } = this.props;
+
+    const _data = [...data];
+    const length = _data.length;
+
+    const max = length > 0 ? Math.max(...data.map(item => item.value)) : 1;
+
+    const activeIndex = _data.findIndex(item => item.active);
+
+    let _height = height;
+
+    if (variant === 'dot') {
+      if (size === 'large') {
+        _height += 0;
+      } else if (size === 'small') {
+        _height += 6;
+      } else {
+        _height += 3;
+      }
+      _height -= 20;
+
+      if (showValue) {
+        _height -= 18;
+      }
+    } else {
+      if (showValue) {
+        _height -= 18;
+      }
+      if (showTitle) {
+        _height -= 20;
+      }
+    }
 
     const _color =
       color === 'default' || color === 'inherit'
         ? theme.palette.common.white
         : theme.palette[color].main;
-
     const preColor = fade(lineColor, 0.7);
     const sufColor = fade(lineColor, 0.3);
 
-    const _data = data.slice();
-    const activeIndex = _data.findIndex(item => item.active);
     return (
       <View
         style={`background: ${_color}`}
         className={classNames({
-          progress: true,
+          trends: true,
           [size]: true,
         })}
       >
@@ -54,36 +91,41 @@ export default class RMTrends extends Component {
                   item: true,
                   active: item.active,
                 })}
+                style={{ width: `${100 / (length + 1)}%` }}
                 onClick={this.handleClick.bind(this, item, index)}
                 key={item.value}
               >
-                {variant === 'dot' && <View className="dot" style={{ background: __color }} />}
-                {variant === 'text' && (
-                  <View className="row value" style={{ color: __color }}>
-                    <View className="prefix">{showValue && item.prefix}</View>
-                    <View>{showValue && item.value}</View>
-                    <View className="suffix">{showValue && item.suffix}</View>
-                  </View>
-                )}
+                <View className="text-top">
+                  {variant === 'dot' && <View className="dot" style={{ background: __color }} />}
+                  {variant === 'text' && (
+                    <View className="row value" style={{ color: __color }}>
+                      <View className="prefix">{showValue ? item.prefix : ''}</View>
+                      <View>{showValue ? item.value : ''}</View>
+                      <View className="suffix">{showValue ? item.suffix : ''}</View>
+                    </View>
+                  )}
+                </View>
                 <View
                   className="line"
                   style={{
-                    height: `${(item.value / max) * height}px`,
+                    height: `${(item.value / max) * _height}px`,
                     background: __color,
                   }}
                 />
-                {variant === 'dot' && (
-                  <View className="row value" style={{ color: __color }}>
-                    <View className="prefix">{showValue && item.prefix}</View>
-                    <View>{showValue && item.value}</View>
-                    <View className="suffix">{showValue && item.suffix}</View>
-                  </View>
-                )}
-                {variant === 'text' && (
-                  <View className="row value" style={{ color: __color }}>
-                    <View>{showValue && item.title}</View>
-                  </View>
-                )}
+                <View className="text-bottom">
+                  {variant === 'dot' && (
+                    <View className="row value" style={{ color: __color }}>
+                      <View className="prefix">{showValue ? item.prefix : ''}</View>
+                      <View>{showValue ? item.value : ''}</View>
+                      <View className="suffix">{showValue ? item.suffix : ''}</View>
+                    </View>
+                  )}
+                  {variant === 'text' && (
+                    <View className="row title" style={{ color: __color }}>
+                      <View>{showTitle ? item.title : ''}</View>
+                    </View>
+                  )}
+                </View>
               </View>
             );
           })}
@@ -101,6 +143,7 @@ RMTrends.defaultProps = {
   lineColor: '#FFFFFF',
   size: 'small',
   showValue: true,
+  showTitle: true,
 };
 
 RMTrends.propTypes = {
@@ -119,5 +162,6 @@ RMTrends.propTypes = {
   lineColor: PropTypes.string,
   size: PropTypes.oneOf(['small', 'normal', 'large']),
   showValue: PropTypes.bool,
+  showTitle: PropTypes.bool,
   onClick: PropTypes.func,
 };

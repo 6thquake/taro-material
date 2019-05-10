@@ -13,14 +13,13 @@
   animation: $animation 2s infinite ease-out;
 }
 
-.progress {
+.trends {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 32px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
+  padding: #{$spacingUnit}px #{$spacingUnit}px;
 
   &.small {
-    padding: 28px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
     .item {
       &.active {
         .dot {
@@ -37,6 +36,8 @@
       .dot {
         width: 12px;
         height: 12px;
+        margin-top: 8px;
+        margin-bottom: 8px;
       }
       .line {
         width: 2px;
@@ -45,7 +46,6 @@
   }
 
   &.large {
-    padding: 48px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
     .item {
       &.active {
         .dot {
@@ -62,6 +62,8 @@
       .dot {
         width: 24px;
         height: 24px;
+        margin-top: 8px;
+        margin-bottom: 8px;
       }
       .line {
         width: 10px;
@@ -73,6 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
 
     &.active {
       .dot {
@@ -91,13 +94,13 @@
       background: rgba(255, 255, 255, 0.2);
       width: 16px;
       height: 16px;
+      margin-top: 8px;
       margin-bottom: 8px;
       border-radius: 50%;
       position: relative;
     }
 
     .line {
-      margin-bottom: #{$spacingUnit}px;
       width: 6px;
       position: relative;
     }
@@ -108,10 +111,16 @@
       justify-content: center;
     }
 
-    .value {
-      @extend .typography, .body1;
+    .text-top {
+      margin: #{$spacingUnit}px #{$spacingUnit}px 0px #{$spacingUnit}px;
+    }
+    .text-bottom {
+      margin: 0px #{$spacingUnit}px 0px #{$spacingUnit}px;
+    }
+
+    .value,
+    .title {
       font-size: 24px;
-      margin: 0px #{$spacingUnit}px;
 
       .prefix,
       .suffix {
@@ -119,6 +128,12 @@
         padding-left: 4px;
         padding-right: 4px;
       }
+    }
+    .value {
+      @extend .typography, .body1;
+    }
+    .title {
+      @extend .typography, .body2;
     }
   }
 

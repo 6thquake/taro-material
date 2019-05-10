@@ -62,10 +62,18 @@ class Index extends Component {
   componentDidShow() {}
 
   componentDidHide() {}
+
   handleClick = (item, iddex, e) => {
+    const { showValue } = this.state;
+    this.setState({
+      showValue: !showValue,
+    });
     console.log(item, iddex, e);
   };
+
   render() {
+    const { showValue } = this.state;
+
     const data1 = data.slice(0);
     const data2 = data.slice(0);
     const data3 = data.slice(0);
@@ -84,31 +92,92 @@ class Index extends Component {
     return (
       <View className="root">
         <View>
-          <RMTrends data={data1} height={50} color="default" lineColor="#000" size="small" />
+          <RMTrends data={data1} height={100} color="default" lineColor="#000" size="small" />
         </View>
         <View>
-          <RMTrends data={data2} height={50} color="primary" lineColor="#000" size="normal" />
+          <RMTrends data={data2} height={100} color="primary" lineColor="#000" size="normal" />
         </View>
         <View>
-          <RMTrends data={data3} height={50} color="secondary" lineColor="#fff" size="large" />
+          <RMTrends data={data3} height={100} color="secondary" lineColor="#fff" size="large" />
         </View>
         <View>
-          <RMTrends data={data4} height={50} color="success" lineColor="#fff" variant="text" />
+          <RMTrends data={data4} height={100} color="success" lineColor="#fff" variant="text" />
         </View>
         <View>
-          <RMTrends data={data5} height={50} color="warning" lineColor="#fff" />
+          <RMTrends data={data5} height={100} color="warning" lineColor="#fff" />
         </View>
         <View>
           <RMTrends
             onClick={this.handleClick}
             data={data6}
-            height={50}
+            height={100}
             color="primary"
             lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
           />
         </View>
         <View>
-          <RMTrends data={data7} height={50} color="error" lineColor="#fff" />
+          <RMTrends
+            onClick={this.handleClick}
+            data={data6}
+            height={100}
+            color="secondary"
+            lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
+            size="small"
+          />
+        </View>
+        <View>
+          <RMTrends
+            onClick={this.handleClick}
+            data={data6}
+            height={100}
+            color="success"
+            lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
+            size="large"
+          />
+        </View>
+        <View>
+          <RMTrends
+            onClick={this.handleClick}
+            data={data7}
+            height={100}
+            color="primary"
+            lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
+            variant="text"
+          />
+        </View>
+        <View>
+          <RMTrends
+            onClick={this.handleClick}
+            data={data7}
+            height={100}
+            color="secondary"
+            lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
+            variant="text"
+            size="small"
+          />
+        </View>
+        <View>
+          <RMTrends
+            onClick={this.handleClick}
+            data={data7}
+            height={100}
+            color="success"
+            lineColor="#fff"
+            showValue={showValue}
+            showTitle={showValue}
+            variant="text"
+            size="large"
+          />
         </View>
       </View>
     );
