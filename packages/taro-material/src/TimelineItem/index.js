@@ -107,7 +107,7 @@ class RMTimelineItem extends Component {
                 </RMTypography>
                 <View className="time">
                   <RMTypography className="caption">
-                    {!title && date ? ago(date) : date}
+                    {!title && date ? ago(date, dateFormat) : ''}
                   </RMTypography>
                 </View>
               </View>
@@ -144,7 +144,15 @@ class RMTimelineItem extends Component {
   }
 }
 
-RMTimelineItem.defaultProps = {};
+RMTimelineItem.defaultProps = {
+  title: '',
+  avatar: '',
+  name: '',
+  status: 'default',
+  remark: '',
+  date: '',
+  dateFormat: 'YYYY-MM-DD HH:mm:ss',
+};
 
 RMTimelineItem.propTypes = {
   title: PropTypes.string,
@@ -152,7 +160,7 @@ RMTimelineItem.propTypes = {
   avatar: PropTypes.string,
   tail: PropTypes.bool,
   name: PropTypes.string,
-  status: PropTypes.oneOf(['success', 'progress', 'failure']),
+  status: PropTypes.oneOf(['success', 'progress', 'failure', 'default']),
   remark: PropTypes.string,
   date: PropTypes.string,
   renderMore: PropTypes.element,
