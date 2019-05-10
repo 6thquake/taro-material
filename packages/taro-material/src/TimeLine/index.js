@@ -27,7 +27,15 @@ class RMTimeline extends Component {
             const tail =
               item.tail !== true || item.tail !== false ? data.length - 1 === index : item.tail;
 
-            const { title, avatar, name, status, color, remark, date } = item;
+            const {
+              title = '',
+              avatar = '',
+              name = '',
+              status = '',
+              color = '',
+              remark = '',
+              date = '',
+            } = item;
 
             return (
               <RMTimelineItem
