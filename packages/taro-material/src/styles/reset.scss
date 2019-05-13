@@ -1,4 +1,8 @@
+@import '../style/mixins/libs/tint';
+
 @import './theme.scss';
+
+@import '../Icon/Icon.scss';
 
 /* The Color of 7FRESH Brand */
 $color-brand: $palettePrimaryMain;
@@ -100,3 +104,410 @@ $at-steps-bg-color-active: $color-brand-light;
 $at-timeline-dot-border-color: $color-brand;
 
 $at-calendar-day-color: $color-text-base;
+
+.at-icon,
+.at-icon::before {
+  @extend .rm-icon, .material-icons;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.at-icon-add::before {
+  content: 'add';
+}
+
+.at-icon-add-circle::before {
+  content: 'add_circle';
+}
+
+.at-icon-subtract::before {
+  content: 'remove';
+}
+
+.at-icon-subtract-circle::before {
+  content: 'remove_circle';
+}
+
+.at-icon-align-center::before {
+  content: 'format_align_center';
+}
+
+.at-icon-align-left::before {
+  content: 'format_align_left';
+}
+
+.at-icon-align-right::before {
+  content: 'format_align_right';
+}
+
+.at-icon-arrow-down::before {
+  content: 'arrow_downward';
+}
+
+.at-icon-arrow-left::before {
+  content: 'arrow_back';
+}
+
+.at-icon-arrow-right::before {
+  content: 'arrow_forward';
+}
+
+.at-icon-arrow-up::before {
+  content: 'arrow_upward';
+}
+
+.at-icon-bell::before {
+  content: 'notifications_none';
+}
+
+.at-icon-blocked::before {
+  content: 'block';
+}
+
+.at-icon-bookmark::before {
+  content: 'bookmark_border';
+}
+
+.at-icon-bullet-list::before {
+  content: 'list';
+}
+
+.at-icon-calendar::before {
+  content: 'date_range';
+}
+
+.at-icon-camera::before {
+  content: 'camera_alt';
+}
+
+.at-icon-check-circle::before {
+  content: 'check_circle';
+}
+
+.at-icon-chevron-down::before {
+  content: 'expand_more';
+}
+
+.at-icon-chevron-left::before {
+  content: 'chevron_left';
+}
+
+.at-icon-chevron-right::before {
+  content: 'chevron_right';
+}
+
+.at-icon-chevron-up::before {
+  content: 'expand_less';
+}
+
+.at-icon-clock::before {
+  content: 'access_time';
+}
+
+.at-icon-close-circle::before {
+  content: 'highlight_off';
+}
+
+.at-icon-close::before {
+  content: 'close';
+}
+
+.at-icon-credit-card::before {
+  content: 'credit_card';
+}
+
+.at-icon-download-cloud::before {
+  content: 'cloud_download';
+}
+
+.at-icon-download::before {
+  content: 'get_app';
+}
+
+.at-icon-edit::before {
+  content: 'edit';
+}
+
+.at-icon-equalizer::before {
+  content: 'tune';
+}
+
+.at-icon-external-link::before {
+  content: 'open_in_new';
+}
+
+.at-icon-eye::before {
+  content: 'visibility';
+}
+
+.at-icon-file-audio::before {
+  content: 'audiotrack';
+}
+
+.at-icon-file-code::before {
+  content: 'code';
+}
+
+.at-icon-file-generic::before {
+  content: 'insert_drive_file';
+}
+
+.at-icon-file-jpg::before {
+  content: 'image';
+}
+
+.at-icon-file-new::before {
+  content: 'note_add';
+}
+
+.at-icon-file-png::before {
+  content: 'image';
+}
+
+.at-icon-file-svg::before {
+  content: 'image';
+}
+
+.at-icon-file-video::before {
+  content: 'videocam';
+}
+
+.at-icon-filter::before {
+  content: 'filter_list';
+}
+
+.at-icon-folder::before {
+  content: 'folder_open';
+}
+
+.at-icon-font-color::before {
+  content: 'format_color_text';
+}
+
+.at-icon-heart::before {
+  content: 'favorite_border';
+}
+
+.at-icon-help::before {
+  content: 'help';
+}
+
+.at-icon-home::before {
+  content: 'home';
+}
+
+.at-icon-image::before {
+  content: 'image';
+}
+
+.at-icon-iphone-x::before {
+  content: 'phone_iphone';
+}
+
+.at-icon-iphone::before {
+  content: 'phone_iphone';
+}
+
+.at-icon-lightning-bolt::before {
+  content: 'flash_on';
+}
+
+.at-icon-link::before {
+  content: 'link';
+}
+
+.at-icon-list::before {
+  content: 'list';
+}
+
+.at-icon-lock::before {
+  content: 'lock';
+}
+
+.at-icon-mail::before {
+  content: 'email';
+}
+
+.at-icon-map-pin::before {
+  content: 'place';
+}
+
+.at-icon-menu::before {
+  content: 'menu';
+}
+
+.at-icon-message::before {
+  content: 'message';
+}
+
+.at-icon-money::before {
+  content: 'local_atm';
+}
+
+.at-icon-next::before {
+  content: 'skip_next';
+}
+
+.at-icon-numbered-list::before {
+  content: 'format_list_numbered';
+}
+
+.at-icon-pause::before {
+  content: 'pause';
+}
+
+.at-icon-phone::before {
+  content: 'phone';
+}
+
+.at-icon-play::before {
+  content: 'play_arrow';
+}
+
+.at-icon-playlist::before {
+  content: 'playlist_play';
+}
+
+.at-icon-prev::before {
+  content: 'skip_previous';
+}
+
+.at-icon-reload::before {
+  content: 'replay';
+}
+
+.at-icon-repeat-play::before {
+  content: 'repeat';
+}
+
+.at-icon-search::before {
+  content: 'search';
+}
+
+.at-icon-settings::before {
+  content: 'settings';
+}
+
+.at-icon-share-2::before {
+  content: 'call_made';
+}
+
+.at-icon-share::before {
+  content: 'share';
+}
+
+.at-icon-shopping-bag-2::before {
+  content: 'local_mall';
+}
+
+.at-icon-shopping-bag::before {
+  content: 'shopping_basket';
+}
+
+.at-icon-shopping-cart::before {
+  content: 'shopping_cart';
+}
+
+.at-icon-shuffle-play::before {
+  content: 'shuffle';
+}
+
+.at-icon-sketch::before {
+  content: 'android';
+}
+
+.at-icon-sound::before {
+  content: 'audiotrack';
+}
+
+.at-icon-star::before {
+  content: 'star_border';
+}
+
+.at-icon-stop::before {
+  content: 'stop';
+}
+
+.at-icon-streaming::before {
+  content: 'vibration';
+}
+
+.at-icon-tag::before {
+  content: 'local_offer';
+}
+
+.at-icon-tags::before {
+  content: 'style';
+}
+
+.at-icon-text-italic::before {
+  content: 'format_italic';
+}
+
+.at-icon-text-strikethrough::before {
+  content: 'format_strikethrough';
+}
+
+.at-icon-text-underline::before {
+  content: 'format_underlined';
+}
+
+.at-icon-trash::before {
+  content: 'delete';
+}
+
+.at-icon-upload::before {
+  content: 'unarchive';
+}
+
+.at-icon-user::before {
+  content: 'person';
+}
+
+.at-icon-video::before {
+  content: 'videocam';
+}
+
+.at-icon-volume-minus::before {
+  content: 'volume_down';
+}
+
+.at-icon-volume-off::before {
+  content: 'volume_mute';
+}
+
+.at-icon-volume-plus::before {
+  content: 'volume_up';
+}
+
+.at-icon-analytics::before {
+  content: 'trending_up';
+}
+
+.at-icon-star-2::before {
+  content: 'star';
+}
+
+.at-icon-check::before {
+  content: 'check';
+}
+
+.at-icon-heart-2::before {
+  content: 'favorite';
+}
+
+.at-icon-loading::before {
+  content: 'data_usage';
+}
+
+.at-icon-loading-2::before {
+  content: 'data_usage';
+}
+
+.at-icon-loading-3::before {
+  content: 'data_usage';
+}
+
+.at-icon-alert-circle::before {
+  content: 'error';
+}

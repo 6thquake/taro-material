@@ -1,16 +1,15 @@
-@import "../styles/theme.scss";
+@import '../styles/theme.scss';
 
-
-.root {
+.rm-icon {
   // transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   color: inherit;
-  line-height:inherit;
-  
+  line-height: inherit;
+
   &.material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 24px; /* Preferred icon size */
     display: inline-block;
     line-height: 1;
     text-transform: none;

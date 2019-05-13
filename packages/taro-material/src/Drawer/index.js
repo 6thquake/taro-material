@@ -132,7 +132,7 @@ export default class RMDrawer extends Component {
                     {group.children.map((item, index) => (
                       <RMListItem
                         key={item.id || item.title || item.name}
-                        data-index={index}
+                        data-index={item.id || item.title || item.name}
                         onClick={this.onItemClick.bind(this, item)}
                         arrow={item.arrow}
                         disabled={item.disabled}
