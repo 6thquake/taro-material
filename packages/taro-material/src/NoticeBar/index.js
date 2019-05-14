@@ -238,13 +238,14 @@ class RMNoticeBar extends AtComponent {
                 </RMIcon>
               </View>
             )}
-            <View
-              className="rm-noticebar__content-text"
-              style={contentStyle}
-              // ref={this.ref}
-              id={animElemId}
-            >
-              <View animation={animationData} className={innerClassName} style={style}>
+            <View className="rm-noticebar__content-text" style={contentStyle}>
+              <View
+                animation={animationData}
+                className={innerClassName}
+                style={style}
+                // ref={this.ref}
+                id={animElemId}
+              >
                 <RMTypography className="body1" color="inherit" fontSize="inherit" block>
                   {this.props.children}
                 </RMTypography>
