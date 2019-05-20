@@ -271,16 +271,29 @@ export default class PanelBasic extends Component {
         ],
         material: [
           {
+            id: 'Action-Bar',
+            name: '工具栏',
+          },
+          {
+            id: 'Action-Filter',
+            name: '筛选器',
+          },
+          {
+            id: 'Autocomplete',
+            name: '自动补全',
+          },
+          {
             id: 'Affix',
             name: '固钉',
           },
+
           {
             id: 'Back-Top',
             name: '返回顶部',
           },
           {
-            id: 'Autocomplete',
-            name: '自动补全',
+            id: 'Badge',
+            name: '徽章',
           },
           {
             id: 'Button',
@@ -291,16 +304,32 @@ export default class PanelBasic extends Component {
             name: '滑块视图容器',
           },
           {
+            id: 'Coupon',
+            name: '优惠券',
+          },
+          {
+            id: 'Count-Down',
+            name: '倒计时',
+          },
+          {
             id: 'Date-Picker',
             name: '时间选择器',
           },
           {
-            id: 'Filters',
-            name: '筛选器',
+            id: 'Drawer',
+            name: '抽屉',
           },
           {
             id: 'Icon',
             name: '图标',
+          },
+          {
+            id: 'Indexes',
+            name: '索引选择器',
+          },
+          {
+            id: 'List',
+            name: '列表',
           },
           {
             id: 'Live-Player',
@@ -309,6 +338,14 @@ export default class PanelBasic extends Component {
           {
             id: 'Loading',
             name: '加载',
+          },
+          {
+            id: 'Meter',
+            name: '表',
+          },
+          {
+            id: 'Nav-List',
+            name: '导航列表',
           },
           {
             id: 'Notice-Bar',
@@ -323,12 +360,24 @@ export default class PanelBasic extends Component {
             name: '徽章',
           },
           {
+            id: 'Pretty-Number',
+            name: '格式化数字',
+          },
+          {
             id: 'Search',
             name: '搜索框',
           },
           {
             id: 'Select',
             name: '选择框',
+          },
+          {
+            id: 'Selection-Controls',
+            name: '选择控制',
+          },
+          {
+            id: 'Star-Vote',
+            name: '评分',
           },
           {
             id: 'Switch',
@@ -351,72 +400,12 @@ export default class PanelBasic extends Component {
             name: '标签',
           },
           {
-            id: 'Text-Field',
-            name: '输入框',
-          },
-          {
-            id: 'Tool-Bar',
-            name: '工具栏',
-          },
-          {
-            id: 'Upload',
-            name: '上传',
-          },
-          {
-            id: 'Watermark',
-            name: '水印',
-          },
-          {
-            id: 'Star-Vote',
-            name: '评分',
-          },
-          {
-            id: 'Meter',
-            name: '表',
-          },
-          {
-            id: 'Selection-Controls',
-            name: '选择控制',
-          },
-          {
-            id: 'Coupon',
-            name: '优惠券',
-          },
-          {
-            id: 'Badge',
-            name: '徽章',
-          },
-          {
-            id: 'Nav-List',
-            name: '导航列表',
-          },
-          {
-            id: 'Typography',
-            name: '排版',
-          },
-          {
-            id: 'Count-Down',
-            name: '倒计时',
-          },
-          {
-            id: 'Pretty-Number',
-            name: '格式化数字',
-          },
-          {
-            id: 'List',
-            name: '列表',
-          },
-          {
             id: 'Tag-Bar',
             name: '过滤条',
           },
           {
-            id: 'Indexes',
-            name: '索引选择器',
-          },
-          {
-            id: 'Drawer',
-            name: '抽屉',
+            id: 'Text-Field',
+            name: '输入框',
           },
           {
             id: 'Timeline',
@@ -425,6 +414,18 @@ export default class PanelBasic extends Component {
           {
             id: 'Trends',
             name: 'Trends',
+          },
+          {
+            id: 'Typography',
+            name: '排版',
+          },
+          {
+            id: 'Upload',
+            name: '上传',
+          },
+          {
+            id: 'Watermark',
+            name: '水印',
           },
         ],
       },

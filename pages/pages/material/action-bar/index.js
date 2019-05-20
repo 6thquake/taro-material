@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMToolBar, RMButton } from '../../../';
+import { RMActionBar, RMButton } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -209,7 +209,7 @@ class Index extends RMPage {
     const { filters, value } = this.state;
     return (
       <View className="root">
-        <RMToolBar
+        <RMActionBar
           onChange={this.handleFilterChange}
           sorts={sorts}
           filters={filters}
@@ -221,7 +221,7 @@ class Index extends RMPage {
         />
         <View>{value}</View>
 
-        <RMToolBar
+        <RMActionBar
           onChange={this.handleFilterChange}
           sorts={[]}
           filters={[]}

@@ -8,11 +8,11 @@ import RMButton from '../Button';
 
 import theme from '../styles/theme';
 
-import './Filters.scss';
+import './ActionFilter.scss';
 
 const cloneDeep = o => JSON.parse(JSON.stringify(o));
 
-class Filters extends Component {
+class ActionFilter extends Component {
   constructor(props) {
     super(props);
 
@@ -123,7 +123,7 @@ class Filters extends Component {
 
     return (
       <View className="root">
-        <View className="filters">
+        <View className="action-filter">
           <ScrollView scroll-y scrollX={false} style="height: calc(100vh - 48px); width: 100%;">
             {options &&
               options.map((option, i) => {
@@ -192,18 +192,18 @@ class Filters extends Component {
   }
 }
 
-Filters.propTypes = {
+ActionFilter.propTypes = {
   onOk: PropTypes.func,
   data: PropTypes.array,
   onChange: PropTypes.func,
   onReset: PropTypes.func,
 };
 
-Filters.defaultProps = {
+ActionFilter.defaultProps = {
   onOK: () => {},
   onChange: () => {},
   onReset: () => {},
   data: [],
 };
 
-export default Filters;
+export default ActionFilter;

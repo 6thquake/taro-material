@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 import RMDrawer from '../Drawer';
-import RMFilters from '../Filters';
+import RMActionFilter from '../ActionFilter';
 import RMDropdown from '../Dropdown';
 
 import theme from '../styles/theme';
 
-import './ToolBar.scss';
+import './ActionBar.scss';
 
 const cloneDeep = o => JSON.parse(JSON.stringify(o));
 const isEqual = (array1, array2) => {
@@ -39,7 +39,7 @@ const isEqual = (array1, array2) => {
   return true;
 };
 
-class RMToolBar extends Component {
+class RMActionBar extends Component {
   state = {
     expanded: false,
     show: false,
@@ -351,7 +351,7 @@ class RMToolBar extends Component {
           right
           onClose={this.handleDrawerClose}
         >
-          <RMFilters
+          <RMActionFilter
             data={filters}
             onOk={this.handleFilterOk}
             onReset={this.handleFilterReset}
@@ -364,18 +364,18 @@ class RMToolBar extends Component {
   }
 }
 
-RMToolBar.propTypes = {
+RMActionBar.propTypes = {
   onChange: PropTypes.func,
   filters: PropTypes.array,
   sorts: PropTypes.array,
   renderTools: PropTypes.element,
 };
 
-RMToolBar.defaultProps = {
+RMActionBar.defaultProps = {
   onChange: () => {},
   filters: [],
   sorts: [],
   renderTools: null,
 };
 
-export default RMToolBar;
+export default RMActionBar;

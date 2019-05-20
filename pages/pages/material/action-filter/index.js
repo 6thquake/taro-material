@@ -1,91 +1,90 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Button, Canvas } from '@tarojs/components';
+import { View } from '@tarojs/components';
 
-import { RMFilters } from '../../../';
+import { RMActionFilter } from '../../../';
 
 import RMPage from '../../../Page';
 
-import theme from '../../../styles/theme';
 import './index.scss';
 
 const defaultData = [
   {
-    label: '特色1',
-    value: 'D11',
+    label: '特色A',
+    value: 'A',
     data: [
       {
-        label: 'ASD',
-        value: 'S12',
+        label: 'A1',
+        value: 'A1',
+      },
+      {
+        label: 'A12',
+        value: 'A12',
         active: true,
       },
       {
-        label: 'ASD1',
-        value: 'S121',
+        label: 'A123',
+        value: 'A123',
       },
       {
-        label: 'ASD',
-        value: 'S123',
+        label: 'A1234',
+        value: 'A1234',
       },
       {
-        label: 'ASD1',
-        value: 'S1214',
+        label: 'A12345',
+        value: 'A12345',
       },
       {
-        label: 'ASD',
-        value: 'S125',
-      },
-      {
-        label: 'ASD1',
-        value: 'S1216',
+        label: 'A123456',
+        value: 'A123456',
       },
     ],
   },
   {
-    label: '特色2',
-    value: 'D212',
+    label: '特色B',
+    value: 'B',
     data: [
       {
-        label: 'ASD',
-        value: 'S12',
+        label: 'B1',
+        value: 'B1',
       },
       {
-        label: 'ASD1',
-        value: 'S121',
+        label: 'B12',
+        value: 'B12',
         active: true,
       },
       {
-        label: 'ASD',
-        value: 'S123',
+        label: 'B123',
+        value: 'B123',
       },
       {
-        label: 'ASD1',
-        value: 'S1214',
+        label: 'B1234',
+        value: 'B1234',
       },
       {
-        label: 'ASD',
-        value: 'S125',
+        label: 'B12345',
+        value: 'B12345',
       },
     ],
   },
   {
-    label: '特色3',
-    value: 'D2123',
+    label: '特色C',
+    value: 'C',
     data: [
       {
-        label: 'ASD',
-        value: 'S12',
+        label: 'C1',
+        value: 'C1',
       },
       {
-        label: 'ASD1',
-        value: 'S121',
+        label: 'C12',
+        value: 'C12',
       },
       {
-        label: 'ASD',
-        value: 'S123',
+        label: 'C123',
+        value: 'C123',
       },
       {
-        label: 'ASD1',
-        value: 'S1214',
+        label: 'C1234',
+        value: 'C1234',
       },
     ],
   },
@@ -93,7 +92,7 @@ const defaultData = [
 
 class Index extends RMPage {
   config = {
-    navigationBarTitleText: 'Filters',
+    navigationBarTitleText: 'ActionFilter',
   };
   state = {
     data: JSON.parse(JSON.stringify(defaultData)),
@@ -127,7 +126,7 @@ class Index extends RMPage {
     const { data } = this.state;
     return (
       <View className="root">
-        <RMFilters
+        <RMActionFilter
           onOk={this.handleOk}
           onReset={this.handelReset}
           onChange={this.handleChange}

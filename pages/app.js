@@ -60,7 +60,7 @@ class App extends Component {
       'pages/advanced/calendar/index',
       'pages/theme/index',
 
-      'pages/material/filters/index',
+      'pages/material/action-filter/index',
       'pages/material/search/index',
       'pages/material/affix/index',
       'pages/material/back-top/index',
@@ -77,7 +77,7 @@ class App extends Component {
       'pages/material/tag/index',
       'pages/material/tab-bar/index',
       'pages/material/text-field/index',
-      'pages/material/tool-bar/index',
+      'pages/material/action-bar/index',
       'pages/material/upload/index',
       'pages/material/watermark/index',
       'pages/material/notice-bar/index',
