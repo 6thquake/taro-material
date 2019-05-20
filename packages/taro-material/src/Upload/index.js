@@ -213,8 +213,8 @@ class RMUpload extends Component {
       _files.map(
         item =>
           new Promise((resolve, reject) => {
-            if (/^http(s?):\/\//g.test(item)) {
-              // files.indexOf(item) !== -1
+            if (files.indexOf(item) !== -1) {
+              // /^http(s?):\/\//g.test(item)
               return resolve(item);
             }
 
