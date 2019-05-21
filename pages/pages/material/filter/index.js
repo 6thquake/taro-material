@@ -1,16 +1,15 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Label } from '@tarojs/components';
+import { View } from '@tarojs/components';
 
-import { RMTagBar } from '../../../';
+import { RMFilter } from '../../../';
 
 import RMPage from '../../../Page';
 
-import theme from '../../../styles/theme';
 import './index.scss';
 
 class Index extends RMPage {
   config = {
-    navigationBarTitleText: 'TagBar',
+    navigationBarTitleText: 'Filter',
   };
 
   state = {
@@ -121,7 +120,7 @@ class Index extends RMPage {
       <View className="root">
         <View className="title">TagBar</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -131,7 +130,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, default theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -140,20 +139,9 @@ class Index extends RMPage {
           />
         </View>
 
-        <View className="title">TagBar, inherit theme</View>
-        <View className="tagbar">
-          <RMTagBar
-            data={data}
-            values={values}
-            onChange={this.handleChange}
-            onAddPageScroll={this.onAddPageScroll}
-            selectedColor="inherit"
-          />
-        </View>
-
         <View className="title">TagBar, primary theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -164,7 +152,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, secondary theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -175,7 +163,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, error theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -186,7 +174,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, success theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -197,7 +185,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, warning theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}
@@ -208,7 +196,7 @@ class Index extends RMPage {
 
         <View className="title">TagBar, progress theme</View>
         <View className="tagbar">
-          <RMTagBar
+          <RMFilter
             data={data}
             values={values}
             onChange={this.handleChange}

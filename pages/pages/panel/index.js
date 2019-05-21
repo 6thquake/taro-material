@@ -320,6 +320,10 @@ export default class PanelBasic extends Component {
             name: '抽屉',
           },
           {
+            id: 'Filter',
+            name: '过滤条',
+          },
+          {
             id: 'Icon',
             name: '图标',
           },
@@ -398,10 +402,6 @@ export default class PanelBasic extends Component {
           {
             id: 'Tag',
             name: '标签',
-          },
-          {
-            id: 'Tag-Bar',
-            name: '过滤条',
           },
           {
             id: 'Text-Field',

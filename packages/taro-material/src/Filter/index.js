@@ -9,7 +9,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-class RMTagBar extends Component {
+class RMFilter extends Component {
   state = {
     scrollTop: 0,
     scrollbar: { opacity: 1, visibility: 'visible', _height: 'auto' },
@@ -264,7 +264,7 @@ class RMTagBar extends Component {
   }
 }
 
-RMTagBar.propTypes = {
+RMFilter.propTypes = {
   onChange: PropTypes.func,
   onAddPageScroll: PropTypes.func,
   data: PropTypes.array,
@@ -292,7 +292,7 @@ RMTagBar.propTypes = {
   ]),
 };
 
-RMTagBar.defaultProps = {
+RMFilter.defaultProps = {
   onChange: () => {},
   data: [],
   values: {},
@@ -303,4 +303,4 @@ RMTagBar.defaultProps = {
   customStyle: {},
 };
 
-export default RMTagBar;
+export default RMFilter;

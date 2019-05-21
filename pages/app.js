@@ -94,7 +94,7 @@ class App extends Component {
       'pages/material/count-down/index',
       'pages/material/pretty-number/index',
       'pages/material/list/index',
-      'pages/material/tag-bar/index',
+      'pages/material/filter/index',
       'pages/material/indexes/index',
       'pages/material/drawer/index',
       'pages/material/timeline/index',

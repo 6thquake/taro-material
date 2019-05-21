@@ -72,6 +72,7 @@ export { default as RMCheckbox } from './Checkbox';
 export { default as RMCheckboxGroup } from './CheckboxGroup';
 export { default as RMDrawer } from './Drawer';
 export { default as RMDropdown } from './Dropdown';
+export { default as RMFilter } from './Filter';
 export { default as RMIcon } from './Icon';
 export { default as RMInput } from './Input';
 export { default as RMList } from './List';
@@ -110,7 +111,6 @@ export { default as RMNavList } from './NavList';
 export { default as RMCountDown } from './CountDown';
 export { default as RMTimer } from './Timer';
 export { default as RMPrettyNumber } from './PrettyNumber';
-export { default as RMTagBar } from './TagBar';
 export { default as RMIndexes } from './Indexes';
 export { default as RMTrends } from './Trends';
 
