@@ -75,7 +75,7 @@ class App extends Component {
       'pages/material/select/index',
       'pages/material/selection-controls/index',
       'pages/material/tag/index',
-      'pages/material/tab-bar/index',
+      'pages/material/bottom-navigation/index',
       'pages/material/text-field/index',
       'pages/material/action-bar/index',
       'pages/material/upload/index',

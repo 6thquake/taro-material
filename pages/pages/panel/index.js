@@ -286,7 +286,6 @@ export default class PanelBasic extends Component {
             id: 'Affix',
             name: '固钉',
           },
-
           {
             id: 'Back-Top',
             name: '返回顶部',
@@ -294,6 +293,10 @@ export default class PanelBasic extends Component {
           {
             id: 'Badge',
             name: '徽章',
+          },
+          {
+            id: 'Bottom-Navigation',
+            name: '导航栏',
           },
           {
             id: 'Button',
@@ -390,10 +393,6 @@ export default class PanelBasic extends Component {
           {
             id: 'Steps',
             name: '步进器',
-          },
-          {
-            id: 'Tab-Bar',
-            name: '导航栏',
           },
           {
             id: 'Tabs',

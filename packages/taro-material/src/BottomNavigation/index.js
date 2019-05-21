@@ -8,7 +8,7 @@ import RMIcon from '../Icon';
 import RMTypography from '../Typography';
 
 import theme from '../styles/theme';
-import './TabBar.scss';
+import './BottomNavigation.scss';
 
 const objectToString = style => {
   if (typeof style === 'object') {
@@ -22,7 +22,7 @@ const objectToString = style => {
   return style;
 };
 
-class RMTabBar extends Component {
+class RMBottomNavigation extends Component {
   // state = {
   //   isIPhoneX: false,
   // };
@@ -54,7 +54,7 @@ class RMTabBar extends Component {
       className,
       fixed,
       backgroundColor,
-      tabList,
+      actions,
       current,
       color,
       iconSize,
@@ -79,7 +79,7 @@ class RMTabBar extends Component {
         )}
         style={this.mergeStyle(rootStyle, customStyle)}
       >
-        {tabList.map((item, i) => {
+        {actions.map((item, i) => {
           const { badge = {} } = item;
           return (
             <View
@@ -130,7 +130,7 @@ class RMTabBar extends Component {
   }
 }
 
-RMTabBar.defaultProps = {
+RMBottomNavigation.defaultProps = {
   customStyle: '',
   className: '',
   fixed: false,
@@ -141,11 +141,11 @@ RMTabBar.defaultProps = {
   color: theme.palette.text.secondary,
   selectedColor: theme.palette.primary.main,
   scroll: false,
-  tabList: [],
+  actions: [],
   onClick: () => {},
 };
 
-RMTabBar.propTypes = {
+RMBottomNavigation.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   fixed: PropTypes.bool,
@@ -156,8 +156,8 @@ RMTabBar.propTypes = {
   color: PropTypes.string,
   selectedColor: PropTypes.string,
   scroll: PropTypes.bool,
-  tabList: PropTypes.array,
+  actions: PropTypes.array,
   onClick: PropTypes.func,
 };
 
-export default RMTabBar;
+export default RMBottomNavigation;

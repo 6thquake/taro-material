@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-import { RMTabBar, RMBackTop } from '../../../';
+import { RMBottomNavigation, RMBackTop } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -11,7 +11,7 @@ import './index.scss';
 
 class Index extends RMPage {
   config = {
-    navigationBarTitleText: 'Tab-Bar',
+    navigationBarTitleText: 'Bottom-Navigation',
   };
 
   state = {
@@ -48,7 +48,7 @@ class Index extends RMPage {
 
   componentDidHide() {}
 
-  handleTabBarClick(value, e) {
+  handleBottomNavigationClick(value, e) {
     console.log('tab', value);
     this.setState({
       current: value,
@@ -60,10 +60,10 @@ class Index extends RMPage {
     return (
       <View className="root">
         <View class="body" />
-        <RMTabBar
+        <RMBottomNavigation
           fixed
-          tabList={tabs}
-          onClick={this.handleTabBarClick.bind(this)}
+          actions={tabs}
+          onClick={this.handleBottomNavigationClick.bind(this)}
           current={current}
         />
         <View className="spacer" />
