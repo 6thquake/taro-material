@@ -91,7 +91,7 @@ export { default as RMSearch } from './Search';
 export { default as RMSelect } from './Select';
 export { default as RMSwitch } from './Switch';
 export { default as RMTag } from './Tag';
-export { default as RMTextArea } from './TextArea';
+export { default as RMTextarea } from './Textarea';
 export { default as RMTextField } from './TextField';
 export { default as RMTimeline } from './Timeline';
 export { default as RMTimelineItem } from './TimelineItem';

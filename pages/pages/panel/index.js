@@ -407,6 +407,10 @@ export default class PanelBasic extends Component {
             name: '输入框',
           },
           {
+            id: 'Textarea',
+            name: 'textarea',
+          },
+          {
             id: 'Timeline',
             name: '时间轴',
           },
