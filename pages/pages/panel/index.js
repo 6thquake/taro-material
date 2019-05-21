@@ -391,7 +391,7 @@ export default class PanelBasic extends Component {
             name: '开关',
           },
           {
-            id: 'Steps',
+            id: 'Stepper',
             name: '步进器',
           },
           {
@@ -408,7 +408,7 @@ export default class PanelBasic extends Component {
           },
           {
             id: 'Textarea',
-            name: 'textarea',
+            name: '多行文本',
           },
           {
             id: 'Timeline',

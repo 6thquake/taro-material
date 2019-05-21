@@ -85,7 +85,7 @@ class App extends Component {
       'pages/material/tabs/index',
       'pages/material/meter/index',
       'pages/material/star-vote/index',
-      'pages/material/steps/index',
+      'pages/material/stepper/index',
       'pages/material/switch/index',
       'pages/material/coupon/index',
       'pages/material/autocomplete/index',

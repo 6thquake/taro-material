@@ -9,7 +9,7 @@ import theme from '../styles/theme';
 
 import './index.scss';
 
-export default class RMSteps extends AtComponent {
+export default class RMStepper extends AtComponent {
   static defaultProps = {
     customStyle: '',
     className: '',

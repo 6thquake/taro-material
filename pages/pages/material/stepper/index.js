@@ -1,11 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 
-// import RMSteps from '../../../Steps'
+import { RMStepper } from '../../../';
 
-import theme from '../../../styles/theme';
 import './index.scss';
-import { RMSteps } from '../../../';
 
 class Index extends Component {
   config = {
@@ -103,11 +101,11 @@ class Index extends Component {
     return (
       <View className="root">
         <View className="dark">
-          <RMSteps activeColor="#ff784e" items={items} current={current} isDark />
+          <RMStepper activeColor="#ff784e" items={items} current={current} isDark />
         </View>
 
         <View className="box">
-          <RMSteps
+          <RMStepper
             items={items2}
             current={this.state.current}
             onChange={this.handleChange.bind(this)}
@@ -115,11 +113,11 @@ class Index extends Component {
         </View>
 
         <View className="box">
-          <RMSteps items={items3} current={current} />
+          <RMStepper items={items3} current={current} />
         </View>
 
         <View className="dark">
-          <RMSteps
+          <RMStepper
             onChange={this.handleChange}
             activeColor="#ff784e"
             items={items4}
