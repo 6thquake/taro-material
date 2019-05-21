@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import AtComponent from '../common/component';
 import './index.scss';
 
-export default class RMTabsPane extends AtComponent {
+export default class RMTab extends AtComponent {
   render() {
     const { customStyle, className, tabDirection, index, current } = this.props;
 
@@ -29,7 +29,7 @@ export default class RMTabsPane extends AtComponent {
   }
 }
 
-RMTabsPane.defaultProps = {
+RMTab.defaultProps = {
   customStyle: '',
   className: '',
   tabDirection: 'horizontal',
@@ -37,7 +37,7 @@ RMTabsPane.defaultProps = {
   current: 0,
 };
 
-RMTabsPane.propTypes = {
+RMTab.propTypes = {
   customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   tabDirection: PropTypes.oneOf(['horizontal', 'vertical']),
