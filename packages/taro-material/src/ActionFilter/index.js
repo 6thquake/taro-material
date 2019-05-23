@@ -200,7 +200,7 @@ ActionFilter.propTypes = {
 };
 
 ActionFilter.defaultProps = {
-  onOK: () => {},
+  onOk: () => {},
   onChange: () => {},
   onReset: () => {},
   data: [],
