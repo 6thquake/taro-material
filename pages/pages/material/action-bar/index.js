@@ -162,6 +162,12 @@ const sorts = [
     label: '评分最高5',
     value: 'score5',
   },
+  // {
+  //   label: '评分最高6',
+  //   value: 'score6',
+  //   priority: true,
+  //   active: true,
+  // },
 ];
 
 class Index extends RMPage {
@@ -199,7 +205,6 @@ class Index extends RMPage {
   componentDidHide() {}
 
   handleFilterChange(e) {
-    console.log('filters', e);
     this.setState({
       value: 'hello',
     });

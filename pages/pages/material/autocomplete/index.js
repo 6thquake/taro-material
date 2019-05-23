@@ -123,17 +123,30 @@ class Index extends RMPage {
       },
     };
     return (
-      <View className="root" style={style}>
-        <RMAutocomplete
-          onChange={this.handleChange}
-          onFilterChange={this.handlFilterChange}
-          options={options}
-          value={value}
-          InputProps={InputProps}
-          onFocus={this.handleFocus}
-          DropdownProps={DropdownProps}
-        />
-      </View>
+      <div>
+        <View className="root" style={style}>
+          <RMAutocomplete
+            onChange={this.handleChange}
+            onFilterChange={this.handlFilterChange}
+            options={options}
+            value={value}
+            InputProps={InputProps}
+            onFocus={this.handleFocus}
+            DropdownProps={DropdownProps}
+          />
+        </View>
+        <View className="root" style={style}>
+          <RMAutocomplete
+            onChange={this.handleChange}
+            onFilterChange={this.handlFilterChange}
+            options={options}
+            value={value}
+            InputProps={InputProps}
+            onFocus={this.handleFocus}
+            DropdownProps={DropdownProps}
+          />
+        </View>
+      </div>
     );
   }
 }
