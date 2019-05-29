@@ -1,8 +1,20 @@
-# Changelog
+# [0.6.0-3](https://github.com/6thquake/taro-material/compare/v0.5.2...v0.6.0-3) (2019-05-24)
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### 0.5.2 (2019-05-15)
+### Bug Fixes
+
+* **dropdown:** 修复DropDown显示层级问题 ([1028c7a](https://github.com/6thquake/taro-material/commit/1028c7a))
+* **rm upload:** change logical of the upload's default value ([08a6f7e](https://github.com/6thquake/taro-material/commit/08a6f7e))
+* rename onOK to onOk ([728b788](https://github.com/6thquake/taro-material/commit/728b788))
+
+
+### Features
+
+* upgrade version after any commit, add release and tag script ([098cf71](https://github.com/6thquake/taro-material/commit/098cf71))
+
+
+
+## [0.5.2](https://github.com/6thquake/taro-material/compare/3fdd967...v0.5.2) (2019-05-15)
 
 
 ### Bug Fixes
@@ -69,3 +81,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **steps:** items add customer style ([9c0778d](https://github.com/6thquake/taro-material/commit/9c0778d))
 * using color and selectedColor to decide tag bar ([8c05b9a](https://github.com/6thquake/taro-material/commit/8c05b9a))
 * 更新taro-ui ([31d0c94](https://github.com/6thquake/taro-material/commit/31d0c94))
+
+
+
