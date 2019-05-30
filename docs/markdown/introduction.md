@@ -2,7 +2,7 @@
 
 ----
 
-`Taro Material` 是一款基于 [Taro](https://taro.aotu.io) 框架开发的多端 UI 组件库
+`Taro UI` 是一款基于 [Taro](https://taro.aotu.io) 框架开发的多端 UI 组件库
 
 ## Taro
 
@@ -24,20 +24,20 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 
 ## 官方示例
 
-[Taro Material 官方示例](https://github.com/NervJS/taro-ui-demo)
+[Taro UI 官方示例](https://github.com/NervJS/taro-material-demo)
 
 ## 版本
 
-`Taro-UI`：[![npm version](https://badge.fury.io/js/taro-ui.svg)](https://badge.fury.io/js/taro-ui)
+`Taro-UI`：[![npm version](https://badge.fury.io/js/taro-material.svg)](https://badge.fury.io/js/taro-material)
 
 ## 开发交流
 
-[官方微信交流群](https://github.com/NervJS/taro-ui/issues/16)
+[官方微信交流群](https://github.com/NervJS/taro-material/issues/16)
 
 ## 开发计划
 
-[Taro Material 开发计划](https://github.com/NervJS/taro-ui/blob/dev/PLANS.md)
+[Taro UI 开发计划](https://github.com/NervJS/taro-material/blob/dev/PLANS.md)
 
 ## 贡献
 
-如果你在使用 `Taro Material` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/nervjs/taro-ui/issues) 或 [Pull Request](https://github.com/nervjs/taro-ui/pulls)
+如果你在使用 `Taro UI` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/nervjs/taro-material/issues) 或 [Pull Request](https://github.com/nervjs/taro-material/pulls)

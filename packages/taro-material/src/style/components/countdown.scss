@@ -18,12 +18,13 @@
 
     font: {
       size: $at-countdown-font-size;
-      family: 'CountDown';
+      family: CountDown;
       style: normal;
       weight: 400;
       variant: normal;
     }
-    countdowncolor: $at-countdown-num-color;
+
+    color: $at-countdown-num-color;
     text-transform: none;
     text-rendering: auto;
     line-height: 1;

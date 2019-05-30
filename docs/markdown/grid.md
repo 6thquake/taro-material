@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtGrid } from "taro-ui"
+import { AtGrid } from "taro-material"
 ```
 :::
 
@@ -18,7 +18,7 @@ import { AtGrid } from "taro-ui"
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/grid.scss";
+@import "~taro-material/dist/style/components/grid.scss";
 ```
 :::
 

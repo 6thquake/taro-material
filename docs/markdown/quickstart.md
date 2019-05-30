@@ -31,12 +31,12 @@ $ taro init myApp
 ```
 :::
 
-### 3. 安装 Taro Material
+### 3. 安装 Taro UI
 
 :::demo
 ```bash
 $ cd myApp
-$ npm install taro-ui
+$ npm install taro-material
 ```
 :::
 
@@ -54,7 +54,7 @@ h5: {
 ```
 :::
 
-### 4. 使用 Taro Material
+### 4. 使用 Taro UI
 
 #### 引入所需组件
 
@@ -67,38 +67,38 @@ import { AtButton } from 'taro-material'
 
 // 除了引入所需的组件，还需要手动引入组件样式
 // app.js
-import 'taro-ui/dist/style/index.scss' // 全局引入一次即可
+import 'taro-material/dist/style/index.scss' // 全局引入一次即可
 ```
 :::
 
 **引入组件样式的三种方式**
 
-- **全局引入（JS中）：** 在入口文件中引入 `taro-ui` 所有的样式
+- **全局引入（JS中）：** 在入口文件中引入 `taro-material` 所有的样式
 :::demo
 ```js
-import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
+import 'taro-material/dist/style/index.scss' // 引入组件样式 - 方式一
 ```
 :::
 
 - **全局引入（CSS中）：** 在 `app.scss` 样式文件中 `import` 组件样式并按照文档说明使用
 :::demo
 ```scss
-@import "~taro-ui/dist/style/index.scss"; // 引入组件样式 - 方式二
+@import "~taro-material/dist/style/index.scss"; // 引入组件样式 - 方式二
 ```
 :::
 
 - **按需引入：** 在页面样式或全局样式中 `import` 需要的组件样式
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/button.scss"; // 引入所需的组件样式 - 方式三
+@import "~taro-material/dist/style/components/button.scss"; // 引入所需的组件样式 - 方式三
 ```
 :::
 
-> 具体的组件样式文件请查看 [组件样式列表](https://github.com/NervJS/taro-ui/tree/dev/src/style/components)
+> 具体的组件样式文件请查看 [组件样式列表](https://github.com/NervJS/taro-material/tree/dev/src/style/components)
 
 ## 示例
 
-在 `/myApp/src/pages/index/index.jsx` 文件添加以下代码
+在 `/myApp/src/pages/index/index.tsx` 文件添加以下代码
 
 :::demo
 ```jsx
@@ -128,7 +128,7 @@ export default class Index extends Component {
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
+@import "~taro-material/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
 ```
 :::
 
@@ -138,7 +138,7 @@ export default class Index extends Component {
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-material/dist/style/components/button.scss";
 ```
 :::
 

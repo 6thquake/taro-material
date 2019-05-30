@@ -12,7 +12,7 @@
 
 :::demo
 ```js
-import { AtCalendar } from "taro-ui"
+import { AtCalendar } from "taro-material"
 ```
 :::
 
@@ -20,7 +20,7 @@ import { AtCalendar } from "taro-ui"
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/calendar.scss";
+@import "~taro-material/dist/style/components/calendar.scss";
 ```
 :::
 

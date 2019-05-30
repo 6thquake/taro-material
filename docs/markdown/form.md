@@ -17,7 +17,7 @@ import { AtForm } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/form.scss";
+@import "~taro-material/dist/style/components/form.scss";
 ```
 :::
 

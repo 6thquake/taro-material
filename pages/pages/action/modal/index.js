@@ -8,7 +8,9 @@ import {
   AtModalAction,
   AtIndexes,
 } from 'taro-material';
+
 import DocsHeader from '../../components/doc-header';
+
 import mockData from '../../navigation/indexes/mock-data';
 
 import './index.scss';

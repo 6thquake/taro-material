@@ -101,11 +101,9 @@ export default class Index extends Taro.Component {
                   >
                     <View className="demo-list-item">
                       <View className="demo-list-item__label">请选择早餐</View>
-                      <View className="demo-list-item__value">
-                        {`${multiSelector[0][mulitSelectorValues[0]]} & ${
-                          multiSelector[1][mulitSelectorValues[1]]
-                        }`}
-                      </View>
+                      <View className="demo-list-item__value">{`${
+                        multiSelector[0][mulitSelectorValues[0]]
+                      } & ${multiSelector[1][mulitSelectorValues[1]]}`}</View>
                     </View>
                   </Picker>
                 </View>

@@ -17,8 +17,8 @@ import { AtRate } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/rate.scss";
-@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-material/dist/style/components/rate.scss";
+@import "~taro-material/dist/style/components/icon.scss";
 ```
 :::
 

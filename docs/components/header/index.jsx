@@ -7,15 +7,15 @@ class PageHeader extends Nerv.Component {
   constructor (...args) {
     super(...args)
     this.state = {
-      toggle: true
+      toggle: true,
     }
   }
   toggleMenu = () => {
     const _toggle = this.state.toggle
     this.setState({
-      toggle: !_toggle
+      toggle: !_toggle,
     })
-  }
+  };
   goToGuide (e) {
     e.preventDefault()
   }
@@ -27,11 +27,7 @@ class PageHeader extends Nerv.Component {
     const { collapse, style } = this.props
     const { toggle } = this.state
     return (
-      <header
-        className={classnames('page-header', { collapse })}
-        style={style}
-        id='J-page-header'
-      >
+      <header className={classnames('page-header', { collapse })} style={style} id='J-page-header'>
         <div className='nav-container'>
           <div className='nav-left'>
             <div className='logo'>
@@ -42,19 +38,22 @@ class PageHeader extends Nerv.Component {
             </div>
             <i className='icon icon-menu nav-icon' onClick={this.toggleMenu} />
           </div>
-          <div
-            className='nav-right'
-            style={{ height: toggle ? '0px' : '100px' }}
-          >
+          <div className='nav-right' style={{ height: toggle ? '0px' : '100px' }}>
             <ul className='navbar'>
               <li>
-                <NavLink activeClassName='router-link-active' to='/docs/introduction'>组件</NavLink>
+                <NavLink activeClassName='router-link-active' to='/docs/introduction'>
+                  组件
+                </NavLink>
               </li>
               <li>
-                <a href='https://nervjs.github.io/taro-ui-theme-preview/' target='__blank'>主题生成器</a>
+                <a href='https://nervjs.github.io/taro-ui-theme-preview/' target='__blank'>
+                  主题生成器
+                </a>
               </li>
               <li>
-                <a href='https://aotu.io/' target='__blank'>关于我们</a>
+                <a href='https://aotu.io/' target='__blank'>
+                  关于我们
+                </a>
               </li>
             </ul>
           </div>

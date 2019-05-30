@@ -17,7 +17,7 @@ import { AtCountdown } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/countdown.scss";
+@import "~taro-material/dist/style/components/countdown.scss";
 ```
 :::
 

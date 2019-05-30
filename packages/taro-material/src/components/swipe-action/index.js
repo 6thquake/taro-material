@@ -1,191 +1,192 @@
-import Taro from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import Taro from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
 
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import _isNil from 'lodash/isNil'
-import _isEmpty from 'lodash/isEmpty'
-import _inRange from 'lodash/inRange'
-import _isFunction from 'lodash/isFunction'
+import _isNil from 'lodash/isNil';
+import _isEmpty from 'lodash/isEmpty';
+import _inRange from 'lodash/inRange';
+import _isFunction from 'lodash/isFunction';
 
-import AtComponent from '../../common/component'
-import AtSwipeActionOptions from './options/index'
-import { delayGetClientRect, delayGetScrollOffset } from '../../common/utils'
+import AtComponent from '../../common/component';
+import AtSwipeActionOptions from './options/index';
+import { delayGetClientRect, delayGetScrollOffset } from '../../common/utils';
 
-let id = 0
+let id = 0;
 
 export default class AtSwipeAction extends AtComponent {
-  constructor (props) {
-    super(...arguments)
+  constructor(props) {
+    super(...arguments);
 
-    const { isOpened } = props
+    const { isOpened } = props;
 
-    this.endValue = 0
-    this.startX = null
-    this.startY = null
-    this.maxOffsetSize = 0
+    this.endValue = 0;
+    this.startX = null;
+    this.startY = null;
+    this.maxOffsetSize = 0;
 
-    this.domInfo = {}
-    this.isMoving = false
-    this.isTouching = false
+    this.domInfo = {};
+    this.isMoving = false;
+    this.isTouching = false;
 
     this.state = {
       componentId: ++id,
       offsetSize: 0,
-      _isOpened: isOpened
-    }
+      _isOpened: isOpened,
+    };
   }
 
-  getDomInfo () {
-    this.domInfo = {}
+  getDomInfo() {
+    this.domInfo = {};
     return Promise.all([
       delayGetClientRect({
         self: this,
         delayTime: 0,
-        selectorStr: `#swipeAction-${this.state.componentId}`
+        selectorStr: `#swipeAction-${this.state.componentId}`,
       }),
-      delayGetScrollOffset({ delayTime: 0 })
+      delayGetScrollOffset({ delayTime: 0 }),
     ]).then(([rect, scrollOffset]) => {
-      rect[0].top += scrollOffset[0].scrollTop
-      rect[0].bottom += scrollOffset[0].scrollTop
-      this.domInfo = rect[0]
-    })
+      rect[0].top += scrollOffset[0].scrollTop;
+      rect[0].bottom += scrollOffset[0].scrollTop;
+      this.domInfo = rect[0];
+    });
   }
 
-  componentWillReceiveProps (nextProps) {
-    const { isOpened } = nextProps
-    const { _isOpened } = this.state
+  componentWillReceiveProps(nextProps) {
+    const { isOpened } = nextProps;
+    const { _isOpened } = this.state;
 
     if (isOpened !== _isOpened) {
-      this._reset(isOpened)
+      this._reset(isOpened);
     }
   }
 
-  _reset (isOpened) {
-    this.isMoving = false
-    this.isTouching = false
+  _reset(isOpened) {
+    this.isMoving = false;
+    this.isTouching = false;
 
     if (isOpened) {
-      this.endValue = -this.maxOffsetSize
+      this.endValue = -this.maxOffsetSize;
       this.setState({
         _isOpened: true,
-        offsetSize: -this.maxOffsetSize
-      })
+        offsetSize: -this.maxOffsetSize,
+      });
     } else {
-      this.endValue = 0
+      this.endValue = 0;
       this.setState({
         offsetSize: 0,
-        _isOpened: false
-      })
+        _isOpened: false,
+      });
     }
   }
 
   computeTransform = value => {
     if (Taro.getEnv() === Taro.ENV_TYPE.ALIPAY) {
-      return !_isNil(value) ? `translate3d(${value}px,0,0)` : null
+      return !_isNil(value) ? `translate3d(${value}px,0,0)` : null;
     }
-    return value ? `translate3d(${value}px,0,0)` : null
-  }
+    return value ? `translate3d(${value}px,0,0)` : null;
+  };
 
   handleOpened = () => {
     if (_isFunction(this.props.onOpened) && !this.state._isOpened) {
-      this.props.onOpened()
+      this.props.onOpened();
     }
-  }
+  };
 
   handleClosed = () => {
     if (_isFunction(this.props.onClosed) && this.state._isOpened) {
-      this.props.onClosed()
+      this.props.onClosed();
     }
-  }
+  };
 
   handleTouchStart = e => {
-    const { clientX, clientY } = e.touches[0]
+    const { clientX, clientY } = e.touches[0];
 
-    if (this.props.disabled) return
+    if (this.props.disabled) return;
 
-    this.getDomInfo()
+    this.getDomInfo();
 
-    this.startX = clientX
-    this.startY = clientY
-    this.isTouching = true
-  }
+    this.startX = clientX;
+    this.startY = clientY;
+    this.isTouching = true;
+  };
 
   handleTouchMove = e => {
+    e.preventDefault();
+
     if (_isEmpty(this.domInfo)) {
-      return
+      return;
     }
 
-    const { startX, startY } = this
-    const { top, bottom, left, right } = this.domInfo
-    const { clientX, clientY, pageX, pageY } = e.touches[0]
+    const { startX, startY } = this;
+    const { top, bottom, left, right } = this.domInfo;
+    const { clientX, clientY, pageX, pageY } = e.touches[0];
 
-    const x = Math.abs(clientX - startX)
-    const y = Math.abs(clientY - startY)
+    const x = Math.abs(clientX - startX);
+    const y = Math.abs(clientY - startY);
 
-    const inDom = _inRange(pageX, left, right) && _inRange(pageY, top, bottom)
+    const inDom = _inRange(pageX, left, right) && _inRange(pageY, top, bottom);
 
     if (!this.isMoving && inDom) {
-      this.isMoving =
-        y === 0 || x / y >= Math.tan((45 * Math.PI) / 180).toFixed(2)
+      this.isMoving = y === 0 || x / y >= Math.tan((45 * Math.PI) / 180).toFixed(2);
     }
 
     if (this.isTouching && this.isMoving) {
-      const offsetSize = clientX - this.startX
-      const isRight = offsetSize > 0
+      const offsetSize = clientX - this.startX;
+      const isRight = offsetSize > 0;
 
-      if (this.state.offsetSize === 0 && isRight) return
+      if (this.state.offsetSize === 0 && isRight) return;
 
-      const value = this.endValue + offsetSize
+      const value = this.endValue + offsetSize;
       this.setState({
-        offsetSize: value >= 0 ? 0 : value
-      })
+        offsetSize: value >= 0 ? 0 : value,
+      });
     }
-  }
+  };
 
   handleTouchEnd = () => {
-    this.isTouching = false
+    this.isTouching = false;
 
-    const { offsetSize } = this.state
+    const { offsetSize } = this.state;
 
-    this.endValue = offsetSize
+    this.endValue = offsetSize;
 
-    const breakpoint = this.maxOffsetSize / 2
-    const absOffsetSize = Math.abs(offsetSize)
+    const breakpoint = this.maxOffsetSize / 2;
+    const absOffsetSize = Math.abs(offsetSize);
 
     if (absOffsetSize > breakpoint) {
-      this._reset(true)
-      return this.handleOpened()
+      this._reset(true);
+      return this.handleOpened();
     }
 
-    this._reset()
-    this.handleClosed()
-  }
+    this._reset();
+    this.handleClosed();
+  };
 
   handleDomInfo = ({ width }) => {
-    const { _isOpened } = this.state
+    const { _isOpened } = this.state;
 
-    this.maxOffsetSize = width
-    this._reset(_isOpened)
-  }
+    this.maxOffsetSize = width;
+    this._reset(_isOpened);
+  };
 
   handleClick = (item, index, ...arg) => {
-    const { onClick, autoClose } = this.props
+    const { onClick, autoClose } = this.props;
 
     if (_isFunction(onClick)) {
-      onClick(item, index, ...arg)
+      onClick(item, index, ...arg);
     }
     if (autoClose) {
-      this._reset()
-      this.handleClosed()
+      this._reset();
+      this.handleClosed();
     }
-  }
+  };
 
-  render () {
-    const { offsetSize, componentId } = this.state
-    const { options } = this.props
-    const rootClass = classNames('at-swipe-action', this.props.className)
+  render() {
+    const { offsetSize, componentId } = this.state;
+    const { options } = this.props;
+    const rootClass = classNames('at-swipe-action', this.props.className);
 
     return (
       <View
@@ -197,37 +198,31 @@ export default class AtSwipeAction extends AtComponent {
       >
         <View
           className={classNames('at-swipe-action__content', {
-            animtion: !this.isTouching
+            animtion: !this.isTouching,
           })}
           style={{
-            transform: this.computeTransform(offsetSize)
+            transform: this.computeTransform(offsetSize),
           }}
         >
           {this.props.children}
         </View>
 
         {Array.isArray(options) && options.length > 0 ? (
-          <AtSwipeActionOptions
-            componentId={id}
-            onQueryedDom={this.handleDomInfo}
-          >
+          <AtSwipeActionOptions componentId={id} onQueryedDom={this.handleDomInfo}>
             {options.map((item, key) => (
               <View
                 key={key}
                 style={item.style}
                 onClick={this.handleClick.bind(this, item, key)}
-                className={classNames(
-                  'at-swipe-action__option',
-                  item.className
-                )}
+                className={classNames('at-swipe-action__option', item.className)}
               >
-                <Text className='option__text'>{item.text}</Text>
+                <Text className="option__text">{item.text}</Text>
               </View>
             ))}
           </AtSwipeActionOptions>
         ) : null}
       </View>
-    )
+    );
   }
 }
 
@@ -236,8 +231,8 @@ AtSwipeAction.defaultProps = {
   options: [],
   isOpened: false,
   disabled: false,
-  autoClose: false
-}
+  autoClose: false,
+};
 
 AtSwipeAction.propTypes = {
   isTest: PropTypes.bool,
@@ -248,15 +243,11 @@ AtSwipeAction.propTypes = {
     PropTypes.shape({
       text: PropTypes.string,
       style: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      className: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.string,
-        PropTypes.array
-      ])
-    })
+      className: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.array]),
+    }),
   ),
 
   onClick: PropTypes.func,
   onOpened: PropTypes.func,
-  onClosed: PropTypes.func
-}
+  onClosed: PropTypes.func,
+};

@@ -18,7 +18,7 @@ import { AtAvatar } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/avatar.scss";
+@import "~taro-material/dist/style/components/avatar.scss";
 ```
 :::
 

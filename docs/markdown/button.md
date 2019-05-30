@@ -18,8 +18,8 @@ import { AtButton } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/button.scss";
-@import "~taro-ui/dist/style/components/loading.scss";
+@import "~taro-material/dist/style/components/button.scss";
+@import "~taro-material/dist/style/components/loading.scss";
 ```
 :::
 

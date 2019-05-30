@@ -17,7 +17,7 @@ import { AtForm, AtSwitch } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/switch.scss";
+@import "~taro-material/dist/style/components/switch.scss";
 ```
 :::
 

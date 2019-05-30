@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtList, AtListItem } from "taro-ui"
+import { AtList, AtListItem } from "taro-material"
 ```
 :::
 
@@ -18,8 +18,8 @@ import { AtList, AtListItem } from "taro-ui"
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/list.scss";
-@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-material/dist/style/components/list.scss";
+@import "~taro-material/dist/style/components/icon.scss";
 ```
 :::
 

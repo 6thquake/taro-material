@@ -18,7 +18,7 @@ import { AtTag } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/tag.scss";
+@import "~taro-material/dist/style/components/tag.scss";
 ```
 :::
 

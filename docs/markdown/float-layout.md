@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtFloatLayout } from "taro-ui"
+import { AtFloatLayout } from "taro-material"
 ```
 :::
 
@@ -18,7 +18,7 @@ import { AtFloatLayout } from "taro-ui"
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/float-layout.scss";
+@import "~taro-material/dist/style/components/float-layout.scss";
 ```
 :::
 

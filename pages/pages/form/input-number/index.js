@@ -8,7 +8,6 @@ export default class Index extends Taro.Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
-
   constructor() {
     super(...arguments);
     this.state = {
@@ -19,13 +18,11 @@ export default class Index extends Taro.Component {
       number5: 1,
     };
   }
-
   handleNumberChange(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
-
   render() {
     return (
       <View className="page">

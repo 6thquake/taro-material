@@ -1,18 +1,18 @@
-import Taro from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
+import Taro from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import AtActivityIndicator from '../../components/activity-indicator/index'
-import AtButton from '../../components/button/index'
-import AtComponent from '../../common/component'
+import AtActivityIndicator from '../../components/activity-indicator/index';
+import AtButton from '../../components/button/index';
+import AtComponent from '../../common/component';
 
 export default class AtLoadMore extends AtComponent {
-  onClick () {
-    this.props.onClick(...arguments)
+  onClick() {
+    this.props.onClick(...arguments);
   }
 
-  render () {
+  render() {
     const {
       className,
       customStyle,
@@ -21,37 +21,33 @@ export default class AtLoadMore extends AtComponent {
       status,
       moreBtnStyle,
       noMoreTextStyle,
-      noMoreText
-    } = this.props
+      noMoreText,
+    } = this.props;
 
-    let component = null
+    let component = null;
     if (status === 'loading') {
-      component = <AtActivityIndicator mode='center' content={loadingText} />
+      component = <AtActivityIndicator mode="center" content={loadingText} />;
     } else if (status === 'more') {
-      component = <AtButton
-        full
-        onClick={this.onClick.bind(this)}
-        customStyle={moreBtnStyle}
-      >
-        {moreText}
-      </AtButton>
+      component = (
+        <View className="at-load-more__cnt">
+          <AtButton full onClick={this.onClick.bind(this)} customStyle={moreBtnStyle}>
+            {moreText}
+          </AtButton>
+        </View>
+      );
     } else {
-      component = <Text
-        className='at-load-more__tip'
-        style={noMoreTextStyle}
-      >
-        {noMoreText}
-      </Text>
+      component = (
+        <Text className="at-load-more__tip" style={noMoreTextStyle}>
+          {noMoreText}
+        </Text>
+      );
     }
 
     return (
-      <View
-        className={classNames('at-load-more', className)}
-        style={customStyle}
-      >
+      <View className={classNames('at-load-more', className)} style={customStyle}>
         {component}
       </View>
-    )
+    );
   }
 }
 
@@ -65,28 +61,16 @@ AtLoadMore.defaultProps = {
   moreText: '查看更多',
   noMoreText: '没有更多',
   onClick: () => {},
-}
+};
 
 AtLoadMore.propTypes = {
-  customStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  className: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
-  noMoreTextStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  moreBtnStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  noMoreTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  moreBtnStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   status: PropTypes.oneOf(['more', 'loading', 'noMore']),
   loadingText: PropTypes.string,
   moreText: PropTypes.string,
   noMoreText: PropTypes.string,
   onClick: PropTypes.func,
-}
+};

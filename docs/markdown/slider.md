@@ -17,7 +17,7 @@ import { AtSlider } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/slider.scss";
+@import "~taro-material/dist/style/components/slider.scss";
 ```
 :::
 

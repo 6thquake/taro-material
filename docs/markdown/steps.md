@@ -17,8 +17,8 @@ import { AtSteps } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/steps.scss";
-@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-material/dist/style/components/steps.scss";
+@import "~taro-material/dist/style/components/icon.scss";
 ```
 :::
 

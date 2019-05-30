@@ -17,9 +17,9 @@ import { AtLoadMore } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/load-more.scss";
-@import "~taro-ui/dist/style/components/activity-indicator.scss";
-@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-material/dist/style/components/load-more.scss";
+@import "~taro-material/dist/style/components/activity-indicator.scss";
+@import "~taro-material/dist/style/components/button.scss";
 ```
 :::
 

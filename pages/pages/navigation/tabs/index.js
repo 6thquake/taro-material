@@ -8,7 +8,6 @@ export default class Index extends Taro.Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
-
   constructor() {
     super(...arguments);
     this.state = {
@@ -19,13 +18,11 @@ export default class Index extends Taro.Component {
       current5: 0,
     };
   }
-
   handleClick(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
-
   render() {
     const { current1, current2, current3, current4, current5 } = this.state;
     const tabList1 = [{ title: '标签页1' }, { title: '标签页2' }, { title: '标签页3' }];

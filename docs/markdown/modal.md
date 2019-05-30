@@ -10,7 +10,7 @@
 
 :::demo
 ```js
-import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
+import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-material"
 ```
 :::
 
@@ -20,7 +20,7 @@ import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/modal.scss";
+@import "~taro-material/dist/style/components/modal.scss";
 ```
 :::
 

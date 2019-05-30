@@ -3,6 +3,7 @@ module.exports = {
   env: {
     NODE_ENV: '"production"',
   },
+  defineConstants: {},
   plugins: {
     babel: {
       sourceMap: false,
@@ -16,7 +17,6 @@ module.exports = {
       config: {},
     },
   },
-  defineConstants: {},
   weapp: {
     postcss: {
       // 小程序端样式引用本地资源内联

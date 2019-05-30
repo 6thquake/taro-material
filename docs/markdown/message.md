@@ -17,7 +17,7 @@ import { AtMessage } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/message.scss";
+@import "~taro-material/dist/style/components/message.scss";
 ```
 :::
 
