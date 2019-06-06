@@ -1,3 +1,4 @@
+@import '../style/mixins/libs/line.scss';
 @import '../styles/theme.scss';
 
 .root {
@@ -45,6 +46,7 @@
         }
         .tag {
           margin: #{$spacingUnit * 1.5}px 0px;
+          @include line(1);
         }
       }
     }

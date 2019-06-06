@@ -1,3 +1,4 @@
+@import '../style/mixins/libs/line.scss';
 @import '../styles/reset.scss';
 
 @function tint($color, $percent) {
@@ -104,9 +105,11 @@ $spacing-v-xl: 15px * $hd;
     max-width: 200px;
     font-size: $font-size-xs;
     line-height: $line-height-base;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    @include line(1);
   }
 
   &--fixed {

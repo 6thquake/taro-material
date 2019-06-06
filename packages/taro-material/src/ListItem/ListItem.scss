@@ -1,3 +1,4 @@
+@import '../style/mixins/libs/line.scss';
 @import '../styles/theme.scss';
 
 @function tint($color, $percent) {
@@ -171,19 +172,6 @@ $item-horizontal-padding: 24px;
 
   &:active {
     background-color: $color-grey-5;
-  }
-}
-
-@mixin line($num: 1) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  @if ($num == 1) {
-    white-space: nowrap;
-  } @else {
-    display: -webkit-box;
-    -webkit-line-clamp: $num;
-    -webkit-box-orient: vertical;
   }
 }
 
