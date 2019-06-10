@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/6thquake/taro-material/compare/v0.5.2...v0.7.0) (2019-06-10)
+
+
+### Bug Fixes
+
+* rename onOK to onOk ([728b788](https://github.com/6thquake/taro-material/commit/728b788))
+* **action filter:** 修复文字太长导致显示溢出的问题 ([aaa1c0e](https://github.com/6thquake/taro-material/commit/aaa1c0e))
+* **dropdown:** 修复DropDown显示层级问题 ([1028c7a](https://github.com/6thquake/taro-material/commit/1028c7a))
+* **rm upload:** change logical of the upload's default value ([08a6f7e](https://github.com/6thquake/taro-material/commit/08a6f7e))
+
+
+### Features
+
+* upgrade taro ui ([445ee5d](https://github.com/6thquake/taro-material/commit/445ee5d))
+* upgrade version after any commit, add release and tag script ([098cf71](https://github.com/6thquake/taro-material/commit/098cf71))
+
+
+
 ## [0.6.0](https://github.com/6thquake/taro-material/compare/v0.5.2...v0.6.0) (2019-06-03)
 
 
