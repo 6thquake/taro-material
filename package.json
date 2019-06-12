@@ -2,7 +2,7 @@
   "name": "taro-material",
   "private": true,
   "author": "lico",
-  "version": "0.8.0-0",
+  "version": "0.8.0",
   "description": "Mini Program components that implement Google's Material Design.",
   "keywords": [
     "react",
@@ -52,8 +52,8 @@
     "release:first": "standard-version --first-release",
     "release:alpha": "standard-version --prerelease alpha --skip.tag=true",
     "release:beta": "standard-version --prerelease beta --skip.tag=true",
-    "release": "standard-version --skip.tag=true",
-    "tag": "standard-version"
+    "release": "cd ./packages/taro-material/ && npm version minor && cd ../../ && standard-version --skip.tag=true",
+    "tag": "cd ./packages/taro-material/ && npm version minor && cd ../../ && standard-version"
   },
   "peerDependencies": {
     "taro": "*"
@@ -170,7 +170,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "standard-version --prerelease --commit-all --skip.changelog=true --skip.commit=true --skip.tag=true && git add package.json && lint-staged",
+      "pre-commit": "cd ./packages/taro-material/ && npm version patch && cd ../../ && standard-version --release-as patch --no-verify --commit-all --skip.changelog=true --skip.commit=true --skip.tag=true && git add package.json && git add ./packages/taro-material/package.json && lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
