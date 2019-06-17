@@ -16,10 +16,8 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     flex: 1;
-
-    // overflow: hidden;
-    // text-overflow: ellipsis;
     @include line(1);
+    white-space: unset;
 
     .subheading,
     .body2,
