@@ -1,10 +1,9 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import PropTypes from 'prop-types';
 
 import { RMNavList } from '../../../';
 
-import { navList } from './data';
+import { navList, imagesNavList } from './data';
 
 class Index extends Component {
   config = {
@@ -30,7 +29,52 @@ class Index extends Component {
   render() {
     return (
       <View className="root">
-        <RMNavList data={navList} onClick={this.handleNavListClick.bind(this)} columnNum={5} />
+        <View className="notices">
+          <View className="title">columnNum: 5</View>
+          <View className="notice">
+            <RMNavList data={navList} onClick={this.handleNavListClick.bind(this)} columnNum={5} />
+          </View>
+
+          <View className="title">columnNum: 5, visiableColumnNum: 4</View>
+          <View className="notice">
+            <RMNavList
+              data={navList}
+              onClick={this.handleNavListClick.bind(this)}
+              columnNum={5}
+              visiableColumnNum={4}
+            />
+          </View>
+
+          <View className="title">columnNum: 10, visiableColumnNum: 5</View>
+          <View className="notice">
+            <RMNavList
+              data={navList}
+              onClick={this.handleNavListClick.bind(this)}
+              columnNum={10}
+              visiableColumnNum={5}
+            />
+          </View>
+
+          <View className="title">columnNum: 5, visiableColumnNum: 4</View>
+          <View className="notice">
+            <RMNavList
+              data={imagesNavList}
+              onClick={this.handleNavListClick.bind(this)}
+              columnNum={5}
+              visiableColumnNum={4}
+            />
+          </View>
+
+          <View className="title">columnNum: {imagesNavList.length}, visiableColumnNum: 5</View>
+          <View className="notice">
+            <RMNavList
+              data={imagesNavList}
+              onClick={this.handleNavListClick.bind(this)}
+              columnNum={imagesNavList.length}
+              visiableColumnNum={5}
+            />
+          </View>
+        </View>
       </View>
     );
   }

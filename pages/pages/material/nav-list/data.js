@@ -125,6 +125,68 @@ navList.push({
   path: '../navigators/index',
 });
 
-export { navList };
+const imagesNavList = [
+  {
+    id: 'payment',
+    title: '菜品优化',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/caipinyouhua.png',
+    path: '../../pages/navigators/index?group=payment',
+    badge: {
+      variant: 'dot',
+    },
+  },
+  {
+    id: 'monitor',
+    title: '实时监控',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/jiankong.png',
+    path: '../../pages/navigators/index?group=monitor',
+    badge: {
+      variant: 'text',
+      value: '哈哈哈',
+    },
+  },
+  {
+    id: 'bi',
+    title: '集合门店',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/jihemendian.png',
+    path: '../../pages/navigators/index?group=bi',
+    badge: {
+      variant: 'ribbon',
+      value: '奖',
+    },
+  },
+  {
+    id: 'purchase',
+    title: '客服',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/kefu.png',
+    path: '../../pages/navigators/index?group=purchase',
+    badge: {
+      variant: 'mark',
+      value: '热',
+    },
+  },
+  {
+    id: 'analysis',
+    title: '评分',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/pingfen.png',
+    path: '../../pages/navigators/index?group=analysis',
+    badge: {},
+  },
+  {
+    id: 'employ',
+    title: '市场分析',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/shichangfenxi.png',
+    path: '../../pages/navigators/index?group=employ',
+    mark: 'v2',
+  },
+  {
+    id: 'monitor',
+    title: '其他',
+    image: 'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/qita.png',
+    path: '../../pages/navigators/index?group=monitor',
+  },
+];
+
+export { navList, imagesNavList };
 
 export default navigators;
