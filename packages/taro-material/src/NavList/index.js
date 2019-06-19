@@ -78,6 +78,7 @@ class RMNavList extends Component {
       backgroundColor,
       subTitleColor,
       color,
+      scrollbarColor,
       customStyle,
     } = this.props;
 
@@ -101,7 +102,7 @@ class RMNavList extends Component {
       width: `${(100 * vcn) / columnNum}%`,
       marginLeft: `${(100 * scrollLeft) / scrollWidth}%`,
       height: `4px`,
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: scrollbarColor || theme.palette.primary.main,
     };
 
     return (
@@ -205,6 +206,7 @@ RMNavList.defaultProps = {
   backgroundColor: null,
   titleColor: null,
   subTitleColor: null,
+  scrollbarColor: null,
   customStyle: {},
 };
 

@@ -1,0 +1,98 @@
+@import '../styles/theme.scss';
+
+@mixin lineClamp($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
+
+.rm-card {
+  padding: #{$spacingUnit * 2}px;
+  background: $paletteCommonWhite;
+  box-shadow: $shadows1;
+
+  &-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &-title {
+      margin-right: #{$spacingUnit * 2}px;
+    }
+    &-countdown {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+  &-body {
+    .rm-card-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .rm-card-summary {
+        flex: 1;
+        max-height: #{$spacingUnit * 16}px;
+        overflow: hidden;
+
+        .rm-card-title {
+          padding-bottom: #{$spacingUnit}px;
+          &-text {
+            @include lineClamp(2);
+          }
+        }
+        .rm-card-content {
+          &-text {
+            line-height: 32px;
+            @include lineClamp(4);
+          }
+        }
+      }
+    }
+    &.noMedias {
+      .rm-card-container {
+        .rm-card-summary {
+          max-height: unset;
+          overflow: unset;
+        }
+      }
+    }
+    &.alignLeft {
+      .rm-card-container {
+        .rm-card-summary {
+          margin-left: #{$spacingUnit}px;
+        }
+      }
+    }
+    &.alignRight {
+      .rm-card-container {
+        .rm-card-summary {
+          margin-right: #{$spacingUnit}px;
+        }
+      }
+    }
+
+    .rm-card-medias {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      .rm-card-media {
+        max-height: #{$spacingUnit * 16}px;
+        &:not(:first-child):not(:last-child) {
+          margin: 0px #{$spacingUnit/2}px;
+        }
+        &:first-child {
+          margin-right: #{$spacingUnit/2}px;
+        }
+        &:last-child {
+          margin-left: #{$spacingUnit/2}px;
+        }
+      }
+    }
+  }
+
+  &-footer {
+  }
+}

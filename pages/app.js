@@ -100,6 +100,7 @@ class App extends Component {
       'pages/material/drawer/index',
       'pages/material/timeline/index',
       'pages/material/trends/index',
+      'pages/material/card/index',
     ],
     window: {
       backgroundTextStyle: 'light',

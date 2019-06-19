@@ -303,6 +303,10 @@ export default class PanelBasic extends Component {
             name: '按钮',
           },
           {
+            id: 'Card',
+            name: '卡片',
+          },
+          {
             id: 'Carousel',
             name: '滑块视图容器',
           },
