@@ -74,6 +74,7 @@ export { default as RMCheckboxGroup } from './CheckboxGroup';
 export { default as RMDrawer } from './Drawer';
 export { default as RMDropdown } from './Dropdown';
 export { default as RMFilter } from './Filter';
+export { default as RMFloatBar } from './FloatBar';
 export { default as RMIcon } from './Icon';
 export { default as RMInput } from './Input';
 export { default as RMList } from './List';

@@ -331,6 +331,10 @@ export default class PanelBasic extends Component {
             name: '过滤条',
           },
           {
+            id: 'Float-Bar',
+            name: '浮动条',
+          },
+          {
             id: 'Icon',
             name: '图标',
           },
