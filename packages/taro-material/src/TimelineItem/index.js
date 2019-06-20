@@ -118,17 +118,18 @@ class RMTimelineItem extends Component {
                       <AtActivityIndicator size={24} color={theme.palette.progress.main} />
                     </View>
                   )}
-                  <RMTypography color={color} className="body1" block>
-                    {status}
-                  </RMTypography>
+                  {status !== 'default' && (
+                    <RMTypography color={color} className="body1" block>
+                      {status}
+                    </RMTypography>
+                  )}
                 </View>
               )}
-              {!title &&
-                date && (
-                  <View>
-                    <RMTypography className="body1">{date}</RMTypography>
-                  </View>
-                )}
+              {!title && date && (
+                <View>
+                  <RMTypography className="body1">{date}</RMTypography>
+                </View>
+              )}
               {remark && (
                 <View>
                   <RMTypography className="body1">{remark}</RMTypography>
