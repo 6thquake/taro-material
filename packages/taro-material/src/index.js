@@ -110,6 +110,7 @@ export { default as RMBadge } from './Badge';
 export { default as RMNavList } from './NavList';
 export { default as RMCountDown } from './CountDown';
 export { default as RMTimer } from './Timer';
+export { default as RMToggleButton } from './ToggleButton';
 export { default as RMPrettyNumber } from './PrettyNumber';
 export { default as RMIndexes } from './Indexes';
 export { default as RMTrends } from './Trends';

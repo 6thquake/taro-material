@@ -419,6 +419,10 @@ export default class PanelBasic extends Component {
             name: '时间轴',
           },
           {
+            id: 'Toggle-Button',
+            name: '切换按钮',
+          },
+          {
             id: 'Trends',
             name: 'Trends',
           },

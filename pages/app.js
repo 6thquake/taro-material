@@ -101,6 +101,7 @@ class App extends Component {
       'pages/material/timeline/index',
       'pages/material/trends/index',
       'pages/material/card/index',
+      'pages/material/toggle-button/index',
     ],
     window: {
       backgroundTextStyle: 'light',

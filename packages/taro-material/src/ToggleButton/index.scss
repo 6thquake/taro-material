@@ -1,0 +1,21 @@
+@import '../styles/theme.scss';
+.root {
+  display: flex;
+  justify-content: space-between;
+  background: $paletteBackgroundPaper;
+  align-items: center;
+  .item {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    padding: #{$spacingUnit * 2}px;
+    .icon {
+      margin-right: #{$spacingUnit}px;
+      color: $paletteActionActive;
+    }
+  }
+  &.shadow {
+    box-shadow: $shadows1;
+  }
+}
