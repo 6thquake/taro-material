@@ -48,6 +48,7 @@ class RMToggleButton extends Component {
           let size = fontSize;
           return (
             <View
+              key={item.value}
               style={itemStyle}
               onClick={this.handleClick.bind(this, item.value)}
               className="item"
