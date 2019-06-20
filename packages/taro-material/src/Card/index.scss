@@ -8,17 +8,20 @@
 }
 
 .rm-card {
-  padding: #{$spacingUnit * 2}px;
   background: $paletteCommonWhite;
-  box-shadow: $shadows1;
-
+  flex: 1;
+  &.raised {
+    box-shadow: $shadows1;
+  }
   &-header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding: 0px #{$spacingUnit * 2}px;
 
     &-title {
       margin-right: #{$spacingUnit * 2}px;
+      padding: #{$spacingUnit * 2}px 0px;
     }
     &-countdown {
       display: flex;
@@ -27,6 +30,13 @@
     }
   }
   &-body {
+    padding: 0px #{$spacingUnit * 2}px;
+    .rm-card-title {
+      padding-bottom: #{$spacingUnit}px;
+      &-text {
+        @include lineClamp(2);
+      }
+    }
     .rm-card-container {
       display: flex;
       justify-content: flex-start;
@@ -35,26 +45,11 @@
         flex: 1;
         max-height: #{$spacingUnit * 16}px;
         overflow: hidden;
-
-        .rm-card-title {
-          padding-bottom: #{$spacingUnit}px;
-          &-text {
-            @include lineClamp(2);
-          }
-        }
         .rm-card-content {
           &-text {
             line-height: 32px;
             @include lineClamp(4);
           }
-        }
-      }
-    }
-    &.noMedias {
-      .rm-card-container {
-        .rm-card-summary {
-          max-height: unset;
-          overflow: unset;
         }
       }
     }
@@ -72,13 +67,56 @@
         }
       }
     }
-
+    &.vertical {
+      padding: 0px;
+      .rm-card-title {
+        padding: 0px #{$spacingUnit * 2}px;
+      }
+      .rm-card-container {
+        /* disable flex layout */
+        display: block;
+        .rm-card-summary {
+          max-height: unset;
+          overflow: unset;
+          padding: 0px #{$spacingUnit * 2}px;
+          .rm-card-title {
+            padding: 0px 0px #{$spacingUnit}px 0px;
+          }
+        }
+        .rm-card-medias {
+          padding-bottom: #{$spacingUnit}px;
+          .rm-card-media {
+            &:only-child {
+              margin: 0px;
+            }
+          }
+        }
+      }
+    }
+    &.noMedias {
+      .rm-card-container {
+        .rm-card-summary {
+          max-height: unset;
+          overflow: unset;
+        }
+      }
+    }
+    &.multiMedias {
+      .rm-card-medias {
+        padding: #{$spacingUnit}px 0px;
+      }
+      &.vertical {
+        .rm-card-medias {
+          padding-bottom: #{$spacingUnit}px;
+        }
+      }
+    }
     .rm-card-medias {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-
+      justify-content: space-between;
+      align-items: center;
       .rm-card-media {
+        width: 100vh;
         max-height: #{$spacingUnit * 16}px;
         &:not(:first-child):not(:last-child) {
           margin: 0px #{$spacingUnit/2}px;
@@ -94,5 +132,6 @@
   }
 
   &-footer {
+    padding: #{$spacingUnit}px #{$spacingUnit * 2}px #{$spacingUnit * 2}px #{$spacingUnit * 2}px;
   }
 }

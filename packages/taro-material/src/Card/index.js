@@ -25,42 +25,86 @@ class RMCard extends Component {
   }
 
   render() {
-    const { header, title, content, medias = [], actions = [], customStyle } = this.props;
+    const {
+      header,
+      title,
+      content,
+      medias = [],
+      raised,
+      orientation,
+      radius,
+      customStyle,
+      MediaProps: { height },
+    } = this.props;
 
     const style = {
-      width: '100%',
       ...customStyle,
+      borderRadius: `${radius}px`,
     };
+
+    const vertical = orientation === 'vertical';
+    const horizontal = orientation !== 'vertical' && medias.length > 0 && medias.length <= 2;
+    const random = Math.random() < 0.24;
+    const alignLeft = horizontal && random;
+    const alignRight = horizontal && !random;
+    const radiusSize = !header && vertical && medias.length === 1 ? radius : 0;
 
     const titleJSX = (
       <View className="rm-card-title">
-        <RMTypography className="subheading" block>
-          <View className="rm-card-title-text">{title}</View>
-        </RMTypography>
+        {title ? (
+          <RMTypography className="subheading" block>
+            <View className="rm-card-title-text">{title}</View>
+          </RMTypography>
+        ) : (
+          ''
+        )}
       </View>
     );
 
-    const mediasJSX = (
-      <View className="rm-card-medias">
-        {medias.slice(0, 3).map(item => (
-          <Image
-            key={item}
-            style={{
-              maxWidth: medias.length > 2 ? '33%' : medias.length === 2 ? '96px' : '128px',
-            }}
-            className="rm-card-media"
-            mode="aspectFill"
-            src={item}
-          />
-        ))}
+    const contentJSX = (
+      <View className="rm-card-content">
+        {content ? (
+          <RMTypography className="caption" block>
+            <View className="rm-card-content-text">{content}</View>
+          </RMTypography>
+        ) : (
+          ''
+        )}
       </View>
     );
 
-    const alignLeft = medias.length < 2 && Math.random() < 0.24;
+    const mediasJSX =
+      medias && medias.length > 0 ? (
+        <View className="rm-card-medias">
+          {medias.slice(0, 3).map(item => (
+            <Image
+              key={item}
+              style={{
+                borderTopRightRadius: `${radiusSize}px`,
+                borderTopLeftRadius: `${radiusSize}px`,
+                maxWidth:
+                  medias.length === 2 && !vertical
+                    ? '96px'
+                    : medias.length === 1 && !vertical
+                      ? '128px'
+                      : 'unset',
+                maxHeight: `${height}px`,
+              }}
+              className="rm-card-media"
+              mode="aspectFill"
+              src={item}
+            />
+          ))}
+        </View>
+      ) : (
+        ''
+      );
 
     return (
-      <View className="rm-card" style={style}>
+      <View style={style} className={classNames({ 'rm-card': true, raised })}>
         <View className="rm-card-header">
+          {this.props.renderHeader}
+
           {header && (
             <View className="rm-card-header-title">
               <RMTypography className="body2" block>
@@ -75,27 +119,26 @@ class RMCard extends Component {
           className={classNames({
             'rm-card-body': true,
             noMedias: medias.length <= 0,
+            multiMedias: medias.length > 2,
+            vertical,
             alignLeft,
-            alignRight: !alignLeft && medias.length <= 2 && medias.length > 0,
+            alignRight,
           })}
         >
-          {content && medias.length >= 2 && titleJSX}
+          {vertical && medias.length > 2 && mediasJSX}
+          {content && !vertical && medias.length >= 2 && titleJSX}
           <View className="rm-card-container">
-            {medias.length <= 2 && alignLeft && mediasJSX}
+            {(alignLeft || (vertical && medias.length <= 2)) && mediasJSX}
             <View className="rm-card-summary">
-              {(!content || medias.length <= 1) && titleJSX}
-              <View className="rm-card-content">
-                <RMTypography className="caption" block>
-                  <View className="rm-card-content-text">{content}</View>
-                </RMTypography>
-              </View>
+              {(!content || medias.length <= 1 || vertical) && titleJSX}
+              {contentJSX}
             </View>
-            {medias.length <= 2 && !alignLeft && mediasJSX}
+            {alignRight && mediasJSX}
           </View>
-          {medias.length > 2 && mediasJSX}
+          {!vertical && medias.length > 2 && mediasJSX}
         </View>
 
-        <View className="rm-card-footer">{actionsJSX}</View>
+        <View className="rm-card-footer">{this.props.renderActions}</View>
       </View>
     );
   }
@@ -113,21 +156,32 @@ RMCard.propTypes = {
   content: PropTypes.string,
   /**
    */
+  radius: PropTypes.number,
   medias: PropTypes.array,
-
+  raised: PropTypes.bool,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   customStyle: PropTypes.object,
   onClick: PropTypes.func,
-
+  renderHeader: PropTypes.element,
   renderCountDown: PropTypes.element,
   renderActions: PropTypes.element,
+  MediaProps: PropTypes.shape({
+    height: PropTypes.number,
+  }),
 };
 
 RMCard.defaultProps = {
   medias: [],
+  raised: false,
+  radius: 0,
+  orientation: 'horizontal',
   renderCountDown: null,
   renderActions: null,
   customStyle: {},
   onClick: () => {},
+  MediaProps: {
+    height: 56,
+  },
 };
 
 export default RMCard;
