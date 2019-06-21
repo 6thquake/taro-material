@@ -91,11 +91,13 @@ class RMNavList extends Component {
 
     const wrapperStyle = {
       ...customStyle,
-      width: `${Math.round((100 * columnNum) / vcn)}%`,
+      width: `${Math.ceil((100 * columnNum) / vcn)}%`,
     };
 
-    const style = {
-      width: `${Math.round(100 / columnNum)}%`,
+    const style = i => {
+      return {
+        width: `${Math.floor(100 / columnNum) + (i < 100 % columnNum ? 1 : 0)}%`,
+      };
     };
 
     const progressStyle = {
@@ -112,7 +114,7 @@ class RMNavList extends Component {
             {data.map((item, index) => {
               const badge = item.badge || {};
               return (
-                <View style={style} key={item.id || item.title} className="box">
+                <View style={style(index)} key={item.id || item.title} className="box">
                   {item && (
                     <View className="content" onClick={this.handleClick.bind(this, item)}>
                       <RMBadge

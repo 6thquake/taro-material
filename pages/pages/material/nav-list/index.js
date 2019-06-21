@@ -86,6 +86,17 @@ class Index extends Component {
               scrollbarColor={theme.palette.error.main}
             />
           </View>
+
+          <View className="title">scrollbar color</View>
+          <View className="nav-list">
+            <RMNavList
+              data={imagesNavList.slice(0, 6)}
+              onClick={this.handleNavListClick.bind(this)}
+              columnNum={6}
+              visiableColumnNum={5}
+              scrollbarColor={theme.palette.error.main}
+            />
+          </View>
         </View>
       </View>
     );
