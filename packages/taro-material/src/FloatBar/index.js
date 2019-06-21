@@ -3,36 +3,15 @@ import { View } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import theme from '../styles/theme.js';
+import {mergeStyle} from '../utils/styles.js';
 import './FloatBar.scss';
 
 class RMFloatBar extends Component {
 
-  mergeStyle(args) {
-    const objectToString = style => {
-      if (typeof style === 'object') {
-        let styleStr = '';
-        Object.keys(style).forEach(key => {
-          const lowerCaseKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-          styleStr += `${lowerCaseKey}:${style[key]};`;
-        });
-        return styleStr;
-      }
-      return style;
-    };
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    // args.reduce((item)=>{
-    //   return objectToString(style1)
-    // },'')
-    console.log('args.reduce(reducer)',args.reduce(reducer))
-    return args.reduce(reducer)
-    // return objectToString(style1) + objectToString(style2);
-  }
   render() {
-    const {placement,offset,color,spacing,fixed,autoWidth} = this.props;
-    const parentClass = classNames(
-      ''
-    )
+    const {placement,offset,color,spacing,fixed,autoWidth,customStyle} = this.props;
     const fixedClass = classNames(
+      ...customStyle,
       'at-float-bar',
       {
         // 'at-float-bar--fixed': fixed,
@@ -63,7 +42,7 @@ class RMFloatBar extends Component {
 
     return (
         <View className={fixedClass} style={offsetStyle}>
-          <View className={childClass} style={this.mergeStyle([colorStyle,spacStyle])}>
+          <View className={childClass} style={mergeStyle(colorStyle,spacStyle)}>
             {this.props.children}
           </View>
       </View>
@@ -72,6 +51,7 @@ class RMFloatBar extends Component {
 }
 
 RMFloatBar.defaultProps = {
+    customStyle:{},
     placement:'bottom',
     offset:60,
     color:'default',
@@ -80,9 +60,10 @@ RMFloatBar.defaultProps = {
 };
 
 RMFloatBar.propTypes = {
-    placement:PropTypes.string,
+    customStyle:PropTypes.object,
+    placement:PropTypes.oneOf(['top', 'bottom']),
     offset:PropTypes.number,
-    color:PropTypes.string,
+    color:PropTypes.oneOf(['default','inherit' , 'primary' , 'secondary' ,'error' , 'success' , 'warning' , 'progress']),
     spacing:PropTypes.number,
     fixed: PropTypes.bool,
 };
