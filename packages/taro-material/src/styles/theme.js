@@ -9,6 +9,12 @@ const theme = {
       white: '#fff',
       type: 'light',
     },
+    default:{
+      light: '#fafafa',
+      main: '#eeeeee',
+      dark: '#212121',
+      contrastText: '#fff',
+    },
     primary: {
       light: '#4dabf5',
       main: '#2196f3',

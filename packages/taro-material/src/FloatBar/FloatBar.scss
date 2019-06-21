@@ -1,15 +1,15 @@
+    
+    
 @import '../styles/theme.scss';
 
 .at-float-bar{
-    min-height: 50px;
-    max-width: 80%;
-    border-radius: 50%;
+    width: 100%;
+    position: relative;
     text-align: center;
+    background: inherit;
     &--fixed-top{
         position: fixed;
         top: 60;
-        left: 0;
-        right: 0;
         z-index: #{$zIndexAppBar - 10};
         padding-bottom: constant(safe-area-inset-bottom);
         padding-bottom: env(safe-area-inset-bottom);
@@ -17,10 +17,22 @@
     &--fixed-bottom{
         position: fixed;
         bottom: 60;
-        left: 0;
-        right: 0;
         z-index: #{$zIndexAppBar - 10};
         padding-bottom: constant(safe-area-inset-bottom);
         padding-bottom: env(safe-area-inset-bottom);
     }
+}
+.at-float-bar-child{
+    // min-width: 80PX;
+    // height: 60px;
+    line-height: 60px;
+    padding:0 16px;
+    display: flex;
+    text-align: center;
+    display: inline-block;
+    // left: 50%;
+    // position: absolute;
+    border-radius:30px;
+    // transform: translate(-50%,0);
+    // vertical-align: top;
 }
