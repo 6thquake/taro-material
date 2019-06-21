@@ -11,7 +11,6 @@ class RMFloatBar extends Component {
   render() {
     const {placement,offset,color,spacing,fixed,autoWidth,customStyle} = this.props;
     const fixedClass = classNames(
-      ...customStyle,
       'at-float-bar',
       {
         // 'at-float-bar--fixed': fixed,
@@ -41,7 +40,7 @@ class RMFloatBar extends Component {
     }
 
     return (
-        <View className={fixedClass} style={offsetStyle}>
+        <View className={fixedClass} style={mergeStyle(offsetStyle,customStyle)}>
           <View className={childClass} style={mergeStyle(colorStyle,spacStyle)}>
             {this.props.children}
           </View>
@@ -51,7 +50,7 @@ class RMFloatBar extends Component {
 }
 
 RMFloatBar.defaultProps = {
-    customStyle:{},
+    customStyle:'',
     placement:'bottom',
     offset:60,
     color:'default',
@@ -60,7 +59,10 @@ RMFloatBar.defaultProps = {
 };
 
 RMFloatBar.propTypes = {
-    customStyle:PropTypes.object,
+    customStyle: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]),
     placement:PropTypes.oneOf(['top', 'bottom']),
     offset:PropTypes.number,
     color:PropTypes.oneOf(['default','inherit' , 'primary' , 'secondary' ,'error' , 'success' , 'warning' , 'progress']),
