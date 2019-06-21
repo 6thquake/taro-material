@@ -23,16 +23,10 @@
     }
 }
 .at-float-bar-child{
-    // min-width: 80PX;
-    // height: 60px;
     line-height: 60px;
-    padding:0 16px;
+    padding:8px 24px;
     display: flex;
     text-align: center;
     display: inline-block;
-    // left: 50%;
-    // position: absolute;
-    border-radius:30px;
-    // transform: translate(-50%,0);
-    // vertical-align: top;
+    border-radius:60px;
 }
