@@ -97,6 +97,18 @@ class Index extends Component {
           </View>
 
           <View className="spacer" />
+          <View className="title">no title</View>
+          <View className="card">
+            <RMCard
+              header="吉刻联盟@吉野家战略合作正式启航！"
+              content="吉刻去嘉定啦 嘉定人民我们来啦 。江桥万达店节后即将开业🎉🎉 上海市嘉定区华江路988号，吉刻联盟@吉野家战略合作正式启航！ 祝合作愉快！圣诞节快乐！"
+              medias={[
+                'https://code.aliyun.com/licoliu/resources/raw/master/images/navigators/live-from-space.jpg',
+              ]}
+            />
+          </View>
+
+          <View className="spacer" />
           <View className="title">no content</View>
           <View className="card">
             <RMCard

@@ -41,7 +41,7 @@
     .rm-card-container {
       display: flex;
       justify-content: flex-start;
-      align-items: flex-start;
+      align-items: center;
       .rm-card-summary {
         flex: 1;
         max-height: #{$spacingUnit * 16}px;
@@ -110,6 +110,24 @@
       padding: #{$spacingUnit * 2}px;
       &-title {
         padding: 0px;
+      }
+    }
+    .rm-card-body {
+      &.multiMedias {
+        .rm-card-medias {
+          padding-top: #{$spacingUnit}px;
+        }
+      }
+      .rm-card-container {
+        .rm-card-summary {
+          .rm-card-content {
+            &-text {
+              &.lessContent {
+                @include lineClamp(1);
+              }
+            }
+          }
+        }
       }
     }
   }

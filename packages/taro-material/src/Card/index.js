@@ -48,28 +48,31 @@ class RMCard extends Component {
     const alignRight = horizontal && placement === 'right';
     const radiusSize = !header && vertical && medias.length === 1 ? radius : 0;
 
-    const titleJSX = (
+    const titleJSX = title ? (
       <View className="rm-card-title">
-        {title ? (
-          <RMTypography className="subheading" block>
-            <View className="rm-card-title-text">{title}</View>
-          </RMTypography>
-        ) : (
-          ''
-        )}
+        <RMTypography className="subheading" block>
+          <View className="rm-card-title-text">{title}</View>
+        </RMTypography>
       </View>
+    ) : (
+      ''
     );
 
-    const contentJSX = (
+    const contentJSX = content ? (
       <View className="rm-card-content">
-        {content ? (
-          <RMTypography className="caption" block>
-            <View className="rm-card-content-text">{content}</View>
-          </RMTypography>
-        ) : (
-          ''
-        )}
+        <RMTypography className="caption" block>
+          <View
+            className={classNames({
+              'rm-card-content-text': true,
+              lessContent: medias.length === 1 && title,
+            })}
+          >
+            {content}
+          </View>
+        </RMTypography>
       </View>
+    ) : (
+      ''
     );
 
     const mediasJSX =
@@ -122,7 +125,6 @@ class RMCard extends Component {
             'rm-card-body': true,
             noMedias: medias.length <= 0,
             multiMedias: medias.length > 2,
-
             alignLeft,
             alignRight,
           })}
