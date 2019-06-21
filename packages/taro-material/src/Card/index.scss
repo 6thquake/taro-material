@@ -13,6 +13,7 @@
   &.raised {
     box-shadow: $shadows1;
   }
+
   &-header {
     display: flex;
     justify-content: flex-start;
@@ -67,7 +68,53 @@
         }
       }
     }
-    &.vertical {
+    &.noMedias {
+      .rm-card-container {
+        .rm-card-summary {
+          max-height: unset;
+          overflow: unset;
+        }
+      }
+    }
+    &.multiMedias {
+      .rm-card-medias {
+        padding-bottom: #{$spacingUnit}px;
+      }
+    }
+    .rm-card-medias {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .rm-card-media {
+        width: 100vh;
+        max-height: #{$spacingUnit * 16}px;
+        &:not(:first-child):not(:last-child) {
+          margin: 0px #{$spacingUnit/2}px;
+        }
+        &:first-child {
+          margin-right: #{$spacingUnit/2}px;
+        }
+        &:last-child {
+          margin-left: #{$spacingUnit/2}px;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    padding: #{$spacingUnit * 2}px 0px;
+  }
+
+  &.horizontal {
+    .rm-card-header {
+      padding: #{$spacingUnit * 2}px;
+      &-title {
+        padding: 0px;
+      }
+    }
+  }
+  &.vertical {
+    .rm-card-body {
       padding: 0px;
       .rm-card-title {
         padding: 0px #{$spacingUnit * 2}px;
@@ -93,45 +140,5 @@
         }
       }
     }
-    &.noMedias {
-      .rm-card-container {
-        .rm-card-summary {
-          max-height: unset;
-          overflow: unset;
-        }
-      }
-    }
-    &.multiMedias {
-      .rm-card-medias {
-        padding: #{$spacingUnit}px 0px;
-      }
-      &.vertical {
-        .rm-card-medias {
-          padding-bottom: #{$spacingUnit}px;
-        }
-      }
-    }
-    .rm-card-medias {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      .rm-card-media {
-        width: 100vh;
-        max-height: #{$spacingUnit * 16}px;
-        &:not(:first-child):not(:last-child) {
-          margin: 0px #{$spacingUnit/2}px;
-        }
-        &:first-child {
-          margin-right: #{$spacingUnit/2}px;
-        }
-        &:last-child {
-          margin-left: #{$spacingUnit/2}px;
-        }
-      }
-    }
-  }
-
-  &-footer {
-    padding: #{$spacingUnit}px #{$spacingUnit * 2}px #{$spacingUnit * 2}px #{$spacingUnit * 2}px;
   }
 }

@@ -34,7 +34,7 @@ class RMCard extends Component {
       orientation,
       radius,
       customStyle,
-      MediaProps: { height },
+      MediaProps: { height, placement },
     } = this.props;
 
     const style = {
@@ -44,9 +44,8 @@ class RMCard extends Component {
 
     const vertical = orientation === 'vertical';
     const horizontal = orientation !== 'vertical' && medias.length > 0 && medias.length <= 2;
-    const random = Math.random() < 0.24;
-    const alignLeft = horizontal && random;
-    const alignRight = horizontal && !random;
+    const alignLeft = horizontal && placement === 'left';
+    const alignRight = horizontal && placement === 'right';
     const radiusSize = !header && vertical && medias.length === 1 ? radius : 0;
 
     const titleJSX = (
@@ -101,7 +100,10 @@ class RMCard extends Component {
       );
 
     return (
-      <View style={style} className={classNames({ 'rm-card': true, raised })}>
+      <View
+        style={style}
+        className={classNames({ 'rm-card': true, raised, vertical, horizontal: !vertical })}
+      >
         <View className="rm-card-header">
           {this.props.renderHeader}
 
@@ -120,7 +122,7 @@ class RMCard extends Component {
             'rm-card-body': true,
             noMedias: medias.length <= 0,
             multiMedias: medias.length > 2,
-            vertical,
+
             alignLeft,
             alignRight,
           })}
@@ -167,6 +169,7 @@ RMCard.propTypes = {
   renderActions: PropTypes.element,
   MediaProps: PropTypes.shape({
     height: PropTypes.number,
+    placement: PropTypes.oneOf(['left', 'right']),
   }),
 };
 
@@ -181,6 +184,7 @@ RMCard.defaultProps = {
   onClick: () => {},
   MediaProps: {
     height: 56,
+    placement: 'right',
   },
 };
 
