@@ -21,7 +21,7 @@ class RMCard extends Component {
 
   handleClick(e) {
     const { onClick } = this.props;
-    onClick && onClick(e.target.value, e, ...arguments);
+    onClick && onClick(e, ...arguments);
   }
 
   render() {
@@ -106,6 +106,7 @@ class RMCard extends Component {
       <View
         style={style}
         className={classNames({ 'rm-card': true, raised, vertical, horizontal: !vertical })}
+        onClick={this.handleClick}
       >
         <View className="rm-card-header">
           {this.props.renderHeader}
