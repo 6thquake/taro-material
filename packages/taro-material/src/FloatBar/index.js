@@ -18,14 +18,10 @@ class RMFloatBar extends Component {
       },
     );
     const childClass = classNames(
-      'at-float-bar-child'
+      'at-float-bar-child',
     )
-    let colorStyle ;
-    if(color!='inherit'){
-      colorStyle=`background-color: ${theme.palette[`${color}`]['main']};`;
-    }else{
-      colorStyle=`background-color: inherit`;
-    }
+    let colorStyle= `background-color: ${theme.palette[`${color}`]['main']};color:${theme.palette[`${color}`]['contrastText']};${customStyle};`;
+
     let offsetStyle;
     if(placement=='top'){
         offsetStyle= `top:${offset}px;`
@@ -40,7 +36,7 @@ class RMFloatBar extends Component {
     }
 
     return (
-        <View className={fixedClass} style={mergeStyle(offsetStyle,customStyle)}>
+        <View className={fixedClass} style={mergeStyle(offsetStyle)}>
           <View className={childClass} style={mergeStyle(colorStyle,spacStyle)}>
             {this.props.children}
           </View>

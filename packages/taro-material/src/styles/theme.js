@@ -9,11 +9,17 @@ const theme = {
       white: '#fff',
       type: 'light',
     },
+    inherit:{
+      light: 'inherit',
+      main: 'inherit',
+      dark: 'inherit',
+      contrastText:'inherit',
+    },
     default:{
       light: '#fafafa',
       main: '#eeeeee',
       dark: '#212121',
-      contrastText: '#fff',
+      contrastText: 'rgba(0, 0, 0, 0.87)',
     },
     primary: {
       light: '#4dabf5',

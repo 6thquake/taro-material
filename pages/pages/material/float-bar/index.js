@@ -23,6 +23,7 @@ export default class FloatBarPage extends Component {
                   placement={'top'}
                   offset={100}
                   spacing={10}
+                  customStyle={'border-radius:10px'}
                   // fixed
                   // color={'grey'}
                 >
