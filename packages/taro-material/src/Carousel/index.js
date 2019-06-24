@@ -24,7 +24,7 @@ class RMCarousel extends Component {
 
   render() {
     const {
-      items,
+      items = [],
       speed,
       delay,
       autoplay,
@@ -57,11 +57,14 @@ class RMCarousel extends Component {
         onChange={this.handleChange}
         style={style}
       >
-        {items.map((item, index) => (
-          <SwiperItem key={item.id || item.src} className="item">
-            <Image className="image" src={item.src} mode="aspectFill" />
-          </SwiperItem>
-        ))}
+        {items.length > 0 &&
+          items.map((item, index) => (
+            <SwiperItem key={item.id || item.src} className="item">
+              <Image className="image" src={item.src} mode="aspectFill" />
+            </SwiperItem>
+          ))}
+
+        {this.props.children}
       </Swiper>
     );
   }
@@ -102,11 +105,11 @@ RMCarousel.propTypes = {
    */
   dots: PropTypes.bool,
   /**
-   * 同时显示的滑块数量
+   * 滑动方向是否为纵向
    */
   vertical: PropTypes.bool,
   /**
-   * 滑动方向是否为纵向
+   * 同时显示的滑块数量
    */
   multipleItems: PropTypes.number,
   /**
