@@ -134,7 +134,7 @@ class RMNavList extends Component {
                               style={{
                                 width: '100%',
                                 height: '100%',
-                                background: theme.palette.background.paper,
+                                // background: theme.palette.background.paper,
                               }}
                               src={item.image}
                             />

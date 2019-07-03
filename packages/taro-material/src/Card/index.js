@@ -34,7 +34,7 @@ class RMCard extends Component {
       orientation,
       radius,
       customStyle,
-      MediaProps: { height, placement },
+      MediaProps: { height, width, placement },
     } = this.props;
 
     const style = {
@@ -47,6 +47,15 @@ class RMCard extends Component {
     const alignLeft = horizontal && placement === 'left';
     const alignRight = horizontal && placement === 'right';
     const radiusSize = !header && vertical && medias.length === 1 ? radius : 0;
+
+    const maxWidth = width
+      ? `${width}px`
+      : medias.length === 2 && !vertical
+        ? '96px'
+        : medias.length === 1 && !vertical
+          ? '128px'
+          : 'unset';
+    const maxHeight = `${height || 56}px`;
 
     const titleJSX = title ? (
       <View className="rm-card-title">
@@ -84,13 +93,8 @@ class RMCard extends Component {
               style={{
                 borderTopRightRadius: `${radiusSize}px`,
                 borderTopLeftRadius: `${radiusSize}px`,
-                maxWidth:
-                  medias.length === 2 && !vertical
-                    ? '96px'
-                    : medias.length === 1 && !vertical
-                      ? '128px'
-                      : 'unset',
-                maxHeight: `${height}px`,
+                maxWidth,
+                maxHeight,
               }}
               className="rm-card-media"
               mode="aspectFill"
@@ -172,6 +176,7 @@ RMCard.propTypes = {
   renderActions: PropTypes.element,
   MediaProps: PropTypes.shape({
     height: PropTypes.number,
+    width: PropTypes.number,
     placement: PropTypes.oneOf(['left', 'right']),
   }),
 };

@@ -125,11 +125,12 @@ class RMTimelineItem extends Component {
                   )}
                 </View>
               )}
-              {!title && date && (
-                <View>
-                  <RMTypography className="body1">{date}</RMTypography>
-                </View>
-              )}
+              {!title &&
+                date && (
+                  <View>
+                    <RMTypography className="body1">{date}</RMTypography>
+                  </View>
+                )}
               {remark && (
                 <View>
                   <RMTypography className="body1">{remark}</RMTypography>

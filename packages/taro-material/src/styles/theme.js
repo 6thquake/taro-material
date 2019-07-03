@@ -9,13 +9,13 @@ const theme = {
       white: '#fff',
       type: 'light',
     },
-    inherit:{
+    inherit: {
       light: 'inherit',
       main: 'inherit',
       dark: 'inherit',
-      contrastText:'inherit',
+      contrastText: 'inherit',
     },
-    default:{
+    default: {
       light: '#fafafa',
       main: '#eeeeee',
       dark: '#212121',
