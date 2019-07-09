@@ -55,7 +55,7 @@ class RMCard extends Component {
         : medias.length === 1 && !vertical
           ? '128px'
           : 'unset';
-    const maxHeight = `${height || 56}px`;
+    const maxHeight = `${height || 64}px`;
 
     const titleJSX = title ? (
       <View className="rm-card-title">
@@ -191,7 +191,7 @@ RMCard.defaultProps = {
   customStyle: {},
   onClick: () => {},
   MediaProps: {
-    height: 56,
+    height: 64,
     placement: 'right',
   },
 };
