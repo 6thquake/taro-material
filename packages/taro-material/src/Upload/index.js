@@ -60,6 +60,8 @@ class RMUpload extends Component {
 
   componentDidMount() {
     // this.init()
+    this.reset();
+    this.init(this.props.files);
     const { onComponentDidMount } = this.props;
     onComponentDidMount && onComponentDidMount(this);
   }
@@ -293,17 +295,16 @@ class RMUpload extends Component {
               </View>
             );
           })}
-          {(multiple || length <= 0) &&
-            length < maxLength && (
-              <View className="clickToUpload" onClick={this.chooseImage}>
-                <View className="add">
-                  <RMIcon fontSize={28} color="default" block>
-                    add
-                  </RMIcon>
-                </View>
-                <View className="uploadText">{placeholder}</View>
+          {(multiple || length <= 0) && length < maxLength && (
+            <View className="clickToUpload" onClick={this.chooseImage}>
+              <View className="add">
+                <RMIcon fontSize={28} color="default" block>
+                  add
+                </RMIcon>
               </View>
-            )}
+              <View className="uploadText">{placeholder}</View>
+            </View>
+          )}
         </View>
         <View
           className={classNames({

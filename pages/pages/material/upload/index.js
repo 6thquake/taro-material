@@ -23,10 +23,17 @@ class Index extends RMPage {
     'https://code.aliyun.com/licoliu/resources/raw/master/images/discovery/4-3.JPG',
   ];
 
+  state = {
+    files: [
+      'https://code.aliyun.com/licoliu/resources/raw/master/images/navigators/contemplative-reptile.jpg',
+      'https://code.aliyun.com/licoliu/resources/raw/master/images/navigators/live-from-space.jpg',
+      'https://code.aliyun.com/licoliu/resources/raw/master/images/discovery/1-3.JPG',
+    ],
+  };
   componentWillMount() {}
 
   componentDidMount() {
-    this.handleChangeImages();
+    // this.handleChangeImages();
   }
 
   componentDidShow() {}
@@ -37,9 +44,9 @@ class Index extends RMPage {
     const length = this.files.length;
     const start = Math.floor(Math.random() * length);
     const end = start + Math.floor(Math.random() * (length - start));
-
+    const files = this.files.slice(0, end);
     this.setState({
-      files: this.files.slice(start, end),
+      files,
     });
   }
 
@@ -75,7 +82,7 @@ class Index extends RMPage {
 
         <View className="title">default value</View>
         <View className="upload">
-          <RMUpload files={files} />
+          <RMUpload files={this.state.files} />
           <RMButton color="primary" variant="contained" onClick={this.handleChangeImages}>
             换图片
           </RMButton>
