@@ -51,15 +51,15 @@ class RMCard extends Component {
     const maxWidth = width
       ? `${width}px`
       : medias.length === 2 && !vertical
-        ? '96px'
+        ? '90px'
         : medias.length === 1 && !vertical
-          ? '128px'
+          ? '120px'
           : 'unset';
     const maxHeight = `${height || 64}px`;
 
     const titleJSX = title ? (
       <View className="rm-card-title">
-        <RMTypography className="subheading" block>
+        <RMTypography className="body2" block>
           <View className="rm-card-title-text">{title}</View>
         </RMTypography>
       </View>
@@ -117,7 +117,7 @@ class RMCard extends Component {
 
           {header && (
             <View className="rm-card-header-title">
-              <RMTypography className="body2" block>
+              <RMTypography className="subheading" block>
                 {header}
               </RMTypography>
             </View>

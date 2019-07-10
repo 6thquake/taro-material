@@ -33,9 +33,12 @@
   &-body {
     padding: 0px #{$spacingUnit * 2}px;
     .rm-card-title {
-      padding-bottom: #{$spacingUnit}px;
+      padding-bottom: #{$spacingUnit * 2}px;
       &-text {
         @include lineClamp(2);
+        line-height: 1.8;
+        letter-spacing: #{$spacingUnit / 1.4}px;
+        word-spacing: #{$spacingUnit / 0.7}px;
       }
     }
     .rm-card-container {
@@ -44,12 +47,14 @@
       align-items: center;
       .rm-card-summary {
         flex: 1;
-        max-height: #{$spacingUnit * 16}px;
+        // max-height: #{$spacingUnit * 16}px;
         overflow: hidden;
         .rm-card-content {
           &-text {
-            line-height: 32px;
-            @include lineClamp(4);
+            @include lineClamp(3);
+            line-height: 1.6;
+            letter-spacing: #{$spacingUnit / 2}px;
+            word-spacing: #{$spacingUnit / 1}px;
           }
         }
       }
@@ -57,14 +62,14 @@
     &.alignLeft {
       .rm-card-container {
         .rm-card-summary {
-          margin-left: #{$spacingUnit}px;
+          margin-left: #{$spacingUnit * 2}px;
         }
       }
     }
     &.alignRight {
       .rm-card-container {
         .rm-card-summary {
-          margin-right: #{$spacingUnit}px;
+          margin-right: #{$spacingUnit * 2}px;
         }
       }
     }
@@ -78,7 +83,7 @@
     }
     &.multiMedias {
       .rm-card-medias {
-        padding-bottom: #{$spacingUnit}px;
+        padding-bottom: #{$spacingUnit * 2}px;
       }
     }
     .rm-card-medias {
@@ -115,7 +120,7 @@
     .rm-card-body {
       &.multiMedias {
         .rm-card-medias {
-          padding-top: #{$spacingUnit}px;
+          padding-top: #{$spacingUnit * 2}px;
         }
       }
       .rm-card-container {
@@ -145,11 +150,11 @@
           overflow: unset;
           padding: 0px #{$spacingUnit * 2}px;
           .rm-card-title {
-            padding: 0px 0px #{$spacingUnit}px 0px;
+            padding: 0px 0px #{$spacingUnit * 2}px 0px;
           }
         }
         .rm-card-medias {
-          padding-bottom: #{$spacingUnit}px;
+          padding-bottom: #{$spacingUnit * 2}px;
           .rm-card-media {
             &:only-child {
               margin: 0px;
