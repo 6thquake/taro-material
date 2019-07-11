@@ -209,86 +209,86 @@ class RMLivePlayer extends Component {
       sources,
       refreshable,
       hasPlayBar,
+      customStyle,
     } = this.props;
     const qualityItem = sources.filter(item => item.src === src)[0];
     const qualityName = qualityItem && qualityItem.name;
 
     return (
-      <View className="root">
-        <LivePlayer
-          onFullScreenChange={this.handleScreenChange}
-          onNetStatus={this.handleNetStatus}
-          onStateChange={this.handleStateChange}
-          autoplay={autoplay}
-          src={src}
-          mode={mode}
-          muted={muted}
-          orientation={orientation}
-          objectFit={objectFit}
-          minCache={minCache}
-          maxCache={maxCache}
-          id={livePlayerId}
-          className="player"
-          onError={theme.handleError}
-        >
-          <CoverView onClick={this.handlePlayerClick} className="box">
-            {!play && (
-              <CoverImage className="play-icon" onClick={this.handlePlay} src={RoundPlayCircle} />
-            )}
-            {loading && <CoverView className="loading">加载中...</CoverView>}
-            {show && (
-              <CoverView onClick={this.handleControlsClick} className="controls">
-                <CoverView className="left-box">
-                  {hasPlayBar && (
-                    <CoverImage
-                      onClick={this.togglePlay}
-                      className="image play-action"
-                      src={play ? RoundPauseCircle : RoundPlayCircle}
-                    />
-                  )}
-                  <CoverView className="title">{title}</CoverView>
-                </CoverView>
+      <LivePlayer
+        onFullScreenChange={this.handleScreenChange}
+        onNetStatus={this.handleNetStatus}
+        onStateChange={this.handleStateChange}
+        autoplay={autoplay}
+        src={src}
+        mode={mode}
+        muted={muted}
+        orientation={orientation}
+        objectFit={objectFit}
+        minCache={minCache}
+        maxCache={maxCache}
+        id={livePlayerId}
+        className="player"
+        onError={theme.handleError}
+        style={customStyle}
+      >
+        <CoverView onClick={this.handlePlayerClick} className="box">
+          {!play && (
+            <CoverImage className="play-icon" onClick={this.handlePlay} src={RoundPlayCircle} />
+          )}
+          {loading && <CoverView className="loading">加载中...</CoverView>}
+          {show && (
+            <CoverView onClick={this.handleControlsClick} className="controls">
+              <CoverView className="left-box">
+                {hasPlayBar && (
+                  <CoverImage
+                    onClick={this.togglePlay}
+                    className="image play-action"
+                    src={play ? RoundPauseCircle : RoundPlayCircle}
+                  />
+                )}
+                <CoverView className="title">{title}</CoverView>
+              </CoverView>
 
-                <CoverView className="actions">
-                  {refreshable && (
-                    <CoverView className="refresh action">
-                      <CoverImage className="image" onClick={this.handleRefresh} src={Refresh} />
+              <CoverView className="actions">
+                {refreshable && (
+                  <CoverView className="refresh action">
+                    <CoverImage className="image" onClick={this.handleRefresh} src={Refresh} />
+                  </CoverView>
+                )}
+                {isFullScreen &&
+                  qualityName && (
+                    <CoverView onClick={this.handleQulityClick} className="action quality">
+                      <CoverView className="name">{qualityName}</CoverView>
+                      <CoverImage className="arrow" src={qshow ? ArrowDown : ArrowUp} />
                     </CoverView>
                   )}
-                  {isFullScreen &&
-                    qualityName && (
-                      <CoverView onClick={this.handleQulityClick} className="action quality">
-                        <CoverView className="name">{qualityName}</CoverView>
-                        <CoverImage className="arrow" src={qshow ? ArrowDown : ArrowUp} />
-                      </CoverView>
-                    )}
-                  <CoverView className="screen action">
-                    <CoverImage
-                      className="image"
-                      onClick={this.toggleScreen.bind(this, isFullScreen)}
-                      src={isFullScreen ? FullScreenExit : FullScreen}
-                    />
-                  </CoverView>
+                <CoverView className="screen action">
+                  <CoverImage
+                    className="image"
+                    onClick={this.toggleScreen.bind(this, isFullScreen)}
+                    src={isFullScreen ? FullScreenExit : FullScreen}
+                  />
                 </CoverView>
               </CoverView>
-            )}
+            </CoverView>
+          )}
 
-            {qshow && (
-              <CoverView className="options">
-                {sources.map(item => (
-                  <CoverView
-                    onClick={theme.handleListClick.bind(this, item.src)}
-                    className="option"
-                    key={item.name}
-                  >
-                    {item.name}
-                  </CoverView>
-                ))}
-              </CoverView>
-            )}
-          </CoverView>
-        </LivePlayer>
-      </View>
+          {qshow && (
+            <CoverView className="options">
+              {sources.map(item => (
+                <CoverView
+                  onClick={theme.handleListClick.bind(this, item.src)}
+                  className="option"
+                  key={item.name}
+                >
+                  {item.name}
+                </CoverView>
+              ))}
+            </CoverView>
+          )}
+        </CoverView>
+      </LivePlayer>
     );
   }
 }

@@ -95,6 +95,17 @@ class Index extends RMPage {
             objectFit="fillCrop"
           />
         </View>
+
+        <View className="player">
+          <RMLivePlayer
+            hasPlayBar
+            title="新大陆店3"
+            sources={sources}
+            src="https://flvopen.ys7.com:9188/openlive/bc50090321624433bcd8f3625fce725b.flv"
+            objectFit="fillCrop"
+            customStyle={{ height: '100px' }}
+          />
+        </View>
       </View>
     );
   }

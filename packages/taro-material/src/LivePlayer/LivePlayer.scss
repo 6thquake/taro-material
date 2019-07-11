@@ -1,93 +1,90 @@
 @import '../styles/theme.scss';
 
-.root {
+.player {
   position: relative;
-  .player {
-    position: relative;
-    width: 100%;
-    background: black;
+  width: 100%;
+  background: black;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  // background: $palettePrimaryLight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: $palettePrimaryContrastText;
+}
+.loading {
+  font-size: 36px;
+}
+.play-icon {
+  width: 100px;
+  height: 100px;
+}
+.options {
+  border-radius: #{$spacingUnit}px;
+  position: absolute;
+  bottom: #{$spacingUnit * 11}px;
+  right: #{$spacingUnit * 14}px;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  opacity: 0.6;
+  font-size: 28px;
+  color: $palettePrimaryContrastText;
+  padding: #{$spacingUnit * 2}px;
+  .option {
+    padding: #{$spacingUnit * 3}px #{$spacingUnit * 4}px;
+    border-bottom: 2px solid $palettePrimaryContrastText;
   }
-  .box {
-    width: 100%;
-    height: 100%;
-    // background: $palettePrimaryLight;
+}
+.controls {
+  width: 100%;
+  // background: black;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: #{$spacingUnit * 2}px;
+  align-items: center;
+  padding: 0 #{$spacingUnit * 2}px;
+  .left-box {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    color: $palettePrimaryContrastText;
-  }
-  .loading {
-    font-size: 36px;
-  }
-  .play-icon {
-    width: 100px;
-    height: 100px;
-  }
-  .options {
-    border-radius: #{$spacingUnit}px;
-    position: absolute;
-    bottom: #{$spacingUnit * 11}px;
-    right: #{$spacingUnit * 14}px;
-    display: flex;
-    flex-direction: column;
-    background: black;
-    opacity: 0.6;
-    font-size: 28px;
-    color: $palettePrimaryContrastText;
-    padding: #{$spacingUnit * 2}px;
-    .option {
-      padding: #{$spacingUnit * 3}px #{$spacingUnit * 4}px;
-      border-bottom: 2px solid $palettePrimaryContrastText;
+    .image,
+    .title {
+      margin: 0 #{$spacingUnit * 2}px;
     }
-  }
-  .controls {
-    width: 100%;
-    // background: black;
-    opacity: 0.8;
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: #{$spacingUnit * 2}px;
-    align-items: center;
-    padding: 0 #{$spacingUnit * 2}px;
-    .left-box {
-      display: flex;
-      align-items: center;
-      .image,
-      .title {
-        margin: 0 #{$spacingUnit * 2}px;
-      }
-      .title {
-        color: $palettePrimaryContrastText;
-        font-size: 30px;
-      }
-    }
-    .actions {
-      display: flex;
+    .title {
       color: $palettePrimaryContrastText;
-      justify-content: flex-end;
       font-size: 30px;
-      .action {
-        margin: 0 #{$spacingUnit * 2}px;
+    }
+  }
+  .actions {
+    display: flex;
+    color: $palettePrimaryContrastText;
+    justify-content: flex-end;
+    font-size: 30px;
+    .action {
+      margin: 0 #{$spacingUnit * 2}px;
+    }
+    .quality {
+      display: flex;
+      position: relative;
+      align-items: center;
+      .name {
+        font-size: 28px;
+        margin-right: #{$spacingUnit / 2}px;
       }
-      .quality {
-        display: flex;
-        position: relative;
-        align-items: center;
-        .name {
-          font-size: 28px;
-          margin-right: #{$spacingUnit / 2}px;
-        }
-        .arrow {
-          width: 30px;
-          height: 30px;
-        }
+      .arrow {
+        width: 30px;
+        height: 30px;
       }
     }
   }
-  .image {
-    width: 56px;
-    height: 56px;
-  }
+}
+.image {
+  width: 56px;
+  height: 56px;
 }
