@@ -37,8 +37,8 @@
       &-text {
         @include lineClamp(2);
         line-height: 1.8;
-        letter-spacing: #{$spacingUnit / 1.4}px;
-        word-spacing: #{$spacingUnit / 0.7}px;
+        letter-spacing: #{$spacingUnit / 1.6}px;
+        word-spacing: #{$spacingUnit / 0.8}px;
       }
     }
     .rm-card-container {
@@ -53,8 +53,8 @@
           &-text {
             @include lineClamp(3);
             line-height: 1.6;
-            letter-spacing: #{$spacingUnit / 2}px;
-            word-spacing: #{$spacingUnit / 1}px;
+            letter-spacing: #{$spacingUnit / 2.4}px;
+            word-spacing: #{$spacingUnit / 1.2}px;
           }
         }
       }

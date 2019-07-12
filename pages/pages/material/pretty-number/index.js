@@ -86,6 +86,26 @@ class Index extends RMPage {
           <View className="number">
             <RMPrettyNumber value={undefined} />
           </View>
+
+          <View className="title">customStyle</View>
+          <View className="number">
+            <RMPrettyNumber
+              value="987654321.987654321"
+              prefix="$"
+              suffix="元"
+              digits={2}
+              customStyle={{ fontWeight: 900 }}
+            />
+          </View>
+          <View className="number">
+            <RMPrettyNumber
+              value="987654321.987654321"
+              prefix="$"
+              suffix="元"
+              digits={4}
+              customStyle={{ fontWeight: 100 }}
+            />
+          </View>
         </View>
       </View>
     );
