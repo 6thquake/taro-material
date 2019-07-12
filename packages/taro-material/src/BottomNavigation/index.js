@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -57,6 +57,7 @@ class RMBottomNavigation extends Component {
       actions,
       current,
       color,
+      size,
       iconSize,
       fontSize,
       selectedColor,
@@ -88,7 +89,7 @@ class RMBottomNavigation extends Component {
               key={item.title}
               onClick={this.handleClick.bind(this, i)}
             >
-              {item.iconType ? (
+              {item.iconType || item.image ? (
                 <RMBadge
                   variant={badge.variant || 'text'}
                   value={badge.value}
@@ -97,23 +98,38 @@ class RMBottomNavigation extends Component {
                   <View
                     className="at-tab-bar__icon"
                     style={{
-                      ...{ fontSize: `${iconSize}px` },
+                      ...{ fontSize: `${size || iconSize}px` },
                       ...{ color: current === i ? selectedStyle : defaultStyle },
+                      width: `${size || iconSize}px`,
+                      height: `${size || iconSize}px`,
                     }}
                   >
-                    <RMIcon prefixClass={item.iconPrefixClass} fontSize="inherit" color="inherit">
-                      {current === i && item.selectedIconType
-                        ? item.selectedIconType
-                        : item.iconType}
-                    </RMIcon>
+                    {item.image && (
+                      <Image
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          // background: theme.palette.background.paper,
+                        }}
+                        src={current === i && item.activeImage ? item.activeImage : item.image}
+                      />
+                    )}
+
+                    {!item.image && item.iconType && (
+                      <RMIcon prefixClass={item.iconPrefixClass} fontSize="inherit" color="inherit">
+                        {current === i && item.selectedIconType
+                          ? item.selectedIconType
+                          : item.iconType}
+                      </RMIcon>
+                    )}
                   </View>
                 </RMBadge>
               ) : null}
               <View>
                 <RMBadge
-                  variant={item.iconType ? 'text' : badge.variant}
-                  value={item.iconType ? '' : badge.value}
-                  maxValue={item.iconType ? 0 : badge.maxValue}
+                  variant={item.iconType || item.image ? 'text' : badge.variant}
+                  value={item.iconType || item.image ? '' : badge.value}
+                  maxValue={item.iconType || item.image ? 0 : badge.maxValue}
                 >
                   <View className="at-tab-bar__title" style={titleStyle}>
                     <RMTypography className="caption" color="inherit" fontSize="inherit">
@@ -138,6 +154,7 @@ RMBottomNavigation.defaultProps = {
   current: 0,
   iconSize: 28,
   fontSize: 10,
+  size: 28,
   color: theme.palette.text.secondary,
   selectedColor: theme.palette.primary.main,
   scroll: false,
@@ -153,6 +170,7 @@ RMBottomNavigation.propTypes = {
   current: PropTypes.number,
   iconSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   fontSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   color: PropTypes.string,
   selectedColor: PropTypes.string,
   scroll: PropTypes.bool,

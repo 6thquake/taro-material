@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 
 import { RMBottomNavigation, RMBackTop } from '../../../';
 
@@ -17,16 +17,30 @@ class Index extends RMPage {
   state = {
     current: 0,
     tabs: [
-      { title: '首页', iconType: 'home', size: 'inherit', badge: { variant: 'dot' } },
+      {
+        title: '首页',
+        image:
+          'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/%E6%88%91%E7%9A%84/%E7%94%B5%E5%AD%90%E5%AF%B9%E8%B4%A6%E5%8D%95.png',
+        activeImage:
+          'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/%E6%88%91%E7%9A%84/%E6%88%91%E7%9A%84%E9%92%B1%E5%8C%85.png',
+        size: 'inherit',
+        badge: { variant: 'dot' },
+      },
       {
         title: '日程',
-        iconType: 'event_note',
+        // iconType: 'event_note',
+        activeImage:
+          'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/%E6%88%91%E7%9A%84/%E6%88%91%E7%9A%84%E9%92%B1%E5%8C%85.png',
+        image:
+          'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/%E6%88%91%E7%9A%84/%E6%8E%88%E6%9D%83.png',
         size: 'inherit',
         badge: { variant: 'text', value: 999, maxValue: 99 },
       },
       {
         title: '发现',
         iconType: 'person_pin_circle',
+        // image:
+        //   'https://code.aliyun.com/licoliu/resources/raw/master/images/icons/v1/jihemendian.png',
         size: 'inherit',
         badge: { value: '热', variant: 'mark' },
       },
@@ -59,7 +73,6 @@ class Index extends RMPage {
     const { current, tabs } = this.state;
     return (
       <View className="root">
-        <View class="body" />
         <RMBottomNavigation
           fixed
           actions={tabs}
