@@ -37,14 +37,14 @@
       &-text {
         @include lineClamp(2);
         line-height: 1.8;
-        letter-spacing: #{$spacingUnit / 1.6}px;
-        word-spacing: #{$spacingUnit / 0.8}px;
+        // letter-spacing: #{$spacingUnit / 1.6}px;
+        // word-spacing: #{$spacingUnit / 0.8}px;
       }
     }
     .rm-card-container {
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       .rm-card-summary {
         flex: 1;
         // max-height: #{$spacingUnit * 16}px;
@@ -53,8 +53,8 @@
           &-text {
             @include lineClamp(3);
             line-height: 1.6;
-            letter-spacing: #{$spacingUnit / 2.4}px;
-            word-spacing: #{$spacingUnit / 1.2}px;
+            // letter-spacing: #{$spacingUnit / 2.4}px;
+            // word-spacing: #{$spacingUnit / 1.2}px;
           }
         }
       }
