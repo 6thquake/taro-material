@@ -47,6 +47,7 @@ class Index extends RMPage {
     const files = this.files.slice(0, end);
     this.setState({
       files,
+      // hello: '',
     });
   }
 

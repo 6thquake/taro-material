@@ -52,7 +52,10 @@ class RMUpload extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { files } = this.props;
-    if (files !== nextProps.files) {
+    let isEqual =
+      files.length === nextProps.files.length &&
+      files.every((item, i) => item === nextProps.files[i]);
+    if (!isEqual) {
       this.reset();
       this.init(nextProps.files);
     }
