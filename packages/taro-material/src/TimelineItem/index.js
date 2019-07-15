@@ -48,7 +48,7 @@ class RMTimelineItem extends Component {
         color = theme.palette.progress.main;
         break;
       default:
-        color = theme.palette.grey['300'];
+        color = theme.palette.text.secondary;
         break;
     }
 
