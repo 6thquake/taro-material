@@ -19,7 +19,12 @@ class RMCarousel extends Component {
 
   handleChange(e) {
     const { onChange } = this.props;
-    onChange && onChange(e.target.value, e, ...arguments);
+    onChange && onChange(...arguments);
+  }
+
+  handleClick(e, item, index) {
+    const { onClick } = this.props;
+    onClick && onClick(...arguments);
   }
 
   render() {
@@ -59,7 +64,11 @@ class RMCarousel extends Component {
       >
         {items.length > 0 &&
           items.map((item, index) => (
-            <SwiperItem key={item.id || item.src} className="item">
+            <SwiperItem
+              key={item.id || item.src}
+              className="item"
+              onClick={this.handleClick.bind(this, item, index)}
+            >
               <Image className="image" src={item.src} mode="aspectFill" />
             </SwiperItem>
           ))}
@@ -120,6 +129,7 @@ RMCarousel.propTypes = {
    * current 改变时会触发 change 事件
    */
   onChange: PropTypes.func,
+  onClick: PropTypes.func,
 
   customStyle: PropTypes.object,
 };
@@ -135,6 +145,7 @@ RMCarousel.defaultProps = {
   current: 0,
   customStyle: {},
   onChange: () => {},
+  onClick: () => {},
 };
 
 export default RMCarousel;

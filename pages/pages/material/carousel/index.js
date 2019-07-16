@@ -36,6 +36,14 @@ class Index extends Component {
 
   componentDidHide() {}
 
+  handleChange() {
+    console.log(...arguments);
+  }
+
+  handleClick() {
+    console.log(...arguments);
+  }
+
   render() {
     const { items } = this.state;
     return (
@@ -43,7 +51,12 @@ class Index extends Component {
         <View className="body">
           <View className="title">carousel, 100vh images</View>
           <View className="carousel">
-            <RMCarousel customStyle={{ height: '100vh' }} items={items} />
+            <RMCarousel
+              customStyle={{ height: '100vh' }}
+              items={items}
+              onChange={this.handleChange}
+              onClick={this.handleClick}
+            />
           </View>
           <View className="spacer" />
 
