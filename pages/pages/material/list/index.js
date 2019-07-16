@@ -145,6 +145,7 @@ export default class ListPage extends Component {
                     badge={{
                       variant: 'dot',
                     }}
+                    image="https://code.aliyun.com/licoliu/resources/raw/master/images/icons/%E6%88%91%E7%9A%84/%E5%8F%91%E7%A5%A8%E5%B7%A5%E5%85%B7.png"
                   />
                   <RMListItem
                     title="标题文字"

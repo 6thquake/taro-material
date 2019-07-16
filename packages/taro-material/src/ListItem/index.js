@@ -65,6 +65,7 @@ class RMListItem extends Component {
       customStyle,
       customExtraStyle,
       badge = { dot: false, value: '', maxValue: 0 },
+      image,
     } = this.props;
 
     let arrowIcon = null;
@@ -85,7 +86,7 @@ class RMListItem extends Component {
     const rootClass = classNames(
       'at-list__item',
       {
-        'at-list__item--thumb': thumb || iconThumb,
+        'at-list__item--thumb': thumb || iconThumb || image,
         'at-list__item--multiple': note,
         'at-list__item--no-border': !hasBorder,
       },
@@ -97,6 +98,11 @@ class RMListItem extends Component {
         {thumb && (
           <View className="at-list__item-thumb item-thumb">
             <Image className="item-thumb-info" mode="scaleToFill" src={thumb} />
+          </View>
+        )}
+        {image && (
+          <View className="at-list__item-thumb item-thumb">
+            <Image className="item-thumb-info" mode="scaleToFill" src={image} />
           </View>
         )}
         {iconThumb && (
@@ -181,17 +187,13 @@ class RMListItem extends Component {
             </View>
           </RMBadge>
 
-          {!extraText &&
-            !extraThumb &&
-            !extraIconThumb &&
-            !isSwitch &&
-            (badge.dot || badge.value) && (
-              <View
-                className={classNames({
-                  'item-extra__badge-num': badge.value,
-                })}
-              />
-            )}
+          {!extraText && !extraThumb && !extraIconThumb && !isSwitch && (badge.dot || badge.value) && (
+            <View
+              className={classNames({
+                'item-extra__badge-num': badge.value,
+              })}
+            />
+          )}
 
           {arrowIcon && (
             <View
@@ -276,6 +278,7 @@ RMListItem.propTypes = {
     maxValue: PropTypes.number,
   }),
   wrap: PropTypes.bool,
+  image: PropTypes.string,
 };
 
 export default RMListItem;
