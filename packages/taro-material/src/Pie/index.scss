@@ -1,0 +1,44 @@
+@import '../styles/theme.scss';
+
+.pieContainer {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  border-radius: 50%;
+  background-color: $paletteGrey300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.raised {
+    box-shadow: $shadows1;
+  }
+
+  .pieWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .pie {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      clip: rect(0px, 64px, 64px, 32px);
+
+      // &:before,
+      .before {
+        position: absolute;
+        // content: '';
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        clip: rect(0px, 32px, 64px, 0px);
+      }
+    }
+  }
+  .text {
+    position: relative;
+    z-index: 1;
+  }
+}

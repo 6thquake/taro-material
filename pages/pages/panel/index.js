@@ -371,6 +371,10 @@ export default class PanelBasic extends Component {
             name: '面板',
           },
           {
+            id: 'Pie',
+            name: '饼图',
+          },
+          {
             id: 'Postmark',
             name: '徽章',
           },

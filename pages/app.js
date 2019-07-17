@@ -103,6 +103,7 @@ class App extends Component {
       'pages/material/trends/index',
       'pages/material/card/index',
       'pages/material/toggle-button/index',
+      'pages/material/pie/index',
     ],
     window: {
       backgroundTextStyle: 'light',

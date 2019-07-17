@@ -116,6 +116,7 @@ export { default as RMPrettyNumber } from './PrettyNumber';
 export { default as RMIndexes } from './Indexes';
 export { default as RMTrends } from './Trends';
 export { default as RMCard } from './Card';
+export { default as RMPie } from './Pie';
 
 export { default as ago, greet } from './utils/date';
 export { default as chunk } from './utils/chunk';
