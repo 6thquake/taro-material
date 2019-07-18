@@ -101,6 +101,19 @@ class Index extends RMPage {
               color={theme.palette.secondary.dark}
             />
           </View>
+
+          <View className="title">digits</View>
+          <View className="pie">
+            <RMPie
+              width={64}
+              height={64}
+              data={[{ title: '1', percent: 0.131415 }]}
+              digits={4}
+              color={theme.palette.secondary.dark}
+              fontColor={theme.palette.secondary.light}
+              fontSize={16}
+            />
+          </View>
         </View>
       </View>
     );

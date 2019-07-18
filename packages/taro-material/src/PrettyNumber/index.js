@@ -8,12 +8,22 @@ import { format } from '../utils/math';
 
 class RMPrettyNumber extends Component {
   render() {
-    const { className, value, digits, fontSize, color, prefix, suffix, customStyle } = this.props;
+    const {
+      className,
+      value,
+      digits,
+      fontSize,
+      color,
+      prefix,
+      suffix,
+      block,
+      customStyle,
+    } = this.props;
 
     const nums = format(value * 1, digits).split('.');
 
     return (
-      <RMTypography className={className} color={color} customStyle={customStyle}>
+      <RMTypography className={className} color={color} customStyle={customStyle} block={block}>
         <Text style={{ fontSize: `${fontSize / 2}px`, lineHeight: `${fontSize}px` }}>{prefix}</Text>
         <Text style={{ fontSize: `${fontSize}px`, lineHeight: `${fontSize}px` }}>{nums[0]}</Text>
         <Text style={{ fontSize: `${fontSize / 2}px`, lineHeight: `${fontSize}px` }}>
@@ -32,6 +42,7 @@ RMPrettyNumber.defaultProps = {
   prefix: '',
   suffix: '',
   customStyle: {},
+  block: false,
 };
 
 RMPrettyNumber.propTypes = {
@@ -41,6 +52,7 @@ RMPrettyNumber.propTypes = {
   color: PropTypes.string,
   prefix: PropTypes.string,
   suffix: PropTypes.string,
+  block: PropTypes.bool,
 };
 
 export default RMPrettyNumber;

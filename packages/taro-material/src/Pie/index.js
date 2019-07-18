@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import { View } from '@tarojs/components';
 
-import RMTypography from '../Typography';
+import RMPrettyNumber from '../PrettyNumber';
 
 import { lighten } from '../utils/colorManipulator';
 
@@ -19,7 +19,17 @@ class Pie extends Component {
   componentDidHide() {}
 
   render() {
-    const { width, height, data, raised, color, fontSize, fontColor, customStyle } = this.props;
+    const {
+      width,
+      height,
+      data,
+      raised,
+      digits,
+      color,
+      fontSize,
+      fontColor,
+      customStyle,
+    } = this.props;
 
     let sum = 0.1;
     let size = { width: `${width}px`, height: `${height}px` };
@@ -99,9 +109,15 @@ class Pie extends Component {
 
         {data.length === 1 && (
           <View className="text">
-            <RMTypography className="body2" fontSize={fontSize} block color={'inherit'}>
-              {data[0].percent * 100}%
-            </RMTypography>
+            <RMPrettyNumber
+              value={data[0].percent * 100}
+              prefix=""
+              suffix="%"
+              digits={digits}
+              fontSize={fontSize}
+              color={'inherit'}
+              block
+            />
           </View>
         )}
       </View>
@@ -115,6 +131,7 @@ Pie.defaultProps = {
   height: 32,
   raised: false,
   fontSize: 12,
+  digits: 2,
   fontColor: theme.palette.text.primary,
   data: [],
   color: theme.palette.primary.main,
@@ -128,5 +145,6 @@ Pie.propTypes = {
   fontSize: PropTypes.number,
   fontColor: PropTypes.string,
   color: PropTypes.string,
+  digits: PropTypes.number,
 };
 export default Pie;
