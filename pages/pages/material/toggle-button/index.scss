@@ -1,0 +1,16 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+  // height: 100vh;
+  padding: 0 #{$spacingUnit * 2}px;
+  padding-bottom: #{$spacingUnit * 6}px;
+  .title {
+    margin: #{$spacingUnit * 3}px;
+  }
+  .box {
+    margin: #{$spacingUnit * 2}px 0;
+  }
+}

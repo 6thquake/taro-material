@@ -5,7 +5,7 @@
 
 ## 使用指南
 
-要求 taro-ui 版本在`1.4.0`以上，在 Taro 文件中引入组件
+要求 taro-material 版本在`1.4.0`以上，在 Taro 文件中引入组件
 
 :::demo
 ```js
@@ -17,7 +17,7 @@ import { AtCurtain } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/curtain.scss";
+@import "~taro-material/dist/style/components/curtain.scss";
 ```
 :::
 
@@ -79,7 +79,7 @@ export default class TagPage extends Taro.Component {
 | 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
 | ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
 | isOpened | 是否开启 | Boolean  | - | false |
-| closeBtnPosition | 关闭图标位置 | String  | 'top'， 'bottom' | bottom |
+| closeBtnPosition | 关闭图标位置 | String  | 'top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right' | bottom |
 
 ## 事件
 

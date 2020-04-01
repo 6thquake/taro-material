@@ -1,0 +1,30 @@
+@import '../styles/theme.scss';
+
+.rm-float-bar {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background: inherit;
+  &--fixed-top {
+    position: fixed;
+    top: 60;
+    z-index: #{$zIndexAppBar - 10};
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  &--fixed-bottom {
+    position: fixed;
+    bottom: 60;
+    z-index: #{$zIndexAppBar - 10};
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+.rm-float-bar-child {
+  line-height: 60px;
+  padding: 8px 24px;
+  display: flex;
+  text-align: center;
+  display: inline-block;
+  border-radius: 60px;
+}

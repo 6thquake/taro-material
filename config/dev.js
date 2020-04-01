@@ -3,6 +3,19 @@ module.exports = {
   env: {
     NODE_ENV: '"development"',
   },
+  plugins: {
+    babel: {
+      sourceMap: true,
+    },
+    uglify: {
+      enable: false,
+      config: {},
+    },
+    csso: {
+      enable: false,
+      config: {},
+    },
+  },
   defineConstants: {},
   weapp: {
     module: {
@@ -18,6 +31,7 @@ module.exports = {
   h5: {
     devServer: {
       host: '0.0.0.0',
+      disableHostCheck: true,
       port: 8080,
     },
   },

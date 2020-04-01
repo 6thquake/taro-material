@@ -60,14 +60,21 @@ export { default as AtCalendar } from './components/calendar';
 export { default as AtLoading } from './components/loading';
 export { default as AtComponent } from './common/component';
 
+export { default as RMActionBar } from './ActionBar';
+export { default as RMActionFilter } from './ActionFilter';
 export { default as RMAffix } from './Affix';
+export { default as RMAsyncSelect } from './AsyncSelect';
 export { default as RMAutocomplete } from './Autocomplete';
 export { default as RMBackTop } from './BackTop';
+export { default as RMBottomNavigation } from './BottomNavigation';
 export { default as RMButton } from './Button';
 export { default as RMCarousel } from './Carousel';
+export { default as RMCheckbox } from './Checkbox';
+export { default as RMCheckboxGroup } from './CheckboxGroup';
 export { default as RMDrawer } from './Drawer';
 export { default as RMDropdown } from './Dropdown';
-export { default as RMFilters } from './Filters';
+export { default as RMFilter } from './Filter';
+export { default as RMFloatBar } from './FloatBar';
 export { default as RMIcon } from './Icon';
 export { default as RMInput } from './Input';
 export { default as RMList } from './List';
@@ -79,37 +86,36 @@ export { default as RMPage } from './Page';
 export { default as RMPanel } from './Panel';
 export { default as RMDatePicker } from './Picker';
 export { default as RMPostmark } from './Postmark';
+export { default as RMRadio } from './Radio';
+export { default as RMRadioGroup } from './RadioGroup';
 export { default as RMSearch } from './Search';
 export { default as RMSelect } from './Select';
 export { default as RMSwitch } from './Switch';
-export { default as RMRadio } from './Radio';
-export { default as RMRadioGroup } from './RadioGroup';
-export { default as RMCheckbox } from './Checkbox';
-export { default as RMAsyncSelect } from './AsyncSelect';
-export { default as RMTabBar } from './TabBar';
 export { default as RMTag } from './Tag';
-export { default as RMTextArea } from './TextArea';
+export { default as RMTextarea } from './Textarea';
 export { default as RMTextField } from './TextField';
 export { default as RMTimeline } from './Timeline';
-export { default as RMToolBar } from './ToolBar';
+export { default as RMTimelineItem } from './TimelineItem';
 export { default as RMTypography } from './Typography';
 export { default as RMUpload } from './Upload';
 export { default as RMWatermark } from './Watermark';
 export { default as RMNoticeBar } from './NoticeBar';
 export { default as RMNotice } from './Notice';
 export { default as RMTabs } from './Tabs';
-export { default as RMTabsPane } from './TabsPane';
+export { default as RMTab } from './Tab';
 export { default as RMMeter } from './Meter';
 export { default as RMStarVote } from './StarVote';
-export { default as RMSteps } from './Steps';
+export { default as RMStepper } from './Stepper';
 export { default as RMCoupon } from './Coupon';
 export { default as RMBadge } from './Badge';
 export { default as RMNavList } from './NavList';
 export { default as RMCountDown } from './CountDown';
 export { default as RMTimer } from './Timer';
+export { default as RMToggleButton } from './ToggleButton';
 export { default as RMPrettyNumber } from './PrettyNumber';
-export { default as RMTagBar } from './TagBar';
 export { default as RMIndexes } from './Indexes';
+export { default as RMTrends } from './Trends';
+export { default as RMCard } from './Card';
 
 export { default as ago, greet } from './utils/date';
 export { default as chunk } from './utils/chunk';
@@ -134,5 +140,18 @@ export {
   isDate,
 } from './utils/typeof';
 export { default as stringify, parse } from './utils/qs';
+export {
+  clamp,
+  convertHexToRGB,
+  rgbToHex,
+  decomposeColor,
+  recomposeColor,
+  getContrastRatio,
+  getLuminance,
+  emphasize,
+  fade,
+  darken,
+  lighten,
+} from './utils/colorManipulator';
 
 export { default as theme } from './styles/theme';

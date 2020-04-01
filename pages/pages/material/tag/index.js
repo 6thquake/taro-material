@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Button, Canvas } from '@tarojs/components';
 
-import { RMTag } from '../../../';
+import { RMTag, AtDivider } from '../../../';
 
 import RMPage from '../../../Page';
 
@@ -34,88 +34,37 @@ class Index extends RMPage {
           <RMTag color="success">success</RMTag>
           <RMTag color="warning">warning</RMTag>
           <RMTag color="progress">progress</RMTag>
+          <RMTag color="progress">热</RMTag>
 
-          <RMTag
-            circle={true}
-            color="default"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="default" active prefix="account_circle" suffix="alarm" block>
             default
           </RMTag>
-          <RMTag
-            circle={true}
-            color="inherit"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="inherit" active prefix="account_circle" suffix="alarm" block>
             inherit
           </RMTag>
-          <RMTag
-            circle={true}
-            color="primary"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="primary" active prefix="account_circle" suffix="alarm" block>
             primary
           </RMTag>
-          <RMTag
-            circle={true}
-            color="secondary"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="secondary" active prefix="account_circle" suffix="alarm" block>
             secondary
           </RMTag>
-          <RMTag
-            circle={true}
-            color="error"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="error" active prefix="account_circle" suffix="alarm" block>
             error
           </RMTag>
-          <RMTag
-            circle={true}
-            color="success"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="success" active prefix="account_circle" suffix="alarm" block>
             success
           </RMTag>
-          <RMTag
-            circle={true}
-            color="warning"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="warning" active prefix="account_circle" suffix="alarm" block>
             warning
           </RMTag>
-          <RMTag
-            circle={true}
-            color="progress"
-            active={true}
-            prefix={'account_circle'}
-            suffix={'alarm'}
-            block={true}
-          >
+          <RMTag circle color="progress" active prefix="account_circle" suffix="alarm" block>
             progress
           </RMTag>
+          <RMTag circle color="progress" active prefix="account_circle" suffix="alarm" block>
+            热
+          </RMTag>
 
+          <AtDivider />
           <RMTag color="default" size="small">
             default
           </RMTag>
@@ -140,183 +89,199 @@ class Index extends RMPage {
           <RMTag color="progress" size="small">
             progress
           </RMTag>
-
-          <RMTag color="default" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            default
-          </RMTag>
-          <RMTag color="inherit" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            inherit
-          </RMTag>
-          <RMTag color="primary" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            primary
-          </RMTag>
-          <RMTag color="secondary" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            secondary
-          </RMTag>
-          <RMTag color="error" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            error
-          </RMTag>
-          <RMTag color="success" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            success
-          </RMTag>
-          <RMTag color="warning" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            warning
-          </RMTag>
-          <RMTag color="progress" size="small" prefix={'account_circle'} suffix={'alarm'}>
-            progress
+          <RMTag color="progress" size="small">
+            热
           </RMTag>
 
-          <RMTag
-            circle={true}
-            color="default"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="default" size="small" prefix="account_circle" suffix="alarm">
             default
           </RMTag>
-          <RMTag
-            circle={true}
-            color="inherit"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="inherit" size="small" prefix="account_circle" suffix="alarm">
             inherit
           </RMTag>
-          <RMTag
-            circle={true}
-            color="primary"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="primary" size="small" prefix="account_circle" suffix="alarm">
+            primary
+          </RMTag>
+          <RMTag color="secondary" size="small" prefix="account_circle" suffix="alarm">
+            secondary
+          </RMTag>
+          <RMTag color="error" size="small" prefix="account_circle" suffix="alarm">
+            error
+          </RMTag>
+          <RMTag color="success" size="small" prefix="account_circle" suffix="alarm">
+            success
+          </RMTag>
+          <RMTag color="warning" size="small" prefix="account_circle" suffix="alarm">
+            warning
+          </RMTag>
+          <RMTag color="progress" size="small" prefix="account_circle" suffix="alarm">
+            progress
+          </RMTag>
+
+          <RMTag circle color="default" size="small" prefix="account_circle" suffix="alarm">
+            default
+          </RMTag>
+          <RMTag circle color="inherit" size="small" prefix="account_circle" suffix="alarm">
+            inherit
+          </RMTag>
+          <RMTag circle color="primary" size="small" prefix="account_circle" suffix="alarm">
+            primary
+          </RMTag>
+          <RMTag circle color="secondary" size="small" prefix="account_circle" suffix="alarm">
+            secondary
+          </RMTag>
+          <RMTag circle color="error" size="small" prefix="account_circle" suffix="alarm">
+            error
+          </RMTag>
+          <RMTag circle color="success" size="small" prefix="account_circle" suffix="alarm">
+            success
+          </RMTag>
+          <RMTag circle color="warning" size="small" prefix="account_circle" suffix="alarm">
+            warning
+          </RMTag>
+          <RMTag circle color="progress" size="small" prefix="account_circle" suffix="alarm">
+            progress
+          </RMTag>
+          <RMTag circle color="default" active size="small" prefix="account_circle" suffix="alarm">
+            default
+          </RMTag>
+          <RMTag circle color="inherit" active size="small" prefix="account_circle" suffix="alarm">
+            inherit
+          </RMTag>
+          <RMTag circle color="primary" active size="small" prefix="account_circle" suffix="alarm">
             primary
           </RMTag>
           <RMTag
-            circle={true}
+            circle
             color="secondary"
+            active
             size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
+            prefix="account_circle"
+            suffix="alarm"
           >
             secondary
           </RMTag>
-          <RMTag
-            circle={true}
-            color="error"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag circle color="error" active size="small" prefix="account_circle" suffix="alarm">
             error
           </RMTag>
-          <RMTag
-            circle={true}
-            color="success"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag circle color="success" active size="small" prefix="account_circle" suffix="alarm">
             success
           </RMTag>
-          <RMTag
-            circle={true}
-            color="warning"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag circle color="warning" active size="small" prefix="account_circle" suffix="alarm">
             warning
           </RMTag>
-          <RMTag
-            circle={true}
-            color="progress"
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag circle color="progress" active size="small" prefix="account_circle" suffix="alarm">
             progress
           </RMTag>
-          <RMTag
-            circle={true}
-            color="default"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag circle color="progress" active size="small" prefix="account_circle" suffix="alarm">
+            热
+          </RMTag>
+
+          <AtDivider />
+
+          <RMTag color="default" size="xs">
             default
           </RMTag>
-          <RMTag
-            circle={true}
-            color="inherit"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="inherit" size="xs">
             inherit
           </RMTag>
-          <RMTag
-            circle={true}
-            color="primary"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="primary" size="xs">
             primary
           </RMTag>
-          <RMTag
-            circle={true}
-            color="secondary"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="secondary" size="xs">
             secondary
           </RMTag>
-          <RMTag
-            circle={true}
-            color="error"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="error" size="xs">
             error
           </RMTag>
-          <RMTag
-            circle={true}
-            color="success"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="success" size="xs">
             success
           </RMTag>
-          <RMTag
-            circle={true}
-            color="warning"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="warning" size="xs">
             warning
           </RMTag>
-          <RMTag
-            circle={true}
-            color="progress"
-            active={true}
-            size="small"
-            prefix={'account_circle'}
-            suffix={'alarm'}
-          >
+          <RMTag color="progress" size="xs">
             progress
+          </RMTag>
+          <RMTag color="progress" size="xs">
+            热
+          </RMTag>
+
+          <RMTag color="default" size="xs" prefix="account_circle" suffix="alarm">
+            default
+          </RMTag>
+          <RMTag color="inherit" size="xs" prefix="account_circle" suffix="alarm">
+            inherit
+          </RMTag>
+          <RMTag color="primary" size="xs" prefix="account_circle" suffix="alarm">
+            primary
+          </RMTag>
+          <RMTag color="secondary" size="xs" prefix="account_circle" suffix="alarm">
+            secondary
+          </RMTag>
+          <RMTag color="error" size="xs" prefix="account_circle" suffix="alarm">
+            error
+          </RMTag>
+          <RMTag color="success" size="xs" prefix="account_circle" suffix="alarm">
+            success
+          </RMTag>
+          <RMTag color="warning" size="xs" prefix="account_circle" suffix="alarm">
+            warning
+          </RMTag>
+          <RMTag color="progress" size="xs" prefix="account_circle" suffix="alarm">
+            progress
+          </RMTag>
+
+          <RMTag circle color="default" size="xs" prefix="account_circle" suffix="alarm">
+            default
+          </RMTag>
+          <RMTag circle color="inherit" size="xs" prefix="account_circle" suffix="alarm">
+            inherit
+          </RMTag>
+          <RMTag circle color="primary" size="xs" prefix="account_circle" suffix="alarm">
+            primary
+          </RMTag>
+          <RMTag circle color="secondary" size="xs" prefix="account_circle" suffix="alarm">
+            secondary
+          </RMTag>
+          <RMTag circle color="error" size="xs" prefix="account_circle" suffix="alarm">
+            error
+          </RMTag>
+          <RMTag circle color="success" size="xs" prefix="account_circle" suffix="alarm">
+            success
+          </RMTag>
+          <RMTag circle color="warning" size="xs" prefix="account_circle" suffix="alarm">
+            warning
+          </RMTag>
+          <RMTag circle color="progress" size="xs" prefix="account_circle" suffix="alarm">
+            progress
+          </RMTag>
+          <RMTag circle color="default" active size="xs" prefix="account_circle" suffix="alarm">
+            default
+          </RMTag>
+          <RMTag circle color="inherit" active size="xs" prefix="account_circle" suffix="alarm">
+            inherit
+          </RMTag>
+          <RMTag circle color="primary" active size="xs" prefix="account_circle" suffix="alarm">
+            primary
+          </RMTag>
+          <RMTag circle color="secondary" active size="xs" prefix="account_circle" suffix="alarm">
+            secondary
+          </RMTag>
+          <RMTag circle color="error" active size="xs" prefix="account_circle" suffix="alarm">
+            error
+          </RMTag>
+          <RMTag circle color="success" active size="xs" prefix="account_circle" suffix="alarm">
+            success
+          </RMTag>
+          <RMTag circle color="warning" active size="xs" prefix="account_circle" suffix="alarm">
+            warning
+          </RMTag>
+          <RMTag circle color="progress" active size="xs" prefix="account_circle" suffix="alarm">
+            progress
+          </RMTag>
+          <RMTag circle color="progress" active size="xs" prefix="account_circle" suffix="alarm">
+            热
           </RMTag>
         </View>
       </View>

@@ -271,6 +271,18 @@ export default class PanelBasic extends Component {
         ],
         material: [
           {
+            id: 'Action-Bar',
+            name: '工具栏',
+          },
+          {
+            id: 'Action-Filter',
+            name: '筛选器',
+          },
+          {
+            id: 'Autocomplete',
+            name: '自动补全',
+          },
+          {
             id: 'Affix',
             name: '固钉',
           },
@@ -279,28 +291,60 @@ export default class PanelBasic extends Component {
             name: '返回顶部',
           },
           {
-            id: 'Autocomplete',
-            name: '自动补全',
+            id: 'Badge',
+            name: '徽章',
+          },
+          {
+            id: 'Bottom-Navigation',
+            name: '导航栏',
           },
           {
             id: 'Button',
             name: '按钮',
           },
           {
+            id: 'Card',
+            name: '卡片',
+          },
+          {
             id: 'Carousel',
             name: '滑块视图容器',
+          },
+          {
+            id: 'Coupon',
+            name: '优惠券',
+          },
+          {
+            id: 'Count-Down',
+            name: '倒计时',
           },
           {
             id: 'Date-Picker',
             name: '时间选择器',
           },
           {
-            id: 'Filters',
-            name: '筛选器',
+            id: 'Drawer',
+            name: '抽屉',
+          },
+          {
+            id: 'Filter',
+            name: '过滤条',
+          },
+          {
+            id: 'Float-Bar',
+            name: '浮动条',
           },
           {
             id: 'Icon',
             name: '图标',
+          },
+          {
+            id: 'Indexes',
+            name: '索引选择器',
+          },
+          {
+            id: 'List',
+            name: '列表',
           },
           {
             id: 'Live-Player',
@@ -309,6 +353,14 @@ export default class PanelBasic extends Component {
           {
             id: 'Loading',
             name: '加载',
+          },
+          {
+            id: 'Meter',
+            name: '表',
+          },
+          {
+            id: 'Nav-List',
+            name: '导航列表',
           },
           {
             id: 'Notice-Bar',
@@ -323,6 +375,10 @@ export default class PanelBasic extends Component {
             name: '徽章',
           },
           {
+            id: 'Pretty-Number',
+            name: '格式化数字',
+          },
+          {
             id: 'Search',
             name: '搜索框',
           },
@@ -331,16 +387,20 @@ export default class PanelBasic extends Component {
             name: '选择框',
           },
           {
+            id: 'Selection-Controls',
+            name: '选择控制',
+          },
+          {
+            id: 'Star-Vote',
+            name: '评分',
+          },
+          {
             id: 'Switch',
             name: '开关',
           },
           {
-            id: 'Steps',
+            id: 'Stepper',
             name: '步进器',
-          },
-          {
-            id: 'Tab-Bar',
-            name: '导航栏',
           },
           {
             id: 'Tabs',
@@ -355,8 +415,24 @@ export default class PanelBasic extends Component {
             name: '输入框',
           },
           {
-            id: 'Tool-Bar',
-            name: '工具栏',
+            id: 'Textarea',
+            name: '多行文本',
+          },
+          {
+            id: 'Timeline',
+            name: '时间轴',
+          },
+          {
+            id: 'Toggle-Button',
+            name: '切换按钮',
+          },
+          {
+            id: 'Trends',
+            name: 'Trends',
+          },
+          {
+            id: 'Typography',
+            name: '排版',
           },
           {
             id: 'Upload',
@@ -365,58 +441,6 @@ export default class PanelBasic extends Component {
           {
             id: 'Watermark',
             name: '水印',
-          },
-          {
-            id: 'Star-Vote',
-            name: '评分',
-          },
-          {
-            id: 'Meter',
-            name: '表',
-          },
-          {
-            id: 'Selection-Controls',
-            name: '选择控制',
-          },
-          {
-            id: 'Coupon',
-            name: '优惠券',
-          },
-          {
-            id: 'Badge',
-            name: '徽章',
-          },
-          {
-            id: 'Nav-List',
-            name: '导航列表',
-          },
-          {
-            id: 'Typography',
-            name: '排版',
-          },
-          {
-            id: 'Count-Down',
-            name: '倒计时',
-          },
-          {
-            id: 'Pretty-Number',
-            name: '格式化数字',
-          },
-          {
-            id: 'List',
-            name: '列表',
-          },
-          {
-            id: 'Tag-Bar',
-            name: '过滤条',
-          },
-          {
-            id: 'Indexes',
-            name: '索引选择器',
-          },
-          {
-            id: 'Drawer',
-            name: '抽屉',
           },
         ],
       },

@@ -1,3 +1,4 @@
+@import '../style/mixins/libs/line.scss';
 @import '../styles/theme.scss';
 
 .rm-notice {
@@ -12,11 +13,11 @@
 
   &-content {
     line-height: 36px;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     flex: 1;
+    @include line(1);
+    white-space: unset;
 
     .subheading,
     .body2,

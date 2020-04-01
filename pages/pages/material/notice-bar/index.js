@@ -13,7 +13,7 @@ class Index extends RMPage {
   };
 
   state = {
-    data: ['', ''],
+    data: [1, 2],
     show: true,
   };
 
@@ -23,7 +23,7 @@ class Index extends RMPage {
       if (data.length > 10) {
         return;
       }
-      data.push('');
+      data.push(data.length + 1);
       this.setState({ data });
     }, 3000);
   }
@@ -345,7 +345,7 @@ class Index extends RMPage {
           <View className="notice">
             <RMNoticeBar marquee rows={1} vertical infinite pauseTime={3000} duration={500}>
               {data.map((item, index) => (
-                <RMNotice title={`标题${index}`} rows={1} key={index}>
+                <RMNotice title={`标题${index}`} rows={1} key={item}>
                   单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
                 </RMNotice>
               ))}
@@ -354,7 +354,7 @@ class Index extends RMPage {
           <View className="notice">
             <RMNoticeBar marquee rows={2} vertical infinite pauseTime={3000} duration={500}>
               {data.map((item, index) => (
-                <RMNotice title={`标题${index}`} rows={2} key={index}>
+                <RMNotice title={`标题${index}`} rows={2} key={item}>
                   多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                   通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是
                   NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，结束。
@@ -430,14 +430,6 @@ class Index extends RMPage {
             </RMNoticeBar>
           </View>
           <View className="notice">
-            <RMNoticeBar icon="volume_up" marquee rows={1} color="action" showMore unread>
-              <RMNotice rows={1} color="action">
-                单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
-                通告栏，结束。
-              </RMNotice>
-            </RMNoticeBar>
-          </View>
-          <View className="notice">
             <RMNoticeBar icon="volume_up" marquee rows={1} color="disabled" showMore unread>
               <RMNotice rows={1} color="disabled">
                 单行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
@@ -459,7 +451,7 @@ class Index extends RMPage {
             <View style={style}>
               <RMNoticeBar marquee rows={2} vertical infinite pauseTime={1000} duration={500}>
                 {data.map((item, index) => (
-                  <RMNotice title={`标题${index}`} rows={2} key={index}>
+                  <RMNotice title={`标题${index}`} rows={2} key={item}>
                     多行文本 - 这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                     通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar
                     通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar

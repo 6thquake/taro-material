@@ -64,6 +64,28 @@ class Index extends RMPage {
           <View className="number">
             <RMPrettyNumber value="25.90" color={theme.palette.secondary.main} />
           </View>
+
+          <View className="title">DIGITS</View>
+          <View className="number">
+            <RMPrettyNumber value="987654321.987654321" prefix="$" suffix="元" digits={2} />
+          </View>
+          <View className="number">
+            <RMPrettyNumber value="987654321.987654321" prefix="$" suffix="元" digits={4} />
+          </View>
+
+          <View className="title">NaN</View>
+          <View className="number">
+            <RMPrettyNumber value="abc" />
+          </View>
+          <View className="number">
+            <RMPrettyNumber value="" />
+          </View>
+          <View className="number">
+            <RMPrettyNumber value={null} />
+          </View>
+          <View className="number">
+            <RMPrettyNumber value={undefined} />
+          </View>
         </View>
       </View>
     );

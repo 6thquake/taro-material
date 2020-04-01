@@ -29,7 +29,7 @@ class RMWatermark extends Component {
         // setTimeout(()=>{
         this.ctx = Taro.createCanvasContext(id, this.$scope);
         this.draw();
-        // },2000)
+        // }, 2000)
       },
     );
   }

@@ -153,7 +153,7 @@ class RMIndexes extends AtComponent {
           {dataList.items &&
             dataList.items.map((item, i) => (
               <RMListItem
-                key={i}
+                key={item.id || item.title || item.name}
                 title={item.title || item.name}
                 onClick={this.handleClick.bind(this, item)}
                 note={item.note}

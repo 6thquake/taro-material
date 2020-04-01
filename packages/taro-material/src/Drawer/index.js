@@ -68,7 +68,17 @@ export default class RMDrawer extends Component {
   }
 
   render() {
-    const { mask, width, right, items, itemsAlign, color, ListProps, ListItemProps } = this.props;
+    const {
+      mask,
+      width,
+      right,
+      items,
+      itemsAlign,
+      color,
+      dark,
+      ListProps,
+      ListItemProps,
+    } = this.props;
     const { animShow, show } = this.state;
     let rootClassName = ['at-drawer'];
 
@@ -102,49 +112,54 @@ export default class RMDrawer extends Component {
 
           <View
             className={classNames({
-              [color]: true,
               'at-drawer__content': true,
-              [itemsAlign]: true,
+              [color]: true,
+              dark,
             })}
             style={listStyle}
           >
-            {items.map((group, key) => (
-              <View key={key} className="at-drawer__wrapper">
-                <View className="at-drawer__list--title">{group.name}</View>
-                <RMList
-                  hasBorder={ListProps.hasBorder}
-                  customStyle={{ ...ListProps.customStyle, ...{ backgroundColor: 'transparent' } }}
-                >
-                  {group.children.map((item, index) => (
-                    <RMListItem
-                      key={index}
-                      data-index={index}
-                      onClick={this.onItemClick.bind(this, item)}
-                      arrow={item.arrow}
-                      disabled={item.disabled}
-                      note={item.note}
-                      title={item.title || item.name}
-                      thumb={item.thumb}
-                      iconThumb={item.iconThumb}
-                      iconThumbFill={item.iconThumbFill}
-                      iconThumbColor={item.iconThumbColor}
-                      isSwitch={item.isSwitch}
-                      switchIsCheck={item.switchIsCheck}
-                      extraText={item.extraText}
-                      extraTextColor={item.extraTextColor}
-                      extraThumb={item.extraThumb}
-                      extraIconThumb={item.extraIconThumb}
-                      extraIconThumbFill={item.extraIconThumbFill}
-                      extraIconThumbColor={item.extraIconThumbColor}
-                      hasBorder={ListItemProps.hasBorder}
-                      customStyle={ListItemProps.customStyle}
-                      customExtraStyle={ListItemProps.customExtraStyle}
-                    />
-                  ))}
-                </RMList>
-              </View>
-            ))}
-            {this.props.children}
+            <View className={classNames({ 'at-drawer__content__list': true, [itemsAlign]: true })}>
+              {items.map((group, key) => (
+                <View key={group.id || group.name} className="at-drawer__wrapper">
+                  <View className="at-drawer__list--title">{group.name}</View>
+                  <RMList
+                    hasBorder={ListProps.hasBorder}
+                    customStyle={{
+                      ...ListProps.customStyle,
+                      ...{ backgroundColor: 'transparent' },
+                    }}
+                  >
+                    {group.children.map((item, index) => (
+                      <RMListItem
+                        key={item.id || item.title || item.name}
+                        data-index={item.id || item.title || item.name}
+                        onClick={this.onItemClick.bind(this, item)}
+                        arrow={item.arrow}
+                        disabled={item.disabled}
+                        note={item.note}
+                        title={item.title || item.name}
+                        thumb={item.thumb}
+                        iconThumb={item.iconThumb}
+                        iconThumbFill={item.iconThumbFill}
+                        iconThumbColor={item.iconThumbColor}
+                        isSwitch={item.isSwitch}
+                        switchIsCheck={item.switchIsCheck}
+                        extraText={item.extraText}
+                        extraTextColor={item.extraTextColor}
+                        extraThumb={item.extraThumb}
+                        extraIconThumb={item.extraIconThumb}
+                        extraIconThumbFill={item.extraIconThumbFill}
+                        extraIconThumbColor={item.extraIconThumbColor}
+                        hasBorder={ListItemProps.hasBorder}
+                        customStyle={ListItemProps.customStyle}
+                        customExtraStyle={ListItemProps.customExtraStyle}
+                      />
+                    ))}
+                  </RMList>
+                </View>
+              ))}
+              {this.props.children}
+            </View>
           </View>
         </View>
       )
@@ -162,6 +177,7 @@ RMDrawer.defaultProps = {
   onItemClick: () => {},
   onClose: () => {},
   color: 'default',
+  dark: false,
   ListProps: { hasBorder: false },
   ListItemProps: { hasBorder: true },
 };
@@ -184,6 +200,7 @@ RMDrawer.propTypes = {
     'warning',
     'progress',
   ]),
+  dark: PropTypes.bool,
   ListProps: PropTypes.object,
   ListItemProps: PropTypes.object,
 };

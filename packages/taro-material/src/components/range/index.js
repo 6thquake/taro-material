@@ -1,105 +1,103 @@
-import Taro from '@tarojs/taro'
-import PropTypes from 'prop-types'
-import { View } from '@tarojs/components'
-import classNames from 'classnames'
-import { delayQuerySelector, getEventDetail } from '../../common/utils'
-import AtComponent from '../../common/component'
-
+import Taro from '@tarojs/taro';
+import PropTypes from 'prop-types';
+import { View } from '@tarojs/components';
+import classNames from 'classnames';
+import { delayQuerySelector, getEventDetail } from '../../common/utils';
+import AtComponent from '../../common/component';
 
 export default class AtRange extends AtComponent {
-  constructor (props) {
-    super(...arguments)
-    const { max, min } = props
+  constructor(props) {
+    super(...arguments);
+    const { max, min } = props;
     // range 宽度
-    this.width = 0
+    this.width = 0;
     // range 到屏幕左边的距离
-    this.left = 0
-    this.deltaValue = max - min
-    this.currentSlider = ''
+    this.left = 0;
+    this.deltaValue = max - min;
+    this.currentSlider = '';
     this.state = {
       aX: 0,
-      bX: 0
-    }
+      bX: 0,
+    };
   }
 
   handleClick = event => {
     if (this.currentSlider && !this.props.disabled) {
-      let sliderValue = 0
-      const detail = getEventDetail(event)
-      sliderValue = detail.x - this.left
-      this.setSliderValue(this.currentSlider, sliderValue, 'onChange')
+      let sliderValue = 0;
+      const detail = getEventDetail(event);
+      sliderValue = detail.x - this.left;
+      this.setSliderValue(this.currentSlider, sliderValue, 'onChange');
     }
+  };
+
+  handleTouchMove(sliderName, event) {
+    if (this.props.disabled) return;
+    event.stopPropagation();
+
+    const clientX = event.touches[0].clientX;
+    this.setSliderValue(sliderName, clientX - this.left, 'onChange');
   }
 
-  handleTouchMove (sliderName, event) {
-    if (this.props.disabled) return
-    event.stopPropagation()
+  handleTouchEnd(sliderName) {
+    if (this.props.disabled) return;
 
-    const clientX = event.touches[0].clientX
-    this.setSliderValue(sliderName, clientX - this.left, 'onChange')
+    this.currentSlider = sliderName;
+    this.triggerEvent('onAfterChange');
   }
 
-  handleTouchEnd (sliderName) {
-    if (this.props.disabled) return
-
-    this.currentSlider = sliderName
-    this.triggerEvent('onAfterChange')
-  }
-
-  setSliderValue (sliderName, targetValue, funcName) {
-    const distance = Math.min(Math.max(targetValue, 0), this.width)
-    const sliderValue = Math.floor((distance / this.width) * 100)
+  setSliderValue(sliderName, targetValue, funcName) {
+    const distance = Math.min(Math.max(targetValue, 0), this.width);
+    const sliderValue = Math.floor((distance / this.width) * 100);
     if (funcName) {
-      this.setState({
-        [sliderName]: sliderValue
-      }, () => (this.triggerEvent(funcName)))
+      this.setState(
+        {
+          [sliderName]: sliderValue,
+        },
+        () => this.triggerEvent(funcName),
+      );
     } else {
       this.setState({
-        [sliderName]: sliderValue
-      })
+        [sliderName]: sliderValue,
+      });
     }
   }
 
-  setValue (value) {
-    const aX = Math.round((value[0] / this.deltaValue) * 100)
-    const bX = Math.round((value[1] / this.deltaValue) * 100)
-    this.setState({ aX, bX })
+  setValue(value) {
+    const aX = Math.round((value[0] / this.deltaValue) * 100);
+    const bX = Math.round((value[1] / this.deltaValue) * 100);
+    this.setState({ aX, bX });
   }
 
-  triggerEvent (funcName) {
-    const { aX, bX } = this.state
-    const a = Math.round((aX / 100) * this.deltaValue)
-    const b = Math.round((bX / 100) * this.deltaValue)
-    const result = [a, b].sort()
+  triggerEvent(funcName) {
+    const { aX, bX } = this.state;
+    const a = Math.round((aX / 100) * this.deltaValue);
+    const b = Math.round((bX / 100) * this.deltaValue);
+    const result = [a, b].sort((x, y) => x - y);
 
     if (funcName === 'onChange') {
-      this.props.onChange(result)
+      this.props.onChange(result);
     } else if (funcName === 'onAfterChange') {
-      this.props.onAfterChange(result)
+      this.props.onAfterChange(result);
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    const { value } = nextProps
-    if (
-      this.props.value[0] !== value[0]
-      && this.props.value[1] !== value[1]
-    ) {
-      this.setValue(value)
+  componentWillReceiveProps(nextProps) {
+    const { value } = nextProps;
+    if (this.props.value[0] !== value[0] && this.props.value[1] !== value[1]) {
+      this.setValue(value);
     }
   }
 
-  componentDidMount () {
-    const { value } = this.props
-    delayQuerySelector(this, '.at-range__container', 0)
-      .then(rect => {
-        this.width = Math.round(rect[0].width)
-        this.left = Math.round(rect[0].left)
-        this.setValue(value)
-      })
+  componentDidMount() {
+    const { value } = this.props;
+    delayQuerySelector(this, '.at-range__container', 0).then(rect => {
+      this.width = Math.round(rect[0].width);
+      this.left = Math.round(rect[0].left);
+      this.setValue(value);
+    });
   }
 
-  render () {
+  render() {
     const {
       className,
       customStyle,
@@ -107,57 +105,61 @@ export default class AtRange extends AtComponent {
       railStyle,
       trackStyle,
       blockSize,
-      disabled
-    } = this.props
+      disabled,
+    } = this.props;
 
-    const rootCls = classNames('at-range', {
-      'at-range--disabled': disabled
-    }, className)
+    const rootCls = classNames(
+      'at-range',
+      {
+        'at-range--disabled': disabled,
+      },
+      className,
+    );
 
-    const { aX, bX } = this.state
+    const { aX, bX } = this.state;
     const sliderCommonStyle = {
       width: blockSize ? `${blockSize}PX` : '',
       height: blockSize ? `${blockSize}PX` : '',
       marginLeft: blockSize ? `${-blockSize / 2}PX` : '',
-    }
+    };
     const sliderAStyle = {
       ...sliderCommonStyle,
-      left: `${aX}%`
-    }
+      left: `${aX}%`,
+    };
     const sliderBStyle = {
       ...sliderCommonStyle,
-      left: `${bX}%`
-    }
+      left: `${bX}%`,
+    };
     const containerStyle = {
       height: blockSize ? `${blockSize}PX` : '',
-    }
-    const smallerX = Math.min(aX, bX)
-    const deltaX = Math.abs(aX - bX)
+    };
+    const smallerX = Math.min(aX, bX);
+    const deltaX = Math.abs(aX - bX);
     const atTrackStyle = {
       left: `${smallerX}%`,
-      width: `${deltaX}%`
-    }
+      width: `${deltaX}%`,
+    };
 
-    return <View className={rootCls} style={customStyle} onClick={this.handleClick}>
-      <View className='at-range__container' style={containerStyle}>
-        <View className='at-range__rail' style={railStyle}></View>
-        <View className='at-range__track' style={this.mergeStyle(atTrackStyle, trackStyle)}></View>
-        <View
-          className='at-range__slider'
-          style={this.mergeStyle(sliderAStyle, sliderStyle)}
-          onTouchMove={this.handleTouchMove.bind(this, 'aX')}
-          onTouchEnd={this.handleTouchEnd.bind(this, 'aX')}
-        >
-        </View>
-        <View
-          className='at-range__slider'
-          style={this.mergeStyle(sliderBStyle, sliderStyle)}
-          onTouchMove={this.handleTouchMove.bind(this, 'bX')}
-          onTouchEnd={this.handleTouchEnd.bind(this, 'bX')}
-        >
+    return (
+      <View className={rootCls} style={customStyle} onClick={this.handleClick}>
+        <View className="at-range__container" style={containerStyle}>
+          <View className="at-range__rail" style={railStyle} />
+          <View className="at-range__track" style={this.mergeStyle(atTrackStyle, trackStyle)} />
+          <View
+            className="at-range__slider"
+            style={this.mergeStyle(sliderAStyle, sliderStyle)}
+            onTouchMove={this.handleTouchMove.bind(this, 'aX')}
+            onTouchEnd={this.handleTouchEnd.bind(this, 'aX')}
+          />
+          <View
+            className="at-range__slider"
+            style={this.mergeStyle(sliderBStyle, sliderStyle)}
+            onTouchMove={this.handleTouchMove.bind(this, 'bX')}
+            onTouchEnd={this.handleTouchEnd.bind(this, 'bX')}
+          />
         </View>
       </View>
-    </View>
+    );
   }
 }
 
@@ -174,29 +176,14 @@ AtRange.defaultProps = {
   blockSize: 0,
   onChange: () => {},
   onAfterChange: () => {},
-}
+};
 
 AtRange.propTypes = {
-  customStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  className: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
-  sliderStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  railStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  trackStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  sliderStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  railStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  trackStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   isTest: PropTypes.bool,
   value: PropTypes.array,
   min: PropTypes.number,
@@ -205,4 +192,4 @@ AtRange.propTypes = {
   blockSize: PropTypes.number,
   onChange: PropTypes.func,
   onAfterChange: PropTypes.func,
-}
+};

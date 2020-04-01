@@ -1,0 +1,513 @@
+@import '../style/mixins/libs/tint';
+
+@import './theme.scss';
+
+@import '../Icon/Icon.scss';
+
+/* The Color of 7FRESH Brand */
+$color-brand: $palettePrimaryMain;
+$color-brand-light: $palettePrimaryLight;
+$color-brand-dark: $palettePrimaryDark;
+
+/* 辅助色 */
+$color-success: $paletteSuccessMain;
+$color-error: $paletteErrorMain;
+$color-warning: $paletteWarningMain;
+$color-info: $palettePrimaryLight;
+
+/* Color Palette */
+$color-black-0: $paletteCommonBlack !default;
+$color-black-1: $paletteGreyA400 !default;
+$color-black-2: $paletteGreyA700 !default;
+$color-black-3: $paletteGreyA200 !default;
+
+$color-grey-0: $paletteGrey900 !default;
+$color-grey-1: $paletteGrey700 !default;
+$color-grey-2: $paletteGrey500 !default;
+$color-grey-3: $paletteGrey300 !default;
+$color-grey-4: $paletteGrey200 !default;
+$color-grey-5: $paletteGrey100 !default;
+$color-grey-6: $paletteGrey50 !default;
+
+$color-white: $paletteCommonWhite !default;
+
+/* Text Color */
+$color-text-base: $paletteTextPrimary !default; // 文字的基本色
+$color-text-base-inverse: $paletteTextPrimary2 !default; // 反色
+$color-text-secondary: $paletteTextSecondary !default; // 辅助色
+$color-text-placeholder: $paletteTextHint !default;
+$color-text-disabled: $paletteTextDisabled !default;
+$color-text-title: $paletteTextPrimary !default; // 文章标题
+$color-text-paragraph: $paletteTextSecondary !default; // 文章段落
+
+/* Link */
+$color-link: $palettePrimaryMain !default;
+$color-link-hover: $palettePrimaryLight !default;
+$color-link-active: $palettePrimaryDark !default;
+$color-link-disabled: $paletteActionDisabled !default;
+
+/* 背景色 */
+$color-bg: $paletteBackgroundPaper !default;
+$color-bg-base: $paletteBackgroundDefault !default;
+$color-bg-light: $paletteBackgroundDefault !default;
+$color-bg-lighter: tint($color-bg-light, 50%) !default;
+$color-bg-grey: $paletteBackgroundDefault !default;
+
+/* 边框颜色 */
+$color-border-base: $paletteGrey200 !default;
+$color-border-split: tint($color-border-base, 20%) !default; // 分割线
+$color-border-light: tint($color-border-base, 30%) !default;
+$color-border-lighter: tint($color-border-base, 50%) !default;
+$color-border-lightest: tint($color-border-base, 80%) !default;
+$color-border-grey: $paletteGrey300 !default;
+
+/* 图标颜色 */
+$color-icon-base: $paletteGrey300 !default;
+
+/* z-index */
+$zindex-divider: $zIndexDivider !default;
+$zindex-steps: $zIndexMobileStepper !default;
+$zindex-tab: $zIndexBackTop !default;
+$zindex-form: $zIndexDropdown !default;
+$zindex-nav: $zIndexToolBar !default;
+$zindex-search-bar: $zIndexToolBar !default;
+$zindex-indexes: $zIndexAppBar !default;
+$zindex-flot-layout: #{$zIndexDrawer - 10} !default;
+$zindex-drawer: $zIndexDrawer !default;
+$zindex-modal: $zIndexModal !default;
+$zindex-action-sheet: #{$zIndexModal + 10} !default;
+$zindex-picker: #{$zIndexModal + 10} !default;
+$zindex-curtain: $zIndexCurtain !default;
+$zindex-message: $zIndexSnackbar !default;
+$zindex-toast: $zIndexTooltip !default;
+
+/* 组件样式 */
+$at-button-border-color-primary: transparent;
+$at-button-bg: linear-gradient(90deg, $palettePrimaryMain, $palettePrimaryMain 100%);
+
+$at-message-bg-color: $paletteGrey500;
+
+$at-tag-color: $color-text-base;
+$at-tag-color-primary: $color-brand-light;
+$at-tag-color-primary-active: $color-brand-light;
+$at-tag-border-color: $paletteGrey400;
+$at-tag-bg-color: $paletteBackgroundPaper;
+$at-tag-bg-color-primary: $paletteGrey200;
+$at-tag-bg-color-primary-active: $paletteGrey200;
+
+$at-range-track-bg-color: $color-brand-light;
+
+$at-indexes-nav-color: $color-text-title;
+
+$at-steps-bg-color-active: $color-brand-light;
+
+$at-timeline-dot-border-color: $color-brand;
+
+$at-calendar-day-color: $color-text-base;
+
+.at-icon,
+.at-icon::before {
+  @extend .rm-icon, .material-icons;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.at-icon-add::before {
+  content: 'add';
+}
+
+.at-icon-add-circle::before {
+  content: 'add_circle';
+}
+
+.at-icon-subtract::before {
+  content: 'remove';
+}
+
+.at-icon-subtract-circle::before {
+  content: 'remove_circle';
+}
+
+.at-icon-align-center::before {
+  content: 'format_align_center';
+}
+
+.at-icon-align-left::before {
+  content: 'format_align_left';
+}
+
+.at-icon-align-right::before {
+  content: 'format_align_right';
+}
+
+.at-icon-arrow-down::before {
+  content: 'arrow_downward';
+}
+
+.at-icon-arrow-left::before {
+  content: 'arrow_back';
+}
+
+.at-icon-arrow-right::before {
+  content: 'arrow_forward';
+}
+
+.at-icon-arrow-up::before {
+  content: 'arrow_upward';
+}
+
+.at-icon-bell::before {
+  content: 'notifications_none';
+}
+
+.at-icon-blocked::before {
+  content: 'block';
+}
+
+.at-icon-bookmark::before {
+  content: 'bookmark_border';
+}
+
+.at-icon-bullet-list::before {
+  content: 'list';
+}
+
+.at-icon-calendar::before {
+  content: 'date_range';
+}
+
+.at-icon-camera::before {
+  content: 'camera_alt';
+}
+
+.at-icon-check-circle::before {
+  content: 'check_circle';
+}
+
+.at-icon-chevron-down::before {
+  content: 'expand_more';
+}
+
+.at-icon-chevron-left::before {
+  content: 'chevron_left';
+}
+
+.at-icon-chevron-right::before {
+  content: 'chevron_right';
+}
+
+.at-icon-chevron-up::before {
+  content: 'expand_less';
+}
+
+.at-icon-clock::before {
+  content: 'access_time';
+}
+
+.at-icon-close-circle::before {
+  content: 'highlight_off';
+}
+
+.at-icon-close::before {
+  content: 'close';
+}
+
+.at-icon-credit-card::before {
+  content: 'credit_card';
+}
+
+.at-icon-download-cloud::before {
+  content: 'cloud_download';
+}
+
+.at-icon-download::before {
+  content: 'get_app';
+}
+
+.at-icon-edit::before {
+  content: 'edit';
+}
+
+.at-icon-equalizer::before {
+  content: 'tune';
+}
+
+.at-icon-external-link::before {
+  content: 'open_in_new';
+}
+
+.at-icon-eye::before {
+  content: 'visibility';
+}
+
+.at-icon-file-audio::before {
+  content: 'audiotrack';
+}
+
+.at-icon-file-code::before {
+  content: 'code';
+}
+
+.at-icon-file-generic::before {
+  content: 'insert_drive_file';
+}
+
+.at-icon-file-jpg::before {
+  content: 'image';
+}
+
+.at-icon-file-new::before {
+  content: 'note_add';
+}
+
+.at-icon-file-png::before {
+  content: 'image';
+}
+
+.at-icon-file-svg::before {
+  content: 'image';
+}
+
+.at-icon-file-video::before {
+  content: 'videocam';
+}
+
+.at-icon-filter::before {
+  content: 'filter_list';
+}
+
+.at-icon-folder::before {
+  content: 'folder_open';
+}
+
+.at-icon-font-color::before {
+  content: 'format_color_text';
+}
+
+.at-icon-heart::before {
+  content: 'favorite_border';
+}
+
+.at-icon-help::before {
+  content: 'help';
+}
+
+.at-icon-home::before {
+  content: 'home';
+}
+
+.at-icon-image::before {
+  content: 'image';
+}
+
+.at-icon-iphone-x::before {
+  content: 'phone_iphone';
+}
+
+.at-icon-iphone::before {
+  content: 'phone_iphone';
+}
+
+.at-icon-lightning-bolt::before {
+  content: 'flash_on';
+}
+
+.at-icon-link::before {
+  content: 'link';
+}
+
+.at-icon-list::before {
+  content: 'list';
+}
+
+.at-icon-lock::before {
+  content: 'lock';
+}
+
+.at-icon-mail::before {
+  content: 'email';
+}
+
+.at-icon-map-pin::before {
+  content: 'place';
+}
+
+.at-icon-menu::before {
+  content: 'menu';
+}
+
+.at-icon-message::before {
+  content: 'message';
+}
+
+.at-icon-money::before {
+  content: 'local_atm';
+}
+
+.at-icon-next::before {
+  content: 'skip_next';
+}
+
+.at-icon-numbered-list::before {
+  content: 'format_list_numbered';
+}
+
+.at-icon-pause::before {
+  content: 'pause';
+}
+
+.at-icon-phone::before {
+  content: 'phone';
+}
+
+.at-icon-play::before {
+  content: 'play_arrow';
+}
+
+.at-icon-playlist::before {
+  content: 'playlist_play';
+}
+
+.at-icon-prev::before {
+  content: 'skip_previous';
+}
+
+.at-icon-reload::before {
+  content: 'replay';
+}
+
+.at-icon-repeat-play::before {
+  content: 'repeat';
+}
+
+.at-icon-search::before {
+  content: 'search';
+}
+
+.at-icon-settings::before {
+  content: 'settings';
+}
+
+.at-icon-share-2::before {
+  content: 'call_made';
+}
+
+.at-icon-share::before {
+  content: 'share';
+}
+
+.at-icon-shopping-bag-2::before {
+  content: 'local_mall';
+}
+
+.at-icon-shopping-bag::before {
+  content: 'shopping_basket';
+}
+
+.at-icon-shopping-cart::before {
+  content: 'shopping_cart';
+}
+
+.at-icon-shuffle-play::before {
+  content: 'shuffle';
+}
+
+.at-icon-sketch::before {
+  content: 'android';
+}
+
+.at-icon-sound::before {
+  content: 'audiotrack';
+}
+
+.at-icon-star::before {
+  content: 'star_border';
+}
+
+.at-icon-stop::before {
+  content: 'stop';
+}
+
+.at-icon-streaming::before {
+  content: 'vibration';
+}
+
+.at-icon-tag::before {
+  content: 'local_offer';
+}
+
+.at-icon-tags::before {
+  content: 'style';
+}
+
+.at-icon-text-italic::before {
+  content: 'format_italic';
+}
+
+.at-icon-text-strikethrough::before {
+  content: 'format_strikethrough';
+}
+
+.at-icon-text-underline::before {
+  content: 'format_underlined';
+}
+
+.at-icon-trash::before {
+  content: 'delete';
+}
+
+.at-icon-upload::before {
+  content: 'unarchive';
+}
+
+.at-icon-user::before {
+  content: 'person';
+}
+
+.at-icon-video::before {
+  content: 'videocam';
+}
+
+.at-icon-volume-minus::before {
+  content: 'volume_down';
+}
+
+.at-icon-volume-off::before {
+  content: 'volume_mute';
+}
+
+.at-icon-volume-plus::before {
+  content: 'volume_up';
+}
+
+.at-icon-analytics::before {
+  content: 'trending_up';
+}
+
+.at-icon-star-2::before {
+  content: 'star';
+}
+
+.at-icon-check::before {
+  content: 'check';
+}
+
+.at-icon-heart-2::before {
+  content: 'favorite';
+}
+
+.at-icon-loading::before {
+  content: 'data_usage';
+}
+
+.at-icon-loading-2::before {
+  content: 'data_usage';
+}
+
+.at-icon-loading-3::before {
+  content: 'data_usage';
+}
+
+.at-icon-alert-circle::before {
+  content: 'error';
+}

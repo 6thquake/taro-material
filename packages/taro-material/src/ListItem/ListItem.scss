@@ -1,3 +1,4 @@
+@import '../style/mixins/libs/line.scss';
 @import '../styles/theme.scss';
 
 @function tint($color, $percent) {
@@ -174,19 +175,6 @@ $item-horizontal-padding: 24px;
   }
 }
 
-@mixin line($num: 1) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  @if ($num == 1) {
-    white-space: nowrap;
-  } @else {
-    display: -webkit-box;
-    -webkit-line-clamp: $num;
-    -webkit-box-orient: vertical;
-  }
-}
-
 .at-list__item {
   @include display-flex;
   @include align-items(center);
@@ -275,6 +263,9 @@ $item-horizontal-padding: 24px;
 
   &__info {
     @include line(1);
+    &.wrap {
+      @include line(2);
+    }
 
     color: $color-grey-2;
     max-width: 160px;

@@ -1,0 +1,130 @@
+@import '../style/mixins/libs/line.scss';
+@import '../styles/reset.scss';
+
+@function tint($color, $percent) {
+  @return mix($paletteCommonWhite, $color, $percent);
+}
+
+$hd: 2; // 基本单位
+
+/* Font */
+$font-size-xs: 10px * $hd; // 非常用字号，用于标签
+$font-size-sm: 12px * $hd; // 用于辅助信息
+$font-size-base: 14px * $hd; // 常用字号
+$font-size-lg: 16px * $hd; // 常规标题
+$font-size-xl: 18px * $hd; // 大标题
+$font-size-xxl: 20px * $hd; // 用于大号的数字
+
+/* Line Height */
+$line-height-base: 1; // 单行
+$line-height-en: 1.3; // 英文多行
+$line-height-zh: 1.5; // 中文多行
+
+/* 水平间距 */
+$spacing-h-sm: 5px * $hd;
+$spacing-h-md: 8px * $hd;
+$spacing-h-lg: 12px * $hd;
+$spacing-h-xl: 16px * $hd;
+
+/* 垂直间距 */
+$spacing-v-xs: 3px * $hd;
+$spacing-v-sm: 6px * $hd;
+$spacing-v-md: 9px * $hd;
+$spacing-v-lg: 12px * $hd;
+$spacing-v-xl: 15px * $hd;
+
+// 默认主题下 $color-border-lighter
+@mixin border-thin(
+  $color: $color-border-lighter,
+  $style: solid,
+  $directions: top bottom right left,
+  $width: 1px
+) {
+  @each $value in $directions {
+    border-#{$value}: $width $color $style;
+  }
+}
+
+@mixin border-thin-top($color: $color-border-lighter, $style: solid, $width: 1px) {
+  @include border-thin($color, $style, top, $width);
+}
+
+@mixin border-thin-left($color: $color-border-lighter, $style: solid, $width: 1px) {
+  @include border-thin($color, $style, left, $width);
+}
+
+@mixin border-thin-right($color: $color-border-lighter, $style: solid, $width: 1px) {
+  @include border-thin($color, $style, right, $width);
+}
+
+@mixin border-thin-bottom($color: $color-border-lighter, $style: solid, $width: 1px) {
+  @include border-thin($color, $style, bottom, $width);
+}
+
+/**
+ * 设置placeholder 颜色
+ */
+@mixin placeholder {
+  @at-root .placeholder {
+    color: $color-grey-3;
+  }
+
+  &::placeholder {
+    color: $color-grey-3;
+  }
+}
+
+.at-tab-bar {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  padding: $spacing-v-sm 0 $spacing-v-xs;
+  text-align: center;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: start;
+  background-color: $color-bg;
+  @include border-thin-top($width: 1px);
+
+  &__item {
+    flex: 1;
+    padding: $spacing-v-sm $spacing-v-sm 0;
+    color: $color-text-base;
+    font-size: $font-size-xs;
+    transition: all 0.2s;
+  }
+
+  &__icon {
+    line-height: 100%;
+    margin-bottom: -10px;
+  }
+
+  &__title {
+    display: block;
+    padding: $spacing-v-xs 0;
+    max-width: 200px;
+    font-size: $font-size-xs;
+    line-height: $line-height-base;
+
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    @include line(1);
+  }
+
+  &--fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: #{$zIndexAppBar - 10};
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &--ipx {
+    &.at-tab-bar--fixed {
+      // padding-bottom: 68px;
+    }
+  }
+}

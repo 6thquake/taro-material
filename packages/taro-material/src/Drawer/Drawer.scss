@@ -34,46 +34,62 @@ $timing-func: cubic-bezier(0.36, 0.66, 0.04, 1);
     overflow: auto;
     z-index: #{$zIndexDrawer + 2};
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: $paletteBackgroundPaper;
+    color: $paletteTextPrimary;
 
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
-
-    &.top {
-      justify-content: flex-start;
-    }
-    &.middle {
-      justify-content: center;
-    }
-    &.bottom {
-      justify-content: flex-end;
+    &.dark {
+      background: $paletteCommonBlack;
+      color: $paletteTextPrimary2;
     }
 
     &.default {
-      background-color: $paletteBackgroundPaper;
     }
     &.inherit {
-      background-color: inherit;
+      color: inherit;
     }
     &.primary {
-      background-color: $palettePrimaryMain;
+      color: $palettePrimaryMain;
     }
     &.secondary {
-      background-color: $paletteSecondaryMain;
+      color: $paletteSecondaryMain;
     }
     &.error {
-      background-color: $paletteErrorMain;
+      color: $paletteErrorMain;
     }
     &.success {
-      background-color: $paletteSuccessMain;
+      color: $paletteSuccessMain;
     }
     &.warning {
-      background-color: $paletteWarningMain;
+      color: $paletteWarningMain;
     }
     &.progress {
-      background-color: $paletteProgressMain;
+      color: $paletteProgressMain;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+
+      padding-bottom: constant(safe-area-inset-bottom);
+      padding-bottom: env(safe-area-inset-bottom);
+
+      &.top {
+        justify-content: flex-start;
+      }
+      &.middle {
+        justify-content: center;
+      }
+      &.bottom {
+        justify-content: flex-end;
+      }
     }
   }
 

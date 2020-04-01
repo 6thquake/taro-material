@@ -1,0 +1,37 @@
+@import '../../../styles/theme.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: $paletteBackgroundDefault;
+
+  .card,
+  .spacer {
+    position: relative;
+  }
+
+  .card {
+    &.center {
+      width: 80%;
+      margin: 8% auto;
+    }
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .spacing {
+      flex: 1;
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: 500;
+    background: #fff;
+    border-left: 10px solid #03a9f4;
+    border-bottom: 1px solid #eee;
+    padding: 16px;
+  }
+}

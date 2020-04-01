@@ -4,13 +4,6 @@
 
 .at-switch {
   flex: 1;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // background-color: $color-bg;
-  // padding: $spacing-v-lg $spacing-h-xl $spacing-v-lg 0;
-  // @include hairline-bottom();
-  // margin: #{$spacingUnit*2}px #{$spacingUnit}px #{$spacingUnit}px #{$spacingUnit}px;
 
   &__container {
     display: flex;
@@ -18,8 +11,6 @@
     justify-content: flex-start;
     flex-direction: row;
     position: relative;
-    // flex: 2;
-    // background-color: $color-bg;
   }
 
   &__title {
@@ -36,7 +27,6 @@
   &__required {
     margin-left: #{$spacingUnit}px;
     color: #{$paletteSecondaryMain};
-    // font-size: #{$typographyFontSize}px;
   }
 
   &__switch {
@@ -69,7 +59,6 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    // min-height: 34rpx;
     margin-top: #{$spacingUnit}px;
 
     &_icon {

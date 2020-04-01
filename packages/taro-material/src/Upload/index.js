@@ -14,7 +14,7 @@ function uploadFile(url, item, params, resolve, reject) {
   if (RMUpload.queue > 10) {
     return setTimeout(() => {
       uploadFile(url, item, params, resolve, reject);
-    }, 100);
+    }, 300);
   }
 
   Taro.uploadFile({
@@ -22,11 +22,6 @@ function uploadFile(url, item, params, resolve, reject) {
     filePath: item,
     name: 'file',
     formData: params,
-    // success (res) {
-    //   //去掉微信返回的url多出的引号
-    //   let data = res.data.slice(1, -1);
-    //   resolve(data);
-    // },
     fail(res) {
       reject(res);
     },
@@ -53,6 +48,94 @@ class RMUpload extends Component {
       _files: [],
     };
     this._files = [];
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { files } = this.props;
+    if (files !== nextProps.files) {
+      this.reset();
+      this.init(nextProps.files);
+    }
+  }
+
+  componentDidMount() {
+    // this.init()
+    const { onComponentDidMount } = this.props;
+    onComponentDidMount && onComponentDidMount(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { onChange, disabled } = this.props;
+
+    if (!disabled && prevState._files !== this.state._files) {
+      onChange(this.state._files);
+    }
+  }
+
+  init(files) {
+    const _files = files || this.props.files;
+    for (let i = 0; i < _files.length; i++) {
+      this.pathHandler(_files[i]);
+    }
+  }
+
+  reset = () => {
+    const { _files } = this.state;
+    for (let i = _files.length - 1; i >= 0; i--) {
+      const file = _files[i];
+      this.handleDelete(file);
+    }
+    RMUpload.queue = 0;
+  };
+
+  pathHandler(file) {
+    if (!file) {
+      return;
+    }
+
+    const __files = this._files;
+
+    if (__files.indexOf(file) > -1) {
+      return;
+    }
+
+    const { multiple } = this.props;
+    let { maxLength } = this.props;
+    if (multiple) {
+      if (!maxLength) {
+        maxLength = 2;
+      }
+    } else {
+      maxLength = 1;
+    }
+
+    if (!multiple) {
+      const { _files } = this.state;
+      if (_files.length > 0) {
+        for (let i = 0; i < _files.length; i++) {
+          this.handleDelete(null, _files[i]);
+        }
+      }
+    }
+
+    const { length } = __files;
+
+    if (length >= maxLength) {
+      Taro.showModal({
+        title: '提示',
+        content: `最多只允许传递${maxLength}个文件!`,
+        showCancel: false,
+        confirmText: 'OK',
+        confirmColor: theme.palette.primary.main,
+        success(res) {},
+      });
+      return;
+    }
+
+    this.setState(preState => ({
+      _files: multiple ? [...preState._files, file] : [file],
+    }));
+    this._files = multiple ? [...this._files, file] : [file];
   }
 
   handleDelete = (item, e) => {
@@ -118,67 +201,8 @@ class RMUpload extends Component {
     });
   };
 
-  preview = item => {
-    Taro.previewImage({
-      current: item, // 当前显示图片的http链接
-      urls: [item], // 需要预览的图片http链接列表
-      success() {},
-      fail() {},
-    });
-  };
-
-  pathHandler(file) {
-    if (!file) {
-      return;
-    }
-
-    const __files = this._files;
-
-    if (__files.indexOf(file) > -1) {
-      return;
-    }
-
-    const { multiple } = this.props;
-    let { maxLength } = this.props;
-    if (multiple) {
-      if (!maxLength) {
-        maxLength = 2;
-      }
-    } else {
-      maxLength = 1;
-    }
-
-    if (!multiple) {
-      const { _files } = this.state;
-      if (_files.length > 0) {
-        for (let i = 0; i < _files.length; i++) {
-          this.handleDelete(null, _files[i]);
-        }
-      }
-    }
-
-    const { length } = __files;
-
-    if (length >= maxLength) {
-      Taro.showModal({
-        title: '提示',
-        content: `最多只允许传递${maxLength}个文件!`,
-        showCancel: false,
-        confirmText: 'OK',
-        confirmColor: theme.palette.primary.main,
-        success(res) {},
-      });
-      return;
-    }
-
-    this.setState(preState => ({
-      _files: multiple ? [...preState._files, file] : [file],
-    }));
-    this._files = multiple ? [...this._files, file] : [file];
-  }
-
   upload = (url, params) => {
-    const { disabled } = this.props;
+    const { disabled, files } = this.props;
     const { _files } = this.state;
 
     if (disabled || !url || !_files || _files.length <= 0) {
@@ -189,6 +213,11 @@ class RMUpload extends Component {
       _files.map(
         item =>
           new Promise((resolve, reject) => {
+            if (files.indexOf(item) !== -1) {
+              // /^http(s?):\/\//g.test(item)
+              return resolve(item);
+            }
+
             RMUpload.queue++;
             uploadFile(url, item, params, resolve, reject);
           }),
@@ -196,30 +225,13 @@ class RMUpload extends Component {
     );
   };
 
-  componentDidMount() {
-    const { files, onComponentDidMount } = this.props;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      this.pathHandler(file);
-    }
-    onComponentDidMount(this);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { onChange, disabled } = this.props;
-
-    if (!disabled && prevState._files !== this.state._files) {
-      onChange(this.state._files);
-    }
-  }
-
-  reset = () => {
-    const { _files } = this.state;
-    for (let i = 0; i < _files.length; i++) {
-      const file = _files[i];
-      this.handleDelete(file);
-    }
-    RMUpload.queue = 0;
+  preview = item => {
+    Taro.previewImage({
+      current: item, // 当前显示图片的http链接
+      urls: [item], // 需要预览的图片http链接列表
+      success() {},
+      fail() {},
+    });
   };
 
   render() {
@@ -249,7 +261,7 @@ class RMUpload extends Component {
     return (
       <View
         className={classNames({
-          container: true,
+          'rm-upload': true,
           rounded: !square,
         })}
       >
@@ -265,7 +277,7 @@ class RMUpload extends Component {
             </View>
           </Label>
         )}
-        <View className="array" disabled={disabled}>
+        <View className="files" disabled={disabled}>
           {_files.map(item => {
             const url = `${item}`;
             return (
@@ -298,6 +310,7 @@ class RMUpload extends Component {
             'helper-text': true,
             [helperTextClass]: !!helperTextClass,
           })}
+          style={helperTextStyle}
         >
           {helperText && (
             <View className="helper-text-icon">
@@ -320,8 +333,6 @@ RMUpload.defaultProps = {
   multiple: true,
   disabled: false,
   files: [],
-  onChange: () => {},
-  onDelete: () => {},
   label: 'upload',
   name: '',
   maxLength: 9,
@@ -330,8 +341,10 @@ RMUpload.defaultProps = {
   helperText: '',
   helperTextStyle: '',
   helperTextClass: '',
-  onComponentDidMount: () => {},
   square: false,
+  onChange: () => {},
+  onDelete: () => {},
+  onComponentDidMount: () => {},
 };
 
 RMUpload.propTypes = {

@@ -1,6 +1,5 @@
-@import '../style/mixins/index.scss';
+@import '../style/mixins/libs/line.scss';
 @import '../style/variables/default.scss';
-
 @import '../styles/theme.scss';
 
 .at-tabs {
@@ -13,8 +12,10 @@
     padding: #{$spacingUnit * 3}px #{$spacingUnit * 4}px;
     font-size: $font-size-base;
     // color: $color-text-base;
-    text-overflow: ellipsis;
-    overflow: hidden;
+
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    @include line(1);
 
     &__title {
       display: flex;

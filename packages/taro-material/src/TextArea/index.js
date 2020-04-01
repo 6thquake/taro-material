@@ -5,9 +5,9 @@ import classNames from 'classnames';
 
 import AtTextarea from '../components/textarea';
 
-import './TextArea.scss';
+import './Textarea.scss';
 
-class RMTextArea extends Component {
+class RMTextarea extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +62,7 @@ class RMTextArea extends Component {
   }
 }
 
-RMTextArea.defaultProps = {
+RMTextarea.defaultProps = {
   value: '',
   onChange: () => {},
   maxlength: 200,
@@ -70,4 +70,4 @@ RMTextArea.defaultProps = {
   square: false,
 };
 
-export default RMTextArea;
+export default RMTextarea;

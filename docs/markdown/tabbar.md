@@ -17,8 +17,8 @@ import { AtTabBar } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/tab-bar.scss";
-@import "~taro-ui/dist/style/components/badge.scss";
+@import "~taro-material/dist/style/components/tab-bar.scss";
+@import "~taro-material/dist/style/components/badge.scss";
 ```
 :::
 
@@ -26,7 +26,7 @@ import { AtTabBar } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-material/dist/style/components/icon.scss";
 ```
 :::
 

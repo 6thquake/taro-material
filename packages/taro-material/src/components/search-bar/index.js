@@ -1,40 +1,46 @@
-import Taro from '@tarojs/taro'
-import { View, Text, Input } from '@tarojs/components'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import AtComponent from '../../common/component'
+import Taro from '@tarojs/taro';
+import { View, Text, Input } from '@tarojs/components';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import AtComponent from '../../common/component';
 
 class AtSearchBar extends AtComponent {
-  constructor (props) {
-    super(...arguments)
+  constructor(props) {
+    super(...arguments);
     this.state = {
-      isFocus: props.focus
-    }
+      isFocus: props.focus,
+    };
   }
 
   handleFocus = (...arg) => {
     this.setState({
-      isFocus: true
-    })
-    this.props.onFocus(...arg)
-  }
+      isFocus: true,
+    });
+    this.props.onFocus(...arg);
+  };
 
   handleBlur = (...arg) => {
     this.setState({
-      isFocus: false
-    })
-    this.props.onBlur(...arg)
-  }
+      isFocus: false,
+    });
+    this.props.onBlur(...arg);
+  };
 
-  handleChange = (e, ...arg) => this.props.onChange(e.target.value, ...arg)
+  handleChange = (e, ...arg) => this.props.onChange(e.target.value, ...arg);
 
-  handleClear = (...arg) => this.props.onChange('', ...arg)
+  handleClear = (...arg) => {
+    if (this.props.onClear) {
+      this.props.onClear();
+    } else {
+      this.props.onChange('', ...arg);
+    }
+  };
 
-  handleConfirm = (...arg) => this.props.onConfirm(...arg)
+  handleConfirm = (...arg) => this.props.onConfirm(...arg);
 
-  handleActionClick = (...arg) => this.props.onActionClick(...arg)
+  handleActionClick = (...arg) => this.props.onActionClick(...arg);
 
-  render () {
+  render() {
     const {
       value,
       placeholder,
@@ -45,62 +51,53 @@ class AtSearchBar extends AtComponent {
       showActionButton,
       actionName,
       className,
-      customStyle
-    } = this.props
-    const { isFocus } = this.state
-    const fontSize = 14
+      customStyle,
+    } = this.props;
+    const { isFocus } = this.state;
+    const fontSize = 14;
     const rootCls = classNames(
       'at-search-bar',
       {
-        'at-search-bar--fixed': fixed
-      }, className
-    )
-    const placeholderWrapStyle = {}
-    const actionStyle = {}
+        'at-search-bar--fixed': fixed,
+      },
+      className,
+    );
+    const placeholderWrapStyle = {};
+    const actionStyle = {};
     if (isFocus || (!isFocus && value)) {
-      actionStyle.opacity = 1
-      actionStyle.marginRight = `0`
-      placeholderWrapStyle.flexGrow = 0
+      actionStyle.opacity = 1;
+      actionStyle.marginRight = `0`;
+      placeholderWrapStyle.flexGrow = 0;
     } else if (!isFocus && !value) {
-      placeholderWrapStyle.flexGrow = 1
-      actionStyle.opacity = 0
-      actionStyle.marginRight = `-${((actionName.length + 1) * fontSize) + (fontSize / 2)}px`
+      placeholderWrapStyle.flexGrow = 1;
+      actionStyle.opacity = 0;
+      actionStyle.marginRight = `-${(actionName.length + 1) * fontSize + fontSize / 2}px`;
     }
     if (showActionButton) {
-      actionStyle.opacity = 1
-      actionStyle.marginRight = `0`
+      actionStyle.opacity = 1;
+      actionStyle.marginRight = `0`;
     }
 
-    const clearIconStyle = { display: 'flex' }
-    const placeholderStyle = { visibility: 'hidden' }
+    const clearIconStyle = { display: 'flex' };
+    const placeholderStyle = { visibility: 'hidden' };
     if (!value.length) {
-      clearIconStyle.display = 'none'
-      placeholderStyle.visibility = 'visible'
+      clearIconStyle.display = 'none';
+      placeholderStyle.visibility = 'visible';
     }
-
 
     return (
-      <View
-        className={rootCls}
-        style={customStyle}
-      >
-        <View className='at-search-bar__input-cnt'>
-          <View
-            className='at-search-bar__placeholder-wrap'
-            style={placeholderWrapStyle}
-          >
-            <Text className='at-icon at-icon-search'></Text>
-            <Text
-              className='at-search-bar__placeholder'
-              style={placeholderStyle}
-            >
-              {placeholder}
+      <View className={rootCls} style={customStyle}>
+        <View className="at-search-bar__input-cnt">
+          <View className="at-search-bar__placeholder-wrap" style={placeholderWrapStyle}>
+            <Text className="at-icon at-icon-search" />
+            <Text className="at-search-bar__placeholder" style={placeholderStyle}>
+              {isFocus ? '' : placeholder}
             </Text>
           </View>
           <Input
-            className='at-search-bar__input'
-            type='text'
-            confirmType='search'
+            className="at-search-bar__input"
+            type="text"
+            confirmType="search"
             value={value}
             focus={focus}
             disabled={disabled}
@@ -111,22 +108,22 @@ class AtSearchBar extends AtComponent {
             onConfirm={this.handleConfirm}
           />
           <View
-            className='at-search-bar__clear'
+            className="at-search-bar__clear"
             style={clearIconStyle}
             onTouchStart={this.handleClear}
           >
-            <Text className='at-icon at-icon-close-circle'></Text>
+            <Text className="at-icon at-icon-close-circle" />
           </View>
         </View>
         <View
-          className='at-search-bar__action'
+          className="at-search-bar__action"
           style={actionStyle}
           onClick={this.handleActionClick}
         >
           {actionName}
         </View>
       </View>
-    )
+    );
   }
 }
 
@@ -144,7 +141,7 @@ AtSearchBar.defaultProps = {
   onBlur: () => {},
   onConfirm: () => {},
   onActionClick: () => {},
-}
+};
 
 AtSearchBar.propTypes = {
   value: PropTypes.string,
@@ -159,7 +156,8 @@ AtSearchBar.propTypes = {
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   onConfirm: PropTypes.func,
-  onActionClick: PropTypes.func
-}
+  onActionClick: PropTypes.func,
+  onClear: PropTypes.func,
+};
 
-export default AtSearchBar
+export default AtSearchBar;

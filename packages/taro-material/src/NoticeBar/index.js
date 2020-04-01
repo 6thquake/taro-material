@@ -14,7 +14,7 @@ class RMNoticeBar extends AtComponent {
 
   constructor() {
     super(...arguments);
-    const animElemId = `J_${Math.ceil(Math.random() * 10e5).toString(36)}`;
+    const animElemId = `J_${Date.now()}_${Math.ceil(Math.random() * 10e5).toString(36)}`;
     this.state = {
       show: true,
       animElemId,
@@ -81,8 +81,9 @@ class RMNoticeBar extends AtComponent {
         //     : elem.getBoundingClientRect().width
         // }
       } else if (this.state.isWEAPP) {
-        // const query = Taro.createSelectorQuery().in(this.$scope)
-        // query.select(`.${this.state.animElemId}`)
+        const query = Taro.createSelectorQuery().in(this.$scope);
+        this.animElem = query.select(`#${this.state.animElemId}`);
+
         let index = 0;
         const resetAnimation = Taro.createAnimation({
           duration: 0,
@@ -178,7 +179,7 @@ class RMNoticeBar extends AtComponent {
       unread,
     } = this.props;
     const height = rows * 18;
-    const { animationData } = this.state;
+    const { animationData, animElemId } = this.state;
     const rootClassName = ['rm-noticebar'];
     const _moreText = this.props.moreText;
     const single = rows === 1;
@@ -242,7 +243,8 @@ class RMNoticeBar extends AtComponent {
                 animation={animationData}
                 className={innerClassName}
                 style={style}
-                ref={this.ref}
+                // ref={this.ref}
+                id={animElemId}
               >
                 <RMTypography className="body1" color="inherit" fontSize="inherit" block>
                   {this.props.children}
@@ -268,7 +270,7 @@ class RMNoticeBar extends AtComponent {
 }
 
 RMNoticeBar.propTypes = {
-  close: PropTypes.bool, //  是否需要关闭按钮  Boolean - false
+  close: PropTypes.bool, // 是否需要关闭按钮  Boolean - false
   marquee: PropTypes.bool, // 内容是否滚动（内容只能单行）  Boolean - false
   duration: PropTypes.number, // 内容滚动速度 （默认速度100px/秒）  Number  - 100
   moreText: PropTypes.string, //  “查看更多”链接文本  String  - 查看详情

@@ -1,4 +1,6 @@
 /* eslint-disable import/no-commonjs */
+const program = require('commander');
+
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -78,8 +80,20 @@ if (process.env.TARO_BUILD_TYPE === 'component') {
   config.sourceRoot = 'packages/taro-material/src';
 }
 
+program
+  .option('--type [typeName]', 'Build type, weapp/h5/rn/swan/alipay/tt')
+  .option('--watch', 'Watch mode')
+  .option('--env [env]', 'Env type')
+  .option('--ui', 'Build Taro UI library')
+  .parse(process.argv);
+
+const { watch } = program;
+let { env } = program;
+
+env = process.env.NODE_ENV || env;
+
 module.exports = function(merge) {
-  if (process.env.NODE_ENV === 'development') {
+  if (env === 'development' || watch) {
     return merge({}, config, require('./dev'));
   }
   return merge({}, config, require('./prod'));

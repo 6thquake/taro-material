@@ -1,11 +1,10 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Button, Canvas } from '@tarojs/components';
+import { View } from '@tarojs/components';
 
-import { RMTabs, RMTabsPane } from '../../../';
+import { RMTabs, RMTab } from '../../../';
 
 import RMPage from '../../../Page';
 
-import theme from '../../../styles/theme';
 import './index.scss';
 
 const allNavList = [
@@ -124,9 +123,9 @@ class Index extends RMPage {
               centered
             >
               {navList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">default - no scroll - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -142,9 +141,9 @@ class Index extends RMPage {
               color="default"
             >
               {navList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">default - no scroll - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -160,9 +159,9 @@ class Index extends RMPage {
               color="primary"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">primary - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -178,9 +177,9 @@ class Index extends RMPage {
               color="secondary"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">secondary - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -196,9 +195,9 @@ class Index extends RMPage {
               color="inherit"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">inherit - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -214,9 +213,9 @@ class Index extends RMPage {
               color="action"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">action - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -232,9 +231,9 @@ class Index extends RMPage {
               color="error"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">error - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -250,9 +249,9 @@ class Index extends RMPage {
               color="disabled"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">disabled - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -268,9 +267,9 @@ class Index extends RMPage {
               color="success"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">success - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -286,9 +285,9 @@ class Index extends RMPage {
               color="warning"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">warning - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -304,9 +303,9 @@ class Index extends RMPage {
               color="progress"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane tabDirection="vertical" current={current} index={index} key={index}>
+                <RMTab tabDirection="vertical" current={current} index={index} key={item.title}>
                   <View style="height:200px;">progress - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -325,9 +324,9 @@ class Index extends RMPage {
               centered
             >
               {navList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">default - no scroll - centered - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -342,9 +341,9 @@ class Index extends RMPage {
               centered={false}
             >
               {navList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">default - no scroll - not centered - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -358,9 +357,9 @@ class Index extends RMPage {
               color="primary"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">primary - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -374,9 +373,9 @@ class Index extends RMPage {
               color="secondary"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">secondary - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -390,9 +389,9 @@ class Index extends RMPage {
               color="inherit"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">inherit - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -406,9 +405,9 @@ class Index extends RMPage {
               color="action"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">action - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -422,9 +421,9 @@ class Index extends RMPage {
               color="error"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">error - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -438,9 +437,9 @@ class Index extends RMPage {
               color="disabled"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">disabled - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -454,9 +453,9 @@ class Index extends RMPage {
               color="success"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">success - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -470,9 +469,9 @@ class Index extends RMPage {
               color="warning"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">warning - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>
@@ -486,9 +485,9 @@ class Index extends RMPage {
               color="progress"
             >
               {allNavList.map((item, index) => (
-                <RMTabsPane current={current} index={index} key={index}>
+                <RMTab current={current} index={index} key={item.title}>
                   <View style="height:200px;">progress - {current}</View>
-                </RMTabsPane>
+                </RMTab>
               ))}
             </RMTabs>
           </View>

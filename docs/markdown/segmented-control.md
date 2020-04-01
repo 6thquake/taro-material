@@ -17,7 +17,7 @@ import { AtSegmentedControl } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/segmented-control.scss";
+@import "~taro-material/dist/style/components/segmented-control.scss";
 ```
 :::
 

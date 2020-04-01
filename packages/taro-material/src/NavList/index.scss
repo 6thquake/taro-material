@@ -1,84 +1,92 @@
 @import '../styles/theme';
 
-.root {
+.rm-nav-list {
   // background: $paletteBackgroundPaper;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  .box,
-  .content {
+  .rm-nav-list-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-  }
-  .box {
-    width: 20%;
-    padding: #{$spacingUnit * 2}px 0px;
-    font-size: #{0.75 * $typographyFontSize}px;
 
-    .image {
-      width: 64px;
-      height: 64px;
-      font-size: 56px;
-      line-height: 64px;
-      border-radius: 50%;
-      text-align: center;
-      color: $paletteCommonWhite;
-      // margin: #{$spacingUnit/2}px;
+    .box,
+    .content {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
-    .title {
-      margin: #{$spacingUnit}px;
-    }
-    .subtitle {
+    .box {
+      width: 20%;
+      padding: #{$spacingUnit * 2}px 0px;
       font-size: #{0.75 * $typographyFontSize}px;
-    }
-  }
 
-  &.large {
-    .box {
-      font-size: #{0.875 * $typographyFontSize}px;
       .image {
-        width: 88px;
-        height: 88px;
-        font-size: 72px;
-        line-height: 88px;
+        width: 64px;
+        height: 64px;
+        font-size: 56px;
+        line-height: 64px;
+        border-radius: 50%;
+        text-align: center;
+        color: $paletteCommonWhite;
+        // margin: #{$spacingUnit/2}px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         position: relative;
       }
       .title {
-        margin: 0px;
+        margin: #{$spacingUnit}px;
       }
       .subtitle {
         font-size: #{0.75 * $typographyFontSize}px;
+      }
+    }
+
+    &.large {
+      .box {
+        font-size: #{0.875 * $typographyFontSize}px;
+        .image {
+          width: 88px;
+          height: 88px;
+          font-size: 72px;
+          line-height: 88px;
+          position: relative;
+        }
+        .title {
+          margin: 0px;
+        }
+        .subtitle {
+          font-size: #{0.75 * $typographyFontSize}px;
+        }
+      }
+    }
+    &.small {
+      font-size: #{0.75 * $typographyFontSize}px;
+      .box {
+        padding: #{$spacingUnit}px 0px;
+        .image {
+          width: 40px;
+          height: 40px;
+          font-size: 32px;
+          line-height: 40px;
+          position: relative;
+        }
+        .title {
+          margin: #{$spacingUnit/ 2}px;
+        }
+        .subtitle {
+          font-size: #{0.75 * $typographyFontSize}px;
+        }
       }
     }
   }
-  &.small {
-    font-size: #{0.75 * $typographyFontSize}px;
-    .box {
-      padding: #{$spacingUnit}px 0px;
-      .image {
-        width: 40px;
-        height: 40px;
-        font-size: 32px;
-        line-height: 40px;
-        position: relative;
-      }
-      .title {
-        margin: #{$spacingUnit/ 2}px;
-      }
-      .subtitle {
-        font-size: #{0.75 * $typographyFontSize}px;
-      }
-    }
+  .rm-nav-list-scrollbar {
+    width: 8%;
+    margin: auto;
+    margin-top: -#{$spacingUnit}px;
+    padding-bottom: #{$spacingUnit * 2}px;
   }
 }
 .mark {

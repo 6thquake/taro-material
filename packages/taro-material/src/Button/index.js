@@ -310,8 +310,8 @@ class RMButton extends Component {
     }
 
     _customStyle = {
-      ...customStyle,
       ..._customStyle,
+      ...customStyle,
     };
 
     if (block) {

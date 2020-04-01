@@ -1,13 +1,16 @@
 import Taro, { Component } from '@tarojs/taro';
 import { Text } from '@tarojs/components';
+import PropTypes from 'prop-types';
 
 import { RMTypography } from '../Typography';
 
+import { format } from '../utils/math';
+
 class RMPrettyNumber extends Component {
   render() {
-    const { className, value, fontSize, color, prefix, suffix } = this.props;
+    const { className, value, digits, fontSize, color, prefix, suffix } = this.props;
 
-    const nums = `${value}`.split('.');
+    const nums = format(value * 1, digits).split('.');
 
     return (
       <RMTypography className={className} color={color}>
@@ -24,9 +27,19 @@ class RMPrettyNumber extends Component {
 RMPrettyNumber.defaultProps = {
   fontSize: 24,
   value: 0,
+  digits: 2,
   color: '',
   prefix: '',
   suffix: '',
+};
+
+RMPrettyNumber.propTypes = {
+  fontSize: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  digits: PropTypes.number,
+  color: PropTypes.string,
+  prefix: PropTypes.string,
+  suffix: PropTypes.string,
 };
 
 export default RMPrettyNumber;

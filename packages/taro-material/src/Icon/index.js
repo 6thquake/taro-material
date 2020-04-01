@@ -39,7 +39,7 @@ class RMIcon extends Component {
     }
 
     const classes = classNames({
-      root: true,
+      'rm-icon': true,
       'material-icons': true,
       'inherit-size': fontSize === 'inherit',
       block,

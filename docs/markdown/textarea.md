@@ -17,7 +17,7 @@ import { AtTextarea } from 'taro-material'
 
 :::demo
 ```scss
-@import "~taro-ui/dist/style/components/textarea.scss";
+@import "~taro-material/dist/style/components/textarea.scss";
 ```
 :::
 

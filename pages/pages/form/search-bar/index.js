@@ -18,7 +18,6 @@ export default class Index extends Taro.Component {
       value3: '',
     };
   }
-
   onChange(stateName, value) {
     this.setState({
       [stateName]: value,

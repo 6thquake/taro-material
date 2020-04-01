@@ -8,15 +8,13 @@ export default class Index extends Taro.Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
-
   handleClick(title) {
     Taro.showToast({
-      title,
+      title: title,
       duration: 2000,
       icon: 'success',
     });
   }
-
   clickReturn() {
     Taro.showToast({
       title: '返回',
@@ -24,7 +22,6 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
-
   clickMy() {
     Taro.showToast({
       title: '我的',
@@ -32,7 +29,6 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
-
   clickList() {
     Taro.showToast({
       title: '功能列表',
@@ -40,7 +36,6 @@ export default class Index extends Taro.Component {
       icon: 'success',
     });
   }
-
   render() {
     return (
       <View className="page">
@@ -117,6 +112,23 @@ export default class Index extends Taro.Component {
                 leftText="返回"
                 rightFirstIconType="bullet-list"
                 rightSecondIconType="user"
+              />
+            </View>
+          </View>
+
+          {/* 自定义图标样式 */}
+          <View className="panel">
+            <View className="panel__title">自定义图标样式</View>
+            <View className="panel__content no-padding">
+              <AtNavBar
+                onClickRgIconSt={this.clickList.bind(this)}
+                onClickRgIconNd={this.clickMy.bind(this)}
+                onClickLeftIcon={this.clickReturn.bind(this)}
+                color="#333"
+                title="NavBar 导航栏示例"
+                leftText="返回"
+                rightFirstIconType="bullet-list"
+                rightSecondIconType={{ value: 'user', size: 36, color: 'red' }}
               />
             </View>
           </View>

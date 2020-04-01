@@ -1,23 +1,31 @@
-import Taro from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import AtComponent from '../../common/component'
+import Taro from '@tarojs/taro';
+import { View, Text } from '@tarojs/components';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import isObject from 'lodash/isObject';
+import AtComponent from '../../common/component';
 
 export default class AtNavBar extends AtComponent {
-  handleClickLeftView () {
-    this.props.onClickLeftIcon(...arguments)
+  constructor() {
+    super(...arguments);
+    if (process.env.NODE_ENV === 'test') {
+      Taro.initPxTransform({ designWidth: 750 });
+    }
   }
 
-  handleClickSt () {
-    this.props.onClickRgIconSt(...arguments)
+  handleClickLeftView() {
+    this.props.onClickLeftIcon(...arguments);
   }
 
-  handleClickNd () {
-    this.props.onClickRgIconNd(...arguments)
+  handleClickSt() {
+    this.props.onClickRgIconSt(...arguments);
   }
 
-  render () {
+  handleClickNd() {
+    this.props.onClickRgIconNd(...arguments);
+  }
+
+  render() {
     const {
       customStyle,
       className,
@@ -28,66 +36,132 @@ export default class AtNavBar extends AtComponent {
       leftText,
       title,
       rightFirstIconType,
-      rightSecondIconType
-    } = this.props
-    const linkStyle = { color }
+      rightSecondIconType,
+    } = this.props;
+    const linkStyle = { color };
 
-    const leftIconClass = classNames('at-icon', {
-      [`at-icon-${leftIconType}`]: leftIconType
-    })
-    const rightFirstIconClass = classNames('at-icon', {
-      [`at-icon-${rightFirstIconType}`]: rightFirstIconType
-    })
-    const rightSecondIconClass = classNames('at-icon', {
-      [`at-icon-${rightSecondIconType}`]: rightSecondIconType
-    })
+    const defaultIconInfo = {
+      customStyle: '',
+      className: '',
+      prefixClass: 'at-icon',
+      value: '',
+      color: '',
+      size: 24,
+    };
 
-    return <View
-      className={
-        classNames({
-          'at-nav-bar': true,
-          'at-nav-bar--fixed': fixed,
-          'at-nav-bar--no-border': !border
-        }, className)
-      }
-      style={customStyle}
-    >
+    const leftIconInfo = isObject(leftIconType)
+      ? { ...defaultIconInfo, ...leftIconType }
+      : { ...defaultIconInfo, value: leftIconType };
+    const leftIconClass = classNames(
+      leftIconInfo.prefixClass,
+      {
+        [`${leftIconInfo.prefixClass}-${leftIconInfo.value}`]: leftIconInfo.value,
+      },
+      leftIconInfo.className,
+    );
+
+    const rightFirstIconInfo = isObject(rightFirstIconType)
+      ? { ...defaultIconInfo, ...rightFirstIconType }
+      : { ...defaultIconInfo, value: rightFirstIconType };
+    const rightFirstIconClass = classNames(
+      rightFirstIconInfo.prefixClass,
+      {
+        [`${rightFirstIconInfo.prefixClass}-${rightFirstIconInfo.value}`]: rightFirstIconInfo.value,
+      },
+      rightFirstIconInfo.className,
+    );
+
+    const rightSecondIconInfo = isObject(rightSecondIconType)
+      ? { ...defaultIconInfo, ...rightSecondIconType }
+      : { ...defaultIconInfo, value: rightSecondIconType };
+    const rightSecondIconClass = classNames(
+      rightSecondIconInfo.prefixClass,
+      {
+        [`${rightSecondIconInfo.prefixClass}-${
+          rightSecondIconInfo.value
+        }`]: rightSecondIconInfo.value,
+      },
+      rightSecondIconInfo.className,
+    );
+
+    return (
       <View
-        className='at-nav-bar__left-view'
-        onClick={this.handleClickLeftView.bind(this)}
-        style={linkStyle}
+        className={classNames(
+          {
+            'at-nav-bar': true,
+            'at-nav-bar--fixed': fixed,
+            'at-nav-bar--no-border': !border,
+          },
+          className,
+        )}
+        style={customStyle}
       >
-        {leftIconType && <Text className={leftIconClass}></Text>}
-        <Text className='at-nav-bar__text'>{leftText}</Text>
-      </View>
-      <View className='at-nav-bar__title'>{title}</View>
-      <View className='at-nav-bar__right-view'>
         <View
-          className={
-            classNames({
-              'at-nav-bar__container': true,
-              'at-nav-bar__container--hide': !rightSecondIconType
-            })
-          }
+          className="at-nav-bar__left-view"
+          onClick={this.handleClickLeftView.bind(this)}
           style={linkStyle}
-          onClick={this.handleClickNd.bind(this)}
         >
-          {rightSecondIconType && <Text className={rightSecondIconClass}></Text>}
+          {leftIconType && (
+            <Text
+              className={leftIconClass}
+              style={this.mergeStyle(
+                {
+                  color: leftIconInfo.color,
+                  fontSize: `${Taro.pxTransform(parseInt(leftIconInfo.size) * 2)}`,
+                },
+                leftIconInfo.customStyle,
+              )}
+            />
+          )}
+          <Text className="at-nav-bar__text">{leftText}</Text>
         </View>
-        <View
-          className={
-            classNames({
+        <View className="at-nav-bar__title">{title}</View>
+        <View className="at-nav-bar__right-view">
+          <View
+            className={classNames({
               'at-nav-bar__container': true,
-              'at-nav-bar__container--hide': !rightFirstIconType
-            })
-          }
-          style={linkStyle}
-          onClick={this.handleClickSt.bind(this)}
-        >
-          {rightFirstIconType && <Text className={rightFirstIconClass}></Text>}
+              'at-nav-bar__container--hide': !rightSecondIconType,
+            })}
+            style={linkStyle}
+            onClick={this.handleClickNd.bind(this)}
+          >
+            {rightSecondIconType && (
+              <Text
+                className={rightSecondIconClass}
+                style={this.mergeStyle(
+                  {
+                    color: rightSecondIconInfo.color,
+                    fontSize: `${Taro.pxTransform(parseInt(rightSecondIconInfo.size) * 2)}`,
+                  },
+                  rightSecondIconInfo.customStyle,
+                )}
+              />
+            )}
+          </View>
+          <View
+            className={classNames({
+              'at-nav-bar__container': true,
+              'at-nav-bar__container--hide': !rightFirstIconType,
+            })}
+            style={linkStyle}
+            onClick={this.handleClickSt.bind(this)}
+          >
+            {rightFirstIconType && (
+              <Text
+                className={rightFirstIconClass}
+                style={this.mergeStyle(
+                  {
+                    color: rightFirstIconInfo.color,
+                    fontSize: `${Taro.pxTransform(parseInt(rightFirstIconInfo.size) * 2)}`,
+                  },
+                  rightFirstIconInfo.customStyle,
+                )}
+              />
+            )}
+          </View>
         </View>
       </View>
-    </View>
+    );
   }
 }
 
@@ -105,26 +179,20 @@ AtNavBar.defaultProps = {
   onClickLeftIcon: () => {},
   onClickRgIconSt: () => {},
   onClickRgIconNd: () => {},
-}
+};
 
 AtNavBar.propTypes = {
-  customStyle: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string
-  ]),
-  className: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.string
-  ]),
+  customStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   fixed: PropTypes.bool,
   border: PropTypes.bool,
   color: PropTypes.string,
-  leftIconType: PropTypes.string,
+  leftIconType: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   leftText: PropTypes.string,
   title: PropTypes.string,
-  rightFirstIconType: PropTypes.string,
-  rightSecondIconType: PropTypes.string,
+  rightFirstIconType: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  rightSecondIconType: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClickLeftIcon: PropTypes.func,
   onClickRgIconSt: PropTypes.func,
   onClickRgIconNd: PropTypes.func,
-}
+};

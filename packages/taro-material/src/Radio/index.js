@@ -21,13 +21,13 @@ class RMRadio extends Component {
   componentDidHide() {}
 
   handleChange(e) {
-    const { value, checked, onChange } = this.props;
+    const { disabled, value, checked, onChange } = this.props;
 
-    onChange && onChange(!checked /* e.target.value */, value, e);
+    !disabled && onChange && onChange(!checked /* e.target.value */, value, e);
   }
 
   render() {
-    const { value, color, disabled, checked, customStyle, className, name } = this.props;
+    const { value, color, disabled, checked, customStyle, className, name, lable } = this.props;
     return (
       <Label
         className={classNames({
@@ -37,17 +37,8 @@ class RMRadio extends Component {
         })}
         style={customStyle}
         for={name}
-        // onClick={this.handleChange.bind(this)}
+        onClick={this.handleChange.bind(this)}
       >
-        <Radio
-          className="at-selection__selection"
-          value={value}
-          checked={checked}
-          disabled={disabled}
-          style={{ opacity: 0 }}
-          name={name}
-        />
-
         <View className="at-selection__container">
           <View
             className={classNames({
@@ -60,10 +51,20 @@ class RMRadio extends Component {
         </View>
         {
           <RMTypography className="subheading" color="inherit" block>
+            {lable || ''}
             {this.props.children}
           </RMTypography>
         }
 
+        <Radio
+          className="at-selection__selection"
+          value={value}
+          checked={checked}
+          disabled={disabled}
+          style={{ opacity: 0 }}
+          name={name}
+          // onChange={this.handleChange.bind(this)}
+        />
         <View className="at-selection__mask" />
       </Label>
     );
@@ -87,6 +88,7 @@ RMRadio.propTypes = {
   customStyle: PropTypes.object,
   required: PropTypes.bool,
   name: PropTypes.string,
+  lable: PropTypes.string,
 };
 
 RMRadio.defaultProps = {

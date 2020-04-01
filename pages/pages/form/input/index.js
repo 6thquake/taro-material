@@ -9,7 +9,6 @@ export default class Index extends Taro.Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
-
   constructor() {
     super(...arguments);
     this.state = {
@@ -30,11 +29,9 @@ export default class Index extends Taro.Component {
       second: 60,
     };
   }
-
   showTipText() {
     return this.state.disabled ? `${this.state.second}s后重试` : '发送验证码';
   }
-
   sendCode() {
     if (this.state.disabled) return;
     this.setState({
@@ -55,13 +52,11 @@ export default class Index extends Taro.Component {
       }
     }, 1000);
   }
-
   handleInput(stateName, value) {
     this.setState({
       [stateName]: value,
     });
   }
-
   handleClick() {
     Taro.showToast({
       title: '已发送验证码',
@@ -69,7 +64,6 @@ export default class Index extends Taro.Component {
       duration: 2000,
     });
   }
-
   onClickErrorIcon() {
     Taro.showToast({
       title: '请输入数字',
@@ -77,7 +71,6 @@ export default class Index extends Taro.Component {
       duration: 2000,
     });
   }
-
   render() {
     return (
       <View className="page">

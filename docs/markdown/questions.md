@@ -6,14 +6,14 @@
 
 ## 出现xx问题怎么办？
 
-在提问前，建议升级 `taro` 和 `taro-ui` 至最新版本，仍有问题请按模板提交 [Issue](https://github.com/NervJS/taro-ui/issues/new/choose)
+在提问前，建议升级 `taro` 和 `taro-material` 至最新版本，仍有问题请按模板提交 [Issue](https://github.com/NervJS/taro-material/issues/new/choose)
 
 ## H5 模式下编译报错？
 
 如果出现类似 `You may need an appropriate loader to handle this file type` 的问题，如下：
 :::demo
 ```bash
-./node_modules/_taro-ui@1.5.4@taro-ui/dist/h5/components/pagination/index.js 101
+./node_modules/_taro-material@1.5.4@taro-material/dist/h5/components/pagination/index.js 101
 :11
 Module parse failed: Unexpected token (101:11)
 You may need an appropriate loader to handle this file type.
@@ -37,11 +37,11 @@ h5: {
 
 ## 如何自定义样式？
 
-请查看 [「自定义主题」](https://taro-ui.aotu.io/#/docs/customizetheme) 章节
+请查看 [「自定义主题」](https://taro-material.aotu.io/#/docs/customizetheme) 章节
 
 ## 自定义样式为什么没有生效（H5 生效，微信小程序没生效）？
 
-`taro-ui` 自定义样式覆盖小程序组件样式使用到了 `globalClass` 这个微信小程序特性，由于微信小程序的限制，自定义的样式需要在 `page` 页面内使用，不能基于第三方组件再进行一层封装，这样做样式会无效。并且确保小程序调试基础库在 `v2.2.3` 以上。
+`taro-material` 自定义样式覆盖小程序组件样式使用到了 `globalClass` 这个微信小程序特性，由于微信小程序的限制，自定义的样式需要在 `page` 页面内使用，不能基于第三方组件再进行一层封装，这样做样式会无效。并且确保小程序调试基础库在 `v2.2.3` 以上。
 
 ## 如何修改边框、下划线样式？
 

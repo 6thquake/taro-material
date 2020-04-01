@@ -8,7 +8,6 @@ export default class Index extends Taro.Component {
   config = {
     navigationBarTitleText: 'Taro Material',
   };
-
   constructor() {
     super(...arguments);
     this.state = {

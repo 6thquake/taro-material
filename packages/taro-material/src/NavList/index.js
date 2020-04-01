@@ -1,15 +1,27 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { View, Image } from '@tarojs/components';
+import { View, ScrollView, Image } from '@tarojs/components';
+
 import RMBadge from '../Badge';
 import RMIcon from '../Icon';
 import RMTypography from '../Typography';
+
 import { parse, stringify } from '../utils/qs';
+
 import theme from '../styles/theme';
 
 import './index.scss';
+import '../style/components/progress.scss';
 
 class RMNavList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      scrollLeft: 0,
+      scrollWidth: 750,
+    };
+  }
   componentWillUnmount() {}
 
   componentDidShow() {}
@@ -47,96 +59,139 @@ class RMNavList extends Component {
     }
   }
 
+  handleScroll(e) {
+    const { scrollLeft, scrollWidth } = e.detail;
+    this.setState({
+      scrollLeft,
+      scrollWidth,
+    });
+  }
+
   render() {
     const {
       data,
       columnNum,
+      visiableColumnNum,
       size,
       concise,
       titleColor,
       backgroundColor,
       subTitleColor,
       color,
+      scrollbarColor,
       customStyle,
     } = this.props;
 
-    const style = {
-      width: `${Math.round(100 / columnNum)}%`,
+    const { scrollLeft, scrollWidth } = this.state;
+
+    let vcn = visiableColumnNum;
+    if (columnNum < visiableColumnNum) {
+      vcn = columnNum;
+    }
+
+    const wrapperStyle = {
+      ...customStyle,
+      width: `${Math.ceil((100 * columnNum) / vcn)}%`,
     };
 
-    // let rows = data.length % columnNum;
-    // let renderData = data.slice(0);
-    // renderData.length = renderData.length + rows;
+    const style = i => {
+      return {
+        width: `${Math.floor(100 / columnNum) + (i < 100 % columnNum ? 1 : 0)}%`,
+      };
+    };
+
+    const progressStyle = {
+      width: `${(100 * vcn) / columnNum}%`,
+      marginLeft: `${(100 * scrollLeft) / scrollWidth}%`,
+      height: `4px`,
+      backgroundColor: scrollbarColor || theme.palette.primary.main,
+    };
 
     return (
-      <View className={`root ${size}`} style={customStyle}>
-        {data.map((item, index) => {
-          const badge = item.badge || {};
-          return (
-            <View style={style} key={index} className="box">
-              {item && (
-                <View className="content" onClick={this.handleClick.bind(this, item)}>
-                  <RMBadge
-                    variant={badge.variant || 'text'}
-                    value={badge.value}
-                    maxValue={badge.maxValue}
-                  >
-                    <View
-                      className="image"
-                      style={{
-                        background: item.background || backgroundColor || 'inherit',
-                        color: item.color || color || 'inherit',
-                      }}
-                    >
-                      {item.image && (
-                        <Image
+      <View className="rm-nav-list">
+        <ScrollView scrollX scrollWithAnimation onScroll={this.handleScroll}>
+          <View className={`rm-nav-list-wrapper ${size}`} style={wrapperStyle}>
+            {data.map((item, index) => {
+              const badge = item.badge || {};
+              return (
+                <View style={style(index)} key={item.id || item.title} className="box">
+                  {item && (
+                    <View className="content" onClick={this.handleClick.bind(this, item)}>
+                      <RMBadge
+                        variant={badge.variant || 'text'}
+                        value={badge.value}
+                        maxValue={badge.maxValue}
+                      >
+                        <View
+                          className="image"
                           style={{
-                            width: '100%',
-                            height: '100%',
-                            background: theme.palette.background.paper,
+                            background: item.background || backgroundColor || 'inherit',
+                            color: item.color || color || 'inherit',
                           }}
-                          src={item.image}
-                        />
-                      )}
-                      {item.icon && (
-                        <RMIcon
-                          block
-                          fontSize={item.fontSize || 'inherit'}
-                          customStyle={item.customStyle}
                         >
-                          {item.icon}
-                        </RMIcon>
-                      )}
-                      {item.mark && <View className="mark">{item.mark}</View>}
-                    </View>
-                  </RMBadge>
-                  {!concise &&
-                    item.title && (
-                      <View className="title">
-                        <RMTypography
-                          className="body1"
-                          fontSize="inherit"
-                          color={titleColor || 'inherit'}
-                          block
-                        >
-                          {item.title}
-                        </RMTypography>
-                      </View>
-                    )}
+                          {item.image && (
+                            <Image
+                              style={{
+                                width: '100%',
+                                height: '100%',
+                                background: theme.palette.background.paper,
+                              }}
+                              src={item.image}
+                            />
+                          )}
+                          {item.icon && (
+                            <RMIcon
+                              block
+                              fontSize={item.fontSize || 'inherit'}
+                              customStyle={item.customStyle}
+                            >
+                              {item.icon}
+                            </RMIcon>
+                          )}
+                          {item.mark && <View className="mark">{item.mark}</View>}
+                        </View>
+                      </RMBadge>
+                      {!concise &&
+                        item.title && (
+                          <View className="title">
+                            <RMTypography
+                              className="body1"
+                              fontSize="inherit"
+                              color={titleColor || 'inherit'}
+                              block
+                            >
+                              {item.title}
+                            </RMTypography>
+                          </View>
+                        )}
 
-                  {!concise &&
-                    item.subTitle && (
-                      <View className="subTitle">
-                        <RMTypography className="caption" color={subTitleColor || 'default'}>
-                          {item.subTitle}
-                        </RMTypography>
-                      </View>
-                    )}
+                      {!concise &&
+                        item.subTitle && (
+                          <View className="subTitle">
+                            <RMTypography className="caption" color={subTitleColor || 'default'}>
+                              {item.subTitle}
+                            </RMTypography>
+                          </View>
+                        )}
+                    </View>
+                  )}
                 </View>
-              )}
+              );
+            })}
+          </View>
+        </ScrollView>
+
+        {columnNum > visiableColumnNum && (
+          <View className="rm-nav-list-scrollbar">
+            <View className="at-progress">
+              <View className="at-progress__outer">
+                <View className="at-progress__outer-inner">
+                  <View className="at-progress__outer-inner-background" style={progressStyle} />
+                </View>
+              </View>
             </View>
-          );
-        })}
+          </View>
+        )}
       </View>
     );
   }
@@ -145,13 +200,15 @@ class RMNavList extends Component {
 RMNavList.defaultProps = {
   data: [],
   onClick: () => {},
-  columnNum: 4,
+  columnNum: 5,
+  visiableColumnNum: 5,
   color: theme.palette.primary.contrastText,
   size: 'normal',
   concise: false,
   backgroundColor: null,
   titleColor: null,
   subTitleColor: null,
+  scrollbarColor: null,
   customStyle: {},
 };
 
